@@ -9,7 +9,74 @@
 import Foundation
 
 
-public typealias Response = Array<TransactionData>
+/**
+*  Response object that stores an array of items and includes pagination information if available
+*/
+public struct Response {
+    /// the current pagination response
+    public let pagination: Pagination?
+    /// The array that contains the transaction response objects
+    private (set) var items = Array<TransactionData>()
+    
+    
+    /**
+    Initialize a Response object with pagination if available
+    
+    - Parameter pagination: the pagination information for the response
+    
+    - Returns: a Response object
+    */
+    init(_ pagination: Pagination?) {
+        self.pagination = pagination
+    }
+    
+    
+    /**
+    add an element on to the items
+    
+    - Parameter element: the element to add to the items Array
+    */
+    public mutating func append(element: TransactionData) {
+        self.items.append(element)
+    }
+    
+    /**
+    calculate the next page from available data
+    
+    :returns: a newly calculated Pagination object based on the Response object
+    */
+    public func nextPage() -> Pagination? {
+        guard let page = self.pagination else { return nil }
+        
+        return Pagination(pageSize: page.pageSize, offset: page.offset + page.pageSize, sort: page.sort)
+    }
+}
+
+
+/**
+*  a PaymentToken object is necessary to make a token payment or token preAuth
+*/
+public struct PaymentToken {
+    /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
+    public let consumerToken: String
+    /// Can be used to charge future payments against this card.
+    public let cardToken: String
+}
+
+
+/**
+*  details of the Consumer for use in repeat payments.
+*/
+public struct Consumer {
+    /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
+    public let consumerToken: String
+    /// Your reference for this Consumer as you sent in your request.
+    public let yourConsumerReference: String
+    
+    static func fromDictionary(dict: JSONDictionary) -> Consumer {
+        return Consumer(consumerToken: dict["consumerToken"] as! String, yourConsumerReference: dict["yourConsumerReference"] as! String)
+    }
+}
 
 
 /**
@@ -77,23 +144,28 @@ public struct TransactionData {
         
         guard let appearsOnStatementAs = dict["appearsOnStatementAs"] as? String else { throw JudoError.ResponseParseError }
         
+        guard let currency = dict["currency"] as? String else { throw JudoError.ResponseParseError }
+        
         var refunds: Amount? = nil
         if let refundsString = dict["refunds"] as? String {
             refunds = Amount(Double(refundsString))
+            refunds?.currency = currency
         }
         
         var originalAmount: Amount? = nil
         if let originalAmountString = dict["originalAmount"] as? String {
             originalAmount = Amount(Double(originalAmountString))
+            originalAmount?.currency = currency
         }
         
         var netAmount: Amount? = nil
         if let netAmountString = dict["netAmount"] as? String {
             netAmount = Amount(Double(netAmountString))
+            netAmount?.currency = currency
         }
         
         guard let amountString = dict["amount"] as? String else { throw JudoError.ResponseParseError }
-        guard let amount = Amount(Double(amountString)) else { throw JudoError.ResponseParseError }
+        guard let amount = Amount(Double(amountString), currency) else { throw JudoError.ResponseParseError }
         
         guard let cardDetailsDict = dict["cardDetails"] as? JSONDictionary else { throw JudoError.ResponseParseError }
         let cardDetails = CardDetails.fromDictionary(cardDetailsDict)
@@ -126,4 +198,16 @@ Result of a Transaction
 public enum TransactionResult: String {
     case Success="Success", Declined="Declined"
 }
+
+// MARK: Helper
+
+
+/// formatter for ISO8601 Dates that are returned from the webservice
+let ISO8601DateFormatter: NSDateFormatter = {
+    let dateFormatter = NSDateFormatter()
+    let enUSPOSIXLocale = NSLocale(localeIdentifier: "en_US_POSIX")
+    dateFormatter.locale = enUSPOSIXLocale
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSZZZZZ"
+    return dateFormatter
+    }()
 

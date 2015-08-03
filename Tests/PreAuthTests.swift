@@ -101,7 +101,7 @@ class PreAuthTests: XCTestCase {
                         XCTFail()
                         return // BAIL
                     }
-                    let payToken = PaymentToken(consumerToken: uData.first!.consumer.consumerToken, cardToken: uData.first!.cardDetails.cardToken!)
+                    let payToken = PaymentToken(consumerToken: uData.items.first!.consumer.consumerToken, cardToken: uData.items.first!.cardDetails.cardToken!)
                     do {
                         try Judo.preAuth(strippedJudoID, amount: amount, reference: references).paymentToken(payToken).completion({ (data, error) -> () in
                             if let error = error {

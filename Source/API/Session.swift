@@ -174,7 +174,13 @@ internal struct Session {
                 return // BAIL
             }
             
-            var result = Response()
+            var paginationResponse: Pagination?
+            
+            if let offset = upJSON["offset"] as? NSNumber, let pageSize = upJSON["pageSize"] as? NSNumber, let sort = upJSON["sort"] as? String {
+                paginationResponse = Pagination(pageSize: pageSize.integerValue, offset: offset.integerValue, sort: Sort(rawValue: sort)!)
+            }
+            
+            var result = Response(paginationResponse)
 
             do {
                 if let results = upJSON["results"] as? Array<JSONDictionary> {
@@ -321,3 +327,18 @@ internal struct Session {
     }
 
 }
+
+
+// MARK: Pagination
+
+public struct Pagination {
+    var pageSize: Int = 10
+    var offset: Int = 0
+    var sort: Sort = .Descending
+}
+
+
+public enum Sort: String {
+    case Descending = "time-descending", Ascending = "time-ascending"
+}
+

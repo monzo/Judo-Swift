@@ -160,14 +160,31 @@ public class Transaction {
     
     
     /**
-    This method will return a list of transactions, filtered to just show the payment or preAuth transactions.
+    This method will return a list of transactions, filtered to just show the payment or preAuth transactions. The method will show the first 10 items in a Time Descending order
     
     See [List all transactions](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/#transactions>) for more information.
     
     - Parameter block: a completion block that is called when the request finishes
     */
     public static func list(block: (Response?, NSError?) -> ()) {
-        Session.GET((self as! TransactionPath.Type).path, parameters: nil) { (dictionary, error) -> () in
+        self.list(nil, block: block)
+    }
+    
+    
+    /**
+    This method will return a list of transactions, filtered to just show the payment or preAuth transactions.
+    
+    See [List all transactions](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/#transactions>) for more information.
+    
+    - Parameter pagination: The offset, number of items and order in which to return the items
+    - Parameter block: a completion block that is called when the request finishes
+    */
+    public static func list(pagination: Pagination?, block: (Response?, NSError?) -> ()) {
+        var path = (self as! TransactionPath.Type).path
+        if let pag = pagination {
+            path += "?pageSize=\(pag.pageSize)&offset=\(pag.offset)&sort=\(pag.sort.rawValue)"
+        }
+        Session.GET(path, parameters: nil) { (dictionary, error) -> () in
             block(dictionary, error)
         }
     }

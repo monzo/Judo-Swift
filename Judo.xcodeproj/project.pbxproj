@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
+		DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */; };
+		DA1C6CB11B6F9C25009F2BE9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB01B6F9C25009F2BE9 /* Address.swift */; };
+		DA1C6CB31B6F9C47009F2BE9 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */; };
+		DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */; };
+		DA1C6CB71B6F9E86009F2BE9 /* ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */; };
 		DA2620161B6251A1005544B8 /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; };
 		DA2620181B62520F005544B8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2620171B62520F005544B8 /* Transaction.swift */; };
 		DA2620201B625AB2005544B8 /* 200-payment-blockedcard.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */; };
@@ -41,7 +46,6 @@
 		DAFA401B1B5959420094CFCA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401A1B5959420094CFCA /* Collection.swift */; };
 		DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401C1B59596B0094CFCA /* PreAuth.swift */; };
 		DAFA401F1B595A510094CFCA /* Refund.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401E1B595A510094CFCA /* Refund.swift */; };
-		DAFA40211B5D08E60094CFCA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40201B5D08E60094CFCA /* Data.swift */; };
 		DAFA40231B5E3D160094CFCA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40221B5E3D160094CFCA /* Session.swift */; };
 		DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40241B5E9A870094CFCA /* SessionTests.swift */; };
 /* End PBXBuildFile section */
@@ -57,9 +61,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Model/Response.swift; sourceTree = "<group>"; };
+		DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Amount.swift; path = Source/Model/Amount.swift; sourceTree = "<group>"; };
+		DA1C6CB01B6F9C25009F2BE9 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Source/Model/Address.swift; sourceTree = "<group>"; };
+		DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reference.swift; path = Source/Model/Reference.swift; sourceTree = "<group>"; };
+		DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Source/Model/Card.swift; sourceTree = "<group>"; };
+		DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTests.swift; sourceTree = "<group>"; };
 		DA2620151B6251A1005544B8 /* 200-payment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment.json"; sourceTree = "<group>"; };
-		DA2620171B62520F005544B8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Source/Transaction.swift; sourceTree = "<group>"; };
+		DA2620171B62520F005544B8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Source/API/Transaction.swift; sourceTree = "<group>"; };
 		DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-blockedcard.json"; sourceTree = "<group>"; };
 		DA26201A1B625AB2005544B8 /* 200-payment-declined.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-declined.json"; sourceTree = "<group>"; };
 		DA26201B1B625AB2005544B8 /* 400-payment-missing-amount.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "400-payment-missing-amount.json"; sourceTree = "<group>"; };
@@ -76,7 +85,7 @@
 		DA26202F1B627239005544B8 /* 400-preauth-unsupported-currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "400-preauth-unsupported-currency.json"; sourceTree = "<group>"; };
 		DA2620301B627239005544B8 /* 404-preauth-invalid-judoid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "404-preauth-invalid-judoid.json"; sourceTree = "<group>"; };
 		DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "409-preauth-blocked-account.json"; sourceTree = "<group>"; };
-		DAAFCE811B67ADE400C9993D /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Source/Receipt.swift; sourceTree = "<group>"; };
+		DAAFCE811B67ADE400C9993D /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Source/API/Receipt.swift; sourceTree = "<group>"; };
 		DAAFCE831B69240600C9993D /* ReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTests.swift; sourceTree = "<group>"; };
 		DAFA3FF21B5939E50094CFCA /* Judo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Judo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFA3FF51B5939E50094CFCA /* Judo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Judo.h; path = Source/Judo.h; sourceTree = "<group>"; };
@@ -85,17 +94,16 @@
 		DAFA40011B5939E60094CFCA /* JudoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JudoTests.swift; sourceTree = "<group>"; };
 		DAFA40031B5939E60094CFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAFA400C1B5949330094CFCA /* Judo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Judo.swift; path = Source/Judo.swift; sourceTree = "<group>"; };
-		DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JudoErrors.swift; path = Source/JudoErrors.swift; sourceTree = "<group>"; };
-		DAFA40101B5956570094CFCA /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = Source/Payment.swift; sourceTree = "<group>"; };
+		DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JudoErrors.swift; path = Source/Model/JudoErrors.swift; sourceTree = "<group>"; };
+		DAFA40101B5956570094CFCA /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = Source/API/Payment.swift; sourceTree = "<group>"; };
 		DAFA40121B5957E80094CFCA /* PaymentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTests.swift; sourceTree = "<group>"; };
 		DAFA40141B5958340094CFCA /* PreAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreAuthTests.swift; sourceTree = "<group>"; };
 		DAFA40161B5958480094CFCA /* CollectionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTests.swift; sourceTree = "<group>"; };
 		DAFA40181B5958560094CFCA /* RefundTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefundTests.swift; sourceTree = "<group>"; };
-		DAFA401A1B5959420094CFCA /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Collection.swift; path = Source/Collection.swift; sourceTree = "<group>"; };
-		DAFA401C1B59596B0094CFCA /* PreAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreAuth.swift; path = Source/PreAuth.swift; sourceTree = "<group>"; };
-		DAFA401E1B595A510094CFCA /* Refund.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Refund.swift; path = Source/Refund.swift; sourceTree = "<group>"; };
-		DAFA40201B5D08E60094CFCA /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Source/Data.swift; sourceTree = "<group>"; };
-		DAFA40221B5E3D160094CFCA /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/Session.swift; sourceTree = "<group>"; };
+		DAFA401A1B5959420094CFCA /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Collection.swift; path = Source/API/Collection.swift; sourceTree = "<group>"; };
+		DAFA401C1B59596B0094CFCA /* PreAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreAuth.swift; path = Source/API/PreAuth.swift; sourceTree = "<group>"; };
+		DAFA401E1B595A510094CFCA /* Refund.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Refund.swift; path = Source/API/Refund.swift; sourceTree = "<group>"; };
+		DAFA40221B5E3D160094CFCA /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/API/Session.swift; sourceTree = "<group>"; };
 		DAFA40241B5E9A870094CFCA /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +131,33 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA1C6CAC1B6F9B4A009F2BE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */,
+				DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */,
+				DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */,
+				DA1C6CB01B6F9C25009F2BE9 /* Address.swift */,
+				DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */,
+				DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		DA1C6CAD1B6F9B4F009F2BE9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				DA2620171B62520F005544B8 /* Transaction.swift */,
+				DAFA40101B5956570094CFCA /* Payment.swift */,
+				DAFA401C1B59596B0094CFCA /* PreAuth.swift */,
+				DAAFCE811B67ADE400C9993D /* Receipt.swift */,
+				DAFA401A1B5959420094CFCA /* Collection.swift */,
+				DAFA401E1B595A510094CFCA /* Refund.swift */,
+				DAFA40221B5E3D160094CFCA /* Session.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		DA2620141B624EE9005544B8 /* requests */ = {
@@ -187,19 +222,11 @@
 		DAFA3FF41B5939E50094CFCA /* Judo */ = {
 			isa = PBXGroup;
 			children = (
+				DA1C6CAD1B6F9B4F009F2BE9 /* API */,
+				DA1C6CAC1B6F9B4A009F2BE9 /* Model */,
 				DAFA3FF51B5939E50094CFCA /* Judo.h */,
 				DAFA3FF71B5939E50094CFCA /* Info.plist */,
 				DAFA400C1B5949330094CFCA /* Judo.swift */,
-				DA2620171B62520F005544B8 /* Transaction.swift */,
-				DAFA40101B5956570094CFCA /* Payment.swift */,
-				DAFA401C1B59596B0094CFCA /* PreAuth.swift */,
-				DAAFCE811B67ADE400C9993D /* Receipt.swift */,
-				DAFA401A1B5959420094CFCA /* Collection.swift */,
-				DAFA401E1B595A510094CFCA /* Refund.swift */,
-				DAFA40201B5D08E60094CFCA /* Data.swift */,
-				DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */,
-				DAFA40221B5E3D160094CFCA /* Session.swift */,
-				DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */,
 			);
 			name = Judo;
 			sourceTree = "<group>";
@@ -216,6 +243,7 @@
 				DAFA40161B5958480094CFCA /* CollectionTests.swift */,
 				DAFA40181B5958560094CFCA /* RefundTests.swift */,
 				DAFA40241B5E9A870094CFCA /* SessionTests.swift */,
+				DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */,
 			);
 			name = JudoTests;
 			path = Tests;
@@ -347,16 +375,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */,
-				DAFA40211B5D08E60094CFCA /* Data.swift in Sources */,
+				DA1C6CB11B6F9C25009F2BE9 /* Address.swift in Sources */,
 				DAFA400F1B5955CB0094CFCA /* JudoErrors.swift in Sources */,
 				DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */,
 				DAFA40111B5956570094CFCA /* Payment.swift in Sources */,
 				DAFA40231B5E3D160094CFCA /* Session.swift in Sources */,
+				DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */,
 				DAFA401F1B595A510094CFCA /* Refund.swift in Sources */,
 				DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */,
+				DA1C6CB31B6F9C47009F2BE9 /* Reference.swift in Sources */,
 				DAFA400D1B5949330094CFCA /* Judo.swift in Sources */,
 				DAFA401B1B5959420094CFCA /* Collection.swift in Sources */,
 				DA2620181B62520F005544B8 /* Transaction.swift in Sources */,
+				DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */,
+				DA1C6CB71B6F9E86009F2BE9 /* ListTests.swift in Sources */,
 				DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */,
 				DAFA40191B5958560094CFCA /* RefundTests.swift in Sources */,
 				DAFA40131B5957E80094CFCA /* PaymentTests.swift in Sources */,

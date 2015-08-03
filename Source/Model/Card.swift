@@ -26,84 +26,6 @@ import Foundation
 
 
 /**
-*  the Amount object stores information regarding the amount and currency for a transaction
-*/
-public struct Amount {
-    /// The currency ISO Code - GBP is default
-    public var currency: String = "GBP"
-    /// The amount to process, to two decimal places
-    public var amount: Double
-    
-    init(_ amount: Double, _ currency: String) {
-        self.currency = currency
-        self.amount = amount
-    }
-    
-    init?(_ amount: Double?) {
-        guard let amount = amount else { return nil }
-        self.amount = amount
-    }
-    
-    init(_ amount: Double) {
-        self.amount = amount
-    }
-    
-    init(_ amount: Int) {
-        self.amount = Double(amount)
-    }
-    
-    init(_ amount: UInt) {
-        self.amount = Double(amount)
-    }
-    
-    init(_ amount: Float) {
-        self.amount = Double(amount)
-    }
-}
-
-
-/**
-*  the Address object stores information around the address that is related to a card
-*/
-public struct Address {
-    public let line1, line2, line3, town, postCode: String?
-    
-    func dictionaryRepresentation() -> NSDictionary {
-        let dict = NSMutableDictionary()
-        if let line1 = self.line1 {
-            dict.setValue(line1, forKey: "line1")
-        }
-        if let line2 = self.line2 {
-            dict.setValue(line2, forKey: "line2")
-        }
-        if let line3 = self.line3 {
-            dict.setValue(line3, forKey: "line3")
-        }
-        if let town = self.town {
-            dict.setValue(town, forKey: "town")
-        }
-        if let postCode = self.postCode {
-            dict.setValue(postCode, forKey: "postCode")
-        }
-        return dict.copy() as! NSDictionary
-    }
-}
-
-
-/**
-*  the Reference object is supposed to simplify storing reference data like consumer or payment references
-*/
-public struct Reference {
-    /// Your reference for this consumer
-    public let yourConsuerReference: String
-    /// Your reference for this payment
-    public let yourPaymentReference: String
-    /// An object containing any additional data you wish to tag this payment with. The property name and value are both limited to 50 characters, and the whole object cannot be more than 1024 characters
-    public let yourPaymentMetaData: [String : String]?
-}
-
-
-/**
 *  the Card object stores all the necessary card information to make a transaction
 */
 public struct Card {
@@ -206,19 +128,6 @@ public func ==(lhs: CardNetwork, rhs: CardNetwork) -> Bool {
 }
 
 
-// MARK: Response Types
-
-/**
-*  a PaymentToken object is necessary to make a token payment or token preAuth
-*/
-public struct PaymentToken {
-    /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
-    public let consumerToken: String
-    /// Can be used to charge future payments against this card.
-    public let cardToken: String
-}
-
-
 /**
 *  the CardDetails object stores information that is returned from a successful payment or preAuth
 */
@@ -239,45 +148,5 @@ public struct CardDetails {
         // TODO: parse dict["cardType"] into CardNetwork
         return CardDetails(cardLastFour: lastFour, endDate: endDate, cardToken: cardToken, cardNetwork: nil)
     }
-}
-
-
-/**
-*  details of the Consumer for use in repeat payments.
-*/
-public struct Consumer {
-    /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
-    public let consumerToken: String
-    /// Your reference for this Consumer as you sent in your request.
-    public let yourConsumerReference: String
-    
-    static func fromDictionary(dict: JSONDictionary) -> Consumer {
-        return Consumer(consumerToken: dict["consumerToken"] as! String, yourConsumerReference: dict["yourConsumerReference"] as! String)
-    }
-}
-
-
-/// formatter for ISO8601 Dates that are returned from the webservice
-let ISO8601DateFormatter: NSDateFormatter = {
-    let dateFormatter = NSDateFormatter()
-    let enUSPOSIXLocale = NSLocale(localeIdentifier: "en_US_POSIX")
-    dateFormatter.locale = enUSPOSIXLocale
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSZZZZZ"
-    return dateFormatter
-}()
-
-
-
-// MARK: Pagination
-
-public struct Pagination {
-    var pageSize: Int = 10
-    var offset: Int = 0
-    var sort: Sort = .Descending
-}
-
-
-public enum Sort: String {
-    case Descending = "time-descending", Ascending = "time-ascending"
 }
 

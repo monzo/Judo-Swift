@@ -141,8 +141,6 @@ let mobileNumber = "07100000000"
 
 let location = CLLocationCoordinate2D(latitude: 0, longitude: 65)
 
-let expectation = self.expectationWithDescription("payment expectation")
-
 do {
 	let makePayment = try Judo.payment(correctJudoID, amount: amount, reference: references)
 								.card(card)
