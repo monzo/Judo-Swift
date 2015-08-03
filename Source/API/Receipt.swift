@@ -56,7 +56,6 @@ public class Receipt: NSObject {
     /// the receipt ID - nil for a list of all receipts
     private (set) var receiptID: String?
     
-    // TODO: implement Pagination for List all receipts
     /**
     initialization for a Receipt Object
     
@@ -77,6 +76,7 @@ public class Receipt: NSObject {
         }
     }
     
+
     /**
     completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods
     
@@ -97,4 +97,20 @@ public class Receipt: NSObject {
         return self
     }
 
+    
+    /**
+    This method will return a list of receipts
+    
+    See [List all transactions](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/#transactions>) for more information.
+    
+    - Parameter pagination: The offset, number of items and order in which to return the items
+    - Parameter block: a completion block that is called when the request finishes
+    */
+    public static func list(pagination: Pagination, block: (Response?, NSError?) -> ()) {
+        let path = "transactions?pageSize=\(pagination.pageSize)&offset=\(pagination.offset)&sort=\(pagination.sort.rawValue)"
+        Session.GET(path, parameters: nil) { (dictionary, error) -> () in
+            block(dictionary, error)
+        }
+    }
+    
 }

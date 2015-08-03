@@ -116,7 +116,7 @@ public struct Judo {
     static public func receipt(receiptID: String?) throws -> Receipt {
         return try Receipt(receiptID: receiptID)
     }
-    
+
     
     /**
     Creates a Collection object which can be used to collect a previously pre-authenticated transaction

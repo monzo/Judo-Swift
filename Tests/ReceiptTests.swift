@@ -66,4 +66,22 @@ class ReceiptTests: XCTestCase {
         
     }
     
+    func testJudoTransactionReceiptWithPagination() {
+        // Given
+        let page = Pagination(pageSize: 4, offset: 8, sort: Sort.Ascending)
+        let expectation = self.expectationWithDescription("all receipts fetch expectation")
+        
+        Receipt.list(page) { (dict, error) -> () in
+            if let error = error {
+                XCTFail("api call failed with error: \(error)")
+            } else {
+                XCTAssertEqual(dict!.items.count, 5)
+                XCTAssertEqual(dict!.pagination!.offset, 8)
+                expectation.fulfill()
+            }
+        }
+        
+        self.waitForExpectationsWithTimeout(30.0, handler: nil)
+    }
+    
 }
