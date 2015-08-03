@@ -13,6 +13,32 @@ public typealias Response = Array<TransactionData>
 
 
 /**
+*  a PaymentToken object is necessary to make a token payment or token preAuth
+*/
+public struct PaymentToken {
+    /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
+    public let consumerToken: String
+    /// Can be used to charge future payments against this card.
+    public let cardToken: String
+}
+
+
+/**
+*  details of the Consumer for use in repeat payments.
+*/
+public struct Consumer {
+    /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
+    public let consumerToken: String
+    /// Your reference for this Consumer as you sent in your request.
+    public let yourConsumerReference: String
+    
+    static func fromDictionary(dict: JSONDictionary) -> Consumer {
+        return Consumer(consumerToken: dict["consumerToken"] as! String, yourConsumerReference: dict["yourConsumerReference"] as! String)
+    }
+}
+
+
+/**
 *  TransactionResult will hold all the information from a transaction response
 */
 public struct TransactionData {
@@ -126,4 +152,16 @@ Result of a Transaction
 public enum TransactionResult: String {
     case Success="Success", Declined="Declined"
 }
+
+// MARK: Helper
+
+
+/// formatter for ISO8601 Dates that are returned from the webservice
+let ISO8601DateFormatter: NSDateFormatter = {
+    let dateFormatter = NSDateFormatter()
+    let enUSPOSIXLocale = NSLocale(localeIdentifier: "en_US_POSIX")
+    dateFormatter.locale = enUSPOSIXLocale
+    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSZZZZZ"
+    return dateFormatter
+    }()
 

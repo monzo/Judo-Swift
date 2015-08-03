@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
+		DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */; };
+		DA1C6CB11B6F9C25009F2BE9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB01B6F9C25009F2BE9 /* Address.swift */; };
+		DA1C6CB31B6F9C47009F2BE9 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */; };
+		DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */; };
 		DA2620161B6251A1005544B8 /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; };
 		DA2620181B62520F005544B8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2620171B62520F005544B8 /* Transaction.swift */; };
 		DA2620201B625AB2005544B8 /* 200-payment-blockedcard.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */; };
@@ -41,7 +45,6 @@
 		DAFA401B1B5959420094CFCA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401A1B5959420094CFCA /* Collection.swift */; };
 		DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401C1B59596B0094CFCA /* PreAuth.swift */; };
 		DAFA401F1B595A510094CFCA /* Refund.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401E1B595A510094CFCA /* Refund.swift */; };
-		DAFA40211B5D08E60094CFCA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40201B5D08E60094CFCA /* Data.swift */; };
 		DAFA40231B5E3D160094CFCA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40221B5E3D160094CFCA /* Session.swift */; };
 		DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40241B5E9A870094CFCA /* SessionTests.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,10 @@
 
 /* Begin PBXFileReference section */
 		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Model/Response.swift; sourceTree = "<group>"; };
+		DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Amount.swift; path = Source/Model/Amount.swift; sourceTree = "<group>"; };
+		DA1C6CB01B6F9C25009F2BE9 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Source/Model/Address.swift; sourceTree = "<group>"; };
+		DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reference.swift; path = Source/Model/Reference.swift; sourceTree = "<group>"; };
+		DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Source/Model/Card.swift; sourceTree = "<group>"; };
 		DA2620151B6251A1005544B8 /* 200-payment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment.json"; sourceTree = "<group>"; };
 		DA2620171B62520F005544B8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Source/API/Transaction.swift; sourceTree = "<group>"; };
 		DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-blockedcard.json"; sourceTree = "<group>"; };
@@ -94,7 +101,6 @@
 		DAFA401A1B5959420094CFCA /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Collection.swift; path = Source/API/Collection.swift; sourceTree = "<group>"; };
 		DAFA401C1B59596B0094CFCA /* PreAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreAuth.swift; path = Source/API/PreAuth.swift; sourceTree = "<group>"; };
 		DAFA401E1B595A510094CFCA /* Refund.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Refund.swift; path = Source/API/Refund.swift; sourceTree = "<group>"; };
-		DAFA40201B5D08E60094CFCA /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Source/Model/Data.swift; sourceTree = "<group>"; };
 		DAFA40221B5E3D160094CFCA /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/API/Session.swift; sourceTree = "<group>"; };
 		DAFA40241B5E9A870094CFCA /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,9 +134,12 @@
 		DA1C6CAC1B6F9B4A009F2BE9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DAFA40201B5D08E60094CFCA /* Data.swift */,
 				DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */,
 				DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */,
+				DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */,
+				DA1C6CB01B6F9C25009F2BE9 /* Address.swift */,
+				DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */,
+				DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -363,16 +372,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */,
-				DAFA40211B5D08E60094CFCA /* Data.swift in Sources */,
+				DA1C6CB11B6F9C25009F2BE9 /* Address.swift in Sources */,
 				DAFA400F1B5955CB0094CFCA /* JudoErrors.swift in Sources */,
 				DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */,
 				DAFA40111B5956570094CFCA /* Payment.swift in Sources */,
 				DAFA40231B5E3D160094CFCA /* Session.swift in Sources */,
+				DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */,
 				DAFA401F1B595A510094CFCA /* Refund.swift in Sources */,
 				DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */,
+				DA1C6CB31B6F9C47009F2BE9 /* Reference.swift in Sources */,
 				DAFA400D1B5949330094CFCA /* Judo.swift in Sources */,
 				DAFA401B1B5959420094CFCA /* Collection.swift in Sources */,
 				DA2620181B62520F005544B8 /* Transaction.swift in Sources */,
+				DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

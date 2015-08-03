@@ -321,3 +321,18 @@ internal struct Session {
     }
 
 }
+
+
+// MARK: Pagination
+
+public struct Pagination {
+    var pageSize: Int = 10
+    var offset: Int = 0
+    var sort: Sort = .Descending
+}
+
+
+public enum Sort: String {
+    case Descending = "time-descending", Ascending = "time-ascending"
+}
+
