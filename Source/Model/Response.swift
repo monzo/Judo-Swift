@@ -9,7 +9,48 @@
 import Foundation
 
 
-public typealias Response = Array<TransactionData>
+/**
+*  Response object that stores an array of items and includes pagination information if available
+*/
+public struct Response {
+    /// the current pagination response
+    public let pagination: Pagination?
+    /// The array that contains the transaction response objects
+    private (set) var items = Array<TransactionData>()
+    
+    
+    /**
+    Initialize a Response object with pagination if available
+    
+    - Parameter pagination: the pagination information for the response
+    
+    - Returns: a Response object
+    */
+    init(_ pagination: Pagination?) {
+        self.pagination = pagination
+    }
+    
+    
+    /**
+    add an element on to the items
+    
+    - Parameter element: the element to add to the items Array
+    */
+    public mutating func append(element: TransactionData) {
+        self.items.append(element)
+    }
+    
+    /**
+    calculate the next page from available data
+    
+    :returns: a newly calculated Pagination object based on the Response object
+    */
+    public func nextPage() -> Pagination? {
+        guard let page = self.pagination else { return nil }
+        
+        return Pagination(pageSize: page.pageSize, offset: page.offset + page.pageSize, sort: page.sort)
+    }
+}
 
 
 /**
@@ -103,23 +144,28 @@ public struct TransactionData {
         
         guard let appearsOnStatementAs = dict["appearsOnStatementAs"] as? String else { throw JudoError.ResponseParseError }
         
+        guard let currency = dict["currency"] as? String else { throw JudoError.ResponseParseError }
+        
         var refunds: Amount? = nil
         if let refundsString = dict["refunds"] as? String {
             refunds = Amount(Double(refundsString))
+            refunds?.currency = currency
         }
         
         var originalAmount: Amount? = nil
         if let originalAmountString = dict["originalAmount"] as? String {
             originalAmount = Amount(Double(originalAmountString))
+            originalAmount?.currency = currency
         }
         
         var netAmount: Amount? = nil
         if let netAmountString = dict["netAmount"] as? String {
             netAmount = Amount(Double(netAmountString))
+            netAmount?.currency = currency
         }
         
         guard let amountString = dict["amount"] as? String else { throw JudoError.ResponseParseError }
-        guard let amount = Amount(Double(amountString)) else { throw JudoError.ResponseParseError }
+        guard let amount = Amount(Double(amountString), currency) else { throw JudoError.ResponseParseError }
         
         guard let cardDetailsDict = dict["cardDetails"] as? JSONDictionary else { throw JudoError.ResponseParseError }
         let cardDetails = CardDetails.fromDictionary(cardDetailsDict)

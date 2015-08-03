@@ -174,7 +174,13 @@ internal struct Session {
                 return // BAIL
             }
             
-            var result = Response()
+            var paginationResponse: Pagination?
+            
+            if let offset = upJSON["offset"] as? NSNumber, let pageSize = upJSON["pageSize"] as? NSNumber, let sort = upJSON["sort"] as? String {
+                paginationResponse = Pagination(pageSize: pageSize.integerValue, offset: offset.integerValue, sort: Sort(rawValue: sort)!)
+            }
+            
+            var result = Response(paginationResponse)
 
             do {
                 if let results = upJSON["results"] as? Array<JSONDictionary> {

@@ -12,6 +12,7 @@
 		DA1C6CB11B6F9C25009F2BE9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB01B6F9C25009F2BE9 /* Address.swift */; };
 		DA1C6CB31B6F9C47009F2BE9 /* Reference.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */; };
 		DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */; };
+		DA1C6CB71B6F9E86009F2BE9 /* ListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */; };
 		DA2620161B6251A1005544B8 /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; };
 		DA2620181B62520F005544B8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2620171B62520F005544B8 /* Transaction.swift */; };
 		DA2620201B625AB2005544B8 /* 200-payment-blockedcard.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */; };
@@ -65,6 +66,7 @@
 		DA1C6CB01B6F9C25009F2BE9 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Address.swift; path = Source/Model/Address.swift; sourceTree = "<group>"; };
 		DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reference.swift; path = Source/Model/Reference.swift; sourceTree = "<group>"; };
 		DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Card.swift; path = Source/Model/Card.swift; sourceTree = "<group>"; };
+		DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTests.swift; sourceTree = "<group>"; };
 		DA2620151B6251A1005544B8 /* 200-payment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment.json"; sourceTree = "<group>"; };
 		DA2620171B62520F005544B8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Source/API/Transaction.swift; sourceTree = "<group>"; };
 		DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-blockedcard.json"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				DAFA40161B5958480094CFCA /* CollectionTests.swift */,
 				DAFA40181B5958560094CFCA /* RefundTests.swift */,
 				DAFA40241B5E9A870094CFCA /* SessionTests.swift */,
+				DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */,
 			);
 			name = JudoTests;
 			path = Tests;
@@ -393,6 +396,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */,
+				DA1C6CB71B6F9E86009F2BE9 /* ListTests.swift in Sources */,
 				DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */,
 				DAFA40191B5958560094CFCA /* RefundTests.swift in Sources */,
 				DAFA40131B5957E80094CFCA /* PaymentTests.swift in Sources */,

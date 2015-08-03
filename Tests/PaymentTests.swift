@@ -101,7 +101,7 @@ class PaymentTests: XCTestCase {
                         XCTFail("no data available")
                         return // BAIL
                     }
-                    let payToken = PaymentToken(consumerToken: uData.first!.consumer.consumerToken, cardToken: uData.first!.cardDetails.cardToken!)
+                    let payToken = PaymentToken(consumerToken: uData.items.first!.consumer.consumerToken, cardToken: uData.items.first!.cardDetails.cardToken!)
                     do {
                         try Judo.payment(strippedJudoID, amount: amount, reference: references).paymentToken(payToken).completion({ (data, error) -> () in
                             if let error = error {
@@ -213,20 +213,5 @@ class PaymentTests: XCTestCase {
         self.waitForExpectationsWithTimeout(30.0, handler: nil)
         
     }
-    
-    
-    func testJudoListPayments() {
-        let expectation = self.expectationWithDescription("list all payments expectation")
-        
-        Payment.list({ (dict, error) -> () in
-            if let error = error {
-                XCTFail("api call failed with error: \(error)")
-            } else {
-                expectation.fulfill()
-            }
-        })
-        
-        self.waitForExpectationsWithTimeout(30.0, handler: nil)
-    }
-    
+
 }
