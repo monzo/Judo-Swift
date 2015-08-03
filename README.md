@@ -62,7 +62,7 @@ $ brew install carthage
 - To integrate Judo into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-	github "JudoPay/Judo-Swift" >= 0.1.5
+github "JudoPay/Judo-Swift" >= 0.1.5
 ```
 
 - On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk.

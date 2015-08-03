@@ -11,6 +11,7 @@ Released on 2015-08-03
 #### Added
 - Types as responses instead of JSON Dictionaries
 - Pagination for Array type responses
+- Responses are detected as list or single items with pagination information if available
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
