@@ -24,120 +24,125 @@
 
 import Foundation
 
-public let supportedNetworks: [CardNetwork] = [.Visa(.Debit), .MasterCard(.Debit), .MasterCard(.Credit), .AMEX]
-
-
-/// the endpoint for REST API calls to the Judo API
-private (set) var endpoint = "https://partnerapi.judopay.com/"
-
-
-/// set the app to sandboxed mode
-public var sandboxed: Bool = false {
-didSet {
-    if sandboxed {
-        endpoint = "https://partnerapi.judopay-sandbox.com/"
-    }
-}
-}
-
-
-/**
-a mandatory function that sets the token and secret for making payments with Judo
-
-- Parameter token:  a string object representing the token
-- Parameter secret: a string object representing the secret
-*/
-public func setToken(token: String, secret: String) {
-    let plainString = token + ":" + secret
-    let plainData = plainString.dataUsingEncoding(NSISOLatin1StringEncoding)
-    let base64String = plainData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.init(rawValue: 0))
+public struct Judo {
     
-    Session.authorizationHeader = "Basic " + base64String
-}
-
-
-/**
-a function to check wether a token and secret has been set
-
-- Returns: a Boolean indicating wether the parameters have been set
-*/
-public func didSetTokenAndSecret() -> Bool {
-    if let _ = Session.authorizationHeader {
-        return true
+    public let supportedNetworks: [CardNetwork] = [.Visa(.Debit), .MasterCard(.Debit), .MasterCard(.Credit), .AMEX]
+    
+    
+    /// the endpoint for REST API calls to the Judo API
+    static private (set) var endpoint = "https://partnerapi.judopay.com/"
+    
+    
+    /// set the app to sandboxed mode
+    static public var sandboxed: Bool = false {
+        didSet {
+            if sandboxed {
+                endpoint = "https://partnerapi.judopay-sandbox.com/"
+                NSUUID(UUIDString: "identifier for this person")?.UUIDString
+            }
+        }
     }
-    return false
-}
-
-
-/**
-starting point and a reactive method to create a payment that is sent to a certain judo ID
-
-- Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
-- Parameter amount:    the amount of the Payment
-- Parameter reference: the reference
-- Parameter card:      the card
-
-- Returns: a Payment Object
-*/
-public func payment(judoID: String, amount: Amount, reference: Reference) throws -> Payment {
-    return try Payment(judoID: judoID, amount: amount, reference: reference)
-}
-
-
-/**
-starting point and a reactive method to create a preAuth that is sent to a certain judo ID
-
-- Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
-- Parameter amount:    the amount of the Payment
-- Parameter reference: the reference
-- Parameter card:      the card
-
-- Returns: a PreAuth Object
-*/
-public func preAuth(judoID: String, amount: Amount, reference: Reference) throws -> PreAuth {
-    return try PreAuth(judoID: judoID, amount: amount, reference: reference)
-}
-
-
-/**
-creates a Receipt object which can be used to query for the receipt of a given id
-
-the receipt id has to be luhn valid, an Error will be thrown if the receipt id does not pass the luhn check
-
-If you want to use the receipt function - you need to enable that in the Judo Dashboard - Your Apps - Permissions for the given App
-
-- Parameter receiptID: the receipt id as a String
-
-- Returns: a Receipt Object for reactive usage
-*/
-public func receipt(receiptID: String?) throws -> Receipt {
-    return try Receipt(receiptID: receiptID)
-}
-
-
-/**
-Creates a Collection object which can be used to collect a previously pre-authenticated transaction
-
-- Parameter receiptID:        the receipt of the previously authorized transaction
-- Parameter amount:           the amount to be transacted
-- Parameter paymentReference: the payment reference string
-
-- Returns: a Collection object for reactive usage
-*/
-public func collection(receiptID: String, amount: Amount, paymentReference: String) throws -> Collection {
-    return try Collection(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
-}
-
-
-/**
-Creates a Refund object which can be used to refund a previous transaction
-
-- Parameter receiptID:        the receipt of the previous transaction
-- Parameter amount:           the amount to be refunded (will check if funds are available in your account)
-- Parameter paymentReference: the payment reference string
-
-- Returns: a Collection object for reactive usage
-*/
-public func refund(receiptID: String, amount: Amount, paymentReference: String) throws -> Refund {
-    return try Refund(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
+    
+    
+    /**
+    a mandatory function that sets the token and secret for making payments with Judo
+    
+    - Parameter token:  a string object representing the token
+    - Parameter secret: a string object representing the secret
+    */
+    static public func setToken(token: String, secret: String) {
+        let plainString = token + ":" + secret
+        let plainData = plainString.dataUsingEncoding(NSISOLatin1StringEncoding)
+        let base64String = plainData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.init(rawValue: 0))
+        
+        Session.authorizationHeader = "Basic " + base64String
+    }
+    
+    
+    /**
+    a function to check wether a token and secret has been set
+    
+    - Returns: a Boolean indicating wether the parameters have been set
+    */
+    static public func didSetTokenAndSecret() -> Bool {
+        if let _ = Session.authorizationHeader {
+            return true
+        }
+        return false
+    }
+    
+    
+    /**
+    starting point and a reactive method to create a payment that is sent to a certain judo ID
+    
+    - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
+    - Parameter amount:    the amount of the Payment
+    - Parameter reference: the reference
+    - Parameter card:      the card
+    
+    - Returns: a Payment Object
+    */
+    static public func payment(judoID: String, amount: Amount, reference: Reference) throws -> Payment {
+        return try Payment(judoID: judoID, amount: amount, reference: reference)
+    }
+    
+    
+    /**
+    starting point and a reactive method to create a preAuth that is sent to a certain judo ID
+    
+    - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
+    - Parameter amount:    the amount of the Payment
+    - Parameter reference: the reference
+    - Parameter card:      the card
+    
+    - Returns: a PreAuth Object
+    */
+    static public func preAuth(judoID: String, amount: Amount, reference: Reference) throws -> PreAuth {
+        return try PreAuth(judoID: judoID, amount: amount, reference: reference)
+    }
+    
+    
+    /**
+    creates a Receipt object which can be used to query for the receipt of a given id
+    
+    the receipt id has to be luhn valid, an Error will be thrown if the receipt id does not pass the luhn check
+    
+    If you want to use the receipt function - you need to enable that in the Judo Dashboard - Your Apps - Permissions for the given App
+    
+    - Parameter receiptID: the receipt id as a String
+    
+    - Returns: a Receipt Object for reactive usage
+    */
+    static public func receipt(receiptID: String?) throws -> Receipt {
+        return try Receipt(receiptID: receiptID)
+    }
+    
+    
+    /**
+    Creates a Collection object which can be used to collect a previously pre-authenticated transaction
+    
+    - Parameter receiptID:        the receipt of the previously authorized transaction
+    - Parameter amount:           the amount to be transacted
+    - Parameter paymentReference: the payment reference string
+    
+    - Returns: a Collection object for reactive usage
+    */
+    static public func collection(receiptID: String, amount: Amount, paymentReference: String) throws -> Collection {
+        return try Collection(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
+    }
+    
+    
+    /**
+    Creates a Refund object which can be used to refund a previous transaction
+    
+    - Parameter receiptID:        the receipt of the previous transaction
+    - Parameter amount:           the amount to be refunded (will check if funds are available in your account)
+    - Parameter paymentReference: the payment reference string
+    
+    - Returns: a Collection object for reactive usage
+    */
+    static public func refund(receiptID: String, amount: Amount, paymentReference: String) throws -> Refund {
+        return try Refund(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
+    }
+    
 }
