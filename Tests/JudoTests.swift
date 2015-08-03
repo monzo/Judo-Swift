@@ -9,10 +9,10 @@
 import XCTest
 @testable import Judo
 
-let token = "3x2dQPx5HiyD1zir"
-let secret = "17aad220942556910e6c461bfb79b2c2d294a3de3c35c2f5484ba4d5dddadb93"
+let token = "<#YOUR TOKEN#>"
+let secret = "<#YOUR SECRET#>"
 
-let strippedJudoID = "100963875"
+let strippedJudoID = "<#YOUR JUDO ID#>"
 
 class JudoTests: XCTestCase {
     
