@@ -26,7 +26,7 @@ import Foundation
 
 public struct Judo {
     
-    public let supportedNetworks: [CardNetwork] = [.Visa(.Debit), .MasterCard(.Debit), .MasterCard(.Credit), .AMEX]
+    static public let supportedNetworks: [CardNetwork] = [.Visa(.Debit), .MasterCard(.Debit), .MasterCard(.Credit), .AMEX]
     
     
     /// the endpoint for REST API calls to the Judo API

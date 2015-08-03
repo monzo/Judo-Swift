@@ -86,7 +86,7 @@ internal struct Session {
     static func GET(path: String, parameters: JSONDictionary?, completion: ((TransactionData?, NSError?) -> ())) {
         
         // create request
-        let request = self.judoRequest(endpoint + path)
+        let request = self.judoRequest(Judo.endpoint + path)
         
         request.HTTPMethod = "GET"
         
