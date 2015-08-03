@@ -9,12 +9,12 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Judo'
-  s.version          = '0.1.3'
+  s.version          = '0.1.5'
   s.summary          = 'Judo Pay iOS Client SDK'
   s.homepage         = 'http://judopay.com/'
   s.license          = 'MIT'
   s.author           = { "Hamon Ben Riazy" => 'hamon.riazy@judopayments.com' }
-  s.source           = { :git => 'https://bitbucket.org/judo/judo-swift', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/JudoPay/Judo-Swift', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
   s.ios.platform          = '9.0'

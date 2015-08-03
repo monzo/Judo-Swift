@@ -75,7 +75,7 @@ public class Refund: NSObject {
     
     - Returns: reactive self
     */
-    public func completion(block: (TransactionData?, NSError?) -> ()) -> Self {
+    public func completion(block: (Response?, NSError?) -> ()) -> Self {
         
         let parameters = Session.progressionParameters(self.receiptID, amount: self.amount, paymentReference: self.paymentReference)
         

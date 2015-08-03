@@ -139,7 +139,7 @@ public class Transaction {
     
     - Throws: ParameterError one or more of the given parameters were in the incorrect format or nil
     */
-    public func completion(block: (TransactionData?, NSError?) -> ()) throws -> Self {
+    public func completion(block: (Response?, NSError?) -> ()) throws -> Self {
         
         if (self.card != nil && self.payToken != nil) {
             throw JudoError.CardAndTokenError
@@ -166,7 +166,7 @@ public class Transaction {
     
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(block: (TransactionData?, NSError?) -> ()) {
+    public static func list(block: (Response?, NSError?) -> ()) {
         Session.GET((self as! TransactionPath.Type).path, parameters: nil) { (dictionary, error) -> () in
             block(dictionary, error)
         }

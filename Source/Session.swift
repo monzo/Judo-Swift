@@ -47,7 +47,7 @@ internal struct Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func POST(path: String, parameters: JSONDictionary, completion: (TransactionData?, NSError?) -> Void) {
+    static func POST(path: String, parameters: JSONDictionary, completion: (Response?, NSError?) -> Void) {
         
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
@@ -83,7 +83,7 @@ internal struct Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func GET(path: String, parameters: JSONDictionary?, completion: ((TransactionData?, NSError?) -> ())) {
+    static func GET(path: String, parameters: JSONDictionary?, completion: ((Response?, NSError?) -> ())) {
         
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
@@ -139,7 +139,7 @@ internal struct Session {
     
     
     
-    static func task(request: NSURLRequest, completion: (TransactionData?, NSError?) -> Void) -> NSURLSessionDataTask {
+    static func task(request: NSURLRequest, completion: (Response?, NSError?) -> Void) -> NSURLSessionDataTask {
         return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, resp, err) -> Void in
             
             // error handling
@@ -174,9 +174,18 @@ internal struct Session {
                 return // BAIL
             }
             
-            let result: TransactionData?
+            var result = Response()
+
             do {
-                result = try TransactionData.fromDictionary(upJSON)
+                if let results = upJSON["results"] as? Array<JSONDictionary> {
+                    for item in results {
+                        let transaction = try TransactionData.fromDictionary(item)
+                        result.append(transaction)
+                    }
+                } else {
+                    let transaction = try TransactionData.fromDictionary(upJSON)
+                    result.append(transaction)
+                }
             } catch {
                 print(error)
                 completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.ResponseParseError.rawValue, userInfo: nil))

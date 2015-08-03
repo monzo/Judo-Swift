@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
 		DA2620161B6251A1005544B8 /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; };
 		DA2620181B62520F005544B8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2620171B62520F005544B8 /* Transaction.swift */; };
 		DA2620201B625AB2005544B8 /* 200-payment-blockedcard.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		DA2620151B6251A1005544B8 /* 200-payment.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment.json"; sourceTree = "<group>"; };
 		DA2620171B62520F005544B8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Source/Transaction.swift; sourceTree = "<group>"; };
 		DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-blockedcard.json"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				DAFA401A1B5959420094CFCA /* Collection.swift */,
 				DAFA401E1B595A510094CFCA /* Refund.swift */,
 				DAFA40201B5D08E60094CFCA /* Data.swift */,
+				DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */,
 				DAFA40221B5E3D160094CFCA /* Session.swift */,
 				DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */,
 			);
@@ -350,6 +353,7 @@
 				DAFA40111B5956570094CFCA /* Payment.swift in Sources */,
 				DAFA40231B5E3D160094CFCA /* Session.swift in Sources */,
 				DAFA401F1B595A510094CFCA /* Refund.swift in Sources */,
+				DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */,
 				DAFA400D1B5949330094CFCA /* Judo.swift in Sources */,
 				DAFA401B1B5959420094CFCA /* Collection.swift in Sources */,
 				DA2620181B62520F005544B8 /* Transaction.swift in Sources */,

@@ -84,7 +84,7 @@ public class Receipt: NSObject {
     
     - Returns: reactive self
     */
-    public func completion(block: ((TransactionData?, NSError?) -> ())) -> Self {
+    public func completion(block: ((Response?, NSError?) -> ())) -> Self {
         var path = "transactions"
 
         if let rec = self.receiptID {
