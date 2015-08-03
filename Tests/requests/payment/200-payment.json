@@ -1,0 +1,28 @@
+{
+    "receiptId": "1485465",
+    "yourPaymentReference": "wptestpayment-6790",
+    "type": "Payment",
+    "createdAt": "2015-07-24T10:40:05.7112+01:00",
+    "result": "Success",
+    "message": "AuthCode: 940099",
+    "judoId": 100915867,
+    "merchantName": "PF Testing",
+    "appearsOnStatementAs": "PFTesting                ",
+    "originalAmount": 2,
+    "netAmount": 2,
+    "amount": 2,
+    "currency": "GBP",
+    "cardDetails": {
+        "cardLastfour": "3436",
+        "endDate": "1215",
+        "cardToken": "qHZN9DFyh1UDYd7v6n0CH2wzRN49CKvQ",
+        "cardType": 1
+    },
+    "consumer": {
+        "consumerToken": "ljlC2Gc3Slj7JZYO",
+        "yourConsumerReference": "wptestconsumer-9989"
+    },
+    "risks": {
+        "postCodeCheck": "PASSED"
+    }
+}

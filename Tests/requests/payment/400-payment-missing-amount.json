@@ -1,0 +1,8 @@
+{
+   "errorMessage": "Invalid request",
+   "errorType": 1,
+   "modelErrors": [   {
+      "fieldName": "Amount",
+      "errorMessage": "The amount specified must be greater than 0"
+   }]
+}

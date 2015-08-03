@@ -1,0 +1,8 @@
+{
+   "errorMessage": "Invalid request",
+   "errorType": 1,
+   "modelErrors": [   {
+      "fieldName": "Currency",
+      "errorMessage": "JudoPay does not support your currency. If you require additional currencies please contact us."
+   }]
+}

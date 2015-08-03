@@ -1,0 +1,12 @@
+Data.swift
+	public let line1, line2, line3, town, postCode: String?
+JudoErrors.swift
+	public let JudoErrorDomain = "com.judopay.error"
+Refund.swift
+	public class Refund: NSObject
+Judo.swift
+	public let supportedNetworks: [CardNetwork] = [.Visa(.Debit), .MasterCard(.Debit), .MasterCard(.Credit), .AMEX]
+	public func collection() -> Collection
+	public func refund() -> Refund
+Collection.swift
+	public class Collection: NSObject
