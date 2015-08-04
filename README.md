@@ -87,16 +87,15 @@ Uou can integrate Judo into your project manually if you prefer not to use depen
 - Add Judo as a [submodule](http://git-scm.com/docs/git-submodule) by opening the Terminal, changing into your project directory, and entering the following command:
 
 ```bash
-$ git submodule add https://github.org/JudoPay/Judo-Swift Judo
+$ git submodule add https://github.com/JudoPay/Judo-Swift
 ```
 
 - Open the new `Judo` folder, and drag the `Judo.xcodeproj` into the Project Navigator of your application's Xcode project.
 - Select the `Judo.xcodeproj` in the Project Navigator and verify the deployment target matches that of your application target.
 - Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 - In the tab bar at the top of that window, open the "General" panel.
-- Click on the `+` button under the "Embedded Binaries" section.
-- You will see two different `Judo.xcodeproj` folders each with two different versions of the `Judo.framework` nested inside a `Products` folder.
-- Select the top `Judo.framework` for iOS and the bottom one for OS X.
+- Click on the `+` button under the "Linked Frameworks and Libraries" section.
+- Select `Judo.framework` nested inside the `Workspace` folder on the top.
 
 
 ### Further Setup
