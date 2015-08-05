@@ -199,6 +199,8 @@ class PaymentTests: XCTestCase {
         do {
             let makePayment = try Judo.payment(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).validate { dict, error in
                 if let error = error {
+                    XCTAssertEqual(error.code, JudoError.YouAreGoodToGo.rawValue)
+                } else {
                     XCTFail("api call failed with error: \(error)")
                 }
                 expectation.fulfill()
