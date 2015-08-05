@@ -31,6 +31,14 @@ import Foundation
 public struct Address {
     public let line1, line2, line3, town, postCode: String?
     
+    public init(line1: String?, line2: String?, line3: String?, town: String?, postCode: String?) {
+        self.line1 = line1
+        self.line2 = line2
+        self.line3 = line3
+        self.town = town
+        self.postCode = postCode
+    }
+    
     func dictionaryRepresentation() -> NSDictionary {
         let dict = NSMutableDictionary()
         if let line1 = self.line1 {

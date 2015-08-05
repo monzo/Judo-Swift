@@ -34,12 +34,12 @@ public struct Amount {
     /// The amount to process, to two decimal places
     public var amount: Double
     
-    init(_ amount: Double, _ currency: String) {
+    public init(_ amount: Double, _ currency: String) {
         self.currency = currency
         self.amount = amount
     }
     
-    init?(_ amount: Double?, _ currency: String?) {
+    public init?(_ amount: Double?, _ currency: String?) {
         guard let amount = amount else { return nil }
         self.amount = amount
         if let currency = currency {
@@ -47,24 +47,24 @@ public struct Amount {
         }
     }
     
-    init?(_ amount: Double?) {
+    public init?(_ amount: Double?) {
         guard let amount = amount else { return nil }
         self.amount = amount
     }
     
-    init(_ amount: Double) {
+    public init(_ amount: Double) {
         self.amount = amount
     }
     
-    init(_ amount: Int) {
+    public init(_ amount: Int) {
         self.amount = Double(amount)
     }
     
-    init(_ amount: UInt) {
+    public init(_ amount: UInt) {
         self.amount = Double(amount)
     }
     
-    init(_ amount: Float) {
+    public init(_ amount: Float) {
         self.amount = Double(amount)
     }
 }

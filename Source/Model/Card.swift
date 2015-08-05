@@ -38,6 +38,13 @@ public struct Card {
     /// The registered address for the card
     public let address: Address?
     
+    public init(number: String, expiryDate: String, cv2: String, address: Address?) {
+        self.number = number
+        self.expiryDate = expiryDate
+        self.cv2 = cv2
+        self.address = address
+    }
+    
 }
 
 
