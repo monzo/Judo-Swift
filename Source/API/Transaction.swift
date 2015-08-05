@@ -25,25 +25,25 @@
 import Foundation
 import CoreLocation
 
-protocol TransactionPath {
+public protocol TransactionPath {
     static var path: String {get}
 }
 
 /// Superclass Helper for Payments and PreAuths
 public class Transaction {
-
-    private (set) var judoID: String
     
-    private (set) var reference: Reference
-    private (set) var amount: Amount
-
-    private (set) var card: Card?
-    private (set) var payToken: PaymentToken?
-
-    private (set) var location: CLLocationCoordinate2D?
+    public private (set) var judoID: String
     
-    private (set) var mobileNumber: String?
-    private (set) var emailAddress: String?
+    public private (set) var reference: Reference
+    public private (set) var amount: Amount
+
+    public private (set) var card: Card?
+    public private (set) var payToken: PaymentToken?
+
+    public private (set) var location: CLLocationCoordinate2D?
+    
+    public private (set) var mobileNumber: String?
+    public private (set) var emailAddress: String?
     
 
     /**
@@ -55,7 +55,7 @@ public class Transaction {
     
     - Throws JudoIDInvalidError: judoID does not match the given length or is not luhn valid
     */
-    init(judoID: String, amount: Amount, reference: Reference) throws {
+    public init(judoID: String, amount: Amount, reference: Reference) throws {
         self.judoID = judoID
         self.amount = amount
         self.reference = reference
@@ -187,6 +187,16 @@ public class Transaction {
         Session.GET(path, parameters: nil) { (dictionary, error) -> () in
             block(dictionary, error)
         }
+    }
+    
+    
+    /**
+    Helper method for extensions of this class to be able to access the dynamic path value
+    
+    :returns: the rest api access path of the current class
+    */
+    public func path() -> String {
+        return (self.dynamicType as! TransactionPath.Type).path
     }
 
 }

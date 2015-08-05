@@ -72,6 +72,6 @@ learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>
 */
 public class PreAuth: Transaction, TransactionPath {
     
-    static var path: String { get { return "transactions/preauths" } }
+    public static var path: String { get { return "transactions/preauths" } }
 
 }

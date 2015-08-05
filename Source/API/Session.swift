@@ -33,7 +33,7 @@ public typealias JSONDictionary = [String : AnyObject]
 
 
 /// The Session struct is a wrapper for the REST API calls
-internal struct Session {
+public struct Session {
     
     
     /// token and secret are saved in the authorizationHeader for authentication of REST API calls
@@ -47,7 +47,7 @@ internal struct Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func POST(path: String, parameters: JSONDictionary, completion: (Response?, NSError?) -> Void) {
+    public static func POST(path: String, parameters: JSONDictionary, completion: (Response?, NSError?) -> Void) {
         
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
@@ -118,7 +118,7 @@ internal struct Session {
     
     - Returns: a JSON HTTP request with authorization set
     */
-    static func judoRequest(url: String) -> NSMutableURLRequest {
+    public static func judoRequest(url: String) -> NSMutableURLRequest {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         // json configuration header
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -139,7 +139,7 @@ internal struct Session {
     
     
     
-    static func task(request: NSURLRequest, completion: (Response?, NSError?) -> Void) -> NSURLSessionDataTask {
+    public static func task(request: NSURLRequest, completion: (Response?, NSError?) -> Void) -> NSURLSessionDataTask {
         return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, resp, err) -> Void in
             
             // error handling
@@ -295,37 +295,6 @@ internal struct Session {
         } % 10 == 0
     }
     
-    
-    // MARK: Testing
-    // trying to implement a swizzle for more robust testing
-    static func test_POST(path: String, parameters: JSONDictionary, completion: (JSONDictionary?, NSError?) -> Void) {
-        switch path {
-        case "transactions/payments":
-            let jsonFilePath = NSBundle.mainBundle().pathForResource("200-payment", ofType: "json")
-            do {
-                let jsonData = try NSData(contentsOfFile: jsonFilePath!, options: .DataReadingMappedIfSafe)
-                let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers)
-                completion(jsonResult as? JSONDictionary, nil)
-            } catch {
-                completion(nil, nil)
-            }
-            break
-        case "transactions/preauths":
-            let jsonFilePath = NSBundle.mainBundle().pathForResource("200-preAuth", ofType: "json")
-            do {
-                let jsonData = try NSData(contentsOfFile: jsonFilePath!, options: .DataReadingMappedIfSafe)
-                let jsonResult = try NSJSONSerialization.JSONObjectWithData(jsonData, options: .MutableContainers)
-                completion(jsonResult as? JSONDictionary, nil)
-            } catch {
-                completion(nil, nil)
-            }
-            break
-        default:
-            completion(nil, nil)
-            break
-        }
-    }
-
 }
 
 

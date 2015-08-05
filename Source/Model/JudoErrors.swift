@@ -26,9 +26,9 @@ import Foundation
 
 public let JudoErrorDomain = "com.judopay.error"
 
-enum JudoError: Int, ErrorType {
+public enum JudoError: Int, ErrorType {
     // MARK: Device Errors
-    case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError
+    case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError
     
     // MARK: Server errors
     case AccessForbiddenError = 403
