@@ -37,9 +37,8 @@ class CollectionTests: XCTestCase {
             let collection = try Judo.collection(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
-                    expectation.fulfill();
                 }
+                expectation.fulfill();
             })
             
             // Then

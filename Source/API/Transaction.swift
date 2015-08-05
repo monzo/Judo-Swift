@@ -151,7 +151,7 @@ public class Transaction {
             throw JudoError.ParameterError
         }
         
-        Session.POST((self.dynamicType as! TransactionPath.Type).path, parameters: parameters) { (dictionary, error) -> () in
+        Session.POST(self.path(), parameters: parameters) { (dictionary, error) -> () in
             block(dictionary, error)
         }
         

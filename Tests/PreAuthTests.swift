@@ -62,9 +62,8 @@ class PreAuthTests: XCTestCase {
             let makePreAuth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
-                    expectation.fulfill()
                 }
+                expectation.fulfill()
             })
             // Then
             XCTAssertNotNil(makePreAuth)

@@ -185,7 +185,7 @@ Type of Transaction
 - Refund:  a Refund Transaction
 */
 public enum TransactionType: String {
-    case Payment="Payment", Refund="Refund"
+    case Payment="Payment", PreAuth="PreAuth", Refund="Refund"
 }
 
 
