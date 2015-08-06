@@ -80,6 +80,8 @@ public struct Judo {
     - Parameter reference: the reference
     - Parameter card:      the card
     
+    - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
+    
     - Returns: a Payment Object
     */
     static public func payment(judoID: String, amount: Amount, reference: Reference) throws -> Payment {
@@ -94,6 +96,8 @@ public struct Judo {
     - Parameter amount:    the amount of the Payment
     - Parameter reference: the reference
     - Parameter card:      the card
+    
+    - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
     
     - Returns: a PreAuth Object
     */
@@ -111,6 +115,8 @@ public struct Judo {
     
     - Parameter receiptID: the receipt id as a String
     
+    - Throws: LuhnValidationError if the receiptID does not match
+    
     - Returns: a Receipt Object for reactive usage
     */
     static public func receipt(receiptID: String?) throws -> Receipt {
@@ -125,6 +131,8 @@ public struct Judo {
     - Parameter amount:           the amount to be transacted
     - Parameter paymentReference: the payment reference string
     
+    - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
+    
     - Returns: a Collection object for reactive usage
     */
     static public func collection(receiptID: String, amount: Amount, paymentReference: String) throws -> Collection {
@@ -138,6 +146,8 @@ public struct Judo {
     - Parameter receiptID:        the receipt of the previous transaction
     - Parameter amount:           the amount to be refunded (will check if funds are available in your account)
     - Parameter paymentReference: the payment reference string
+    
+    - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     
     - Returns: a Collection object for reactive usage
     */

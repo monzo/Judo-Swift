@@ -53,7 +53,7 @@ public class Transaction {
     - Parameter amount: The amount to process
     - Parameter reference: the reference
     
-    - Throws JudoIDInvalidError: judoID does not match the given length or is not luhn valid
+    - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
     */
     public init(judoID: String, amount: Amount, reference: Reference) throws {
         self.judoID = judoID

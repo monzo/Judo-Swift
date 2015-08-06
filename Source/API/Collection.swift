@@ -54,7 +54,7 @@ public class Collection: NSObject {
     - Parameter amount: The amount to process
     - Parameter reference: the reference
     
-    - Throws JudoIDInvalidError: judoID does not match the given length or is not luhn valid
+    - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     */
     init(receiptID: String, amount: Amount, paymentReference: String) throws {
         self.receiptID = receiptID
