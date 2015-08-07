@@ -2,7 +2,14 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
-- `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015)
+- `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
+
+---
+## [0.1.6](https://github.com/JudoPay/Judo-Swift/tag/0.1.6)
+- fixing tests - added PreAuth TransactionType and path correction
+- modifying accessors for module subclass access
+- created public initializers
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
 ## [0.1.5](https://github.com/JudoPay/Judo-Swift/tag/0.1.5)
