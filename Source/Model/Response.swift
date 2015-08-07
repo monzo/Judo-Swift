@@ -40,6 +40,7 @@ public struct Response {
         self.items.append(element)
     }
     
+    
     /**
     calculate the next page from available data
     
