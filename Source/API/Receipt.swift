@@ -67,7 +67,7 @@ public class Receipt: NSObject {
     
     - Throws: LuhnValidationError if the receiptID does not match
     */
-    init(receiptID: String?) throws {
+    init(receiptID: String? = nil) throws {
         // luhn check the receipt id
         self.receiptID = receiptID
         super.init()

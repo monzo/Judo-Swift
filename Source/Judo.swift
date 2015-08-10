@@ -119,7 +119,7 @@ public struct Judo {
     
     - Returns: a Receipt Object for reactive usage
     */
-    static public func receipt(receiptID: String?) throws -> Receipt {
+    static public func receipt(receiptID: String? = nil) throws -> Receipt {
         return try Receipt(receiptID: receiptID)
     }
 

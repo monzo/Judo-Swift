@@ -123,13 +123,13 @@ public class Transaction {
     
     - Returns: reactive self
     */
-    public func contact(mobileNumber : String?, _ emailAddress : String?) -> Self {
+    public func contact(mobileNumber : String?, _ emailAddress : String? = nil) -> Self {
         self.mobileNumber = mobileNumber
         self.emailAddress = emailAddress
         return self
     }
     
-    
+
     /**
     completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods
     

@@ -51,7 +51,7 @@ class ReceiptTests: XCTestCase {
         let expectation = self.expectationWithDescription("all receipts fetch expectation")
         
         do {
-            try Judo.receipt(nil).completion({ (dict, error) -> () in
+            try Judo.receipt().completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 } else {

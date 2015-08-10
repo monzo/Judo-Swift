@@ -39,17 +39,12 @@ public struct Amount {
         self.amount = amount
     }
     
-    public init?(_ amount: Double?, _ currency: String?) {
+    public init?(_ amount: Double?, _ currency: String? = nil) {
         guard let amount = amount else { return nil }
         self.amount = amount
         if let currency = currency {
             self.currency = currency
         }
-    }
-    
-    public init?(_ amount: Double?) {
-        guard let amount = amount else { return nil }
-        self.amount = amount
     }
     
     public init(_ amount: Double) {
