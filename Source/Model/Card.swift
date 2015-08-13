@@ -68,7 +68,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 - AMEX:       American Express Card Network
 */
 public enum CardNetwork: Equatable {
-    case Visa(CardType), MasterCard(CardType), AMEX
+    case Visa(CardType), MasterCard(CardType), AMEX, DinersClub, Maestro, ChinaUnionPay, Discover, InterPayment, InstaPayment, JCB, Dankort, UATP, Unknown
 }
 
 
@@ -127,6 +127,76 @@ public func ==(lhs: CardNetwork, rhs: CardNetwork) -> Bool {
     case .AMEX:
         switch rhs {
         case .AMEX:
+            return true
+        default:
+            return false
+        }
+    case .DinersClub:
+        switch rhs {
+        case .DinersClub:
+            return true
+        default:
+            return false
+        }
+    case .Maestro:
+        switch rhs {
+        case .Maestro:
+            return true
+        default:
+            return false
+        }
+    case .ChinaUnionPay:
+        switch rhs {
+        case .ChinaUnionPay:
+            return true
+        default:
+            return false
+        }
+    case .Unknown:
+        switch rhs {
+        case .Unknown:
+            return true
+        default:
+            return false
+        }
+    case .Discover:
+        switch rhs {
+        case .Discover:
+            return true
+        default:
+            return false
+        }
+    case .InstaPayment:
+        switch rhs {
+        case .InstaPayment:
+            return true
+        default:
+            return false
+        }
+    case .InterPayment:
+        switch rhs {
+        case .InterPayment:
+            return true
+        default:
+            return false
+        }
+    case .JCB:
+        switch rhs {
+        case .JCB:
+            return true
+        default:
+            return false
+        }
+    case .Dankort:
+        switch rhs {
+        case .Dankort:
+            return true
+        default:
+            return false
+        }
+    case .UATP:
+        switch rhs {
+        case .UATP:
             return true
         default:
             return false
