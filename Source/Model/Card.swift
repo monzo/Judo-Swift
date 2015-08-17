@@ -69,6 +69,37 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 */
 public enum CardNetwork: Equatable {
     case Visa(CardType), MasterCard(CardType), AMEX, DinersClub, Maestro, ChinaUnionPay, Discover, InterPayment, InstaPayment, JCB, Dankort, UATP, Unknown
+    
+    public func stringValue() -> String {
+        switch self {
+        case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
+            return "Visa"
+        case .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown):
+            return "MasterCard"
+        case .AMEX:
+            return "AMEX"
+        case .DinersClub:
+            return "Diners Club"
+        case .Maestro:
+            return "Maestro"
+        case .ChinaUnionPay:
+            return "China UnionPay"
+        case .Discover:
+            return "Discover"
+        case .InterPayment:
+            return "InterPayment"
+        case .InstaPayment:
+            return "InstaPayment"
+        case .JCB:
+            return "JCB"
+        case .Dankort:
+            return "Dankort"
+        case .UATP:
+            return "UATP"
+        case .Unknown:
+            return "Unknown"
+        }
+    }
 }
 
 
