@@ -32,14 +32,14 @@ public struct Amount {
     /// The currency ISO Code - GBP is default
     public var currency: String = "GBP"
     /// The amount to process, to two decimal places
-    public var amount: Double
+    public var amount: NSDecimalNumber
     
-    public init(_ amount: Double, _ currency: String) {
+    public init(_ amount: NSDecimalNumber, _ currency: String) {
         self.currency = currency
         self.amount = amount
     }
     
-    public init?(_ amount: Double?, _ currency: String? = nil) {
+    public init?(_ amount: NSDecimalNumber?, _ currency: String? = nil) {
         guard let amount = amount else { return nil }
         self.amount = amount
         if let currency = currency {
@@ -47,19 +47,19 @@ public struct Amount {
         }
     }
     
-    public init(_ amount: Double) {
+    public init(_ amount: NSDecimalNumber) {
         self.amount = amount
     }
     
     public init(_ amount: Int) {
-        self.amount = Double(amount)
+        self.amount = NSDecimalNumber(integer: amount)
     }
     
     public init(_ amount: UInt) {
-        self.amount = Double(amount)
+        self.amount = NSDecimalNumber(unsignedLong: amount)
     }
     
     public init(_ amount: Float) {
-        self.amount = Double(amount)
+        self.amount = NSDecimalNumber(float: amount)
     }
 }

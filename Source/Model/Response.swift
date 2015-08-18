@@ -147,26 +147,18 @@ public struct TransactionData {
         
         guard let currency = dict["currency"] as? String else { throw JudoError.ResponseParseError }
         
-        var refunds: Amount? = nil
-        if let refundsString = dict["refunds"] as? String {
-            refunds = Amount(Double(refundsString))
-            refunds?.currency = currency
-        }
+        var refunds = Amount(NSDecimalNumber(string: dict["refunds"] as? String))
+        refunds.currency = currency
         
-        var originalAmount: Amount? = nil
-        if let originalAmountString = dict["originalAmount"] as? String {
-            originalAmount = Amount(Double(originalAmountString))
-            originalAmount?.currency = currency
-        }
+        var originalAmount = Amount(NSDecimalNumber(string: dict["originalAmount"] as? String))
+        originalAmount.currency = currency
         
-        var netAmount: Amount? = nil
-        if let netAmountString = dict["netAmount"] as? String {
-            netAmount = Amount(Double(netAmountString))
-            netAmount?.currency = currency
-        }
+        var netAmount = Amount(NSDecimalNumber(string: dict["netAmount"] as? String))
+        netAmount.currency = currency
         
         guard let amountString = dict["amount"] as? String else { throw JudoError.ResponseParseError }
-        guard let amount = Amount(Double(amountString), currency) else { throw JudoError.ResponseParseError }
+        
+        let amount = Amount(NSDecimalNumber(string: amountString), currency)
         
         guard let cardDetailsDict = dict["cardDetails"] as? JSONDictionary else { throw JudoError.ResponseParseError }
         let cardDetails = CardDetails.fromDictionary(cardDetailsDict)
