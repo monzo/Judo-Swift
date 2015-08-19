@@ -30,6 +30,9 @@ public enum JudoError: Int, ErrorType {
     // MARK: Device Errors
     case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError
     
+    // MARK: Card Errors
+    case CardLengthMismatchError
+
     // MARK: Server errors
     case YouAreGoodToGo = 20
     case AccessForbiddenError = 403
