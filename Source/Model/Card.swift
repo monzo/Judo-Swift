@@ -29,6 +29,12 @@ import Foundation
 *  the Card object stores all the necessary card information to make a transaction
 */
 public struct Card {
+    
+    /// the minimum card length constant
+    public static let minimumLength = 12
+    /// the maximum card length constant
+    public static let maximumLength = 19
+    
     /// The card number should be submitted without any whitespace or non-numeric characters
     public let number: String
     /// The expiry date should be submitted as MM/YY
