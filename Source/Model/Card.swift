@@ -24,6 +24,12 @@
 
 import Foundation
 
+/// Constants that describe the formatting pattern of given Card Networks
+let VISAPattern         = "XXXX XXXX XXXX XXXX"
+let AMEXPattern         = "XXXX XXXXXX XXXXX"
+let CUPPattern          = "XXXXXX XXXXXXXXXXXXX"
+let DinersClubPattern   = "XXXX XXXXXX XXXX"
+
 
 /**
 *  the Card object stores all the necessary card information to make a transaction
@@ -51,7 +57,54 @@ public struct Card {
         self.address = address
     }
     
+    /**
+    *  Card Configuration consists of a Card Network and a given length
+    */
+    public struct Configuration {
+        public let cardNetwork: CardNetwork
+        public let cardLength: Int
+        
+        public init(_ cardNetwork: CardNetwork, _ cardLength: Int) {
+            self.cardLength = cardLength
+            self.cardNetwork = cardNetwork
+        }
+        
+        
+        /**
+        helper method to get a pattern string for a certain configuration
+        
+        - Parameter configuration: the configuration for which to get the pattern string
+        
+        - Returns: a given String with the correct pattern
+        */
+        public func patternString() -> String? {
+            switch self.cardNetwork {
+            case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown), .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown), .Dankort, .JCB, .InstaPayment, .Discover:
+                return VISAPattern
+            case .AMEX:
+                return AMEXPattern
+            case .ChinaUnionPay, .InterPayment, .Maestro:
+                if self.cardLength == 16 {
+                    return VISAPattern
+                } else if self.cardLength == 19 {
+                    return CUPPattern
+                }
+                break
+            case .DinersClub:
+                if self.cardLength == 16 {
+                    return VISAPattern
+                } else if self.cardLength == 14 {
+                    return DinersClubPattern
+                }
+            default:
+                return VISAPattern
+            }
+            return nil
+        }
+    }
 }
+
+
 
 
 /**
@@ -69,9 +122,19 @@ public enum CardType {
 /**
 the CardNetwork enum depicts the Card Network type of a given Card object
 
-- Visa:       Visa Card Network
-- MasterCard: MasterCard Network
-- AMEX:       American Express Card Network
+- Visa:             Visa Card Network
+- MasterCard:       MasterCard Network
+- AMEX:             American Express Card Network
+- DinersClub:       Diners Club Network
+- Maestro:          Maestro Card Network
+- ChinaUnionPay:    China UnionPay Network
+- Discover:         Discover Network
+- InterPayment:     InterPayment Network
+- InstaPayment:     InstaPayment Network
+- JCB:              JCB Network
+- Dankort:          Dankort Network
+- UATP:             UATP Network
+- Unknown:          Unknown
 */
 public enum CardNetwork: Equatable {
     case Visa(CardType), MasterCard(CardType), AMEX, DinersClub, Maestro, ChinaUnionPay, Discover, InterPayment, InstaPayment, JCB, Dankort, UATP, Unknown
@@ -107,6 +170,9 @@ public enum CardNetwork: Equatable {
         }
     }
 }
+
+
+
 
 
 /**
