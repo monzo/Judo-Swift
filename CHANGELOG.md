@@ -2,7 +2,27 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
+- `0.2.x` Releases - [0.2.0](#020)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
+
+## [0.1.6](https://github.com/JudoPay/Judo-Swift/tag/0.2.0)
+Released on 2015-08-24
+
+#### Added
+- adding default values overloading for optional parameters
+- adding missing card networks
+- added card specific errors
+- added missing constants
+- added string representation method to Card enum
+- adding cardnetwork constraints
+	- Added by [Hamon Ben Riazy](https://github.com/ryce).
+
+#### Updated
+- setting deployment target
+- using NSDecimalNumber instead of Double for currency precision
+- moved card configuration to Judo Base Module
+- moving functions to base SDK
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
 ## [0.1.6](https://github.com/JudoPay/Judo-Swift/tag/0.1.6)
