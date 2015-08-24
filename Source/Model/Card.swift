@@ -24,11 +24,26 @@
 
 import Foundation
 
+
 /// Constants that describe the formatting pattern of given Card Networks
 let VISAPattern         = "XXXX XXXX XXXX XXXX"
 let AMEXPattern         = "XXXX XXXXXX XXXXX"
 let CUPPattern          = "XXXXXX XXXXXXXXXXXXX"
 let DinersClubPattern   = "XXXX XXXXXX XXXX"
+
+
+// these should be computed once and then referenced - O(n)
+let masterCardPrefixes          = ([Int](2221...2720)).map({ String($0) }) + ([Int](51...55)).map { String($0) }
+let maestroPrefixes             = ([Int](56...69)).map({ String($0) }) + ["50"]
+let dinersClubPrefixes          = ([Int](300...305)).map({ String($0) }) + ["36", "38", "39", "309"]
+let instaPaymentPrefixes        = ([Int](637...639)).map({ String($0) })
+let JCBPrefixes                 = ([Int](3528...3589)).map({ String($0) })
+
+// expression was too complex to be executed in one line 😩😭💥
+let discoverPrefixes: [String]  = {
+    let discover = ([Int](644...649)).map({ String($0) }) + ([Int](622126...622925)).map({ String($0) })
+    return discover + ["65", "6011"]
+    }()
 
 
 /**
@@ -169,10 +184,47 @@ public enum CardNetwork: Equatable {
             return "Unknown"
         }
     }
+
+    public func prefixes() -> [String] {
+        switch self {
+        case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
+            return ["4"]
+        case .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown):
+            return masterCardPrefixes
+        case .AMEX:
+            return ["34", "37"]
+        case .DinersClub:
+            return dinersClubPrefixes
+        case .Maestro:
+            return maestroPrefixes
+        case .ChinaUnionPay:
+            return ["62"]
+        case .Discover:
+            return discoverPrefixes
+        case .InterPayment:
+            return ["636"]
+        case .InstaPayment:
+            return instaPaymentPrefixes
+        case .JCB:
+            return JCBPrefixes
+        case .Dankort:
+            return ["5019"]
+        case .UATP:
+            return ["1"]
+        case .Unknown:
+            return []
+        }
+    }
+    
+    public static func networkForString(string: String) -> CardNetwork {
+        let allNetworks: [CardNetwork] = [.Visa(.Unknown), .MasterCard(.Unknown), .AMEX, .DinersClub, .Maestro, .ChinaUnionPay, .Discover, .InterPayment, .InstaPayment, .JCB, .Dankort, .UATP]
+        let result = allNetworks.filter({ $0.prefixes().filter({ string.beginsWith($0) }).count > 0 })
+        if result.count == 1 {
+            return result[0]
+        }
+        return CardNetwork.Unknown
+    }
 }
-
-
-
 
 
 /**

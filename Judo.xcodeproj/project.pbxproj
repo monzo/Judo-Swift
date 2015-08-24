@@ -33,6 +33,7 @@
 		DA26203A1B627239005544B8 /* 409-preauth-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */; };
 		DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE811B67ADE400C9993D /* Receipt.swift */; };
 		DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE831B69240600C9993D /* ReceiptTests.swift */; };
+		DADD0A531B8B2A300080471B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD0A521B8B2A300080471B /* String.swift */; };
 		DAFA3FF61B5939E50094CFCA /* Judo.h in Headers */ = {isa = PBXBuildFile; fileRef = DAFA3FF51B5939E50094CFCA /* Judo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAFA3FFD1B5939E60094CFCA /* Judo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFA3FF21B5939E50094CFCA /* Judo.framework */; };
 		DAFA40021B5939E60094CFCA /* JudoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40011B5939E60094CFCA /* JudoTests.swift */; };
@@ -87,6 +88,7 @@
 		DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "409-preauth-blocked-account.json"; sourceTree = "<group>"; };
 		DAAFCE811B67ADE400C9993D /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Source/API/Receipt.swift; sourceTree = "<group>"; };
 		DAAFCE831B69240600C9993D /* ReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTests.swift; sourceTree = "<group>"; };
+		DADD0A521B8B2A300080471B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		DAFA3FF21B5939E50094CFCA /* Judo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Judo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFA3FF51B5939E50094CFCA /* Judo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Judo.h; path = Source/Judo.h; sourceTree = "<group>"; };
 		DAFA3FF71B5939E50094CFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
@@ -200,6 +202,14 @@
 			path = preauth;
 			sourceTree = "<group>";
 		};
+		DADD0A511B8B2A230080471B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DADD0A521B8B2A300080471B /* String.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		DAFA3FE81B5939E50094CFCA = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +232,7 @@
 		DAFA3FF41B5939E50094CFCA /* Judo */ = {
 			isa = PBXGroup;
 			children = (
+				DADD0A511B8B2A230080471B /* Extensions */,
 				DA1C6CAD1B6F9B4F009F2BE9 /* API */,
 				DA1C6CAC1B6F9B4A009F2BE9 /* Model */,
 				DAFA3FF51B5939E50094CFCA /* Judo.h */,
@@ -386,6 +397,7 @@
 				DA1C6CB31B6F9C47009F2BE9 /* Reference.swift in Sources */,
 				DAFA400D1B5949330094CFCA /* Judo.swift in Sources */,
 				DAFA401B1B5959420094CFCA /* Collection.swift in Sources */,
+				DADD0A531B8B2A300080471B /* String.swift in Sources */,
 				DA2620181B62520F005544B8 /* Transaction.swift in Sources */,
 				DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */,
 			);

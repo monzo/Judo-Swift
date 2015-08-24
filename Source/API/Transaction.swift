@@ -101,7 +101,6 @@ public class Transaction {
     }
     
     
-    // TODO: investigate as to how and why location is important (fraud protection?)
     /**
     reactive method to set location information of the user, this method is optional
     
