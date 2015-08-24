@@ -216,13 +216,17 @@ public enum CardNetwork: Equatable {
         }
     }
     
-    public static func networkForString(string: String) -> CardNetwork {
-        let allNetworks: [CardNetwork] = [.Visa(.Unknown), .MasterCard(.Unknown), .AMEX, .DinersClub, .Maestro, .ChinaUnionPay, .Discover, .InterPayment, .InstaPayment, .JCB, .Dankort, .UATP]
-        let result = allNetworks.filter({ $0.prefixes().filter({ string.beginsWith($0) }).count > 0 })
+    public static func networkForString(string: String, constrainedToNetworks networks: [CardNetwork]) -> CardNetwork {
+        let result = networks.filter({ $0.prefixes().filter({ string.beginsWith($0) }).count > 0 })
         if result.count == 1 {
             return result[0]
         }
         return CardNetwork.Unknown
+    }
+    
+    public static func networkForString(string: String) -> CardNetwork {
+        let allNetworks: [CardNetwork] = [.Visa(.Unknown), .MasterCard(.Unknown), .AMEX, .DinersClub, .Maestro, .ChinaUnionPay, .Discover, .InterPayment, .InstaPayment, .JCB, .Dankort, .UATP]
+        return self.networkForString(string, constrainedToNetworks: allNetworks)
     }
 }
 
