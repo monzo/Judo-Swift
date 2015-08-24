@@ -17,7 +17,7 @@ public extension String {
     
     - Returns: boolean indicating wether the prefix matches or not
     */
-    func beginsWith (str: String) -> Bool {
+    public func beginsWith (str: String) -> Bool {
         if let range = self.rangeOfString(str) {
             return range.startIndex == self.startIndex
         }
