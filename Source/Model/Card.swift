@@ -386,3 +386,22 @@ public struct CardDetails {
     }
 }
 
+
+extension String {
+    
+    /**
+    helper method to check wether the string begins with another given string
+    
+    - Parameter str: prefix string to compare
+    
+    - Returns: boolean indicating wether the prefix matches or not
+    */
+    func beginsWith (str: String) -> Bool {
+        if let range = self.rangeOfString(str) {
+            return range.startIndex == self.startIndex
+        }
+        return false
+    }
+    
+    
+}
