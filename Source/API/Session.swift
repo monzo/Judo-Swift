@@ -272,7 +272,7 @@ public struct Session {
         if isNumeric(judoIDString) {
             return judoIDString
         } else {
-            return "".join(judoIDString.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
+            return judoIDString.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
         }
     }
     
