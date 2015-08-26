@@ -30,14 +30,14 @@ public struct Judo {
     
     
     /// the endpoint for REST API calls to the Judo API
-    static private (set) var endpoint = "https://partnerapi.judopay.com/"
+    static private (set) var endpoint = "https://gw1.judopay.com/"
     
     
     /// set the app to sandboxed mode
     static public var sandboxed: Bool = false {
         didSet {
             if sandboxed {
-                endpoint = "https://partnerapi.judopay-sandbox.com/"
+                endpoint = "https://gw1.judopay-sandbox.com/"
                 NSUUID(UUIDString: "identifier for this person")?.UUIDString
             }
         }
