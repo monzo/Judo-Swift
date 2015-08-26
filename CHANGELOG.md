@@ -2,10 +2,17 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
-- `0.2.x` Releases - [0.2.0](#020)
+- `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
-## [0.1.6](https://github.com/JudoPay/Judo-Swift/tag/0.2.0)
+## [0.2.1](https://github.com/JudoPay/Judo-Swift/tag/0.2.1)
+Released on 2015-08-26
+
+#### Updated
+- new endpoints that conform to iOS9 ATS ([further info here](https://developer.apple.com/library/prerelease/mac/technotes/App-Transport-Security-Technote/index.html))
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
+---
+## [0.2.0](https://github.com/JudoPay/Judo-Swift/tag/0.2.0)
 Released on 2015-08-24
 
 #### Added
