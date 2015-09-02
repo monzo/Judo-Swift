@@ -184,7 +184,13 @@ public enum CardNetwork: Equatable {
             return "Unknown"
         }
     }
-
+    
+    
+    /**
+    the prefixes determine which card network a number belongs to, this method provides an array with one or many prefixes for a given type
+    
+    - Returns: an Array containing all the possible prefixes for a type
+    */
     public func prefixes() -> [String] {
         switch self {
         case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
@@ -230,7 +236,11 @@ public enum CardNetwork: Equatable {
     }
     
 
-    // security code name for a certain card
+    /**
+    security code name for a certain card
+    
+    - Returns: a String for the title of a certain security code
+    */
     public func securityName() -> String {
         switch self {
         case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
@@ -250,6 +260,12 @@ public enum CardNetwork: Equatable {
         }
     }
     
+    
+    /**
+    security code length for a card type
+    
+    - Returns: an Int with the code length
+    */
     public func securityCodeLength() -> Int {
         switch self {
         case .AMEX:
