@@ -249,6 +249,16 @@ public enum CardNetwork: Equatable {
             return "CSC"
         }
     }
+    
+    public func securityCodeLength() -> Int {
+        switch self {
+        case .AMEX:
+            return 4
+        default:
+            return 3
+        }
+    }
+    
 }
 
 
