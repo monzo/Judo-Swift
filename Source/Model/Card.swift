@@ -228,6 +228,27 @@ public enum CardNetwork: Equatable {
         let allNetworks: [CardNetwork] = [.Visa(.Unknown), .MasterCard(.Unknown), .AMEX, .DinersClub, .Maestro, .ChinaUnionPay, .Discover, .InterPayment, .InstaPayment, .JCB, .Dankort, .UATP]
         return self.networkForString(string, constrainedToNetworks: allNetworks)
     }
+    
+
+    // security code name for a certain card
+    public func securityName() -> String {
+        switch self {
+        case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
+            return "CVV2"
+        case .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown):
+            return "CVC2"
+        case .AMEX:
+            return "CID"
+        case .ChinaUnionPay:
+            return "CVN2"
+        case .Discover:
+            return "CID"
+        case .Unknown:
+            return "Unknown"
+        default:
+            return "CSC"
+        }
+    }
 }
 
 
