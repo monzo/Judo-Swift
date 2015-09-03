@@ -254,7 +254,7 @@ public enum CardNetwork: Equatable {
         case .Discover:
             return "CID"
         case .Unknown:
-            return "Unknown"
+            return "CVC"
         default:
             return "CSC"
         }
