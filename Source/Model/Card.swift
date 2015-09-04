@@ -241,7 +241,7 @@ public enum CardNetwork: Equatable {
     
     - Returns: a String for the title of a certain security code
     */
-    public func securityName() -> String {
+    public func securityCodeTitle() -> String {
         switch self {
         case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
             return "CVV2"
