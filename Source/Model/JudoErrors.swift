@@ -31,7 +31,7 @@ public enum JudoError: Int, ErrorType {
     case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError
     
     // MARK: Card Errors
-    case CardLengthMismatchError, InvalidCardNumber, InvalidEntry
+    case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
 
     // MARK: Server errors
     case YouAreGoodToGo = 20
