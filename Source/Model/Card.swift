@@ -248,13 +248,15 @@ public enum CardNetwork: Equatable {
         case .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown):
             return "CVC2"
         case .AMEX:
-            return "CID"
+            return "CIDV"
         case .ChinaUnionPay:
             return "CVN2"
         case .Discover:
             return "CID"
+        case .JCB:
+            return "CAV2"
         case .Unknown:
-            return "CVC"
+            return "CVC2"
         default:
             return "CSC"
         }
