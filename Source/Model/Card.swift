@@ -88,8 +88,6 @@ public struct Card {
         /**
         helper method to get a pattern string for a certain configuration
         
-        - Parameter configuration: the configuration for which to get the pattern string
-        
         - Returns: a given String with the correct pattern
         */
         public func patternString() -> String? {
@@ -115,6 +113,16 @@ public struct Card {
                 return VISAPattern
             }
             return nil
+        }
+        
+        
+        /**
+        helper method to get a placeholder string for a certain configuration
+        
+        - Returns: a given String as a placeholder
+        */
+        public func placeholderString() -> String? {
+            return self.patternString()?.stringByReplacingOccurrencesOfString("X", withString: "0")
         }
     }
 }

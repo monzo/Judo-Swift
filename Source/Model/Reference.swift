@@ -30,14 +30,14 @@ import Foundation
 */
 public struct Reference {
     /// Your reference for this consumer
-    public let yourConsuerReference: String
+    public let yourConsumerReference: String
     /// Your reference for this payment
     public let yourPaymentReference: String
     /// An object containing any additional data you wish to tag this payment with. The property name and value are both limited to 50 characters, and the whole object cannot be more than 1024 characters
     public let yourPaymentMetaData: [String : String]?
     
-    public init(yourConsuerReference: String, yourPaymentReference: String, yourPaymentMetaData: [String : String]? = nil) {
-        self.yourConsuerReference = yourConsuerReference
+    public init(yourConsumerReference: String, yourPaymentReference: String, yourPaymentMetaData: [String : String]? = nil) {
+        self.yourConsumerReference = yourConsumerReference
         self.yourPaymentReference = yourPaymentReference
         self.yourPaymentMetaData = yourPaymentMetaData
     }

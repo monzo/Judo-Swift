@@ -209,7 +209,7 @@ public struct Session {
     static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, location: CLLocationCoordinate2D?, email: String?, mobile: String?) -> NSDictionary? {
         let parametersDict = NSMutableDictionary()
         if let ref = reference {
-            parametersDict["yourConsumerReference"] = ref.yourConsuerReference
+            parametersDict["yourConsumerReference"] = ref.yourConsumerReference
             parametersDict["yourPaymentReference"] = ref.yourPaymentReference
             if let metaData = ref.yourPaymentMetaData {
                 parametersDict["yourPaymentMetaData"] = metaData
