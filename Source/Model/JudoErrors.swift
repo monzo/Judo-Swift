@@ -37,4 +37,6 @@ public enum JudoError: Int, ErrorType {
     case YouAreGoodToGo = 20
     case AccessForbiddenError = 403
     
+    public var _domain: String { return JudoErrorDomain }
+    
 }

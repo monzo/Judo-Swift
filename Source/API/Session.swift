@@ -62,7 +62,7 @@ public struct Session {
             requestBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions.PrettyPrinted)
         } catch {
             print("body serialization failed")
-            completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.SerializationError.rawValue, userInfo: nil))
+            completion(nil, JudoError.SerializationError as NSError)
             return // BAIL
         }
         
@@ -96,7 +96,7 @@ public struct Session {
                 requestBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
             } catch  {
                 print("body serialization failed")
-                completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.SerializationError.rawValue, userInfo: nil))
+                completion(nil, JudoError.SerializationError as NSError)
                 return
             }
             request.HTTPBody = requestBody
@@ -149,7 +149,7 @@ public struct Session {
             }
             
             guard let upData = data else {
-                completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.RequestError.rawValue, userInfo: nil))
+                completion(nil, JudoError.RequestError as NSError)
                 return // BAIL
             }
             
@@ -158,12 +158,12 @@ public struct Session {
                 json = try NSJSONSerialization.JSONObjectWithData(upData, options: NSJSONReadingOptions.AllowFragments) as? JSONDictionary
             } catch {
                 print(error)
-                completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.SerializationError.rawValue, userInfo: nil))
+                completion(nil, JudoError.SerializationError as NSError)
                 return // BAIL
             }
             
             guard let upJSON = json else {
-                completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.SerializationError.rawValue, userInfo: nil))
+                completion(nil, JudoError.SerializationError as NSError)
                 return
             }
             
@@ -194,14 +194,14 @@ public struct Session {
                 }
             } catch {
                 print(error)
-                completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.ResponseParseError.rawValue, userInfo: nil))
+                completion(nil, JudoError.ResponseParseError as NSError)
                 return // BAIL
             }
             
             completion(result, nil)
             
         })
-
+        
     }
     
     
