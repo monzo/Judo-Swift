@@ -62,7 +62,9 @@ public struct Session {
             requestBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions.PrettyPrinted)
         } catch {
             print("body serialization failed")
-            completion(nil, JudoError.SerializationError as NSError)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completion(nil, JudoError.SerializationError as NSError)
+            })
             return // BAIL
         }
         
@@ -144,12 +146,16 @@ public struct Session {
             
             // error handling
             if data == nil, let error = err {
-                completion(nil, error)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, error)
+                })
                 return // BAIL
             }
             
             guard let upData = data else {
-                completion(nil, JudoError.RequestError as NSError)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, JudoError.RequestError as NSError)
+                })
                 return // BAIL
             }
             
@@ -158,19 +164,25 @@ public struct Session {
                 json = try NSJSONSerialization.JSONObjectWithData(upData, options: NSJSONReadingOptions.AllowFragments) as? JSONDictionary
             } catch {
                 print(error)
-                completion(nil, JudoError.SerializationError as NSError)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, JudoError.SerializationError as NSError)
+                })
                 return // BAIL
             }
             
             guard let upJSON = json else {
-                completion(nil, JudoError.SerializationError as NSError)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, JudoError.SerializationError as NSError)
+                })
                 return
             }
             
             if let errorMessage = upJSON["errorMessage"] as? String {
                 print(errorMessage)
                 let errorCode = upJSON["errorType"] as? Int ?? JudoError.Unknown.rawValue
-                completion(nil, NSError(domain: JudoErrorDomain, code: errorCode, userInfo: upJSON["modelErrors"] as? JSONDictionary))
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, NSError(domain: JudoErrorDomain, code: errorCode, userInfo: upJSON["modelErrors"] as? JSONDictionary))
+                })
                 return // BAIL
             }
             
@@ -194,11 +206,15 @@ public struct Session {
                 }
             } catch {
                 print(error)
-                completion(nil, JudoError.ResponseParseError as NSError)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, JudoError.ResponseParseError as NSError)
+                })
                 return // BAIL
             }
             
-            completion(result, nil)
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completion(result, nil)
+            })
             
         })
         
