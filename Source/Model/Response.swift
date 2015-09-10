@@ -16,7 +16,7 @@ public struct Response {
     /// the current pagination response
     public let pagination: Pagination?
     /// The array that contains the transaction response objects
-    private (set) var items = Array<TransactionData>()
+    private(set) public var items = Array<TransactionData>()
     
     
     /**
