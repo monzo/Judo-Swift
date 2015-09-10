@@ -38,7 +38,6 @@ public struct Judo {
         didSet {
             if sandboxed {
                 endpoint = "https://gw1.judopay-sandbox.com/"
-                NSUUID(UUIDString: "identifier for this person")?.UUIDString
             }
         }
     }

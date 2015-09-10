@@ -62,6 +62,15 @@ public struct PaymentToken {
     public let consumerToken: String
     /// Can be used to charge future payments against this card.
     public let cardToken: String
+    
+    init?(consumerToken: String?, cardToken: String?) {
+        guard let consumerToken = consumerToken,
+            let cardToken = cardToken else {
+                return nil
+        }
+        self.consumerToken = consumerToken
+        self.cardToken = cardToken
+    }
 }
 
 
@@ -168,6 +177,16 @@ public struct TransactionData {
         
         return TransactionData(receiptID: receiptID, yourPaymentReference: yourPaymentReference, type: type, createdAt: createdAt, result: result, message: message, judoID: String(judoID.integerValue), merchantName: merchantName, appearsOnStatementAs: appearsOnStatementAs, refunds: refunds, originalAmount: originalAmount, netAmount: netAmount, amount: amount, cardDetails: cardDetails, consumer: consumer)
     }
+    
+    
+    /**
+    generates a PaymentToken object from existing information
+    
+    - Returns: a PaymentToken object that has been generated from the current objects information
+    */
+    public func paymentToken() -> PaymentToken? {
+        return PaymentToken(consumerToken: self.consumer.consumerToken, cardToken: self.cardDetails.cardToken)
+    }
 }
 
 
@@ -178,7 +197,7 @@ Type of Transaction
 - Refund:  a Refund Transaction
 */
 public enum TransactionType: String {
-    case Payment="Payment", PreAuth="PreAuth", Refund="Refund"
+    case Payment, PreAuth, Refund
 }
 
 
@@ -189,7 +208,7 @@ Result of a Transaction
 - Declined: declined transaction
 */
 public enum TransactionResult: String {
-    case Success="Success", Declined="Declined"
+    case Success, Declined
 }
 
 // MARK: Helper
