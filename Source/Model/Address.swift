@@ -29,14 +29,15 @@ import Foundation
 *  the Address object stores information around the address that is related to a card
 */
 public struct Address {
-    public let line1, line2, line3, town, postCode: String?
+    public let line1, line2, line3, town, postCode, country: String?
     
-    public init(line1: String?, line2: String?, line3: String?, town: String?, postCode: String?) {
+    public init(line1: String? = nil, line2: String? = nil, line3: String? = nil, town: String? = nil, postCode: String? = nil, country: String? = nil) {
         self.line1 = line1
         self.line2 = line2
         self.line3 = line3
         self.town = town
         self.postCode = postCode
+        self.country = country
     }
     
     func dictionaryRepresentation() -> NSDictionary {
@@ -55,6 +56,9 @@ public struct Address {
         }
         if let postCode = self.postCode {
             dict.setValue(postCode, forKey: "postCode")
+        }
+        if let country = self.country {
+            dict.setValue(country, forKey: "billingCountry")
         }
         return dict.copy() as! NSDictionary
     }
