@@ -92,7 +92,7 @@ public struct Judo {
     starting point and a reactive method to create a preAuth that is sent to a certain judo ID
     
     - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
-    - Parameter amount:    the amount of the Payment
+    - Parameter amount:    the amount of the PreAuth
     - Parameter reference: the reference
     - Parameter card:      the card
     
@@ -103,7 +103,24 @@ public struct Judo {
     static public func preAuth(judoID: String, amount: Amount, reference: Reference) throws -> PreAuth {
         return try PreAuth(judoID: judoID, amount: amount, reference: reference)
     }
+
     
+    /**
+    starting point and a reactive method to create a RegisterCard that is sent to a certain judo ID
+    
+    - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
+    - Parameter amount:    the amount of the RegisterCard
+    - Parameter reference: the reference
+    - Parameter card:      the card
+    
+    - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
+    
+    - Returns: a RegisterCard Object
+    */
+    static public func registerCard(judoID: String, amount: Amount, reference: Reference) throws -> RegisterCard {
+        return try RegisterCard(judoID: judoID, amount: amount, reference: reference)
+    }
+
     
     /**
     creates a Receipt object which can be used to query for the receipt of a given id

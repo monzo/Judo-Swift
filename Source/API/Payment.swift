@@ -39,7 +39,7 @@ When you want to process a payment transaction you create a Payment object and s
 
 ```swift
     Judo.payment(correctJudoID, amount: amount, reference: references)
-        .paymentToken(payToken)
+        .card(card)
         .location(location)
         .contact(mobileNumber, emailAddress)
         .completion({ (data, error) -> () in

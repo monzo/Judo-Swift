@@ -26,36 +26,18 @@ import Foundation
 
 
 /**
-When you want to process a pre Authentication you create a PreAuth object and start adding the necessary Information. This Transaction supports two types of PreAuths. You can process preauths using a full set of card details, or by referencing a previously processed transaction.
+When you want to register a card you create a RegisterCard object and start adding the necessary Information. This Transaction only supports one kind registration. You have to do this using a full set of card details.
 
-- Card PreAuth
-    - For preauths where you have the full card details including the card number.
-- Token Pre Auth
-    - For processing payments using a saved card (requires the Card token and Consumer token values).
+- Card Registration
+- For registrations where you have the full card details including the card number.
 
-[`Transaction`](Transaction) contains all the necessary implementation of Payments and PreAuths since these are very closely related
+[`Transaction`](Transaction) contains all the necessary implementation of Payments, PreAuths and RegisterCards since these are very closely related
 
 ### Card PreAuth
 
 ```swift
-    Judo.preauth(correctJudoID, amount: amount, reference: references)
+    Judo.registerCard(correctJudoID, amount: amount, reference: references)
         .card(card)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
-```
-
-### Token PreAuth
-
-```swift token payment
-    Judo.payment(correctJudoID, amount: amount, reference: references)
-        .paymentToken(payToken)
         .location(location)
         .contact(mobileNumber, emailAddress)
         .completion({ (data, error) -> () in
@@ -70,8 +52,9 @@ When you want to process a pre Authentication you create a PreAuth object and st
 learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>)
 
 */
-public class PreAuth: Transaction, TransactionPath {
+
+public class RegisterCard: Transaction {
     
-    public static var path: String { get { return "transactions/preauths" } }
+    public static var path: String { get { return "transactions/registercard" } }
 
 }
