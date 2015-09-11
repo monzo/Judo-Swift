@@ -25,13 +25,44 @@
 import Foundation
 
 
+public enum BillingCountry: String {
+    case UK, USA, Canada, Other
+    
+    public static let allValues = [UK, USA, Canada, Other]
+    
+    public func ISOCode() -> Int? {
+        switch self {
+        case UK:
+            return 826
+        case USA:
+            return 840
+        case Canada:
+            return 124
+        case Other:
+            return nil
+        }
+    }
+    
+    public func titleDescription() -> String {
+        switch self {
+        case .USA:
+            return "ZIP"
+        case .Canada:
+            return "Postal"
+        default:
+            return "Post"
+        }
+    }
+}
+
 /**
 *  the Address object stores information around the address that is related to a card
 */
 public struct Address {
-    public let line1, line2, line3, town, postCode, country: String?
+    public let line1, line2, line3, town, postCode: String?
+    public let country: BillingCountry?
     
-    public init(line1: String? = nil, line2: String? = nil, line3: String? = nil, town: String? = nil, postCode: String? = nil, country: String? = nil) {
+    public init(line1: String? = nil, line2: String? = nil, line3: String? = nil, town: String? = nil, postCode: String? = nil, country: BillingCountry? = nil) {
         self.line1 = line1
         self.line2 = line2
         self.line3 = line3
@@ -57,8 +88,8 @@ public struct Address {
         if let postCode = self.postCode {
             dict.setValue(postCode, forKey: "postCode")
         }
-        if let country = self.country {
-            dict.setValue(country, forKey: "billingCountry")
+        if let country = self.country, let countryCode = country.ISOCode() {
+            dict.setValue(countryCode, forKey: "countryCode")
         }
         return dict.copy() as! NSDictionary
     }

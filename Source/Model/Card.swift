@@ -64,12 +64,18 @@ public struct Card {
     public let cv2: String
     /// The registered address for the card
     public let address: Address?
+    /// The start date if the card is a Maestro
+    public let startDate: String?
+    /// The issue number if the card is a Maestro
+    public let issueNumber: String?
     
-    public init(number: String, expiryDate: String, cv2: String, address: Address?) {
+    public init(number: String, expiryDate: String, cv2: String, address: Address?, startDate: String? = nil, issueNumber: String? = nil) {
         self.number = number
         self.expiryDate = expiryDate
         self.cv2 = cv2
         self.address = address
+        self.startDate = startDate
+        self.issueNumber = issueNumber
     }
     
     /**

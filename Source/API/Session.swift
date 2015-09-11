@@ -254,6 +254,12 @@ public struct Session {
             if let cardAddressDict = card.address?.dictionaryRepresentation() {
                 parametersDict["cardAddress"] = cardAddressDict
             }
+            if let startDate = card.startDate {
+                parametersDict["startDate"] = startDate
+            }
+            if let issueNumber = card.issueNumber {
+                parametersDict["issueNumber"] = issueNumber
+            }
         } else if let token = token {
             parametersDict["consumerToken"] = token.consumerToken
             parametersDict["cardToken"] = token.cardToken
