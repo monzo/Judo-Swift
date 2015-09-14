@@ -103,7 +103,7 @@ public struct Judo {
     static public func preAuth(judoID: String, amount: Amount, reference: Reference) throws -> PreAuth {
         return try PreAuth(judoID: judoID, amount: amount, reference: reference)
     }
-
+    
     
     /**
     starting point and a reactive method to create a RegisterCard that is sent to a certain judo ID
@@ -120,7 +120,7 @@ public struct Judo {
     static public func registerCard(judoID: String, amount: Amount, reference: Reference) throws -> RegisterCard {
         return try RegisterCard(judoID: judoID, amount: amount, reference: reference)
     }
-
+    
     
     /**
     creates a Receipt object which can be used to query for the receipt of a given id
@@ -138,7 +138,7 @@ public struct Judo {
     static public func receipt(receiptID: String? = nil) throws -> Receipt {
         return try Receipt(receiptID: receiptID)
     }
-
+    
     
     /**
     Creates a Collection object which can be used to collect a previously pre-authenticated transaction

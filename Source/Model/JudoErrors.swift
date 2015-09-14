@@ -33,6 +33,9 @@ public enum JudoError: Int, ErrorType {
     // MARK: Card Errors
     case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
     
+    // MARK: 3DS Error
+    case ThreeDSAuthRequest
+    
     // MARK: User Errors
     case UserDidCancel
 

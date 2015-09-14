@@ -25,6 +25,8 @@
 import Foundation
 import CoreLocation
 
+let putPath = "transactions"
+
 public protocol TransactionPath {
     static var path: String {get}
 }
@@ -150,10 +152,41 @@ public class Transaction {
             throw JudoError.ParameterError
         }
         
-        Session.POST(self.path(), parameters: parameters) { (dictionary, error) -> () in
-            block(dictionary, error)
+        Session.POST(self.path(), parameters: parameters) { (response, error) -> () in
+            block(response, error)
         }
         
+        return self
+    }
+    
+    
+    /**
+    threeDSecure call - this method will automatically trigger a Session Call to the Judo REST API and execute the finalizing 3DS call on top of the information that were set in the previous methods
+    
+    - Parameter dictionary: the dictionary that contains all the information from the 3DS UIWebView Request
+    - Parameter receiptID: the receipt for the given Transaction
+    - Parameter block: a completion block that is called when the request finishes
+    
+    - Returns: reactive self
+    */
+    public func threeDSecure(dictionary: JSONDictionary, receiptID: String, block: (Response?, NSError?) -> ()) -> Self {
+        
+        var paymentDetails = JSONDictionary()
+        
+        if let paRes = dictionary["PaRes"] as? String {
+            paymentDetails["PaRes"] = paRes
+        }
+        
+        if let md = dictionary["MD"] as? String {
+            paymentDetails["md"] = md
+        }
+        
+        paymentDetails["receiptID"] = receiptID
+        
+        Session.PUT(putPath + "/" + receiptID, parameters: paymentDetails) { (response, error) -> () in
+            block(response, error)
+        }
+
         return self
     }
     

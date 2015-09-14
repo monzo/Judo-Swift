@@ -98,12 +98,51 @@ public struct Session {
                 requestBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
             } catch  {
                 print("body serialization failed")
-                completion(nil, JudoError.SerializationError as NSError)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, JudoError.SerializationError as NSError)
+                })
                 return
             }
             request.HTTPBody = requestBody
         }
         
+        let task = self.task(request, completion: completion)
+        
+        // initiate the request
+        task.resume()
+    }
+    
+    
+    /**
+    PUT Helper Method for accessing the Judo REST API - PUT should only be accessed for 3DS transactions to fulfill the transaction
+    
+    - Parameter path:       the path
+    - Parameter parameters: information that is set in the HTTP Body
+    - Parameter completion: completion callblack block with the results
+    */
+    static func PUT(path: String, parameters: JSONDictionary, completion: ((Response?, NSError?) -> ())) {
+        // create request
+        let request = self.judoRequest(Judo.endpoint + path)
+        
+        // request method
+        request.HTTPMethod = "PUT"
+        
+        // safely create request body for the request
+        let requestBody: NSData?
+        
+        do {
+            requestBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions.PrettyPrinted)
+        } catch {
+            print("body serialization failed")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                completion(nil, JudoError.SerializationError as NSError)
+            })
+            return // BAIL
+        }
+        
+        request.HTTPBody = requestBody
+        
+        // create a data task
         let task = self.task(request, completion: completion)
         
         // initiate the request
@@ -152,6 +191,7 @@ public struct Session {
                 return // BAIL
             }
             
+            // unwrap response data
             guard let upData = data else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(nil, JudoError.RequestError as NSError)
@@ -159,6 +199,7 @@ public struct Session {
                 return // BAIL
             }
             
+            // serialize JSON Dict
             let json: JSONDictionary?
             do {
                 json = try NSJSONSerialization.JSONObjectWithData(upData, options: NSJSONReadingOptions.AllowFragments) as? JSONDictionary
@@ -170,6 +211,7 @@ public struct Session {
                 return // BAIL
             }
             
+            // unwrap optional dictionary
             guard let upJSON = json else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(nil, JudoError.SerializationError as NSError)
@@ -177,6 +219,7 @@ public struct Session {
                 return
             }
             
+            // did an error occur
             if let errorMessage = upJSON["errorMessage"] as? String {
                 print(errorMessage)
                 let errorCode = upJSON["errorType"] as? Int ?? JudoError.Unknown.rawValue
@@ -186,6 +229,15 @@ public struct Session {
                 return // BAIL
             }
             
+            // check if 3DS was requested
+            if upJSON["acsUrl"] != nil && upJSON["paReq"] != nil {
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.ThreeDSAuthRequest.rawValue, userInfo: upJSON))
+                })
+                return // BAIL
+            }
+            
+            // create pagination object
             var paginationResponse: Pagination?
             
             if let offset = upJSON["offset"] as? NSNumber, let pageSize = upJSON["pageSize"] as? NSNumber, let sort = upJSON["sort"] as? String {
