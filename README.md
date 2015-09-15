@@ -6,13 +6,14 @@
 
 # Judo Swift SDK #
 
-This is the new Judo Swift SDK. It is currently in development and not functional. You can try it using Xcode 7 Beta and Swift 2.0
+This is the new Judo Swift SDK. It contains base work to easily access the REST API with all the validation and helper methods needed to make simple payments with a fully custom UI. If you are interested in doing easy transaction without having to implement a full custom UI, Fraud prevention, 3DS, AVS, etc as well as PCI compliance, have a look at the (JudoKit)[https://github.com/JudoPay/JudoKit] project which contains this as a base module.
+
+If you still decide to implement everything yourself we strongly recommend you to use the (JudoSecure)[https://github.com/JudoPay/Judo-Security] Framework and send the device related information along with transaction requests to ensure safety and fraud security for all your payments.
 
 
 ### What is this project for? ###
 
-The Judo SDK is a framework to make accepting payments inside your app as easy and frictionless as possible.
-
+The Judo Swift SDK is a framework for accessing the (JudoPay)[https://www.judopay.com/] Backend API for making and accepting payments inside your app as easy and frictionless as possible.
 
 ## Integration
 
@@ -38,7 +39,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Judo', '~> 0.2.1'
+pod 'Judo', '~> 1.0.0'
 ```
 
 Then, run the following command:
@@ -62,7 +63,7 @@ $ brew install carthage
 - To integrate Judo into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "JudoPay/Judo-Swift" >= 0.2.1
+github "JudoPay/Judo-Swift" >= 1.0.0
 ```
 
 - On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk.
@@ -138,12 +139,23 @@ let amount = Amount(30)
 let emailAddress = "hans@email.com"
 let mobileNumber = "07100000000"
 
-let location = CLLocationCoordinate2D(latitude: 0, longitude: 65)
+let judoSecure = JudoSecure()
+
+self.judoSecure.locationWithCompletion { (coordinate, error) -> Void in
+    if let error = error {
+        self.delegate?.payViewController(self, didEncounterError: error)
+    } else {
+    	self.currentLocation = coordinate
+    }
+}
+
+let deviceSignal = judoSecure.deviceSignal()
 
 do {
 	let makePayment = try Judo.payment(correctJudoID, amount: amount, reference: references)
 								.card(card)
 								.location(location)
+								.deviceSignal(deviceSignal)
 								.contact(mobileNumber, emailAddress)
 								.completion({ (data, error) -> () in
 									if let _ = error {
@@ -162,6 +174,7 @@ do {
 Judo.payment(correctJudoID, amount: amount, reference: references)
 	.paymentToken(payToken)
 	.location(location)
+	.deviceSignal(deviceSignal)
 	.contact(mobileNumber, emailAddress)
 	.completion({ (data, error) -> () in
 		if let _ = error {
@@ -180,6 +193,7 @@ notice that the only difference is calling `.paymentToken(payToken)` with a vali
 Judo.preAuth(correctJudoID, amount: amount, reference: references)
 	.card(card)
 	.location(location)
+	.deviceSignal(deviceSignal)
 	.contact(mobileNumber, emailAddress)
 	.completion({ (data, error) -> () in
 		if let _ = error {
@@ -196,6 +210,7 @@ Judo.preAuth(correctJudoID, amount: amount, reference: references)
 Judo.preAuth(correctJudoID, amount: amount, reference: references)
 	.paymentToken(payToken)
 	.location(location)
+	.deviceSignal(deviceSignal)
 	.contact(mobileNumber, emailAddress)
 	.completion({ (data, error) -> () in
 		if let _ = error {
@@ -230,9 +245,6 @@ Judo-Swift is released under the MIT license. See LICENSE for details.
 * git submodule integration
 * Pagination
 * Types as Responses instead of JSONDictionary
-
-### to do
-
 * Example App
 
 ### Contact

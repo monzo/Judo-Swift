@@ -2,9 +2,34 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.0.x` Releases - [1.0.0](#100)
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
+
+# [1.0.0](https://github.com/JudoPay/Judo-Swift/tag/1.0.0)
+Released on 2015-09-15
+
+#### Added
+- title function to card for security code
+- method that returns length of security code
+- method that generates payment token from response
+- country to card address detail info
+- Maestro Fields and AVS
+- card registration as a seperate class and endpoint
+- 3DS Transaction Detection
+- ability to send deviceSignal to backend for fraud prevention
+- Error TransactionResult
+- comments
+- Errors
+#### Fixed
+- card security code title
+- placeholder method to cardconfig
+- directing execution back on to main thread when it did not
+#### Removed
+- unneccessary code
+
+---
 ## [0.2.1](https://github.com/JudoPay/Judo-Swift/tag/0.2.1)
 Released on 2015-08-26
 
