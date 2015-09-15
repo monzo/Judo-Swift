@@ -28,6 +28,7 @@ Released on 2015-09-15
 - directing execution back on to main thread when it did not
 #### Removed
 - unneccessary code
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
 ## [0.2.1](https://github.com/JudoPay/Judo-Swift/tag/0.2.1)
