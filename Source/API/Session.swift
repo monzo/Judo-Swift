@@ -274,7 +274,7 @@ public struct Session {
     
     
     
-    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, location: CLLocationCoordinate2D?, email: String?, mobile: String?) -> NSDictionary? {
+    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
         let parametersDict = NSMutableDictionary()
         if let ref = reference {
             parametersDict["yourConsumerReference"] = ref.yourConsumerReference
@@ -329,6 +329,10 @@ public struct Session {
         
         if let email = email {
             parametersDict["emailAddress"] = email
+        }
+        
+        if let devSignal = deviceSignal {
+            parametersDict["clientDetails"] = devSignal
         }
         
         return parametersDict

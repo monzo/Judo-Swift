@@ -89,7 +89,7 @@ public class Payment: Transaction, TransactionPath {
             throw JudoError.CardOrTokenMissingError
         }
         
-        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, location: self.location, email: self.emailAddress, mobile: self.mobileNumber) as? JSONDictionary else {
+        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
             throw JudoError.ParameterError
         }
         

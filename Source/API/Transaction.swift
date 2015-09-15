@@ -43,6 +43,7 @@ public class Transaction {
     public private (set) var payToken: PaymentToken?
 
     public private (set) var location: CLLocationCoordinate2D?
+    public private (set) var deviceSignal: JSONDictionary?
     
     public private (set) var mobileNumber: String?
     public private (set) var emailAddress: String?
@@ -104,7 +105,7 @@ public class Transaction {
     
     
     /**
-    reactive method to set location information of the user, this method is optional
+    reactive method to set location information of the user, this method is optional and is used for fraud prevention
     
     - Parameter location: a CLLocationCoordinate2D which represents the current location of the user
     
@@ -112,6 +113,19 @@ public class Transaction {
     */
     public func location(location: CLLocationCoordinate2D) -> Self {
         self.location = location
+        return self
+    }
+    
+    
+    /**
+    reactive method to set device signal information of the device, this method is optional and is used for fraud prevention
+    
+    - Parameter deviceSignal: a Dictionary which contains information about the device
+    
+    - Returns: reactive self
+    */
+    public func deviceSignal(deviceSignal: JSONDictionary) -> Self {
+        self.deviceSignal = deviceSignal
         return self
     }
     
@@ -148,7 +162,7 @@ public class Transaction {
             throw JudoError.CardOrTokenMissingError
         }
         
-        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, location: self.location, email: self.emailAddress, mobile: self.mobileNumber) as? JSONDictionary else {
+        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
             throw JudoError.ParameterError
         }
         
