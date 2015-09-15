@@ -42,8 +42,11 @@ A Collection transaction is the counterpart to a PreAuth transaction. While the 
 */
 public class Collection: NSObject {
     
+    /// the receipt ID for a collection
     private (set) var receiptID: String
+    /// the amount of the collection
     private (set) var amount: Amount
+    /// the payment reference String for a collection
     private (set) var paymentReference: String
     
     

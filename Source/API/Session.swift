@@ -179,7 +179,14 @@ public struct Session {
     }
     
     
+    /**
+    Helper Method to create a JSON HTTP request with authentication
     
+    - Parameter request: the request that is accessed
+    - Parameter completion: a block that gets called when the call finishes, it carries two objects that indicate wether the call was a success or a failure
+    
+    - Returns: a NSURLSessionDataTask that can be used to manipulate the call
+    */
     public static func task(request: NSURLRequest, completion: (Response?, NSError?) -> Void) -> NSURLSessionDataTask {
         return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, resp, err) -> Void in
             
@@ -273,7 +280,13 @@ public struct Session {
     }
     
     
+    /**
+    Helper method to create all the parameters necessary for a Transaction
     
+    - Parameter a: the given String to check wether it is decimal
+    
+    - Returns: true if the given string just contains decimal characters
+    */
     static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
         let parametersDict = NSMutableDictionary()
         if let ref = reference {
@@ -345,7 +358,13 @@ public struct Session {
     }
     
     
+    /**
+    Helper method to strip the given string of anything non-numeric - in this case a judoID sometimes contains dashes or whitespaces that have to be removed before initiating calls to the server
     
+    - Parameter judoIDString: the given String to strip if necessary
+    
+    - Returns: a String stripped of all characters if not numeric
+    */
     static func stripJudoID(judoIDString: String) -> String {
         if isNumeric(judoIDString) {
             return judoIDString
@@ -355,13 +374,25 @@ public struct Session {
     }
     
     
+    /** 
+    Helper method to indicate wether a string is decimal or not
     
+    - Parameter a: the given String to check wether it is decimal
+    
+    - Returns: true if the given string just contains decimal characters
+    */
     static func isNumeric(a: String) -> Bool {
         return Double(a) != nil
     }
     
     
+    /**
+    Helper Method to check if a number string is luhn valid
     
+    - Parameter number: the numeric string
+    
+    - Returns: true if the given number is luhn-valid
+    */
     static func isLuhnValid(number: String) -> Bool {
         guard self.isNumeric(number) else {
             return false

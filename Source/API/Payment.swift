@@ -72,6 +72,7 @@ learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>
 */
 public class Payment: Transaction, TransactionPath {
     
+    /// path variable for this class
     public static var path: String { get { return "transactions/payments" } }
     
     

@@ -30,6 +30,3 @@ FOUNDATION_EXPORT double JudoVersionNumber;
 //! Project version string for Judo.
 FOUNDATION_EXPORT const unsigned char JudoVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <Judo/PublicHeader.h>
-
-

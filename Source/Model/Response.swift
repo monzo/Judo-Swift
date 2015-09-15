@@ -206,9 +206,10 @@ Result of a Transaction
 
 - Success:  successful transaction
 - Declined: declined transaction
+- Error:    something went wrong
 */
 public enum TransactionResult: String {
-    case Success, Declined
+    case Success, Declined, Error
 }
 
 // MARK: Helper
@@ -221,5 +222,5 @@ let ISO8601DateFormatter: NSDateFormatter = {
     dateFormatter.locale = enUSPOSIXLocale
     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSZZZZZ"
     return dateFormatter
-    }()
+}()
 

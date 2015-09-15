@@ -33,7 +33,7 @@ When you want to register a card you create a RegisterCard object and start addi
 
 [`Transaction`](Transaction) contains all the necessary implementation of Payments, PreAuths and RegisterCards since these are very closely related
 
-### Card PreAuth
+### Card Registration
 
 ```swift
     Judo.registerCard(correctJudoID, amount: amount, reference: references)
@@ -55,6 +55,7 @@ learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>
 
 public class RegisterCard: Transaction {
     
+    /// path variable for registering a card
     public static var path: String { get { return "transactions/registercard" } }
 
 }

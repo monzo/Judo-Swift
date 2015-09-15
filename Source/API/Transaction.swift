@@ -25,8 +25,7 @@
 import Foundation
 import CoreLocation
 
-let putPath = "transactions"
-
+/// intended for subclassing paths
 public protocol TransactionPath {
     static var path: String {get}
 }
@@ -34,18 +33,27 @@ public protocol TransactionPath {
 /// Superclass Helper for Payments and PreAuths
 public class Transaction {
     
+    /// the judoID for the transaction
     public private (set) var judoID: String
     
+    /// the reference of the transaction
     public private (set) var reference: Reference
+    /// the amount and currency of the transaction
     public private (set) var amount: Amount
-
+    
+    /// the card info of the transaction
     public private (set) var card: Card?
+    /// the payment token of the transaction
     public private (set) var payToken: PaymentToken?
-
+    
+    /// location coordinate for fraud prevention in this transaction
     public private (set) var location: CLLocationCoordinate2D?
+    /// device identification for this transaction
     public private (set) var deviceSignal: JSONDictionary?
     
+    /// mobile number of the entity initiating the transaction
     public private (set) var mobileNumber: String?
+    /// email address of the entity initiating the transaction
     public private (set) var emailAddress: String?
     
 
@@ -175,7 +183,7 @@ public class Transaction {
     
     
     /**
-    threeDSecure call - this method will automatically trigger a Session Call to the Judo REST API and execute the finalizing 3DS call on top of the information that were set in the previous methods
+    threeDSecure call - this method will automatically trigger a Session Call to the Judo REST API and execute the finalizing 3DS call on top of the information that had been sent in the previous methods
     
     - Parameter dictionary: the dictionary that contains all the information from the 3DS UIWebView Request
     - Parameter receiptID: the receipt for the given Transaction
@@ -197,7 +205,7 @@ public class Transaction {
         
         paymentDetails["receiptID"] = receiptID
         
-        Session.PUT(putPath + "/" + receiptID, parameters: paymentDetails) { (response, error) -> () in
+        Session.PUT("transactions/" + receiptID, parameters: paymentDetails) { (response, error) -> () in
             block(response, error)
         }
 

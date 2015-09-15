@@ -41,9 +41,12 @@ Refunding a successful payment is easy, it simply requires you to identify the o
 */
 public class Refund: NSObject {
     
-    private (set) var receiptID: String
-    private (set) var amount: Amount
-    private (set) var paymentReference: String
+    /// the receipt ID for a refund
+    public private (set) var receiptID: String
+    /// the amount of the refund
+    public private (set) var amount: Amount
+    /// the payment reference String for a refund
+    public private (set) var paymentReference: String
     
     
     /**
