@@ -81,7 +81,7 @@ $(SRCROOT)/Carthage/Build/iOS/Judo.framework
 
 ### Manual Integration
 
-Uou can integrate Judo into your project manually if you prefer not to use dependency management.
+You can integrate Judo into your project manually if you prefer not to use dependency management.
 
 #### Adding the Framework
 
