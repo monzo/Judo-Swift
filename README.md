@@ -6,7 +6,7 @@
 
 # Judo Swift SDK #
 
-This is the new Judo Swift SDK. It contains base work to easily access the REST API with all the validation and helper methods needed to make simple payments with a fully custom UI. If you are interested in doing easy transaction without having to implement a full custom UI, Fraud prevention, 3DS, AVS, etc as well as PCI compliance, have a look at the (JudoKit)[https://github.com/JudoPay/JudoKit] project which contains this as a base module.
+This is the new Judo Swift SDK. It contains base work to easily access the REST API with all the validation and helper methods needed to make simple payments with a fully custom UI. If you are interested in doing easy transaction without having to implement a full custom UI, Fraud prevention, 3DS, AVS, etc as well as PCI compliance, have a look at the [JudoKit](https://github.com/JudoPay/JudoKit) project which contains this as a base module.
 
 If you still decide to implement everything yourself we strongly recommend you to use the [JudoSecure](https://github.com/JudoPay/Judo-Security) Framework and send the device related information along with transaction requests to ensure safety and fraud security for all your payments.
 
