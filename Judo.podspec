@@ -23,5 +23,4 @@ Pod::Spec.new do |s|
 
   s.source_files     = 'Source/**/*.swift'
 
-  s.frameworks       = 'CoreLocation'
 end
