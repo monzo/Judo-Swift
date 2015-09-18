@@ -32,7 +32,7 @@ class PreAuthTests: XCTestCase {
     
     
     func testPreAuth() {
-        let references = Reference(yourConsuerReference: "consumer0053252", yourPaymentReference: "payment123asd", yourPaymentMetaData: nil)
+        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let amount = Amount(30)
         do {
             let preauth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references)
@@ -46,7 +46,7 @@ class PreAuthTests: XCTestCase {
     
     func testJudoMakeValidPreAuth() {
         // Given
-        let references = Reference(yourConsuerReference: "consumer0053252", yourPaymentReference: "payment123asd", yourPaymentMetaData: nil)
+        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
         let amount = Amount(30)
@@ -79,7 +79,7 @@ class PreAuthTests: XCTestCase {
     
     func testJudoMakeValidTokenPreAuth() {
         // Given
-        let references = Reference(yourConsuerReference: "consumer0053252", yourPaymentReference: "payment123asd", yourPaymentMetaData: nil)
+        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
         let amount = Amount(30)
@@ -133,7 +133,7 @@ class PreAuthTests: XCTestCase {
         let tooLongJudoID = "33224433441" // 11 chars not allowed
         let luhnInvalidJudoID = "33224433"
         var parameterError = false
-        let references = Reference(yourConsuerReference: "consumer0053252", yourPaymentReference: "payment123asd", yourPaymentMetaData: nil)
+        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let amount = Amount(30)
         
         // When too short
@@ -183,7 +183,7 @@ class PreAuthTests: XCTestCase {
     
     func testJudoMakeInvalidReferencesPreAuth() {
         // Given
-        let references = Reference(yourConsuerReference: "", yourPaymentReference: "", yourPaymentMetaData: nil)
+        let references = Reference(consumerRef: "", paymentRef: "")
         let amount = Amount(30)
         
         // When

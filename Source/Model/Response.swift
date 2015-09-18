@@ -16,7 +16,7 @@ public struct Response {
     /// the current pagination response
     public let pagination: Pagination?
     /// The array that contains the transaction response objects
-    private(set) public var items = Array<TransactionData>()
+    public private (set) var items = Array<TransactionData>()
     
     
     /**
@@ -123,7 +123,8 @@ public struct TransactionData {
     public let cardDetails: CardDetails
     /// details of the Consumer for use in repeat payments
     public let consumer: Consumer
-    
+    /// raw data of the received dictionary
+    public let rawData: [String : AnyObject]
     
     /**
     create a TransactionData Object from a dictionary
@@ -133,49 +134,33 @@ public struct TransactionData {
     - Returns: a TransactionData object
     */
     static func fromDictionary(dict: JSONDictionary) throws -> TransactionData {
-        guard let receiptID = dict["receiptId"] as? String else { throw JudoError.ResponseParseError }
+        guard let receiptID = dict["receiptId"] as? String,
+            let yourPaymentReference = dict["yourPaymentReference"] as? String,
+            let typeString = dict["type"] as? String,
+            let type = TransactionType(rawValue: typeString),
+            let createdAtString = dict["createdAt"] as? String,
+            let createdAt = ISO8601DateFormatter.dateFromString(createdAtString),
+            let resultString = dict["result"] as? String,
+            let result = TransactionResult(rawValue: resultString),
+            let message = dict["message"] as? String,
+            let judoID = dict["judoId"] as? NSNumber,
+            let merchantName = dict["merchantName"] as? String,
+            let appearsOnStatementAs = dict["appearsOnStatementAs"] as? String,
+            let currency = dict["currency"] as? String,
+            let amountString = dict["amount"] as? String,
+            let cardDetailsDict = dict["cardDetails"] as? JSONDictionary,
+            let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError.ResponseParseError }
         
-        guard let yourPaymentReference = dict["yourPaymentReference"] as? String else { throw JudoError.ResponseParseError }
-        
-        guard let typeString = dict["type"] as? String else { throw JudoError.ResponseParseError }
-        guard let type = TransactionType(rawValue: typeString) else { throw JudoError.ResponseParseError }
-        
-        guard let createdAtString = dict["createdAt"] as? String else { throw JudoError.ResponseParseError }
-        guard let createdAt = ISO8601DateFormatter.dateFromString(createdAtString) else { throw JudoError.ResponseParseError }
-        
-        guard let resultString = dict["result"] as? String else { throw JudoError.ResponseParseError }
-        guard let result = TransactionResult(rawValue: resultString) else { throw JudoError.ResponseParseError }
-        
-        guard let message = dict["message"] as? String else { throw JudoError.ResponseParseError }
-        
-        guard let judoID = dict["judoId"] as? NSNumber else { throw JudoError.ResponseParseError }
-        
-        guard let merchantName = dict["merchantName"] as? String else { throw JudoError.ResponseParseError }
-        
-        guard let appearsOnStatementAs = dict["appearsOnStatementAs"] as? String else { throw JudoError.ResponseParseError }
-        
-        guard let currency = dict["currency"] as? String else { throw JudoError.ResponseParseError }
-        
-        var refunds = Amount(NSDecimalNumber(string: dict["refunds"] as? String))
-        refunds.currency = currency
-        
-        var originalAmount = Amount(NSDecimalNumber(string: dict["originalAmount"] as? String))
-        originalAmount.currency = currency
-        
-        var netAmount = Amount(NSDecimalNumber(string: dict["netAmount"] as? String))
-        netAmount.currency = currency
-        
-        guard let amountString = dict["amount"] as? String else { throw JudoError.ResponseParseError }
+        let refunds = Amount(dict["refunds"] as? String, currency)
+        let originalAmount = Amount(dict["originalAmount"] as? String, currency)
+        let netAmount = Amount(dict["netAmount"] as? String, currency)
         
         let amount = Amount(NSDecimalNumber(string: amountString), currency)
         
-        guard let cardDetailsDict = dict["cardDetails"] as? JSONDictionary else { throw JudoError.ResponseParseError }
         let cardDetails = CardDetails.fromDictionary(cardDetailsDict)
-        
-        guard let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError.ResponseParseError }
         let consumer = Consumer.fromDictionary(consumerDict)
         
-        return TransactionData(receiptID: receiptID, yourPaymentReference: yourPaymentReference, type: type, createdAt: createdAt, result: result, message: message, judoID: String(judoID.integerValue), merchantName: merchantName, appearsOnStatementAs: appearsOnStatementAs, refunds: refunds, originalAmount: originalAmount, netAmount: netAmount, amount: amount, cardDetails: cardDetails, consumer: consumer)
+        return TransactionData(receiptID: receiptID, yourPaymentReference: yourPaymentReference, type: type, createdAt: createdAt, result: result, message: message, judoID: String(judoID.integerValue), merchantName: merchantName, appearsOnStatementAs: appearsOnStatementAs, refunds: refunds, originalAmount: originalAmount, netAmount: netAmount, amount: amount, cardDetails: cardDetails, consumer: consumer, rawData: dict)
     }
     
     

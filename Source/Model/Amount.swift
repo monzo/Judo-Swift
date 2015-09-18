@@ -38,7 +38,12 @@ public struct Amount {
         self.currency = currency
         self.amount = amount
     }
-    
+
+    public init(_ amount: NSDecimalNumber, _ currency: String? = "GBP") {
+        self.currency = currency!
+        self.amount = amount
+    }
+
     public init?(_ amount: NSDecimalNumber?, _ currency: String? = nil) {
         guard let amount = amount else { return nil }
         self.amount = amount
@@ -46,9 +51,24 @@ public struct Amount {
             self.currency = currency
         }
     }
+
+    public init?(_ amount: String?, _ currency: String) {
+        guard let amount = amount where Double(amount) != nil else { return nil }
+        self.amount = NSDecimalNumber(string: amount)
+        self.currency = currency
+    }
+
+    public init?(_ amount: String?) {
+        guard let amount = amount where Double(amount) != nil else { return nil }
+        self.amount = NSDecimalNumber(string: amount)
+    }
     
     public init(_ amount: NSDecimalNumber) {
         self.amount = amount
+    }
+    
+    public init(_ amount: String) {
+        self.amount = NSDecimalNumber(string: amount)
     }
     
     public init(_ amount: Int) {

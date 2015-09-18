@@ -77,7 +77,6 @@ public struct Judo {
     - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
     - Parameter amount:    the amount of the Payment
     - Parameter reference: the reference
-    - Parameter card:      the card
     
     - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
     
@@ -94,7 +93,6 @@ public struct Judo {
     - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
     - Parameter amount:    the amount of the PreAuth
     - Parameter reference: the reference
-    - Parameter card:      the card
     
     - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
     
@@ -111,7 +109,6 @@ public struct Judo {
     - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
     - Parameter amount:    the amount of the RegisterCard
     - Parameter reference: the reference
-    - Parameter card:      the card
     
     - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
     
