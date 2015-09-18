@@ -40,7 +40,9 @@ public struct Amount {
     }
 
     public init(_ amount: NSDecimalNumber, _ currency: String? = "GBP") {
-        self.currency = currency!
+        if let currency = currency {
+            self.currency = currency
+        }
         self.amount = amount
     }
 
