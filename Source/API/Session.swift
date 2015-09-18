@@ -256,11 +256,11 @@ public struct Session {
             do {
                 if let results = upJSON["results"] as? Array<JSONDictionary> {
                     for item in results {
-                        let transaction = try TransactionData.fromDictionary(item)
+                        let transaction = try TransactionData(item)
                         result.append(transaction)
                     }
                 } else {
-                    let transaction = try TransactionData.fromDictionary(upJSON)
+                    let transaction = try TransactionData(upJSON)
                     result.append(transaction)
                 }
             } catch {

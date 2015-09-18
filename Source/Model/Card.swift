@@ -440,12 +440,11 @@ public struct CardDetails {
     /// the card network
     public let cardNetwork: CardNetwork?
     
-    static func fromDictionary(dict: JSONDictionary) -> CardDetails {
-        let lastFour = dict["cardLastfour"] as? String
-        let endDate = dict["endDate"] as? String
-        let cardToken = dict["cardToken"] as? String
-        // TODO: parse dict["cardType"] into CardNetwork
-        return CardDetails(cardLastFour: lastFour, endDate: endDate, cardToken: cardToken, cardNetwork: nil)
+    public init(_ dict: JSONDictionary) {
+        self.cardLastFour = dict["cardLastfour"] as? String
+        self.endDate = dict["endDate"] as? String
+        self.cardToken = dict["cardToken"] as? String
+        self.cardNetwork = nil // TODO: parse dict["cardType"] into CardNetwork
     }
 }
 

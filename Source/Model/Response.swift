@@ -63,7 +63,12 @@ public struct PaymentToken {
     /// Can be used to charge future payments against this card.
     public let cardToken: String
     
-    init?(consumerToken: String?, cardToken: String?) {
+    public init(consumerToken: String, cardToken: String) {
+        self.consumerToken = consumerToken
+        self.cardToken = cardToken
+    }
+    
+    public init?(consumerToken: String?, cardToken: String?) {
         guard let consumerToken = consumerToken,
             let cardToken = cardToken else {
                 return nil
@@ -83,8 +88,9 @@ public struct Consumer {
     /// Your reference for this Consumer as you sent in your request.
     public let yourConsumerReference: String
     
-    static func fromDictionary(dict: JSONDictionary) -> Consumer {
-        return Consumer(consumerToken: dict["consumerToken"] as! String, yourConsumerReference: dict["yourConsumerReference"] as! String)
+    public init(_ dict: JSONDictionary) {
+        self.consumerToken = dict["consumerToken"] as! String
+        self.yourConsumerReference = dict["yourConsumerReference"] as! String
     }
 }
 
@@ -133,7 +139,7 @@ public struct TransactionData {
     
     - Returns: a TransactionData object
     */
-    static func fromDictionary(dict: JSONDictionary) throws -> TransactionData {
+    public init(_ dict: JSONDictionary) throws {
         guard let receiptID = dict["receiptId"] as? String,
             let yourPaymentReference = dict["yourPaymentReference"] as? String,
             let typeString = dict["type"] as? String,
@@ -151,16 +157,25 @@ public struct TransactionData {
             let cardDetailsDict = dict["cardDetails"] as? JSONDictionary,
             let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError.ResponseParseError }
         
-        let refunds = Amount(dict["refunds"] as? String, currency)
-        let originalAmount = Amount(dict["originalAmount"] as? String, currency)
-        let netAmount = Amount(dict["netAmount"] as? String, currency)
+        self.receiptID = receiptID
+        self.yourPaymentReference = yourPaymentReference
+        self.type = type
+        self.createdAt = createdAt
+        self.result = result
+        self.message = message
+        self.judoID = String(judoID.integerValue)
+        self.merchantName = merchantName
+        self.appearsOnStatementAs = appearsOnStatementAs
         
-        let amount = Amount(NSDecimalNumber(string: amountString), currency)
+        self.refunds = Amount(dict["refunds"] as? String, currency)
+        self.originalAmount = Amount(dict["originalAmount"] as? String, currency)
+        self.netAmount = Amount(dict["netAmount"] as? String, currency)
         
-        let cardDetails = CardDetails.fromDictionary(cardDetailsDict)
-        let consumer = Consumer.fromDictionary(consumerDict)
+        self.amount = Amount(NSDecimalNumber(string: amountString), currency)
         
-        return TransactionData(receiptID: receiptID, yourPaymentReference: yourPaymentReference, type: type, createdAt: createdAt, result: result, message: message, judoID: String(judoID.integerValue), merchantName: merchantName, appearsOnStatementAs: appearsOnStatementAs, refunds: refunds, originalAmount: originalAmount, netAmount: netAmount, amount: amount, cardDetails: cardDetails, consumer: consumer, rawData: dict)
+        self.cardDetails = CardDetails(cardDetailsDict)
+        self.consumer = Consumer(consumerDict)
+        self.rawData = dict
     }
     
     
