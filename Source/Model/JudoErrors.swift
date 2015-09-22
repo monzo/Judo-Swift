@@ -37,7 +37,7 @@ public enum JudoError: Int, ErrorType {
     case ThreeDSAuthRequest, Failed3DSError
     
     // MARK: User Errors
-    case UserDidCancel
+    case UserDidCancel = -999
 
     // MARK: Server errors
     case YouAreGoodToGo = 20
