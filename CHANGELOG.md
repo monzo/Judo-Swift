@@ -2,11 +2,25 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.0.x` Releases - [1.0.0](#100)
+- `1.0.x` Releases - [1.0.0](#100) | [1.1.0](#110)
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 
+# [1.1.0](https://github.com/JudoPay/Judo-Swift/tag/1.1.0)
+Released on 2015-09-18
+#### Updated
+- simplified implementation
+- updated documentation
+- added more ways to initialize a Card Object
+- minimized lines of code in a few methods
+- created custom initializes instead of static methods
+#### Fixed
+- a few typo fixes
+- Tests
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
+
+---
 # [1.0.0](https://github.com/JudoPay/Judo-Swift/tag/1.0.0)
 Released on 2015-09-15
 
