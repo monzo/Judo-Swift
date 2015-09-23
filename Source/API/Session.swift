@@ -24,6 +24,7 @@
 
 import Foundation
 import CoreLocation
+import PassKit
 
 
 internal let kJudoIDLenght = (6...10)
@@ -287,7 +288,7 @@ public struct Session {
     
     - Returns: true if the given string just contains decimal characters
     */
-    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
+    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, pkPayment: PKPayment?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
         let parametersDict = NSMutableDictionary()
         if let ref = reference {
             parametersDict["yourConsumerReference"] = ref.yourConsumerReference
@@ -328,6 +329,25 @@ public struct Session {
         } else if let token = token {
             parametersDict["consumerToken"] = token.consumerToken
             parametersDict["cardToken"] = token.cardToken
+        } else if let pkPayment = pkPayment {
+            var tokenDict = JSONDictionary()
+            if #available(iOS 9.0, *) {
+                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentMethod.displayName
+            } else {
+                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentInstrumentName
+            }
+            if #available(iOS 9.0, *) {
+                tokenDict["paymentNetwork"] = pkPayment.token.paymentMethod.network
+            } else {
+                tokenDict["paymentNetwork"] = pkPayment.token.paymentNetwork
+            }
+            do {
+                tokenDict["paymentData"] = try NSJSONSerialization.JSONObjectWithData(pkPayment.token.paymentData, options: NSJSONReadingOptions.MutableLeaves) as? JSONDictionary
+            } catch {
+                return nil
+            }
+            
+            parametersDict["pkPayment"] = ["token":tokenDict]
         } else {
             return nil
         }
