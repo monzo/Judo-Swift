@@ -24,6 +24,7 @@
 
 import Foundation
 import CoreLocation
+import PassKit
 
 /// intended for subclassing paths
 public protocol TransactionPath {
@@ -55,6 +56,9 @@ public class Transaction {
     public private (set) var mobileNumber: String?
     /// email address of the entity initiating the transaction
     public private (set) var emailAddress: String?
+    
+    /// support for apple Pay transactions added in Base
+    public private (set) var pkPayment: PKPayment?
     
 
     /**
@@ -152,6 +156,19 @@ public class Transaction {
         return self
     }
     
+    
+    /**
+    for creating an ApplePay Transaction, use this method to add the PKPayment object
+    
+    - Parameter payment: the PKPayment object
+    
+    - Returns: reactive self
+    */
+    public func pkPayment(payment: PKPayment) -> Self {
+        self.pkPayment = payment
+        return self
+    }
+    
 
     /**
     completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods
@@ -170,7 +187,7 @@ public class Transaction {
             throw JudoError.CardOrTokenMissingError
         }
         
-        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
+        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, pkPayment: self.pkPayment, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
             throw JudoError.ParameterError
         }
         
