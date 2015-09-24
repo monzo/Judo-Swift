@@ -47,9 +47,9 @@ class JudoTests: XCTestCase {
     
     
     func testJudoSandboxMode() {
-        XCTAssertEqual(Judo.endpoint, "https://partnerapi.judopay.com/")
+        XCTAssertEqual(Judo.endpoint, "https://gw1.judopay.com/")
         Judo.sandboxed = true
-        XCTAssertEqual(Judo.endpoint, "https://partnerapi.judopay-sandbox.com/")
+        XCTAssertEqual(Judo.endpoint, "https://gw1.judopay-sandbox.com/")
     }
     
     
