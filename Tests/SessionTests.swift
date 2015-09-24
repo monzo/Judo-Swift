@@ -33,7 +33,7 @@ class SessionTests: XCTestCase {
         let path = "transactions/payments"
         let location = CLLocationCoordinate2D(latitude: 0, longitude: 65)
 
-        guard let parameters = Session.transactionParameters(strippedJudoID, amount: amount, reference: references, card: card, token: nil, location: location, email: emailAddress, mobile: mobileNumber, deviceSignal: nil) as? [String : AnyObject] else {
+        guard let parameters = Session.transactionParameters(strippedJudoID, amount: amount, reference: references, card: card, token: nil, pkPayment: nil, location: location, email: emailAddress, mobile: mobileNumber, deviceSignal: nil) as? [String : AnyObject] else {
             XCTFail()
             return
         }
