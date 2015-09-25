@@ -20,6 +20,8 @@ class PaymentTests: XCTestCase {
         Judo.setToken(token, secret: secret)
         
         Judo.sandboxed = true
+        
+        
     }
     
     

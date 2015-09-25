@@ -32,6 +32,7 @@
 		DA2620381B627239005544B8 /* 400-preauth-unsupported-currency.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26202F1B627239005544B8 /* 400-preauth-unsupported-currency.json */; };
 		DA2620391B627239005544B8 /* 404-preauth-invalid-judoid.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620301B627239005544B8 /* 404-preauth-invalid-judoid.json */; };
 		DA26203A1B627239005544B8 /* 409-preauth-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */; };
+		DA894A611BB552E00068648E /* Session+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA894A5F1BB547F90068648E /* Session+Tests.swift */; settings = {ASSET_TAGS = (); }; };
 		DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE811B67ADE400C9993D /* Receipt.swift */; };
 		DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE831B69240600C9993D /* ReceiptTests.swift */; };
 		DAFA3FF61B5939E50094CFCA /* Judo.h in Headers */ = {isa = PBXBuildFile; fileRef = DAFA3FF51B5939E50094CFCA /* Judo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,6 +88,7 @@
 		DA26202F1B627239005544B8 /* 400-preauth-unsupported-currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "400-preauth-unsupported-currency.json"; sourceTree = "<group>"; };
 		DA2620301B627239005544B8 /* 404-preauth-invalid-judoid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "404-preauth-invalid-judoid.json"; sourceTree = "<group>"; };
 		DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "409-preauth-blocked-account.json"; sourceTree = "<group>"; };
+		DA894A5F1BB547F90068648E /* Session+Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Tests.swift"; sourceTree = "<group>"; };
 		DAAFCE811B67ADE400C9993D /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Source/API/Receipt.swift; sourceTree = "<group>"; };
 		DAAFCE831B69240600C9993D /* ReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTests.swift; sourceTree = "<group>"; };
 		DAFA3FF21B5939E50094CFCA /* Judo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Judo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +168,9 @@
 		DA2620141B624EE9005544B8 /* requests */ = {
 			isa = PBXGroup;
 			children = (
+				DA894A651BB5607D0068648E /* refund */,
+				DA894A641BB560780068648E /* collection */,
+				DA894A631BB560700068648E /* receipt */,
 				DA2620281B62715E005544B8 /* preauth */,
 				DA2620271B627158005544B8 /* payment */,
 			);
@@ -201,6 +206,35 @@
 				DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */,
 			);
 			path = preauth;
+			sourceTree = "<group>";
+		};
+		DA894A621BB560630068648E /* register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = register;
+			path = requests;
+			sourceTree = "<group>";
+		};
+		DA894A631BB560700068648E /* receipt */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = receipt;
+			sourceTree = "<group>";
+		};
+		DA894A641BB560780068648E /* collection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = collection;
+			sourceTree = "<group>";
+		};
+		DA894A651BB5607D0068648E /* refund */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = refund;
 			sourceTree = "<group>";
 		};
 		DADD0A511B8B2A230080471B /* Extensions */ = {
@@ -246,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2620141B624EE9005544B8 /* requests */,
+				DA894A621BB560630068648E /* register */,
 				DAFA40031B5939E60094CFCA /* Info.plist */,
 				DAFA40011B5939E60094CFCA /* JudoTests.swift */,
 				DAFA40121B5957E80094CFCA /* PaymentTests.swift */,
@@ -255,6 +290,7 @@
 				DAFA40181B5958560094CFCA /* RefundTests.swift */,
 				DAFA40241B5E9A870094CFCA /* SessionTests.swift */,
 				DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */,
+				DA894A5F1BB547F90068648E /* Session+Tests.swift */,
 			);
 			name = JudoTests;
 			path = Tests;
@@ -408,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */,
+				DA894A611BB552E00068648E /* Session+Tests.swift in Sources */,
 				DA1C6CB71B6F9E86009F2BE9 /* ListTests.swift in Sources */,
 				DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */,
 				DAFA40191B5958560094CFCA /* RefundTests.swift in Sources */,
