@@ -37,6 +37,26 @@
                BlueprintName = "JudoTests"
                ReferencedContainer = "container:Judo.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ListTests/testJudoPaginatedListPayments()">
+               </Test>
+               <Test
+                  Identifier = "PaymentTests/testJudoMakeInvalidJudoIDPayment()">
+               </Test>
+               <Test
+                  Identifier = "PreAuthTests/testJudoMakeInvalidJudoIDPreAuth()">
+               </Test>
+               <Test
+                  Identifier = "PreAuthTests/testJudoMakeInvalidReferencesPreAuth()">
+               </Test>
+               <Test
+                  Identifier = "ReceiptTests/testJudoTransactionAllReceipts()">
+               </Test>
+               <Test
+                  Identifier = "ReceiptTests/testJudoTransactionReceiptWithPagination()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

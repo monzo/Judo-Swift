@@ -38,6 +38,8 @@ public struct Judo {
         didSet {
             if sandboxed {
                 endpoint = "https://gw1.judopay-sandbox.com/"
+            } else {
+                endpoint = "https://gw1.judopay.com/"
             }
         }
     }
