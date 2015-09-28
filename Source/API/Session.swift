@@ -24,7 +24,7 @@
 
 import Foundation
 import CoreLocation
-
+import PassKit
 
 internal let kJudoIDLenght = (6...10)
 
@@ -33,11 +33,14 @@ public typealias JSONDictionary = [String : AnyObject]
 
 
 /// The Session struct is a wrapper for the REST API calls
-public struct Session {
+public class Session {
     
     
     /// token and secret are saved in the authorizationHeader for authentication of REST API calls
     static var authorizationHeader: String?
+    
+    /// static variable that defines wether local json files should be used instead of the actual REST API
+    internal static var isTesting = false
     
     
     /**
@@ -160,6 +163,9 @@ public struct Session {
     - Returns: a JSON HTTP request with authorization set
     */
     public static func judoRequest(url: String) -> NSMutableURLRequest {
+        if self.isTesting {
+            return self.test_judoRequest(url)
+        }
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         // json configuration header
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -176,6 +182,43 @@ public struct Session {
         // set auth header
         request.addValue(authHeader, forHTTPHeaderField: "Authorization")
         return request
+    }
+    
+    
+    /**
+    Helper Method to create a JSON HTTP request to a local file depending on the endpoint
+    
+    - Parameter url: the url for the request
+    
+    - Returns: a JSON HTTP request to a local file for testing purposes
+    */
+    private static func test_judoRequest(url: String) -> NSMutableURLRequest {
+        let path = url.stringByReplacingOccurrencesOfString(Judo.endpoint, withString: "")
+        
+        var fileName: String?
+        
+        switch path {
+        case "transactions/payments":
+            fileName = "200-payment"
+        case "transactions/payments/validate":
+            fileName = "200-payment-validation"
+        case "transactions/preauths":
+            fileName = "200-preauth-valid"
+        case "transactions/registercard":
+            fileName = "200-payment"
+        case "/transactions/collections":
+            fileName = "200-payment"
+        case "/transactions/refunds":
+            fileName = "200-payment"
+        case "/transactions":
+            fileName = "200-payment"
+        default: // most likely a certain receiptID for query or 3DS
+            fileName = "200-payment"
+        }
+        
+        let filePath = NSBundle(forClass: self).pathForResource(fileName, ofType: "json")!
+        
+        return NSMutableURLRequest(URL: NSURL(fileURLWithPath: filePath))
     }
     
     
@@ -287,7 +330,7 @@ public struct Session {
     
     - Returns: true if the given string just contains decimal characters
     */
-    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
+    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, pkPayment: PKPayment?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
         let parametersDict = NSMutableDictionary()
         if let ref = reference {
             parametersDict["yourConsumerReference"] = ref.yourConsumerReference
@@ -328,6 +371,25 @@ public struct Session {
         } else if let token = token {
             parametersDict["consumerToken"] = token.consumerToken
             parametersDict["cardToken"] = token.cardToken
+        } else if let pkPayment = pkPayment {
+            var tokenDict = JSONDictionary()
+            if #available(iOS 9.0, *) {
+                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentMethod.displayName
+            } else {
+                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentInstrumentName
+            }
+            if #available(iOS 9.0, *) {
+                tokenDict["paymentNetwork"] = pkPayment.token.paymentMethod.network
+            } else {
+                tokenDict["paymentNetwork"] = pkPayment.token.paymentNetwork
+            }
+            do {
+                tokenDict["paymentData"] = try NSJSONSerialization.JSONObjectWithData(pkPayment.token.paymentData, options: NSJSONReadingOptions.MutableLeaves) as? JSONDictionary
+            } catch {
+                return nil
+            }
+            
+            parametersDict["pkPayment"] = ["token":tokenDict]
         } else {
             return nil
         }

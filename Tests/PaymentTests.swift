@@ -10,6 +10,7 @@ import XCTest
 import CoreLocation
 @testable import Judo
 
+
 class PaymentTests: XCTestCase {
     
     
@@ -19,6 +20,7 @@ class PaymentTests: XCTestCase {
         
         Judo.setToken(token, secret: secret)
         
+        Session.isTesting = true
         Judo.sandboxed = true
     }
     
@@ -27,6 +29,8 @@ class PaymentTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        Session.isTesting = false
+        Judo.sandboxed = false
     }
     
     
@@ -46,6 +50,9 @@ class PaymentTests: XCTestCase {
 
     func testJudoMakeValidPayment() {
         // Given
+        let resource = NSBundle(forClass: self.dynamicType).pathForResource("200-payment", ofType: "json")
+        print(resource)
+        
         let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)

@@ -15,11 +15,15 @@ class SessionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        Session.isTesting = true
+        Judo.sandboxed = true
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        Session.isTesting = false
+        Judo.sandboxed = false
     }
     
     func testPOST() {
@@ -33,7 +37,7 @@ class SessionTests: XCTestCase {
         let path = "transactions/payments"
         let location = CLLocationCoordinate2D(latitude: 0, longitude: 65)
 
-        guard let parameters = Session.transactionParameters(strippedJudoID, amount: amount, reference: references, card: card, token: nil, location: location, email: emailAddress, mobile: mobileNumber) as? [String : AnyObject] else {
+        guard let parameters = Session.transactionParameters(strippedJudoID, amount: amount, reference: references, card: card, token: nil, pkPayment: nil, location: location, email: emailAddress, mobile: mobileNumber, deviceSignal: nil) as? [String : AnyObject] else {
             XCTFail()
             return
         }

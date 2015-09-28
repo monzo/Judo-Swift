@@ -34,6 +34,16 @@
 		DA26203A1B627239005544B8 /* 409-preauth-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */; };
 		DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE811B67ADE400C9993D /* Receipt.swift */; };
 		DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE831B69240600C9993D /* ReceiptTests.swift */; };
+		DADDB43C1BB5A986000D52DC /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB43D1BB5A986000D52DC /* 200-payment-blockedcard.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB43E1BB5A986000D52DC /* 200-payment-declined.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201A1B625AB2005544B8 /* 200-payment-declined.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB43F1BB5A986000D52DC /* 400-payment-missing-amount.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201B1B625AB2005544B8 /* 400-payment-missing-amount.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB4401BB5A986000D52DC /* 400-payment-missing-cv2.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201C1B625AB2005544B8 /* 400-payment-missing-cv2.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB4411BB5A986000D52DC /* 400-payment-missing-payref.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201D1B625AB2005544B8 /* 400-payment-missing-payref.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB4421BB5A986000D52DC /* 400-payment-unsupported-currency.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201E1B625AB2005544B8 /* 400-payment-unsupported-currency.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB4431BB5A986000D52DC /* 409-payment-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201F1B625AB2005544B8 /* 409-payment-blocked-account.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB4451BB94354000D52DC /* 200-payment-validation.json in Resources */ = {isa = PBXBuildFile; fileRef = DADDB4441BB94354000D52DC /* 200-payment-validation.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB4461BB94483000D52DC /* 200-preauth-valid.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26202C1B627239005544B8 /* 200-preauth-valid.json */; settings = {ASSET_TAGS = (); }; };
 		DAFA3FF61B5939E50094CFCA /* Judo.h in Headers */ = {isa = PBXBuildFile; fileRef = DAFA3FF51B5939E50094CFCA /* Judo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAFA3FFD1B5939E60094CFCA /* Judo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFA3FF21B5939E50094CFCA /* Judo.framework */; };
 		DAFA40021B5939E60094CFCA /* JudoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40011B5939E60094CFCA /* JudoTests.swift */; };
@@ -89,6 +99,7 @@
 		DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "409-preauth-blocked-account.json"; sourceTree = "<group>"; };
 		DAAFCE811B67ADE400C9993D /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Source/API/Receipt.swift; sourceTree = "<group>"; };
 		DAAFCE831B69240600C9993D /* ReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTests.swift; sourceTree = "<group>"; };
+		DADDB4441BB94354000D52DC /* 200-payment-validation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-validation.json"; sourceTree = "<group>"; };
 		DAFA3FF21B5939E50094CFCA /* Judo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Judo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFA3FF51B5939E50094CFCA /* Judo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Judo.h; path = Source/Judo.h; sourceTree = "<group>"; };
 		DAFA3FF71B5939E50094CFCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
@@ -166,8 +177,12 @@
 		DA2620141B624EE9005544B8 /* requests */ = {
 			isa = PBXGroup;
 			children = (
-				DA2620281B62715E005544B8 /* preauth */,
 				DA2620271B627158005544B8 /* payment */,
+				DA2620281B62715E005544B8 /* preauth */,
+				DA894A621BB560630068648E /* register */,
+				DA894A631BB560700068648E /* receipt */,
+				DA894A641BB560780068648E /* collection */,
+				DA894A651BB5607D0068648E /* refund */,
 			);
 			path = requests;
 			sourceTree = "<group>";
@@ -178,6 +193,7 @@
 				DA2620151B6251A1005544B8 /* 200-payment.json */,
 				DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */,
 				DA26201A1B625AB2005544B8 /* 200-payment-declined.json */,
+				DADDB4441BB94354000D52DC /* 200-payment-validation.json */,
 				DA26201B1B625AB2005544B8 /* 400-payment-missing-amount.json */,
 				DA26201C1B625AB2005544B8 /* 400-payment-missing-cv2.json */,
 				DA26201D1B625AB2005544B8 /* 400-payment-missing-payref.json */,
@@ -201,6 +217,34 @@
 				DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */,
 			);
 			path = preauth;
+			sourceTree = "<group>";
+		};
+		DA894A621BB560630068648E /* register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = register;
+			sourceTree = "<group>";
+		};
+		DA894A631BB560700068648E /* receipt */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = receipt;
+			sourceTree = "<group>";
+		};
+		DA894A641BB560780068648E /* collection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = collection;
+			sourceTree = "<group>";
+		};
+		DA894A651BB5607D0068648E /* refund */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = refund;
 			sourceTree = "<group>";
 		};
 		DADD0A511B8B2A230080471B /* Extensions */ = {
@@ -351,6 +395,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DADDB43E1BB5A986000D52DC /* 200-payment-declined.json in Resources */,
+				DADDB4461BB94483000D52DC /* 200-preauth-valid.json in Resources */,
+				DADDB43D1BB5A986000D52DC /* 200-payment-blockedcard.json in Resources */,
+				DADDB4421BB5A986000D52DC /* 400-payment-unsupported-currency.json in Resources */,
+				DADDB4401BB5A986000D52DC /* 400-payment-missing-cv2.json in Resources */,
+				DADDB43F1BB5A986000D52DC /* 400-payment-missing-amount.json in Resources */,
+				DADDB43C1BB5A986000D52DC /* 200-payment.json in Resources */,
+				DADDB4431BB5A986000D52DC /* 409-payment-blocked-account.json in Resources */,
+				DADDB4411BB5A986000D52DC /* 400-payment-missing-payref.json in Resources */,
+				DADDB4451BB94354000D52DC /* 200-payment-validation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +520,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -508,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -559,6 +613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.judo.JudoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -569,6 +624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.judo.JudoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

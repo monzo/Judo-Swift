@@ -12,7 +12,7 @@ import XCTest
 let token = "<#YOUR TOKEN#>"
 let secret = "<#YOUR SECRET#>"
 
-let strippedJudoID = "<#YOUR JUDOID#>"
+let strippedJudoID = "100000009"
 
 class JudoTests: XCTestCase {
     
@@ -47,16 +47,17 @@ class JudoTests: XCTestCase {
     
     
     func testJudoSandboxMode() {
-        XCTAssertEqual(Judo.endpoint, "https://partnerapi.judopay.com/")
+        Judo.sandboxed = false
+        XCTAssertEqual(Judo.endpoint, "https://gw1.judopay.com/")
         Judo.sandboxed = true
-        XCTAssertEqual(Judo.endpoint, "https://partnerapi.judopay-sandbox.com/")
+        XCTAssertEqual(Judo.endpoint, "https://gw1.judopay-sandbox.com/")
     }
     
     
     
     func testSetTokenAndSecret() {
         // Given
-        XCTAssertFalse(Judo.didSetTokenAndSecret())
+//        XCTAssertFalse(Judo.didSetTokenAndSecret()) can not be checked since this test might be triggered after other tests have run
         
         // When
         Judo.setToken(token, secret: secret)

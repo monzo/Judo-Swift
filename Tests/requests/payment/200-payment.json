@@ -8,9 +8,9 @@
     "judoId": 100915867,
     "merchantName": "PF Testing",
     "appearsOnStatementAs": "PFTesting                ",
-    "originalAmount": 2,
-    "netAmount": 2,
-    "amount": 2,
+    "originalAmount": "1.89",
+    "netAmount": "1.89",
+    "amount": "1.89",
     "currency": "GBP",
     "cardDetails": {
         "cardLastfour": "3436",
