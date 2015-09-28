@@ -2,11 +2,23 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.0.x` Releases - [1.0.0](#100) | [1.1.0](#110)
+- `1.0.x` Releases - [1.0.0](#100) | [1.1.0](#110) | [1.2.0](#120)
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
+## [1.2.0](https://github.com/JudoPay/Judo-Swift/tag/1.2.0)
+not yet released
+#### Added
+- Added Judo-Swift-ApplePay
+- Travis yaml and configured shared scheme for CI integration
+- session tests to mock restapi and test without actual connection
+#### Updated
+- simplified implementation
+#### Fixed
+- Tests
+  - Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
+---
 ## [1.1.0](https://github.com/JudoPay/Judo-Swift/tag/1.1.0)
 Released on 2015-09-18
 #### Updated
