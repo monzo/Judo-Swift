@@ -30,7 +30,7 @@ class CollectionTests: XCTestCase {
     func testCollection() {
         // Given
         let receiptID = "1497684"
-        let amount = Amount(30)
+        let amount = Amount(30, "GBP")
         let payRef = "payment123asd"
         
         let expectation = self.expectationWithDescription("collection expectation")
