@@ -270,9 +270,9 @@ public enum CardNetwork: Equatable {
         case .JCB:
             return "CAV2"
         case .Unknown:
-            return "CVC2"
+            return "CVV"
         default:
-            return "CSC"
+            return "CVV"
         }
     }
     

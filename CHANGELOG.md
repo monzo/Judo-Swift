@@ -7,13 +7,15 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 ## [1.2.0](https://github.com/JudoPay/Judo-Swift/tag/1.2.0)
-not yet released
+Released on 2015-09-29
 #### Added
 - Added Judo-Swift-ApplePay
 - Travis yaml and configured shared scheme for CI integration
 - session tests to mock restapi and test without actual connection
 #### Updated
 - simplified implementation
+- Post Code titles for different countries
+- security code title defaults changed to be more descriptive and understandable
 #### Fixed
 - Tests
   - Updated by [Hamon Ben Riazy](https://github.com/ryce).
