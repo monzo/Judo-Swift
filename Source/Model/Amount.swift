@@ -30,7 +30,7 @@ import Foundation
 */
 public struct Amount {
     /// The currency ISO Code - GBP is default
-    public var currency: String = "GBP"
+    public var currency: String
     /// The amount to process, to two decimal places
     public var amount: NSDecimalNumber
     
@@ -39,19 +39,10 @@ public struct Amount {
         self.amount = amount
     }
 
-    public init(_ amount: NSDecimalNumber, _ currency: String? = "GBP") {
-        if let currency = currency {
-            self.currency = currency
-        }
+    public init?(_ amount: NSDecimalNumber?, _ currency: String?) {
+        guard let amount = amount, currency = currency else { return nil }
         self.amount = amount
-    }
-
-    public init?(_ amount: NSDecimalNumber?, _ currency: String? = nil) {
-        guard let amount = amount else { return nil }
-        self.amount = amount
-        if let currency = currency {
-            self.currency = currency
-        }
+        self.currency = currency
     }
 
     public init?(_ amount: String?, _ currency: String) {
@@ -60,28 +51,29 @@ public struct Amount {
         self.currency = currency
     }
 
-    public init?(_ amount: String?) {
-        guard let amount = amount where Double(amount) != nil else { return nil }
+    public init?(_ amount: String?, _ currency: String?) {
+        guard let amount = amount where Double(amount) != nil, let currency = currency else { return nil }
         self.amount = NSDecimalNumber(string: amount)
+        self.currency = currency
     }
     
-    public init(_ amount: NSDecimalNumber) {
-        self.amount = amount
-    }
-    
-    public init(_ amount: String) {
+    public init(_ amount: String, _ currency: String) {
         self.amount = NSDecimalNumber(string: amount)
+        self.currency = currency
     }
     
-    public init(_ amount: Int) {
+    public init(_ amount: Int, _ currency: String) {
         self.amount = NSDecimalNumber(integer: amount)
+        self.currency = currency
     }
     
-    public init(_ amount: UInt) {
+    public init(_ amount: UInt, _ currency: String) {
         self.amount = NSDecimalNumber(unsignedLong: amount)
+        self.currency = currency
     }
     
-    public init(_ amount: Float) {
+    public init(_ amount: Float, _ currency: String) {
         self.amount = NSDecimalNumber(float: amount)
+        self.currency = currency
     }
 }
