@@ -13,6 +13,7 @@ Released on 2015-09-29
 - Travis yaml and configured shared scheme for CI integration
 - session tests to mock restapi and test without actual connection
 #### Updated
+- Amount can only be initialized when an amount and a currency string is passed
 - simplified implementation
 - Post Code titles for different countries
 - security code title defaults changed to be more descriptive and understandable
