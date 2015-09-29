@@ -46,11 +46,11 @@ public enum BillingCountry: String {
     public func titleDescription() -> String {
         switch self {
         case .USA:
-            return "ZIP"
+            return "ZIP code"
         case .Canada:
-            return "Postal"
+            return "Postal code"
         default:
-            return "Post"
+            return "Post code"
         }
     }
 }
