@@ -172,6 +172,10 @@ public class Session {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("5.0.0", forHTTPHeaderField: "API-Version")
 
+        // add the version of the sdk to the header
+        let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"]
+        request.addValue("iOS-Version\\\(version)", forHTTPHeaderField: "User-Agent")
+        
         // check if token and secret have been set
         guard let authHeader = self.authorizationHeader else {
             print("token and secret not set")
@@ -326,9 +330,18 @@ public class Session {
     /**
     Helper method to create all the parameters necessary for a Transaction
     
-    - Parameter a: the given String to check wether it is decimal
+    - parameter judoID:       the number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
+    - parameter amount:       The amount and currency to process
+    - parameter reference:    the reference object with payment ref, consumer ref and meta data
+    - parameter card:         the card object containing card info if available
+    - parameter token:        the token if available
+    - parameter pkPayment:    the pkPayment object for an ApplePay Transaction if available
+    - parameter location:     the location if available
+    - parameter email:        the email address as a string if available
+    - parameter mobile:       the mobile phone number as a string if available
+    - parameter deviceSignal: the device signal for fraud prevention [more info](https://github.com/judopay/judoshield)
     
-    - Returns: true if the given string just contains decimal characters
+    - returns: a Dictionary Object for sending information necessary for a Transaction
     */
     static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, pkPayment: PKPayment?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
         let parametersDict = NSMutableDictionary()
@@ -414,7 +427,15 @@ public class Session {
     }
     
     
+    /**
+    Helper method to create a dictionary of all the parameters necessary for a refund or a collection
     
+    - parameter receiptId:        the receipt id for a refund or a collection
+    - parameter amount:           The amount to process
+    - parameter paymentReference: the payment reference
+    
+    - returns: a Dictionary containing all the information to submit for a refund or a collection
+    */
     static func progressionParameters(receiptId: String, amount: Amount, paymentReference: String) -> JSONDictionary {
         return ["receiptId":receiptId, "amount": amount.amount, "yourPaymentReference": paymentReference]
     }

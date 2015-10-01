@@ -27,7 +27,7 @@ import Foundation
 /** 
 Refunding a successful payment is easy, it simply requires you to identify the original receipt ID for the payment and the amount you wish to refund. When we've received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you make a Refund with the SDK.
 
-### collection by ID, amount and reference
+### refund by ID, amount and reference
 ```swift
     Judo.refund(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
         if let error = error {
