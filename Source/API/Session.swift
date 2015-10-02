@@ -173,7 +173,7 @@ public class Session {
         request.addValue("5.0.0", forHTTPHeaderField: "API-Version")
 
         // add the version of the sdk to the header
-        let version = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"]
+        let version = NSBundle(forClass: self).infoDictionary?["CFBundleShortVersionString"]
         request.addValue("iOS-Version\\\(version)", forHTTPHeaderField: "User-Agent")
         
         // check if token and secret have been set
