@@ -183,7 +183,7 @@ public class Transaction {
         
         if (self.card != nil && self.payToken != nil) {
             throw JudoError.CardAndTokenError
-        } else if self.card == nil && self.payToken == nil {
+        } else if self.card == nil && self.payToken == nil && self.pkPayment == nil {
             throw JudoError.CardOrTokenMissingError
         }
         
