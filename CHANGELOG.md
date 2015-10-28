@@ -17,6 +17,8 @@ Planned Release Date 2015-11-05
 - boolean that can be set to ignore or restrict transactions from Jailbroken devices
 #### Removed
 - unecessary variable for allowed card networks in Judo
+#### Fixed
+- User-Agent Header would always send Judo Version instead of JudoKit version if that was used
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
