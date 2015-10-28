@@ -31,14 +31,6 @@ class JudoTests: XCTestCase {
     
     
     
-    func testJudoSupportedNetworks() {
-        let supportedNetworks = Judo.supportedNetworks
-        let cardTypes: [CardNetwork] = [.Visa(.Debit), .MasterCard(.Debit), .MasterCard(.Credit), .AMEX]
-        XCTAssert(supportedNetworks == cardTypes)
-    }
-    
-    
-    
     func testJudoErrorDomain() {
         let errorDomain = JudoErrorDomain
         XCTAssertNotNil(errorDomain)

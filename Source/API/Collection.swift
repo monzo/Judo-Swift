@@ -64,7 +64,12 @@ public class Collection: NSObject {
         self.amount = amount
         self.paymentReference = paymentReference
         super.init()
-
+        
+        // check if device is jailbroken and sdk was set to restrict access
+        if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
+            throw JudoError.JailbrokenDeviceDisallowedError
+        }
+        
         // luhn check the receipt id
         if !Session.isLuhnValid(receiptID) {
             throw JudoError.LuhnValidationError

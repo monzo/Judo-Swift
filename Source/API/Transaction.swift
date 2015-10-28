@@ -75,6 +75,11 @@ public class Transaction {
         self.amount = amount
         self.reference = reference
         
+        // check if device is jailbroken and sdk was set to restrict access
+        if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
+            throw JudoError.JailbrokenDeviceDisallowedError
+        }
+        
         // judoid validation
         let strippedJudoID = Session.stripJudoID(judoID)
         

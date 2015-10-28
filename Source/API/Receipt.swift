@@ -71,6 +71,13 @@ public class Receipt: NSObject {
         // luhn check the receipt id
         self.receiptID = receiptID
         super.init()
+
+        // check if device is jailbroken and sdk was set to restrict access
+        if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
+            throw JudoError.JailbrokenDeviceDisallowedError
+        }
+        
+        // validate receiptID format
         if let recID = receiptID where !Session.isLuhnValid(recID) {
             throw JudoError.LuhnValidationError
         }

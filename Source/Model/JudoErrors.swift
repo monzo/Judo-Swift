@@ -28,7 +28,7 @@ public let JudoErrorDomain = "com.judopay.error"
 
 public enum JudoError: Int, ErrorType {
     // MARK: Device Errors
-    case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError
+    case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
     
     // MARK: Card Errors
     case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry

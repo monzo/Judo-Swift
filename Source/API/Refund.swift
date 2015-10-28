@@ -59,10 +59,16 @@ public class Refund: NSObject {
     - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     */
     init(receiptID: String, amount: Amount, paymentReference: String) throws {
+        // initialise variables
         self.receiptID = receiptID
         self.amount = amount
         self.paymentReference = paymentReference
         super.init()
+        
+        // check if device is jailbroken and sdk was set to restrict access
+        if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
+            throw JudoError.JailbrokenDeviceDisallowedError
+        }
         
         // luhn check the receipt id
         if !Session.isLuhnValid(receiptID) {
