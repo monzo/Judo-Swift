@@ -173,8 +173,12 @@ public class Session {
         request.addValue("5.0.0", forHTTPHeaderField: "API-Version")
 
         // add the version and lang of the sdk to the header
-        let version = NSBundle(forClass: self).infoDictionary?["CFBundleShortVersionString"]
-        request.addValue("iOS-Version\\\(version) lang\\(Swift-2.0)", forHTTPHeaderField: "User-Agent")
+        var bundle = NSBundle(identifier: "com.judo.JudoKit")
+        if bundle == nil {
+            bundle = NSBundle(forClass: self)
+        }
+        let version = bundle!.infoDictionary?["CFBundleShortVersionString"]
+        request.addValue("iOS-Version\\\(version) lang\\(Swift)", forHTTPHeaderField: "User-Agent")
         
         // check if token and secret have been set
         guard let authHeader = self.authorizationHeader else {

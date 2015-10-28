@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0DC8931BA317C9002FBECC /* RegisterCard.swift */; settings = {ASSET_TAGS = (); }; };
+		DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0DC8931BA317C9002FBECC /* RegisterCard.swift */; };
 		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
 		DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */; };
 		DA1C6CB11B6F9C25009F2BE9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CB01B6F9C25009F2BE9 /* Address.swift */; };
@@ -34,16 +34,16 @@
 		DA26203A1B627239005544B8 /* 409-preauth-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */; };
 		DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE811B67ADE400C9993D /* Receipt.swift */; };
 		DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE831B69240600C9993D /* ReceiptTests.swift */; };
-		DADDB43C1BB5A986000D52DC /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB43D1BB5A986000D52DC /* 200-payment-blockedcard.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB43E1BB5A986000D52DC /* 200-payment-declined.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201A1B625AB2005544B8 /* 200-payment-declined.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB43F1BB5A986000D52DC /* 400-payment-missing-amount.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201B1B625AB2005544B8 /* 400-payment-missing-amount.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB4401BB5A986000D52DC /* 400-payment-missing-cv2.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201C1B625AB2005544B8 /* 400-payment-missing-cv2.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB4411BB5A986000D52DC /* 400-payment-missing-payref.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201D1B625AB2005544B8 /* 400-payment-missing-payref.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB4421BB5A986000D52DC /* 400-payment-unsupported-currency.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201E1B625AB2005544B8 /* 400-payment-unsupported-currency.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB4431BB5A986000D52DC /* 409-payment-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201F1B625AB2005544B8 /* 409-payment-blocked-account.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB4451BB94354000D52DC /* 200-payment-validation.json in Resources */ = {isa = PBXBuildFile; fileRef = DADDB4441BB94354000D52DC /* 200-payment-validation.json */; settings = {ASSET_TAGS = (); }; };
-		DADDB4461BB94483000D52DC /* 200-preauth-valid.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26202C1B627239005544B8 /* 200-preauth-valid.json */; settings = {ASSET_TAGS = (); }; };
+		DADDB43C1BB5A986000D52DC /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; };
+		DADDB43D1BB5A986000D52DC /* 200-payment-blockedcard.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620191B625AB2005544B8 /* 200-payment-blockedcard.json */; };
+		DADDB43E1BB5A986000D52DC /* 200-payment-declined.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201A1B625AB2005544B8 /* 200-payment-declined.json */; };
+		DADDB43F1BB5A986000D52DC /* 400-payment-missing-amount.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201B1B625AB2005544B8 /* 400-payment-missing-amount.json */; };
+		DADDB4401BB5A986000D52DC /* 400-payment-missing-cv2.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201C1B625AB2005544B8 /* 400-payment-missing-cv2.json */; };
+		DADDB4411BB5A986000D52DC /* 400-payment-missing-payref.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201D1B625AB2005544B8 /* 400-payment-missing-payref.json */; };
+		DADDB4421BB5A986000D52DC /* 400-payment-unsupported-currency.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201E1B625AB2005544B8 /* 400-payment-unsupported-currency.json */; };
+		DADDB4431BB5A986000D52DC /* 409-payment-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26201F1B625AB2005544B8 /* 409-payment-blocked-account.json */; };
+		DADDB4451BB94354000D52DC /* 200-payment-validation.json in Resources */ = {isa = PBXBuildFile; fileRef = DADDB4441BB94354000D52DC /* 200-payment-validation.json */; };
+		DADDB4461BB94483000D52DC /* 200-preauth-valid.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26202C1B627239005544B8 /* 200-preauth-valid.json */; };
 		DAFA3FF61B5939E50094CFCA /* Judo.h in Headers */ = {isa = PBXBuildFile; fileRef = DAFA3FF51B5939E50094CFCA /* Judo.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DAFA3FFD1B5939E60094CFCA /* Judo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFA3FF21B5939E50094CFCA /* Judo.framework */; };
 		DAFA40021B5939E60094CFCA /* JudoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40011B5939E60094CFCA /* JudoTests.swift */; };
