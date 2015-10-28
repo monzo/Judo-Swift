@@ -63,11 +63,31 @@ public struct PaymentToken {
     /// Can be used to charge future payments against this card.
     public let cardToken: String
     
+    
+    /**
+     designated initialiser for non-optional values
+     
+     - parameter consumerToken: consumer token string
+     - parameter cardToken:     card token string
+     
+     - returns: a PaymentToken object
+     */
     public init(consumerToken: String, cardToken: String) {
         self.consumerToken = consumerToken
         self.cardToken = cardToken
     }
     
+    
+    /**
+     designated initialiser for optional values.
+     
+     - warning: will return nil if one of the passed parameters is nil
+     
+     - parameter consumerToken: consumer token string
+     - parameter cardToken:     card token string
+     
+     - returns: a PaymentToken object
+     */
     public init?(consumerToken: String?, cardToken: String?) {
         guard let consumerToken = consumerToken,
             let cardToken = cardToken else {
@@ -88,6 +108,14 @@ public struct Consumer {
     /// Your reference for this Consumer as you sent in your request.
     public let yourConsumerReference: String
     
+    
+    /**
+     designated initialiser
+     
+     - parameter dict: the consumer dictionary which was return from the Judo REST API
+     
+     - returns: a Consumer object
+     */
     public init(_ dict: JSONDictionary) {
         self.consumerToken = dict["consumerToken"] as! String
         self.yourConsumerReference = dict["yourConsumerReference"] as! String
@@ -194,10 +222,16 @@ public struct TransactionData {
 Type of Transaction
 
 - Payment: a Payment Transaction
+- PreAuth: a PreAuth Transaction
 - Refund:  a Refund Transaction
 */
 public enum TransactionType: String {
-    case Payment, PreAuth, Refund
+    /// a Payment Transaction
+    case Payment
+    /// a PreAuth Transaction
+    case PreAuth
+    /// a Refund Transaction
+    case Refund
 }
 
 
@@ -209,7 +243,12 @@ Result of a Transaction
 - Error:    something went wrong
 */
 public enum TransactionResult: String {
-    case Success, Declined, Error
+    /// successful transaction
+    case Success
+    /// declined transaction
+    case Declined
+    /// something went wrong
+    case Error
 }
 
 // MARK: Helper

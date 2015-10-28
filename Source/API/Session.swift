@@ -492,6 +492,9 @@ public class Session {
 
 // MARK: Pagination
 
+/**
+*  struct to save state on a paginated response
+*/
 public struct Pagination {
     var pageSize: Int = 10
     var offset: Int = 0
@@ -499,7 +502,16 @@ public struct Pagination {
 }
 
 
+/**
+ struct to identify sorting direction
+ 
+ - Descending: Descended Sorting
+ - Ascending:  Ascended Sorting
+ */
 public enum Sort: String {
-    case Descending = "time-descending", Ascending = "time-ascending"
+    /// Descended Sorting
+    case Descending = "time-descending"
+    /// Ascended Sorting
+    case Ascending = "time-ascending"
 }
 

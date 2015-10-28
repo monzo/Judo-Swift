@@ -24,6 +24,10 @@
 
 import Foundation
 
+
+/**
+ *  Entry point of interaction with the Judo Swift SDK
+ */
 public struct Judo {
     
     /// the endpoint for REST API calls to the Judo API

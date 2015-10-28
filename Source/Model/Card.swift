@@ -69,6 +69,19 @@ public struct Card {
     /// The issue number if the card is a Maestro
     public let issueNumber: String?
     
+    
+    /**
+     designated initialiser for the Card struct
+     
+     - parameter number:      the card number (long number)
+     - parameter expiryDate:  the expiry date of the card
+     - parameter cv2:         the security code number of the card
+     - parameter address:     the address of the card holder where the account is registered (AVS)
+     - parameter startDate:   in case of transacting with maestro cards, the start date (optional)
+     - parameter issueNumber: in case of transacting with maestro cards, the issue number (optional)
+     
+     - returns: a Card object
+     */
     public init(number: String, expiryDate: String, cv2: String, address: Address?, startDate: String? = nil, issueNumber: String? = nil) {
         self.number = number
         self.expiryDate = expiryDate
@@ -82,9 +95,19 @@ public struct Card {
     *  Card Configuration consists of a Card Network and a given length
     */
     public struct Configuration {
+        /// the network of the configuration
         public let cardNetwork: CardNetwork
+        /// the length of the card for this configuration
         public let cardLength: Int
         
+        /**
+         designated initialiser for a card configuration
+         
+         - parameter cardNetwork: the card network (eg. Visa, MasterCard or AMEX)
+         - parameter cardLength:  the length of the card number (eg. 16 or 19 for Maestro cards)
+         
+         - returns: a Card.Configuration object
+         */
         public init(_ cardNetwork: CardNetwork, _ cardLength: Int) {
             self.cardLength = cardLength
             self.cardNetwork = cardNetwork
@@ -144,7 +167,12 @@ the CardType enum is a value type for CardNetwork to further identify card types
 - Unknown: Unknown Card type
 */
 public enum CardType {
-    case Debit, Credit, Unknown
+    /// Debit Card type
+    case Debit
+    /// Credit Card type
+    case Credit
+    /// Unknown Card type
+    case Unknown
 }
 
 
@@ -166,8 +194,38 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 - Unknown:          Unknown
 */
 public enum CardNetwork: Equatable {
-    case Visa(CardType), MasterCard(CardType), AMEX, DinersClub, Maestro, ChinaUnionPay, Discover, InterPayment, InstaPayment, JCB, Dankort, UATP, Unknown
+    /// Visa Card Network
+    case Visa(CardType)
+    /// MasterCard Network
+    case MasterCard(CardType)
+    /// American Express Card Network
+    case AMEX
+    /// Diners Club Network
+    case DinersClub
+    /// Maestro Card Network
+    case Maestro
+    /// China UnionPay Network
+    case ChinaUnionPay
+    /// Discover Network
+    case Discover
+    /// InterPayment Network
+    case InterPayment
+    /// InstaPayment Network
+    case InstaPayment
+    /// JCB Network
+    case JCB
+    /// Dankort Network
+    case Dankort
+    /// UATP Network
+    case UATP
+    /// Unknown
+    case Unknown
     
+    /**
+     the string value of the receiver
+     
+     - returns: a string describing the receiver
+     */
     public func stringValue() -> String {
         switch self {
         case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
@@ -236,6 +294,15 @@ public enum CardNetwork: Equatable {
         }
     }
     
+    
+    /**
+     the card network type for a given card number string and constrained to a set of networks
+     
+     - parameter string:   the card number as a string
+     - parameter networks: the networks allowed for detection
+     
+     - returns: a CardNetwork if the prefix matches a given set of CardNetworks or CardNetwork.Unknown
+     */
     public static func networkForString(string: String, constrainedToNetworks networks: [CardNetwork]) -> CardNetwork {
         let result = networks.filter({ $0.prefixes().filter({ string.beginsWith($0) }).count > 0 })
         if result.count == 1 {
@@ -244,6 +311,14 @@ public enum CardNetwork: Equatable {
         return CardNetwork.Unknown
     }
     
+    
+    /**
+     the card network type for a given card number
+     
+     - parameter string: the card number as a string
+     
+     - returns: a CardNetwork if the prefix matches any CardNetwork prefix
+     */
     public static func networkForString(string: String) -> CardNetwork {
         let allNetworks: [CardNetwork] = [.Visa(.Unknown), .MasterCard(.Unknown), .AMEX, .DinersClub, .Maestro, .ChinaUnionPay, .Discover, .InterPayment, .InstaPayment, .JCB, .Dankort, .UATP]
         return self.networkForString(string, constrainedToNetworks: allNetworks)
@@ -440,6 +515,14 @@ public struct CardDetails {
     /// the card network
     public let cardNetwork: CardNetwork?
     
+    
+    /**
+     designated initialiser for Card Details
+     
+     - parameter dict: all parameters as a dictionary
+     
+     - returns: a CardDetails object
+     */
     public init(_ dict: JSONDictionary) {
         self.cardLastFour = dict["cardLastfour"] as? String
         self.endDate = dict["endDate"] as? String
