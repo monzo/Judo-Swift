@@ -40,6 +40,12 @@ public enum JudoError: Int, ErrorType {
     case UserDidCancel = -999
 
     // MARK: Server errors
+    
+    // ProcessingException
+    // DataException
+    // SecurityException
+    // GatewayException
+    
     case YouAreGoodToGo = 20
     case AccessForbiddenError = 403
     
