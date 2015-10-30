@@ -13,6 +13,7 @@ JudoErrors.swift
 	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
 	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
 	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
+	case LocationServicesDisabled = 91
 	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
 	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
 	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
