@@ -134,7 +134,7 @@ class PaymentTests: XCTestCase {
     
     
     
-    func testJudoMakeInvalidJudoIDPayment() {
+    func testJudoMakeInvalidJudoIDPayment() throws {
         // Given
         // allowed length for judoID is 6 to 10 chars
         let tooShortJudoID = "33412" // 5 chars not allowed
@@ -147,10 +147,10 @@ class PaymentTests: XCTestCase {
         // When
         do {
             try Judo.payment(tooShortJudoID, amount: amount, reference: references) // this should fail
-        } catch {
+        } catch let error as JudoError {
             // Then
-            switch error {
-            case JudoError.JudoIDInvalidError:
+            switch error.judoCode {
+            case .JudoIDInvalidError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -162,9 +162,9 @@ class PaymentTests: XCTestCase {
         // When
         do {
             try Judo.payment(tooLongJudoID, amount: amount, reference: references) // this should fail
-        } catch {
-            switch error {
-            case JudoError.JudoIDInvalidError:
+        } catch let error as JudoError {
+            switch error.judoCode {
+            case .JudoIDInvalidError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -176,9 +176,9 @@ class PaymentTests: XCTestCase {
         // When
         do {
             try Judo.payment(luhnInvalidJudoID, amount: amount, reference: references) // this should fail
-        } catch {
-            switch error {
-            case JudoError.JudoIDInvalidError:
+        } catch let error as JudoError {
+            switch error.judoCode {
+            case .JudoIDInvalidError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -206,7 +206,7 @@ class PaymentTests: XCTestCase {
         do {
             let makePayment = try Judo.payment(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).validate { dict, error in
                 if let error = error {
-                    XCTAssertEqual(error.code, JudoError.YouAreGoodToGo.rawValue)
+                    XCTAssertEqual(error.judoCode, JudoError.JudoErrorCode.YouAreGoodToGo)
                 } else {
                     XCTFail("api call failed with error: \(error)")
                 }

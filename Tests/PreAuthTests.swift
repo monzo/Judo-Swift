@@ -129,7 +129,7 @@ class PreAuthTests: XCTestCase {
     
     
     
-    func testJudoMakeInvalidJudoIDPreAuth() {
+    func testJudoMakeInvalidJudoIDPreAuth() throws {
         // Given
         // allowed length for judoID is 6 to 10 chars
         let tooShortJudoID = "33412" // 5 chars not allowed
@@ -142,10 +142,10 @@ class PreAuthTests: XCTestCase {
         // When too short
         do {
             try Judo.preAuth(tooShortJudoID, amount: amount, reference: references) // this should fail
-        } catch {
+        } catch let error as JudoError {
             // Then
-            switch error {
-            case JudoError.JudoIDInvalidError:
+            switch error.judoCode {
+            case .JudoIDInvalidError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -157,9 +157,9 @@ class PreAuthTests: XCTestCase {
         // When too long
         do {
             try Judo.preAuth(tooLongJudoID, amount: amount, reference: references) // this should fail
-        } catch {
-            switch error {
-            case JudoError.JudoIDInvalidError:
+        } catch let error as JudoError {
+            switch error.judoCode {
+            case .JudoIDInvalidError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -171,9 +171,9 @@ class PreAuthTests: XCTestCase {
         // When
         do {
             try Judo.preAuth(luhnInvalidJudoID, amount: amount, reference: references) // this should fail
-        } catch {
-            switch error {
-            case JudoError.JudoIDInvalidError:
+        } catch let error as JudoError {
+            switch error.judoCode {
+            case .JudoIDInvalidError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")

@@ -183,7 +183,7 @@ public struct TransactionData {
             let currency = dict["currency"] as? String,
             let amountString = dict["amount"] as? String,
             let cardDetailsDict = dict["cardDetails"] as? JSONDictionary,
-            let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError.ResponseParseError }
+            let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError(.ResponseParseError) }
         
         self.receiptID = receiptID
         self.yourPaymentReference = yourPaymentReference

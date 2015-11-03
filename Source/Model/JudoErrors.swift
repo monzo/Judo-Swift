@@ -26,30 +26,57 @@ import Foundation
 
 public let JudoErrorDomain = "com.judopay.error"
 
-public enum JudoError: Int, ErrorType {
-    // MARK: Device Errors
-    case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
-    case LocationServicesDisabled = 91
+public struct JudoError: ErrorType {
+    public var userInfo: JSONDictionary?
+    public var judoCode: JudoErrorCode
     
-    // MARK: Card Errors
-    case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+    public enum JudoErrorCode: Int {
+        // MARK: Device Errors
+        case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
+        case LocationServicesDisabled = 91
+        
+        // MARK: Card Errors
+        case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+        
+        // MARK: 3DS Error
+        case ThreeDSAuthRequest, Failed3DSError
+        
+        // MARK: User Errors
+        case UserDidCancel = -999
+        
+        // MARK: Server errors
+        
+        // ProcessingException
+        // DataException
+        // SecurityException
+        // GatewayException
+        
+        case YouAreGoodToGo = 20
+        case AccessForbiddenError = 403
+    }
     
-    // MARK: 3DS Error
-    case ThreeDSAuthRequest, Failed3DSError
-    
-    // MARK: User Errors
-    case UserDidCancel = -999
-
-    // MARK: Server errors
-    
-    // ProcessingException
-    // DataException
-    // SecurityException
-    // GatewayException
-    
-    case YouAreGoodToGo = 20
-    case AccessForbiddenError = 403
-    
+    public var domain: String { return JudoErrorDomain }
     public var _domain: String { return JudoErrorDomain }
+    public var _code: Int { return 0 }
+    
+    public init(_ code: JudoErrorCode, _ userInfo: JSONDictionary? = nil) {
+        self.judoCode = code
+        self.userInfo = userInfo
+    }
+    
+    public static func fromNSError(error: NSError) -> JudoError {
+        // TODO:
+        let error = JudoError(.Unknown, nil)
+        return error
+    }
+    
+    public func rawValue() -> Int {
+        // TODO:
+        return 0
+    }
+    
+    public func toNSError() -> NSError {
+        return NSError(domain: JudoErrorDomain, code: self.judoCode.rawValue, userInfo: self.userInfo)
+    }
     
 }

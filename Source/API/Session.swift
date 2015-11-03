@@ -50,7 +50,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    public static func POST(path: String, parameters: JSONDictionary, completion: (Response?, NSError?) -> Void) {
+    public static func POST(path: String, parameters: JSONDictionary, completion: (Response?, JudoError?) -> Void) {
         
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
@@ -66,7 +66,7 @@ public class Session {
         } catch {
             print("body serialization failed")
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completion(nil, JudoError.SerializationError as NSError)
+                completion(nil, JudoError(.SerializationError))
             })
             return // BAIL
         }
@@ -88,7 +88,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func GET(path: String, parameters: JSONDictionary?, completion: ((Response?, NSError?) -> ())) {
+    static func GET(path: String, parameters: JSONDictionary?, completion: ((Response?, JudoError?) -> ())) {
         
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
@@ -102,7 +102,7 @@ public class Session {
             } catch  {
                 print("body serialization failed")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, JudoError.SerializationError as NSError)
+                    completion(nil, JudoError(.SerializationError))
                 })
                 return
             }
@@ -123,7 +123,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func PUT(path: String, parameters: JSONDictionary, completion: ((Response?, NSError?) -> ())) {
+    static func PUT(path: String, parameters: JSONDictionary, completion: ((Response?, JudoError?) -> ())) {
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
         
@@ -138,7 +138,7 @@ public class Session {
         } catch {
             print("body serialization failed")
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completion(nil, JudoError.SerializationError as NSError)
+                completion(nil, JudoError(.SerializationError))
             })
             return // BAIL
         }
@@ -238,13 +238,13 @@ public class Session {
     
     - Returns: a NSURLSessionDataTask that can be used to manipulate the call
     */
-    public static func task(request: NSURLRequest, completion: (Response?, NSError?) -> Void) -> NSURLSessionDataTask {
+    public static func task(request: NSURLRequest, completion: (Response?, JudoError?) -> Void) -> NSURLSessionDataTask {
         return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, resp, err) -> Void in
             
             // error handling
             if data == nil, let error = err {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, error)
+                    completion(nil, JudoError.fromNSError(error))
                 })
                 return // BAIL
             }
@@ -252,7 +252,7 @@ public class Session {
             // unwrap response data
             guard let upData = data else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, JudoError.RequestError as NSError)
+                    completion(nil, JudoError(.RequestError))
                 })
                 return // BAIL
             }
@@ -264,7 +264,7 @@ public class Session {
             } catch {
                 print(error)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, JudoError.SerializationError as NSError)
+                    completion(nil, JudoError(.SerializationError))
                 })
                 return // BAIL
             }
@@ -272,7 +272,7 @@ public class Session {
             // unwrap optional dictionary
             guard let upJSON = json else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, JudoError.SerializationError as NSError)
+                    completion(nil, JudoError(.SerializationError))
                 })
                 return
             }
@@ -280,9 +280,9 @@ public class Session {
             // did an error occur
             if let errorMessage = upJSON["errorMessage"] as? String {
                 print(errorMessage)
-                let errorCode = upJSON["errorType"] as? Int ?? JudoError.Unknown.rawValue
+                let errorCode = upJSON["errorType"] as? Int ?? JudoError(.Unknown).rawValue()
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, NSError(domain: JudoErrorDomain, code: errorCode, userInfo: upJSON["modelErrors"] as? JSONDictionary))
+                    completion(nil, JudoError(JudoError.JudoErrorCode(rawValue: errorCode)!, upJSON["modelErrors"] as? JSONDictionary))
                 })
                 return // BAIL
             }
@@ -290,7 +290,7 @@ public class Session {
             // check if 3DS was requested
             if upJSON["acsUrl"] != nil && upJSON["paReq"] != nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, NSError(domain: JudoErrorDomain, code: JudoError.ThreeDSAuthRequest.rawValue, userInfo: upJSON))
+                    completion(nil, JudoError(.ThreeDSAuthRequest, upJSON))
                 })
                 return // BAIL
             }
@@ -317,7 +317,7 @@ public class Session {
             } catch {
                 print(error)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, JudoError.ResponseParseError as NSError)
+                    completion(nil, JudoError(.ResponseParseError))
                 })
                 return // BAIL
             }

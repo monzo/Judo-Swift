@@ -74,12 +74,12 @@ public class Receipt: NSObject {
 
         // check if device is jailbroken and sdk was set to restrict access
         if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
-            throw JudoError.JailbrokenDeviceDisallowedError
+            throw JudoError(.JailbrokenDeviceDisallowedError)
         }
         
         // validate receiptID format
         if let recID = receiptID where !Session.isLuhnValid(recID) {
-            throw JudoError.LuhnValidationError
+            throw JudoError(.LuhnValidationError)
         }
     }
     
@@ -91,7 +91,7 @@ public class Receipt: NSObject {
     
     - Returns: reactive self
     */
-    public func completion(block: ((Response?, NSError?) -> ())) -> Self {
+    public func completion(block: ((Response?, JudoError?) -> ())) -> Self {
         var path = "transactions"
 
         if let rec = self.receiptID {
@@ -113,7 +113,7 @@ public class Receipt: NSObject {
     - Parameter pagination: The offset, number of items and order in which to return the items
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(pagination: Pagination, block: (Response?, NSError?) -> ()) {
+    public static func list(pagination: Pagination, block: (Response?, JudoError?) -> ()) {
         let path = "transactions?pageSize=\(pagination.pageSize)&offset=\(pagination.offset)&sort=\(pagination.sort.rawValue)"
         Session.GET(path, parameters: nil) { (dictionary, error) -> () in
             block(dictionary, error)
