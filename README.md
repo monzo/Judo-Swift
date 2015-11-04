@@ -233,22 +233,6 @@ This SDK is being developed with a full TDD approach to reach 100% Test coverage
 
 Judo-Swift is released under the MIT license. See LICENSE for details.
 
-### finished
-
-* Card Payment
-* Card PreAuth
-* Token Payment
-* Token PreAuth
-* Receipts
-* Collection
-* Refund
-* CocoaPods
-* Carthage
-* git submodule integration
-* Pagination
-* Types as Responses instead of JSONDictionary
-* Example App
-
 ### Contact
 
 * Ben Riazy
