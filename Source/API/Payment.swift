@@ -83,15 +83,15 @@ public class Payment: Transaction, TransactionPath {
     
     - Returns: reactive Self
     */
-    public func validate(block: ((Response?, NSError?) -> ())) throws -> Self {
+    public func validate(block: ((Response?, JudoError?) -> ())) throws -> Self {
         if (self.card != nil && self.payToken != nil) {
-            throw JudoError.CardAndTokenError
+            throw JudoError(.CardAndTokenError)
         } else if self.card == nil && self.payToken == nil {
-            throw JudoError.CardOrTokenMissingError
+            throw JudoError(.CardOrTokenMissingError)
         }
         
         guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, pkPayment: self.pkPayment, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
-            throw JudoError.ParameterError
+            throw JudoError(.ParameterError)
         }
         
         Session.POST(self.dynamicType.path + "/validate", parameters: parameters) { (dict, error) -> Void in

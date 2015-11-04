@@ -64,10 +64,15 @@ public class Collection: NSObject {
         self.amount = amount
         self.paymentReference = paymentReference
         super.init()
-
+        
+        // check if device is jailbroken and sdk was set to restrict access
+        if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
+            throw JudoError(.JailbrokenDeviceDisallowedError)
+        }
+        
         // luhn check the receipt id
         if !Session.isLuhnValid(receiptID) {
-            throw JudoError.LuhnValidationError
+            throw JudoError(.LuhnValidationError)
         }
     }
     
@@ -79,7 +84,7 @@ public class Collection: NSObject {
     
     - Returns: reactive self
     */
-    public func completion(block: (Response?, NSError?) -> ()) -> Self {
+    public func completion(block: (Response?, JudoError?) -> ()) -> Self {
         
         let parameters = Session.progressionParameters(self.receiptID, amount: self.amount, paymentReference: self.paymentReference)
         

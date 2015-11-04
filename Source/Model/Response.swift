@@ -62,19 +62,43 @@ public struct PaymentToken {
     public let consumerToken: String
     /// Can be used to charge future payments against this card.
     public let cardToken: String
+    /// cv2 of the card
+    public var cv2: String?
     
-    public init(consumerToken: String, cardToken: String) {
+    
+    /**
+     designated initialiser for non-optional values
+     
+     - parameter consumerToken: consumer token string
+     - parameter cardToken:     card token string
+     
+     - returns: a PaymentToken object
+     */
+    public init(consumerToken: String, cardToken: String, cv2: String? = nil) {
         self.consumerToken = consumerToken
         self.cardToken = cardToken
+        self.cv2 = cv2
     }
     
-    public init?(consumerToken: String?, cardToken: String?) {
+    
+    /**
+     designated initialiser for optional values.
+     
+     - warning: will return nil if one of the passed parameters is nil
+     
+     - parameter consumerToken: consumer token string
+     - parameter cardToken:     card token string
+     
+     - returns: a PaymentToken object
+     */
+    public init?(consumerToken: String?, cardToken: String?, cv2: String? = nil) {
         guard let consumerToken = consumerToken,
             let cardToken = cardToken else {
                 return nil
         }
         self.consumerToken = consumerToken
         self.cardToken = cardToken
+        self.cv2 = cv2
     }
 }
 
@@ -88,6 +112,14 @@ public struct Consumer {
     /// Your reference for this Consumer as you sent in your request.
     public let yourConsumerReference: String
     
+    
+    /**
+     designated initialiser
+     
+     - parameter dict: the consumer dictionary which was return from the Judo REST API
+     
+     - returns: a Consumer object
+     */
     public init(_ dict: JSONDictionary) {
         self.consumerToken = dict["consumerToken"] as! String
         self.yourConsumerReference = dict["yourConsumerReference"] as! String
@@ -155,7 +187,7 @@ public struct TransactionData {
             let currency = dict["currency"] as? String,
             let amountString = dict["amount"] as? String,
             let cardDetailsDict = dict["cardDetails"] as? JSONDictionary,
-            let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError.ResponseParseError }
+            let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError(.ResponseParseError) }
         
         self.receiptID = receiptID
         self.yourPaymentReference = yourPaymentReference
@@ -194,10 +226,16 @@ public struct TransactionData {
 Type of Transaction
 
 - Payment: a Payment Transaction
+- PreAuth: a PreAuth Transaction
 - Refund:  a Refund Transaction
 */
 public enum TransactionType: String {
-    case Payment, PreAuth, Refund
+    /// a Payment Transaction
+    case Payment
+    /// a PreAuth Transaction
+    case PreAuth
+    /// a Refund Transaction
+    case Refund
 }
 
 
@@ -209,7 +247,12 @@ Result of a Transaction
 - Error:    something went wrong
 */
 public enum TransactionResult: String {
-    case Success, Declined, Error
+    /// successful transaction
+    case Success
+    /// declined transaction
+    case Declined
+    /// something went wrong
+    case Error
 }
 
 // MARK: Helper

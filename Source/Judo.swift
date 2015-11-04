@@ -24,10 +24,11 @@
 
 import Foundation
 
+
+/**
+ *  Entry point of interaction with the Judo Swift SDK
+ */
 public struct Judo {
-    
-    static public let supportedNetworks: [CardNetwork] = [.Visa(.Debit), .MasterCard(.Debit), .MasterCard(.Credit), .AMEX]
-    
     
     /// the endpoint for REST API calls to the Judo API
     static private (set) var endpoint = "https://gw1.judopay.com/"
@@ -43,6 +44,10 @@ public struct Judo {
             }
         }
     }
+    
+    
+    /// boolean that will restrict access from jailbroken devices
+    static public var allowJailbrokenDevices: Bool = true
     
     
     /**
@@ -70,6 +75,17 @@ public struct Judo {
             return true
         }
         return false
+    }
+    
+    
+    /**
+     a method that checks if the device it is currently running on is jailbroken or not
+     
+     - returns: true if device is jailbroken
+     */
+    static public func isJailbroken() -> Bool {
+        let fileManager = NSFileManager.defaultManager()
+        return fileManager.fileExistsAtPath("/private/var/lib/apt/")
     }
     
     

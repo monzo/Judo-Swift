@@ -75,17 +75,22 @@ public class Transaction {
         self.amount = amount
         self.reference = reference
         
+        // check if device is jailbroken and sdk was set to restrict access
+        if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
+            throw JudoError(.JailbrokenDeviceDisallowedError)
+        }
+        
         // judoid validation
         let strippedJudoID = Session.stripJudoID(judoID)
         
         if !Session.isLuhnValid(strippedJudoID) {
-            throw JudoError.LuhnValidationError
+            throw JudoError(.LuhnValidationError)
         }
         
         if kJudoIDLenght ~= strippedJudoID.characters.count  {
             self.judoID = strippedJudoID
         } else {
-            throw JudoError.JudoIDInvalidError
+            throw JudoError(.JudoIDInvalidError)
         }
     }
     
@@ -179,16 +184,16 @@ public class Transaction {
     
     - Throws: ParameterError one or more of the given parameters were in the incorrect format or nil
     */
-    public func completion(block: (Response?, NSError?) -> ()) throws -> Self {
+    public func completion(block: (Response?, JudoError?) -> ()) throws -> Self {
         
         if (self.card != nil && self.payToken != nil) {
-            throw JudoError.CardAndTokenError
+            throw JudoError(.CardAndTokenError)
         } else if self.card == nil && self.payToken == nil && self.pkPayment == nil {
-            throw JudoError.CardOrTokenMissingError
+            throw JudoError(.CardOrTokenMissingError)
         }
         
         guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, pkPayment: self.pkPayment, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
-            throw JudoError.ParameterError
+            throw JudoError(.ParameterError)
         }
         
         Session.POST(self.path(), parameters: parameters) { (response, error) -> () in
@@ -208,7 +213,7 @@ public class Transaction {
     
     - Returns: reactive self
     */
-    public func threeDSecure(dictionary: JSONDictionary, receiptID: String, block: (Response?, NSError?) -> ()) -> Self {
+    public func threeDSecure(dictionary: JSONDictionary, receiptID: String, block: (Response?, JudoError?) -> ()) -> Self {
         
         var paymentDetails = JSONDictionary()
         
@@ -237,7 +242,7 @@ public class Transaction {
     
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(block: (Response?, NSError?) -> ()) {
+    public static func list(block: (Response?, JudoError?) -> ()) {
         self.list(nil, block: block)
     }
     
@@ -250,7 +255,7 @@ public class Transaction {
     - Parameter pagination: The offset, number of items and order in which to return the items
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(pagination: Pagination?, block: (Response?, NSError?) -> ()) {
+    public static func list(pagination: Pagination?, block: (Response?, JudoError?) -> ()) {
         var path = (self as! TransactionPath.Type).path
         if let pag = pagination {
             path += "?pageSize=\(pag.pageSize)&offset=\(pag.offset)&sort=\(pag.sort.rawValue)"

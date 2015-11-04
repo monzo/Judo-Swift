@@ -25,11 +25,29 @@
 import Foundation
 
 
+/**
+ *  the BillingCountry enum is supposed to simplify identifying a billing country for the Credit Card
+ */
 public enum BillingCountry: String {
-    case UK, USA, Canada, Other
+    /// United Kingdom
+    case UK
+    /// United States of America
+    case USA
+    /// Canada
+    case Canada
+    /// Other
+    case Other
     
+    
+    /// simple helper to receive all values of the struct as an array
     public static let allValues = [UK, USA, Canada, Other]
     
+    
+    /**
+     Transacting with AMEX required ISO codes instead of Unicode representation of a Country
+     
+     - returns: the ISO code as an Int for the receiver
+     */
     public func ISOCode() -> Int? {
         switch self {
         case UK:
@@ -43,6 +61,12 @@ public enum BillingCountry: String {
         }
     }
     
+    
+    /**
+     different countries have different names for Postal Code description. This method returns the receivers version of a string representation
+     
+     - returns: a String
+     */
     public func titleDescription() -> String {
         switch self {
         case .USA:
@@ -59,9 +83,31 @@ public enum BillingCountry: String {
 *  the Address object stores information around the address that is related to a card
 */
 public struct Address {
-    public let line1, line2, line3, town, postCode: String?
+    /// line one of the address
+    public let line1: String?
+    /// line two of the address
+    public let line2: String?
+    /// line three of the address
+    public let line3: String?
+    /// town of the address
+    public let town: String?
+    /// post code of the address
+    public let postCode: String?
+    /// billing country of the address
     public let country: BillingCountry?
     
+    /**
+     designated initialiser
+     
+     - parameter line1:    line one
+     - parameter line2:    line two
+     - parameter line3:    line three
+     - parameter town:     town
+     - parameter postCode: post code
+     - parameter country:  country
+     
+     - returns: an address object
+     */
     public init(line1: String? = nil, line2: String? = nil, line3: String? = nil, town: String? = nil, postCode: String? = nil, country: BillingCountry? = nil) {
         self.line1 = line1
         self.line2 = line2
@@ -71,6 +117,12 @@ public struct Address {
         self.country = country
     }
     
+    
+    /**
+     dictionary representation of the address object
+     
+     - returns: a dictionary containing all available infos
+     */
     func dictionaryRepresentation() -> NSDictionary {
         let dict = NSMutableDictionary()
         if let line1 = self.line1 {
@@ -93,4 +145,5 @@ public struct Address {
         }
         return dict.copy() as! NSDictionary
     }
+    
 }
