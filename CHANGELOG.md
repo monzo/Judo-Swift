@@ -16,10 +16,13 @@ Planned Release Date 2015-11-05
 - check for Jailbroken device
 - boolean that can be set to ignore or restrict transactions from Jailbroken devices
 - cv2 in PaymentToken struct for repeat payments
+
 #### Removed
 - unecessary variable for allowed card networks in Judo
+
 #### Changed
 - Error Handling revisited, enhanced and prepared for upcoming backend release
+
 #### Fixed
 - User-Agent Header would always send Judo Version instead of JudoKit version if that was used
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
@@ -35,15 +38,18 @@ Released on 2015-10-20
 ---
 ## [1.2.0](https://github.com/JudoPay/Judo-Swift/tag/1.2.0)
 Released on 2015-09-29
+
 #### Added
 - Added Judo-Swift-ApplePay
 - Travis yaml and configured shared scheme for CI integration
 - session tests to mock restapi and test without actual connection
+
 #### Updated
 - Amount can only be initialized when an amount and a currency string is passed
 - simplified implementation
 - Post Code titles for different countries
 - security code title defaults changed to be more descriptive and understandable
+
 #### Fixed
 - Tests
   - Updated by [Hamon Ben Riazy](https://github.com/ryce).
@@ -51,12 +57,14 @@ Released on 2015-09-29
 ---
 ## [1.1.0](https://github.com/JudoPay/Judo-Swift/tag/1.1.0)
 Released on 2015-09-18
+
 #### Updated
 - simplified implementation
 - updated documentation
 - added more ways to initialize a Card Object
 - minimized lines of code in a few methods
 - created custom initializes instead of static methods
+
 #### Fixed
 - a few typo fixes
 - Tests
@@ -78,10 +86,12 @@ Released on 2015-09-15
 - Error TransactionResult
 - comments
 - Errors
+
 #### Fixed
 - card security code title
 - placeholder method to cardconfig
 - directing execution back on to main thread when it did not
+
 #### Removed
 - unneccessary code
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
