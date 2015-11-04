@@ -15,6 +15,7 @@ Planned Release Date 2015-11-05
 #### Added
 - check for Jailbroken device
 - boolean that can be set to ignore or restrict transactions from Jailbroken devices
+- cv2 in PaymentToken struct for repeat payments
 #### Removed
 - unecessary variable for allowed card networks in Judo
 #### Changed
