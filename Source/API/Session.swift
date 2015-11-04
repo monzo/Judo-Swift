@@ -388,6 +388,7 @@ public class Session {
         } else if let token = token {
             parametersDict["consumerToken"] = token.consumerToken
             parametersDict["cardToken"] = token.cardToken
+            parametersDict["cv2"] = token.cv2
         } else if let pkPayment = pkPayment {
             var tokenDict = JSONDictionary()
             if #available(iOS 9.0, *) {

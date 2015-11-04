@@ -62,6 +62,8 @@ public struct PaymentToken {
     public let consumerToken: String
     /// Can be used to charge future payments against this card.
     public let cardToken: String
+    /// cv2 of the card
+    public var cv2: String?
     
     
     /**
@@ -72,9 +74,10 @@ public struct PaymentToken {
      
      - returns: a PaymentToken object
      */
-    public init(consumerToken: String, cardToken: String) {
+    public init(consumerToken: String, cardToken: String, cv2: String? = nil) {
         self.consumerToken = consumerToken
         self.cardToken = cardToken
+        self.cv2 = cv2
     }
     
     
@@ -88,13 +91,14 @@ public struct PaymentToken {
      
      - returns: a PaymentToken object
      */
-    public init?(consumerToken: String?, cardToken: String?) {
+    public init?(consumerToken: String?, cardToken: String?, cv2: String? = nil) {
         guard let consumerToken = consumerToken,
             let cardToken = cardToken else {
                 return nil
         }
         self.consumerToken = consumerToken
         self.cardToken = cardToken
+        self.cv2 = cv2
     }
 }
 
