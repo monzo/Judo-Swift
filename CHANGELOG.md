@@ -10,21 +10,21 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 ## [1.3.0](https://github.com/JudoPay/Judo-Swift/tag/1.3.0)
-Planned Release Date 2015-11-05
+Planned release date 2015-11-05
 
 #### Added
-- check for Jailbroken device
-- boolean that can be set to ignore or restrict transactions from Jailbroken devices
-- cv2 in PaymentToken struct for repeat payments
+- check for jailbroken devices
+- boolean that can be set to ignore or restrict transactions from jailbroken devices
+- CV2 in PaymentToken struct for repeat payments
 
 #### Removed
-- unecessary variable for allowed card networks in Judo
+- unnecessary variable for allowed card networks in judo
 
 #### Changed
 - Error Handling revisited, enhanced and prepared for upcoming backend release
 
 #### Fixed
-- User-Agent Header would always send Judo Version instead of JudoKit version if that was used
+- User-Agent Header would always send judo version instead of judoKit version if that was used
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
@@ -32,7 +32,7 @@ Planned Release Date 2015-11-05
 Released on 2015-10-20
 
 #### Fixed
-- fixed a bug where ApplePay would not be processed
+- fixed a bug where Apple Pay would not be processed
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
@@ -42,12 +42,12 @@ Released on 2015-09-29
 #### Added
 - Added Judo-Swift-ApplePay
 - Travis yaml and configured shared scheme for CI integration
-- session tests to mock restapi and test without actual connection
+- session tests to mock REST API and test without actual connection
 
 #### Updated
-- Amount can only be initialized when an amount and a currency string is passed
+- amount can only be initialized when an amount and a currency string is passed
 - simplified implementation
-- Post Code titles for different countries
+- post code titles for different countries
 - security code title defaults changed to be more descriptive and understandable
 
 #### Fixed
@@ -79,7 +79,7 @@ Released on 2015-09-15
 - method that returns length of security code
 - method that generates payment token from response
 - country to card address detail info
-- Maestro Fields and AVS
+- Maestro fields and AVS
 - card registration as a seperate class and endpoint
 - 3DS Transaction Detection
 - ability to send deviceSignal to backend for fraud prevention
