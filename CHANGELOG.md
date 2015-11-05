@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 ## [1.3.0](https://github.com/JudoPay/Judo-Swift/tag/1.3.0)
-Planned release date 2015-11-05
+Released on 2015-11-05
 
 #### Added
 - check for jailbroken devices
