@@ -71,7 +71,7 @@ public class Collection: NSObject {
         }
         
         // luhn check the receipt id
-        if !Session.isLuhnValid(receiptID) {
+        if !receiptID.isLuhnValid() {
             throw JudoError(.LuhnValidationError)
         }
     }

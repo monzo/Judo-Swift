@@ -56,9 +56,9 @@ class SessionTests: XCTestCase {
     
     func testLuhnCheck() {
         let validLuhnNumber = "100963875"
-        XCTAssertTrue(Session.isLuhnValid(validLuhnNumber))
+        XCTAssertTrue(validLuhnNumber.isLuhnValid())
         let invalidLuhnNumber = "100963874"
-        XCTAssertFalse(Session.isLuhnValid(invalidLuhnNumber))
+        XCTAssertFalse(invalidLuhnNumber.isLuhnValid())
 
     }
     
