@@ -27,6 +27,18 @@ import Foundation
 
 public extension String {
     
+    
+    /// string by stripping all whitespaces
+    public var strippedWhitespaces: String {
+        get {
+            return self.stringByReplacingOccurrencesOfString(" ", withString: "")
+        }
+        set {
+            // do nothing
+        }
+    }
+    
+    
     /// string by stripping all non-digic characters
     public var stripped: String {
         get {
