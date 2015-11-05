@@ -81,9 +81,9 @@ public class Transaction {
         }
         
         // judoid validation
-        let strippedJudoID = Session.stripJudoID(judoID)
+        let strippedJudoID = judoID.stripped
         
-        if !Session.isLuhnValid(strippedJudoID) {
+        if !strippedJudoID.isLuhnValid() {
             throw JudoError(.LuhnValidationError)
         }
         

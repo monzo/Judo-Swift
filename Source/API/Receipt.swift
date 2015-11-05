@@ -78,7 +78,7 @@ public class Receipt: NSObject {
         }
         
         // validate receiptID format
-        if let recID = receiptID where !Session.isLuhnValid(recID) {
+        if let recID = receiptID where !recID.isLuhnValid() {
             throw JudoError(.LuhnValidationError)
         }
     }

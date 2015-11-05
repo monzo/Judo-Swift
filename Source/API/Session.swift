@@ -446,52 +446,6 @@ public class Session {
     }
     
     
-    /**
-    Helper method to strip the given string of anything non-numeric - in this case a judoID sometimes contains dashes or whitespaces that have to be removed before initiating calls to the server
-    
-    - Parameter judoIDString: the given String to strip if necessary
-    
-    - Returns: a String stripped of all characters if not numeric
-    */
-    static func stripJudoID(judoIDString: String) -> String {
-        if isNumeric(judoIDString) {
-            return judoIDString
-        } else {
-            return judoIDString.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator("")
-        }
-    }
-    
-    
-    /** 
-    Helper method to indicate wether a string is decimal or not
-    
-    - Parameter a: the given String to check wether it is decimal
-    
-    - Returns: true if the given string just contains decimal characters
-    */
-    static func isNumeric(a: String) -> Bool {
-        return Double(a) != nil
-    }
-    
-    
-    /**
-    Helper Method to check if a number string is luhn valid
-    
-    - Parameter number: the numeric string
-    
-    - Returns: true if the given number is luhn-valid
-    */
-    static func isLuhnValid(number: String) -> Bool {
-        guard self.isNumeric(number) else {
-            return false
-        }
-        let reversedInts = number.characters.reverse().map { Int(String($0)) }
-        return reversedInts.enumerate().reduce(0) { (sum, val) in
-            let odd = val.index % 2 == 1
-            return sum + (odd ? (val.element! == 9 ? 9 : (val.element! * 2) % 9) : val.element!)
-        } % 10 == 0
-    }
-    
 }
 
 
