@@ -223,11 +223,12 @@ public struct TransactionData {
 
 
 /**
-Type of Transaction
-
-- Payment: a Payment Transaction
-- PreAuth: a PreAuth Transaction
-- Refund:  a Refund Transaction
+ Type of Transaction
+ 
+ - Payment: a Payment Transaction
+ - PreAuth: a PreAuth Transaction
+ - Refund:  a Refund Transaction
+ - RegisterCard: Register a Card
 */
 public enum TransactionType: String {
     /// a Payment Transaction
@@ -236,6 +237,8 @@ public enum TransactionType: String {
     case PreAuth
     /// a Refund Transaction
     case Refund
+    /// TransactionTypeRegisterCard for registering a card for a later transaction
+    case RegisterCard
 }
 
 
