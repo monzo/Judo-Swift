@@ -49,7 +49,7 @@ let discoverPrefixes: [String]  = {
 /**
 *  the Card object stores all the necessary card information to make a transaction
 */
-public class Card {
+public class Card: NSObject {
     
     /// the minimum card length constant
     public static let minimumLength = 12
@@ -94,7 +94,7 @@ public class Card {
     /**
     *  Card Configuration consists of a Card Network and a given length
     */
-    public class Configuration {
+    public class Configuration: NSObject {
         /// the network of the configuration
         public let cardNetwork: CardNetwork
         /// the length of the card for this configuration
@@ -372,7 +372,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 /**
 *  the CardDetails object stores information that is returned from a successful payment or preAuth
 */
-public class CardDetails {
+public class CardDetails: NSObject {
     /// The last four digits of the card used for this transaction.
     public let cardLastFour: String?
     /// Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY.
@@ -390,10 +390,10 @@ public class CardDetails {
      
      - returns: a CardDetails object
      */
-    public init(_ dict: JSONDictionary) {
-        self.cardLastFour = dict["cardLastfour"] as? String
-        self.endDate = dict["endDate"] as? String
-        self.cardToken = dict["cardToken"] as? String
+    public init(_ dict: JSONDictionary?) {
+        self.cardLastFour = dict?["cardLastfour"] as? String
+        self.endDate = dict?["endDate"] as? String
+        self.cardToken = dict?["cardToken"] as? String
         self.cardNetwork = nil // TODO: parse dict["cardType"] into CardNetwork
     }
 }

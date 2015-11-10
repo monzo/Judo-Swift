@@ -302,7 +302,7 @@ public class Session {
                 paginationResponse = Pagination(pageSize: pageSize.integerValue, offset: offset.integerValue, sort: Sort(rawValue: sort)!)
             }
             
-            var result = Response(paginationResponse)
+            let result = Response(paginationResponse)
 
             do {
                 if let results = upJSON["results"] as? Array<JSONDictionary> {

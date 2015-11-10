@@ -101,7 +101,7 @@ import Foundation
 /**
 *  the Address object stores information around the address that is related to a card
 */
-public class Address {
+public class Address: NSObject {
     /// line one of the address
     public let line1: String?
     /// line two of the address

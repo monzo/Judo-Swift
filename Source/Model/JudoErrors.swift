@@ -26,7 +26,7 @@ import Foundation
 
 public let JudoErrorDomain = "com.judopay.error"
 
-public struct JudoError: ErrorType {
+public class JudoError: NSObject, ErrorType {
     public var userInfo: JSONDictionary?
     public var judoCode: JudoErrorCode
     

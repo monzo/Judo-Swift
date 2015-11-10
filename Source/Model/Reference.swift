@@ -28,7 +28,7 @@ import Foundation
 /**
 *  the Reference object is supposed to simplify storing reference data like consumer or payment references
 */
-public class Reference {
+public class Reference: NSObject {
     /// Your reference for this consumer
     public let yourConsumerReference: String
     /// Your reference for this payment

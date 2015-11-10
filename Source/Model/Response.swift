@@ -12,7 +12,7 @@ import Foundation
 /**
 *  Response object that stores an array of items and includes pagination information if available
 */
-public struct Response {
+public class Response: NSObject {
     /// the current pagination response
     public let pagination: Pagination?
     /// The array that contains the transaction response objects
@@ -36,7 +36,7 @@ public struct Response {
     
     - Parameter element: the element to add to the items Array
     */
-    public mutating func append(element: TransactionData) {
+    public func append(element: TransactionData) {
         self.items.append(element)
     }
     
@@ -57,7 +57,7 @@ public struct Response {
 /**
 *  a PaymentToken object is necessary to make a token payment or token preAuth
 */
-public struct PaymentToken {
+public class PaymentToken: NSObject {
     /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
     public let consumerToken: String
     /// Can be used to charge future payments against this card.
@@ -78,35 +78,16 @@ public struct PaymentToken {
         self.consumerToken = consumerToken
         self.cardToken = cardToken
         self.cv2 = cv2
+        super.init()
     }
     
-    
-    /**
-     designated initialiser for optional values.
-     
-     - warning: will return nil if one of the passed parameters is nil
-     
-     - parameter consumerToken: consumer token string
-     - parameter cardToken:     card token string
-     
-     - returns: a PaymentToken object
-     */
-    public init?(consumerToken: String?, cardToken: String?, cv2: String? = nil) {
-        guard let consumerToken = consumerToken,
-            let cardToken = cardToken else {
-                return nil
-        }
-        self.consumerToken = consumerToken
-        self.cardToken = cardToken
-        self.cv2 = cv2
-    }
 }
 
 
 /**
 *  details of the Consumer for use in repeat payments.
 */
-public struct Consumer {
+public class Consumer: NSObject {
     /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
     public let consumerToken: String
     /// Your reference for this Consumer as you sent in your request.
@@ -123,14 +104,31 @@ public struct Consumer {
     public init(_ dict: JSONDictionary) {
         self.consumerToken = dict["consumerToken"] as! String
         self.yourConsumerReference = dict["yourConsumerReference"] as! String
+        super.init()
     }
+    
+    
+    /**
+     designated initialiser
+     
+     - parameter consumerToken:     a consumer token string
+     - parameter consumerReference: a consumer reference string
+     
+     - returns: a consumer object
+     */
+    public init(consumerToken: String, consumerReference: String) {
+        self.consumerToken = consumerToken
+        self.yourConsumerReference = consumerReference
+        super.init()
+    }
+
 }
 
 
 /**
 *  TransactionResult will hold all the information from a transaction response
 */
-public struct TransactionData {
+public class TransactionData: NSObject {
     /// our reference for this transaction. Keep track of this as it's needed to process refunds or collections later
     public let receiptID: String
     /// Your original reference for this payment
@@ -187,7 +185,26 @@ public struct TransactionData {
             let currency = dict["currency"] as? String,
             let amountString = dict["amount"] as? String,
             let cardDetailsDict = dict["cardDetails"] as? JSONDictionary,
-            let consumerDict = dict["consumer"] as? JSONDictionary else { throw JudoError(.ResponseParseError) }
+            let consumerDict = dict["consumer"] as? JSONDictionary else {
+                self.receiptID = ""
+                self.yourPaymentReference = ""
+                self.type = TransactionType.Payment
+                self.createdAt = NSDate()
+                self.result = TransactionResult.Error
+                self.message = ""
+                self.judoID = ""
+                self.merchantName = ""
+                self.appearsOnStatementAs = ""
+                self.refunds = Amount(amountString: "1", currency: "XOR")
+                self.originalAmount = Amount(amountString: "1", currency: "XOR")
+                self.netAmount = Amount(amountString: "1", currency: "XOR")
+                self.amount = Amount(amountString: "1", currency: "XOR")
+                self.cardDetails = CardDetails(nil)
+                self.consumer = Consumer(consumerToken: "", consumerReference: "")
+                self.rawData = [String : AnyObject]()
+                super.init()
+                throw JudoError(.ResponseParseError)
+        }
         
         self.receiptID = receiptID
         self.yourPaymentReference = yourPaymentReference
@@ -199,15 +216,17 @@ public struct TransactionData {
         self.merchantName = merchantName
         self.appearsOnStatementAs = appearsOnStatementAs
         
-        self.refunds = Amount(dict["refunds"] as? String, currency)
-        self.originalAmount = Amount(dict["originalAmount"] as? String, currency)
-        self.netAmount = Amount(dict["netAmount"] as? String, currency)
+        self.refunds = Amount(amountString: dict["refunds"] as! String, currency: currency)
+        self.originalAmount = Amount(amountString: dict["originalAmount"] as! String, currency: currency)
+        self.netAmount = Amount(amountString: dict["netAmount"] as! String, currency: currency)
         
-        self.amount = Amount(NSDecimalNumber(string: amountString), currency)
+        self.amount = Amount(amountString: amountString, currency: currency)
         
         self.cardDetails = CardDetails(cardDetailsDict)
         self.consumer = Consumer(consumerDict)
         self.rawData = dict
+        
+        super.init()
     }
     
     
@@ -217,7 +236,7 @@ public struct TransactionData {
     - Returns: a PaymentToken object that has been generated from the current objects information
     */
     public func paymentToken() -> PaymentToken? {
-        return PaymentToken(consumerToken: self.consumer.consumerToken, cardToken: self.cardDetails.cardToken)
+        return PaymentToken(consumerToken: self.consumer.consumerToken, cardToken: self.cardDetails.cardToken!)
     }
 }
 
