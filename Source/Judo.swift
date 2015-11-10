@@ -28,7 +28,7 @@ import Foundation
 /**
  *  Entry point of interaction with the Judo Swift SDK
  */
-public struct Judo {
+public class Judo {
     
     /// the endpoint for REST API calls to the Judo API
     static private (set) var endpoint = "https://gw1.judopay.com/"

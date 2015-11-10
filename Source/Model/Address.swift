@@ -28,7 +28,7 @@ import Foundation
 /**
  *  the BillingCountry enum is supposed to simplify identifying a billing country for the Credit Card
  */
-public enum BillingCountry: String {
+@objc public enum BillingCountry: Int {
     /// United Kingdom
     case UK
     /// United States of America
@@ -77,12 +77,31 @@ public enum BillingCountry: String {
             return "Post code"
         }
     }
+    
+    
+    /**
+     get a string representation of a title
+     
+     - returns: a String object
+     */
+    public func title() -> String {
+        switch self {
+        case .USA:
+            return "USA"
+        case .Canada:
+            return "Canada"
+        case .UK:
+            return "UK"
+        case .Other:
+            return "Other"
+        }
+    }
 }
 
 /**
 *  the Address object stores information around the address that is related to a card
 */
-public struct Address {
+public class Address {
     /// line one of the address
     public let line1: String?
     /// line two of the address

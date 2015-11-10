@@ -28,7 +28,7 @@ import Foundation
 /**
 *  the Reference object is supposed to simplify storing reference data like consumer or payment references
 */
-public struct Reference {
+public class Reference {
     /// Your reference for this consumer
     public let yourConsumerReference: String
     /// Your reference for this payment
