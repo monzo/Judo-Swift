@@ -216,10 +216,24 @@ public class TransactionData: NSObject {
         self.merchantName = merchantName
         self.appearsOnStatementAs = appearsOnStatementAs
         
-        self.refunds = Amount(amountString: dict["refunds"] as! String, currency: currency)
-        self.originalAmount = Amount(amountString: dict["originalAmount"] as! String, currency: currency)
-        self.netAmount = Amount(amountString: dict["netAmount"] as! String, currency: currency)
-        
+        if let refunds = dict["refunds"] as? String {
+            self.refunds = Amount(amountString: refunds, currency: currency)
+        } else {
+            self.refunds = nil
+        }
+
+        if let originalAmount = dict["originalAmount"] as? String {
+            self.originalAmount = Amount(amountString: originalAmount, currency: currency)
+        } else {
+            self.originalAmount = nil
+        }
+
+        if let netAmount = dict["netAmount"] as? String {
+            self.netAmount = Amount(amountString: netAmount, currency: currency)
+        } else {
+            self.netAmount = nil
+        }
+
         self.amount = Amount(amountString: amountString, currency: currency)
         
         self.cardDetails = CardDetails(cardDetailsDict)

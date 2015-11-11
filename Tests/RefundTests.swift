@@ -30,7 +30,7 @@ class RefundTests: XCTestCase {
     func testRefund() {
         // Given
         let receiptID = "1497684"
-        let amount = Amount(30, "GBP")
+        let amount = Amount(decimalNumber: 30, currency: "GBP")
         let payRef = "payment123asd"
         
         let expectation = self.expectationWithDescription("refund expectation")
