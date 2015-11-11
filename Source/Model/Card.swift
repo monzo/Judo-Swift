@@ -194,32 +194,70 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 - Unknown:          Unknown
 */
 @objc public enum CardNetwork: Int {
-    /// Visa Card Network
-    case Visa
-    /// MasterCard Network
-    case MasterCard
-    /// American Express Card Network
-    case AMEX
-    /// Diners Club Network
-    case DinersClub
-    /// Maestro Card Network
-    case Maestro
-    /// China UnionPay Network
-    case ChinaUnionPay
-    /// Discover Network
-    case Discover
-    /// InterPayment Network
-    case InterPayment
-    /// InstaPayment Network
-    case InstaPayment
-    /// JCB Network
-    case JCB
-    /// Dankort Network
-    case Dankort
-    /// UATP Network
-    case UATP
+    
     /// Unknown
-    case Unknown
+    case Unknown = 0
+    /// Visa Card Network
+    case Visa = 1
+    /// MasterCard Network
+    case MasterCard = 2
+    /// Visa Electron Network
+    case VisaElectron = 3
+    /// Switch Network
+    case Switch = 4
+    /// Solo Network
+    case Solo = 5
+    /// Laser Network
+    case Laser = 6
+    /// China UnionPay Network
+    case ChinaUnionPay = 7
+    /// American Express Card Network
+    case AMEX = 8
+    /// JCB Network
+    case JCB = 9
+    /// Maestro Card Network
+    case Maestro = 10
+    /// Visa Debit Card Network
+    case VisaDebit = 11
+    /// MasterCard Network
+    case MasterCardDebit = 12
+    /// Visa Purchasing Network
+    case VisaPurchasing = 13
+    /// Discover Network
+    case Discover = 14
+    /// Carnet Network
+    case Carnet = 15
+    /// Carte Bancaire Network
+    case CarteBancaire = 16
+    /// Diners Club Network
+    case DinersClub = 17
+    /// Elo Network
+    case Elo = 18
+    /// Farmers Card Network
+    case FarmersCard = 19
+    /// Soriana Network
+    case Soriana = 20
+    /// Private Label Card Network
+    case PrivateLabelCard = 21
+    /// Q Card Network
+    case QCard = 22
+    /// Style Network
+    case Style = 23
+    /// True Rewards Network
+    case TrueRewards = 24
+    /// UATP Network
+    case UATP = 25
+    /// Bank Card Network
+    case BankCard = 26
+    /// Banamex Costco Network
+    case Banamex_Costco = 27
+    /// InterPayment Network
+    case InterPayment = 28
+    /// InstaPayment Network
+    case InstaPayment = 29
+    /// Dankort Network
+    case Dankort = 30
+    
     
     /**
      the string value of the receiver
@@ -228,32 +266,60 @@ the CardNetwork enum depicts the Card Network type of a given Card object
      */
     public func stringValue() -> String {
         switch self {
-        case .Visa:
+        case .Unknown:
+            return "Unknown"
+        case .Visa, .VisaDebit, .VisaElectron, .VisaPurchasing:
             return "Visa"
-        case .MasterCard:
+        case .MasterCard, .MasterCardDebit:
             return "MasterCard"
-        case .AMEX:
-            return "AMEX"
-        case .DinersClub:
-            return "Diners Club"
-        case .Maestro:
-            return "Maestro"
+        case .Switch:
+            return "Switch"
+        case .Solo:
+            return "Solo"
+        case .Laser:
+            return "Laser"
         case .ChinaUnionPay:
             return "China UnionPay"
+        case .AMEX:
+            return "AMEX"
+        case .JCB:
+            return "JCB"
+        case .Maestro:
+            return "Maestro"
         case .Discover:
             return "Discover"
+        case .Carnet:
+            return "Carnet"
+        case .CarteBancaire:
+            return "CarteBancaire"
+        case .DinersClub:
+            return "Diners Club"
+        case .Elo:
+            return "Elo"
+        case .FarmersCard:
+            return "FarmersCard"
+        case .Soriana:
+            return "Soriana"
+        case .PrivateLabelCard:
+            return "PrivateLabelCard"
+        case .QCard:
+            return "QCard"
+        case .Style:
+            return "Style"
+        case .TrueRewards:
+            return "TrueRewards"
+        case .UATP:
+            return "UATP"
+        case .BankCard:
+            return "BankCard"
+        case .Banamex_Costco:
+            return "BanamexCostco"
         case .InterPayment:
             return "InterPayment"
         case .InstaPayment:
             return "InstaPayment"
-        case .JCB:
-            return "JCB"
         case .Dankort:
             return "Dankort"
-        case .UATP:
-            return "UATP"
-        case .Unknown:
-            return "Unknown"
         }
     }
     
@@ -265,9 +331,9 @@ the CardNetwork enum depicts the Card Network type of a given Card object
     */
     public func prefixes() -> [String] {
         switch self {
-        case .Visa:
+        case .Visa, .VisaDebit, .VisaElectron, .VisaPurchasing:
             return ["4"]
-        case .MasterCard:
+        case .MasterCard, .MasterCardDebit:
             return masterCardPrefixes
         case .AMEX:
             return ["34", "37"]
@@ -289,7 +355,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
             return ["5019"]
         case .UATP:
             return ["1"]
-        case .Unknown:
+        default:
             return []
         }
     }
@@ -394,8 +460,14 @@ public class CardDetails: NSObject {
         self.cardLastFour = dict?["cardLastfour"] as? String
         self.endDate = dict?["endDate"] as? String
         self.cardToken = dict?["cardToken"] as? String
-        self.cardNetwork = nil // TODO: parse dict["cardType"] into CardNetwork
+        if let cardType = dict?["cardType"] as? Int {
+            self.cardNetwork = CardNetwork(rawValue: cardType)
+        } else {
+            self.cardNetwork = nil
+        }
+        super.init()
     }
+    
 }
 
 
