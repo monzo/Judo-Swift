@@ -250,7 +250,8 @@ public class TransactionData: NSObject {
     - Returns: a PaymentToken object that has been generated from the current objects information
     */
     public func paymentToken() -> PaymentToken? {
-        return PaymentToken(consumerToken: self.consumer.consumerToken, cardToken: self.cardDetails.cardToken!)
+        guard let cardToken = self.cardDetails.cardToken else { return nil }
+        return PaymentToken(consumerToken: self.consumer.consumerToken, cardToken: cardToken)
     }
 }
 
