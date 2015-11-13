@@ -178,7 +178,7 @@ public class Session {
             bundle = NSBundle(forClass: self)
         }
         let version = bundle!.infoDictionary?["CFBundleShortVersionString"]
-        request.addValue("iOS-Version\\\(version) lang\\(Swift)", forHTTPHeaderField: "User-Agent")
+        request.addValue("iOS-Version/\(version) lang/(Swift)", forHTTPHeaderField: "User-Agent")
         
         // check if token and secret have been set
         guard let authHeader = self.authorizationHeader else {
@@ -282,7 +282,17 @@ public class Session {
                 print(errorMessage)
                 let errorCode = upJSON["errorType"] as? Int ?? JudoError(.Unknown).rawValue()
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, JudoError(JudoError.JudoErrorCode(rawValue: errorCode)!, upJSON["modelErrors"] as? JSONDictionary))
+                    var userInfo = upJSON
+                    if let modelErrors = upJSON["modelErrors"] as? JSONDictionary {
+                        userInfo = modelErrors
+                    }
+                    
+                    var judoErrorCode = JudoError.JudoErrorCode.Unknown
+                    if let judoError = JudoError.JudoErrorCode(rawValue: errorCode) {
+                        judoErrorCode = judoError
+                    }
+                    
+                    completion(nil, JudoError(judoErrorCode, userInfo))
                 })
                 return // BAIL
             }
