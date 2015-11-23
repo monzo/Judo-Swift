@@ -90,6 +90,31 @@ public class Judo {
     
     
     /**
+     starting point and a reactive method to create a transaction that is sent to a certain judo ID
+     
+     - Parameter transactionType: the type of the transaction (payment, preauth or registercard)
+     - Parameter judoID:          the recipient - has to be between 6 and 10 characters and luhn-valid
+     - Parameter amount:          the amount of the Payment
+     - Parameter reference:       the reference
+     
+     - Throws: JudoIDInvalidError    judoID does not match the given length or is not luhn valid
+     - Throws: InvalidOperationError if you call this method with .Refund as a transactionType
+     
+     - Returns: a Payment Object
+     */
+    static public func transaction(transactionType: TransactionType, judoID: String, amount: Amount, reference: Reference) throws -> Transaction {
+        switch transactionType {
+        case .Payment:
+            return try Judo.payment(judoID, amount: amount, reference: reference)
+        case .PreAuth, .RegisterCard:
+            return try Judo.preAuth(judoID, amount: amount, reference: reference)
+        case .Refund:
+            throw JudoError(.InvalidOperationError)
+        }
+    }
+    
+    
+    /**
     starting point and a reactive method to create a payment that is sent to a certain judo ID
     
     - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid

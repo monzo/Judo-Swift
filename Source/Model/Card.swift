@@ -468,6 +468,43 @@ public class CardDetails: NSObject {
         super.init()
     }
     
+    
+    /**
+     get a formatted string with the right whitespacing for a certain card type
+     
+     - returns: a string with the last four digits with the right format
+     */
+    public func formattedLastFour() -> String? {
+        guard let cn = self.cardNetwork,
+                clf = self.cardLastFour else { return nil }
+        
+        switch cn {
+        case .AMEX:
+            return "**** ****** *\(clf)"
+        default:
+            return "**** **** **** \(clf)"
+        }
+    }
+    
+    
+    /**
+     get a formatted string with the right slash for a date
+     
+     - returns: a string with the date as shown on the credit card with the right format
+     */
+    public func formattedEndDate() -> String? {
+        guard let ed = self.endDate else { return nil }
+        
+        if ed.characters.count == 4 {
+            // backend returns the end date without a slash so for UI purposes we have to add it
+            let prefix = ed.substringToIndex(ed.startIndex.advancedBy(2))
+            let suffix = ed.substringFromIndex(ed.endIndex.advancedBy(-2))
+            return "\(prefix)/\(suffix)"
+        } else {
+            return ed
+        }
+    }
+    
 }
 
 

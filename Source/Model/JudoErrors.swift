@@ -32,7 +32,7 @@ public class JudoError: NSObject, ErrorType {
     
     @objc public enum JudoErrorCode: Int {
         // MARK: Device Errors
-        case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
+        case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
         case LocationServicesDisabled = 91
         
         // MARK: Card Errors
