@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.4.x` Releases - [1.4.0](#140)
 - `1.3.x` Releases - [1.3.0](#130)
 - `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#110)
 - `1.1.x` Releases - [1.1.0](#110)
@@ -9,6 +10,30 @@ All notable changes to this project will be documented in this file.
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
+
+## [1.4.0](https://github.com/JudoPay/Judo-Swift/tag/1.4.0)
+Released on 2015-11-26
+
+#### Added
+- added RegisterCard as a TransactionType
+- full accessibility from Objective C projects
+- cardnetwork now is parsed from response
+- mirrored card network enum from backend
+- InvalidOperation error
+- new Transaction function that takes a transactiontype
+- more helper methods to Card
+
+#### Changed
+- converting structs to classes and enums conforming to int for objc compability
+- exposed JudoErrorCodes enum to objc
+
+#### Fixed
+- fixed a bug where an optional value was force unwrapped when empty
+- fixing slashes in user agent header
+- fixed a bug where creation of PaymentToken would fail
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
+
+---
 ## [1.3.0](https://github.com/JudoPay/Judo-Swift/tag/1.3.0)
 Released on 2015-11-05
 
