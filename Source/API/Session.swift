@@ -170,7 +170,7 @@ public class Session {
         // json configuration header
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("5.0.0", forHTTPHeaderField: "API-Version")
+        request.addValue("4.1.0", forHTTPHeaderField: "API-Version")
 
         // add the version and lang of the sdk to the header
         var bundle = NSBundle(identifier: "com.judo.JudoKit")
