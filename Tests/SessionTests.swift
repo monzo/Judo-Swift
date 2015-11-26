@@ -31,7 +31,7 @@ class SessionTests: XCTestCase {
         let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
-        let amount = Amount(30, "GBP")
+        let amount = Amount(amountString: "30", currency: "GBP")
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
         let path = "transactions/payments"
@@ -56,9 +56,9 @@ class SessionTests: XCTestCase {
     
     func testLuhnCheck() {
         let validLuhnNumber = "100963875"
-        XCTAssertTrue(Session.isLuhnValid(validLuhnNumber))
+        XCTAssertTrue(validLuhnNumber.isLuhnValid())
         let invalidLuhnNumber = "100963874"
-        XCTAssertFalse(Session.isLuhnValid(invalidLuhnNumber))
+        XCTAssertFalse(invalidLuhnNumber.isLuhnValid())
 
     }
     

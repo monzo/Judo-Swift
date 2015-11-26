@@ -26,13 +26,13 @@ import Foundation
 
 public let JudoErrorDomain = "com.judopay.error"
 
-public struct JudoError: ErrorType {
+public class JudoError: NSObject, ErrorType {
     public var userInfo: JSONDictionary?
-    public var judoCode: JudoErrorCode
+    public var code: JudoErrorCode
     
-    public enum JudoErrorCode: Int {
+    @objc public enum JudoErrorCode: Int {
         // MARK: Device Errors
-        case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError
+        case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
         case LocationServicesDisabled = 91
         
         // MARK: Card Errors
@@ -60,7 +60,7 @@ public struct JudoError: ErrorType {
     public var _code: Int { return 0 }
     
     public init(_ code: JudoErrorCode, _ userInfo: JSONDictionary? = nil) {
-        self.judoCode = code
+        self.code = code
         self.userInfo = userInfo
     }
     
@@ -76,7 +76,7 @@ public struct JudoError: ErrorType {
     }
     
     public func toNSError() -> NSError {
-        return NSError(domain: JudoErrorDomain, code: self.judoCode.rawValue, userInfo: self.userInfo)
+        return NSError(domain: JudoErrorDomain, code: self.code.rawValue, userInfo: self.userInfo)
     }
     
 }

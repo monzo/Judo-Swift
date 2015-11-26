@@ -28,7 +28,7 @@ import Foundation
 /**
  *  Entry point of interaction with the Judo Swift SDK
  */
-public struct Judo {
+public class Judo {
     
     /// the endpoint for REST API calls to the Judo API
     static private (set) var endpoint = "https://gw1.judopay.com/"
@@ -86,6 +86,31 @@ public struct Judo {
     static public func isJailbroken() -> Bool {
         let fileManager = NSFileManager.defaultManager()
         return fileManager.fileExistsAtPath("/private/var/lib/apt/")
+    }
+    
+    
+    /**
+     starting point and a reactive method to create a transaction that is sent to a certain judo ID
+     
+     - Parameter transactionType: the type of the transaction (payment, preauth or registercard)
+     - Parameter judoID:          the recipient - has to be between 6 and 10 characters and luhn-valid
+     - Parameter amount:          the amount of the Payment
+     - Parameter reference:       the reference
+     
+     - Throws: JudoIDInvalidError    judoID does not match the given length or is not luhn valid
+     - Throws: InvalidOperationError if you call this method with .Refund as a transactionType
+     
+     - Returns: a Payment Object
+     */
+    static public func transaction(transactionType: TransactionType, judoID: String, amount: Amount, reference: Reference) throws -> Transaction {
+        switch transactionType {
+        case .Payment:
+            return try Judo.payment(judoID, amount: amount, reference: reference)
+        case .PreAuth, .RegisterCard:
+            return try Judo.preAuth(judoID, amount: amount, reference: reference)
+        case .Refund:
+            throw JudoError(.InvalidOperationError)
+        }
     }
     
     

@@ -36,7 +36,7 @@ class PreAuthTests: XCTestCase {
     
     func testPreAuth() {
         let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
-        let amount = Amount(30, "GBP")
+        let amount = Amount(amountString: "30", currency: "GBP")
         do {
             let preauth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references)
             XCTAssertNotNil(preauth)
@@ -52,7 +52,7 @@ class PreAuthTests: XCTestCase {
         let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
-        let amount = Amount(30, "GBP")
+        let amount = Amount(amountString: "30", currency: "GBP")
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
         
@@ -85,7 +85,7 @@ class PreAuthTests: XCTestCase {
         let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
-        let amount = Amount(30, "GBP")
+        let amount = Amount(amountString: "30", currency: "GBP")
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
         
@@ -137,14 +137,14 @@ class PreAuthTests: XCTestCase {
         let luhnInvalidJudoID = "33224433"
         var parameterError = false
         let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
-        let amount = Amount(30, "GBP")
+        let amount = Amount(amountString: "30", currency: "GBP")
         
         // When too short
         do {
             try Judo.preAuth(tooShortJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             // Then
-            switch error.judoCode {
+            switch error.code {
             case .JudoIDInvalidError:
                 parameterError = true
             default:
@@ -158,7 +158,7 @@ class PreAuthTests: XCTestCase {
         do {
             try Judo.preAuth(tooLongJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
-            switch error.judoCode {
+            switch error.code {
             case .JudoIDInvalidError:
                 parameterError = true
             default:
@@ -172,7 +172,7 @@ class PreAuthTests: XCTestCase {
         do {
             try Judo.preAuth(luhnInvalidJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
-            switch error.judoCode {
+            switch error.code {
             case .JudoIDInvalidError:
                 parameterError = true
             default:
@@ -187,7 +187,7 @@ class PreAuthTests: XCTestCase {
     func testJudoMakeInvalidReferencesPreAuth() {
         // Given
         let references = Reference(consumerRef: "", paymentRef: "")
-        let amount = Amount(30, "GBP")
+        let amount = Amount(amountString: "30", currency: "GBP")
         
         // When
         do {

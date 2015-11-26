@@ -28,52 +28,19 @@ import Foundation
 /**
 *  the Amount object stores information regarding the amount and currency for a transaction
 */
-public struct Amount {
+public class Amount: NSObject {
     /// The currency ISO Code - GBP is default
     public var currency: String
     /// The amount to process, to two decimal places
     public var amount: NSDecimalNumber
     
-    public init(_ amount: NSDecimalNumber, _ currency: String) {
+    public init(decimalNumber: NSDecimalNumber, currency: String) {
         self.currency = currency
-        self.amount = amount
+        self.amount = decimalNumber
     }
 
-    public init?(_ amount: NSDecimalNumber?, _ currency: String?) {
-        guard let amount = amount, currency = currency else { return nil }
-        self.amount = amount
-        self.currency = currency
-    }
-
-    public init?(_ amount: String?, _ currency: String) {
-        guard let amount = amount where Double(amount) != nil else { return nil }
-        self.amount = NSDecimalNumber(string: amount)
-        self.currency = currency
-    }
-
-    public init?(_ amount: String?, _ currency: String?) {
-        guard let amount = amount where Double(amount) != nil, let currency = currency else { return nil }
-        self.amount = NSDecimalNumber(string: amount)
-        self.currency = currency
-    }
-    
-    public init(_ amount: String, _ currency: String) {
-        self.amount = NSDecimalNumber(string: amount)
-        self.currency = currency
-    }
-    
-    public init(_ amount: Int, _ currency: String) {
-        self.amount = NSDecimalNumber(integer: amount)
-        self.currency = currency
-    }
-    
-    public init(_ amount: UInt, _ currency: String) {
-        self.amount = NSDecimalNumber(unsignedLong: amount)
-        self.currency = currency
-    }
-    
-    public init(_ amount: Float, _ currency: String) {
-        self.amount = NSDecimalNumber(float: amount)
+    public init(amountString: String, currency: String) {
+        self.amount = NSDecimalNumber(string: amountString)
         self.currency = currency
     }
 }

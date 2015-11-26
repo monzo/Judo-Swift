@@ -32,6 +32,7 @@
 		DA2620381B627239005544B8 /* 400-preauth-unsupported-currency.json in Resources */ = {isa = PBXBuildFile; fileRef = DA26202F1B627239005544B8 /* 400-preauth-unsupported-currency.json */; };
 		DA2620391B627239005544B8 /* 404-preauth-invalid-judoid.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620301B627239005544B8 /* 404-preauth-invalid-judoid.json */; };
 		DA26203A1B627239005544B8 /* 409-preauth-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */; };
+		DA973D0A1BEB8C6A0032266E /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA973D091BEB8C6A0032266E /* String+Validation.swift */; };
 		DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE811B67ADE400C9993D /* Receipt.swift */; };
 		DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE831B69240600C9993D /* ReceiptTests.swift */; };
 		DADDB43C1BB5A986000D52DC /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; };
@@ -97,6 +98,7 @@
 		DA26202F1B627239005544B8 /* 400-preauth-unsupported-currency.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "400-preauth-unsupported-currency.json"; sourceTree = "<group>"; };
 		DA2620301B627239005544B8 /* 404-preauth-invalid-judoid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "404-preauth-invalid-judoid.json"; sourceTree = "<group>"; };
 		DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "409-preauth-blocked-account.json"; sourceTree = "<group>"; };
+		DA973D091BEB8C6A0032266E /* String+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Validation.swift"; path = "Source/Extensions/String+Validation.swift"; sourceTree = "<group>"; };
 		DAAFCE811B67ADE400C9993D /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Source/API/Receipt.swift; sourceTree = "<group>"; };
 		DAAFCE831B69240600C9993D /* ReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTests.swift; sourceTree = "<group>"; };
 		DADDB4441BB94354000D52DC /* 200-payment-validation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-validation.json"; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		DADD0A511B8B2A230080471B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DA973D091BEB8C6A0032266E /* String+Validation.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */,
 				DA2620181B62520F005544B8 /* Transaction.swift in Sources */,
 				DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */,
+				DA973D0A1BEB8C6A0032266E /* String+Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

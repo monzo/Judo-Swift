@@ -49,7 +49,7 @@ let discoverPrefixes: [String]  = {
 /**
 *  the Card object stores all the necessary card information to make a transaction
 */
-public struct Card {
+public class Card: NSObject {
     
     /// the minimum card length constant
     public static let minimumLength = 12
@@ -94,7 +94,7 @@ public struct Card {
     /**
     *  Card Configuration consists of a Card Network and a given length
     */
-    public struct Configuration {
+    public class Configuration: NSObject {
         /// the network of the configuration
         public let cardNetwork: CardNetwork
         /// the length of the card for this configuration
@@ -121,7 +121,7 @@ public struct Card {
         */
         public func patternString() -> String? {
             switch self.cardNetwork {
-            case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown), .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown), .Dankort, .JCB, .InstaPayment, .Discover:
+            case .Visa, .MasterCard, .Dankort, .JCB, .InstaPayment, .Discover:
                 return VISAPattern
             case .AMEX:
                 return AMEXPattern
@@ -166,7 +166,7 @@ the CardType enum is a value type for CardNetwork to further identify card types
 - Credit:  Credit Card type
 - Unknown: Unknown Card type
 */
-public enum CardType {
+@objc public enum CardType: Int {
     /// Debit Card type
     case Debit
     /// Credit Card type
@@ -193,33 +193,71 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 - UATP:             UATP Network
 - Unknown:          Unknown
 */
-public enum CardNetwork: Equatable {
-    /// Visa Card Network
-    case Visa(CardType)
-    /// MasterCard Network
-    case MasterCard(CardType)
-    /// American Express Card Network
-    case AMEX
-    /// Diners Club Network
-    case DinersClub
-    /// Maestro Card Network
-    case Maestro
-    /// China UnionPay Network
-    case ChinaUnionPay
-    /// Discover Network
-    case Discover
-    /// InterPayment Network
-    case InterPayment
-    /// InstaPayment Network
-    case InstaPayment
-    /// JCB Network
-    case JCB
-    /// Dankort Network
-    case Dankort
-    /// UATP Network
-    case UATP
+@objc public enum CardNetwork: Int {
+    
     /// Unknown
-    case Unknown
+    case Unknown = 0
+    /// Visa Card Network
+    case Visa = 1
+    /// MasterCard Network
+    case MasterCard = 2
+    /// Visa Electron Network
+    case VisaElectron = 3
+    /// Switch Network
+    case Switch = 4
+    /// Solo Network
+    case Solo = 5
+    /// Laser Network
+    case Laser = 6
+    /// China UnionPay Network
+    case ChinaUnionPay = 7
+    /// American Express Card Network
+    case AMEX = 8
+    /// JCB Network
+    case JCB = 9
+    /// Maestro Card Network
+    case Maestro = 10
+    /// Visa Debit Card Network
+    case VisaDebit = 11
+    /// MasterCard Network
+    case MasterCardDebit = 12
+    /// Visa Purchasing Network
+    case VisaPurchasing = 13
+    /// Discover Network
+    case Discover = 14
+    /// Carnet Network
+    case Carnet = 15
+    /// Carte Bancaire Network
+    case CarteBancaire = 16
+    /// Diners Club Network
+    case DinersClub = 17
+    /// Elo Network
+    case Elo = 18
+    /// Farmers Card Network
+    case FarmersCard = 19
+    /// Soriana Network
+    case Soriana = 20
+    /// Private Label Card Network
+    case PrivateLabelCard = 21
+    /// Q Card Network
+    case QCard = 22
+    /// Style Network
+    case Style = 23
+    /// True Rewards Network
+    case TrueRewards = 24
+    /// UATP Network
+    case UATP = 25
+    /// Bank Card Network
+    case BankCard = 26
+    /// Banamex Costco Network
+    case Banamex_Costco = 27
+    /// InterPayment Network
+    case InterPayment = 28
+    /// InstaPayment Network
+    case InstaPayment = 29
+    /// Dankort Network
+    case Dankort = 30
+    
     
     /**
      the string value of the receiver
@@ -228,32 +266,60 @@ public enum CardNetwork: Equatable {
      */
     public func stringValue() -> String {
         switch self {
-        case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
+        case .Unknown:
+            return "Unknown"
+        case .Visa, .VisaDebit, .VisaElectron, .VisaPurchasing:
             return "Visa"
-        case .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown):
+        case .MasterCard, .MasterCardDebit:
             return "MasterCard"
-        case .AMEX:
-            return "AMEX"
-        case .DinersClub:
-            return "Diners Club"
-        case .Maestro:
-            return "Maestro"
+        case .Switch:
+            return "Switch"
+        case .Solo:
+            return "Solo"
+        case .Laser:
+            return "Laser"
         case .ChinaUnionPay:
             return "China UnionPay"
+        case .AMEX:
+            return "AMEX"
+        case .JCB:
+            return "JCB"
+        case .Maestro:
+            return "Maestro"
         case .Discover:
             return "Discover"
+        case .Carnet:
+            return "Carnet"
+        case .CarteBancaire:
+            return "CarteBancaire"
+        case .DinersClub:
+            return "Diners Club"
+        case .Elo:
+            return "Elo"
+        case .FarmersCard:
+            return "FarmersCard"
+        case .Soriana:
+            return "Soriana"
+        case .PrivateLabelCard:
+            return "PrivateLabelCard"
+        case .QCard:
+            return "QCard"
+        case .Style:
+            return "Style"
+        case .TrueRewards:
+            return "TrueRewards"
+        case .UATP:
+            return "UATP"
+        case .BankCard:
+            return "BankCard"
+        case .Banamex_Costco:
+            return "BanamexCostco"
         case .InterPayment:
             return "InterPayment"
         case .InstaPayment:
             return "InstaPayment"
-        case .JCB:
-            return "JCB"
         case .Dankort:
             return "Dankort"
-        case .UATP:
-            return "UATP"
-        case .Unknown:
-            return "Unknown"
         }
     }
     
@@ -265,9 +331,9 @@ public enum CardNetwork: Equatable {
     */
     public func prefixes() -> [String] {
         switch self {
-        case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
+        case .Visa, .VisaDebit, .VisaElectron, .VisaPurchasing:
             return ["4"]
-        case .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown):
+        case .MasterCard, .MasterCardDebit:
             return masterCardPrefixes
         case .AMEX:
             return ["34", "37"]
@@ -289,7 +355,7 @@ public enum CardNetwork: Equatable {
             return ["5019"]
         case .UATP:
             return ["1"]
-        case .Unknown:
+        default:
             return []
         }
     }
@@ -320,7 +386,7 @@ public enum CardNetwork: Equatable {
      - returns: a CardNetwork if the prefix matches any CardNetwork prefix
      */
     public static func networkForString(string: String) -> CardNetwork {
-        let allNetworks: [CardNetwork] = [.Visa(.Unknown), .MasterCard(.Unknown), .AMEX, .DinersClub, .Maestro, .ChinaUnionPay, .Discover, .InterPayment, .InstaPayment, .JCB, .Dankort, .UATP]
+        let allNetworks: [CardNetwork] = [.Visa, .MasterCard, .AMEX, .DinersClub, .Maestro, .ChinaUnionPay, .Discover, .InterPayment, .InstaPayment, .JCB, .Dankort, .UATP]
         return self.networkForString(string, constrainedToNetworks: allNetworks)
     }
     
@@ -332,9 +398,9 @@ public enum CardNetwork: Equatable {
     */
     public func securityCodeTitle() -> String {
         switch self {
-        case .Visa(.Debit), .Visa(.Credit), .Visa(.Unknown):
+        case .Visa:
             return "CVV2"
-        case .MasterCard(.Debit), .MasterCard(.Credit), .MasterCard(.Unknown):
+        case .MasterCard:
             return "CVC2"
         case .AMEX:
             return "CIDV"
@@ -370,142 +436,9 @@ public enum CardNetwork: Equatable {
 
 
 /**
-CardNetwork Equatable function
-
-- Parameter lhs: left hand side of the compare method
-- Parameter rhs: right hand side of the compare method
-
-- Returns: Boolean that indicates wether the two objects are equal or not
-*/
-public func ==(lhs: CardNetwork, rhs: CardNetwork) -> Bool {
-    switch lhs {
-    case .Visa(.Debit):
-        switch rhs {
-        case .Visa(.Debit), .Visa(.Unknown):
-            return true
-        default:
-            return false
-        }
-    case .Visa(.Credit):
-        switch rhs {
-        case .Visa(.Credit), .Visa(.Unknown):
-            return true
-        default:
-            return false
-        }
-    case .Visa(.Unknown):
-        switch rhs {
-        case .Visa(.Credit), .Visa(.Debit), .Visa(.Unknown):
-            return true
-        default:
-            return false
-        }
-    case .MasterCard(.Debit):
-        switch rhs {
-        case .MasterCard(.Debit), .MasterCard(.Unknown):
-            return true
-        default:
-            return false
-        }
-    case .MasterCard(.Credit):
-        switch rhs {
-        case .MasterCard(.Credit), .MasterCard(.Unknown):
-            return true
-        default:
-            return false
-        }
-    case .MasterCard(.Unknown):
-        switch rhs {
-        case .MasterCard(.Credit), .MasterCard(.Debit), .MasterCard(.Unknown):
-            return true
-        default:
-            return false
-        }
-    case .AMEX:
-        switch rhs {
-        case .AMEX:
-            return true
-        default:
-            return false
-        }
-    case .DinersClub:
-        switch rhs {
-        case .DinersClub:
-            return true
-        default:
-            return false
-        }
-    case .Maestro:
-        switch rhs {
-        case .Maestro:
-            return true
-        default:
-            return false
-        }
-    case .ChinaUnionPay:
-        switch rhs {
-        case .ChinaUnionPay:
-            return true
-        default:
-            return false
-        }
-    case .Unknown:
-        switch rhs {
-        case .Unknown:
-            return true
-        default:
-            return false
-        }
-    case .Discover:
-        switch rhs {
-        case .Discover:
-            return true
-        default:
-            return false
-        }
-    case .InstaPayment:
-        switch rhs {
-        case .InstaPayment:
-            return true
-        default:
-            return false
-        }
-    case .InterPayment:
-        switch rhs {
-        case .InterPayment:
-            return true
-        default:
-            return false
-        }
-    case .JCB:
-        switch rhs {
-        case .JCB:
-            return true
-        default:
-            return false
-        }
-    case .Dankort:
-        switch rhs {
-        case .Dankort:
-            return true
-        default:
-            return false
-        }
-    case .UATP:
-        switch rhs {
-        case .UATP:
-            return true
-        default:
-            return false
-        }
-    }
-}
-
-
-/**
 *  the CardDetails object stores information that is returned from a successful payment or preAuth
 */
-public struct CardDetails {
+public class CardDetails: NSObject {
     /// The last four digits of the card used for this transaction.
     public let cardLastFour: String?
     /// Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY.
@@ -523,12 +456,55 @@ public struct CardDetails {
      
      - returns: a CardDetails object
      */
-    public init(_ dict: JSONDictionary) {
-        self.cardLastFour = dict["cardLastfour"] as? String
-        self.endDate = dict["endDate"] as? String
-        self.cardToken = dict["cardToken"] as? String
-        self.cardNetwork = nil // TODO: parse dict["cardType"] into CardNetwork
+    public init(_ dict: JSONDictionary?) {
+        self.cardLastFour = dict?["cardLastfour"] as? String
+        self.endDate = dict?["endDate"] as? String
+        self.cardToken = dict?["cardToken"] as? String
+        if let cardType = dict?["cardType"] as? Int {
+            self.cardNetwork = CardNetwork(rawValue: cardType)
+        } else {
+            self.cardNetwork = nil
+        }
+        super.init()
     }
+    
+    
+    /**
+     get a formatted string with the right whitespacing for a certain card type
+     
+     - returns: a string with the last four digits with the right format
+     */
+    public func formattedLastFour() -> String? {
+        guard let cn = self.cardNetwork,
+                clf = self.cardLastFour else { return nil }
+        
+        switch cn {
+        case .AMEX:
+            return "**** ****** *\(clf)"
+        default:
+            return "**** **** **** \(clf)"
+        }
+    }
+    
+    
+    /**
+     get a formatted string with the right slash for a date
+     
+     - returns: a string with the date as shown on the credit card with the right format
+     */
+    public func formattedEndDate() -> String? {
+        guard let ed = self.endDate else { return nil }
+        
+        if ed.characters.count == 4 {
+            // backend returns the end date without a slash so for UI purposes we have to add it
+            let prefix = ed.substringToIndex(ed.startIndex.advancedBy(2))
+            let suffix = ed.substringFromIndex(ed.endIndex.advancedBy(-2))
+            return "\(prefix)/\(suffix)"
+        } else {
+            return ed
+        }
+    }
+    
 }
 
 
