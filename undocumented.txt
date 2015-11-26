@@ -1,0 +1,41 @@
+JudoErrors.swift
+	public let JudoErrorDomain = "com.judopay.error"
+	public class JudoError: NSObject, ErrorType
+	public var userInfo: JSONDictionary?
+	public var code: JudoErrorCode
+	@objc public enum JudoErrorCode: Int
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+	case LocationServicesDisabled = 91
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+	case ThreeDSAuthRequest, Failed3DSError
+	case ThreeDSAuthRequest, Failed3DSError
+	case UserDidCancel = -999
+	case YouAreGoodToGo = 20
+	case AccessForbiddenError = 403
+	public var domain: String { return JudoErrorDomain }
+	public var _domain: String { return JudoErrorDomain }
+	public var _code: Int { return 0 }
+	public init(_ code: JudoErrorCode, _ userInfo: JSONDictionary? = nil)
+	public static func fromNSError(error: NSError) -> JudoError
+	public func rawValue() -> Int
+	public func toNSError() -> NSError
+Transaction.swift
+	static var path: String {get}
+Amount.swift
+	public init(decimalNumber: NSDecimalNumber, currency: String)
+	public init(amountString: String, currency: String)
