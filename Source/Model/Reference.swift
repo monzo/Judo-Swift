@@ -54,7 +54,7 @@ public class Reference: NSObject {
     
     public convenience init?(consumerRef: String, metaData: [String : String]? = nil) {
         guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else { return nil }
-        let finalString = String((uuidString + "-" + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
+        let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
         self.init(consumerRef: consumerRef, paymentRef: finalString.substringToIndex(finalString.endIndex.advancedBy(-4)), metaData: metaData)
     }
     
