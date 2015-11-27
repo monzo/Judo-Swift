@@ -28,7 +28,7 @@ class SessionTests: XCTestCase {
     
     func testPOST() {
         // Given
-        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
         let amount = Amount(amountString: "30", currency: "GBP")
