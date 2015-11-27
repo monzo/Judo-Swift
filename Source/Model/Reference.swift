@@ -52,6 +52,15 @@ public class Reference: NSObject {
         self.yourPaymentMetaData = metaData
     }
     
+    
+    /**
+     convenience initialiser that will generate a unique payment reference
+     
+     - parameter consumerRef: the consumer reference for a Reference
+     - parameter metaData:    an optional field for any arbitrary data that is tied to a certrain transaction
+     
+     - returns: a Reference object
+     */
     public convenience init?(consumerRef: String, metaData: [String : String]? = nil) {
         guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else { return nil }
         let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
