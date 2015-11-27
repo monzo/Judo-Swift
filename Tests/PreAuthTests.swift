@@ -35,7 +35,7 @@ class PreAuthTests: XCTestCase {
     
     
     func testPreAuth() {
-        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let amount = Amount(amountString: "30", currency: "GBP")
         do {
             let preauth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references)
@@ -49,7 +49,7 @@ class PreAuthTests: XCTestCase {
     
     func testJudoMakeValidPreAuth() {
         // Given
-        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
         let amount = Amount(amountString: "30", currency: "GBP")
@@ -82,7 +82,7 @@ class PreAuthTests: XCTestCase {
     
     func testJudoMakeValidTokenPreAuth() {
         // Given
-        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
         let amount = Amount(amountString: "30", currency: "GBP")
@@ -136,7 +136,7 @@ class PreAuthTests: XCTestCase {
         let tooLongJudoID = "33224433441" // 11 chars not allowed
         let luhnInvalidJudoID = "33224433"
         var parameterError = false
-        let references = Reference(consumerRef: "consumer0053252", paymentRef: "payment123asd")
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let amount = Amount(amountString: "30", currency: "GBP")
         
         // When too short
@@ -186,7 +186,7 @@ class PreAuthTests: XCTestCase {
     
     func testJudoMakeInvalidReferencesPreAuth() {
         // Given
-        let references = Reference(consumerRef: "", paymentRef: "")
+        guard let references = Reference(consumerRef: "") else { return }
         let amount = Amount(amountString: "30", currency: "GBP")
         
         // When

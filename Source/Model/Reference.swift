@@ -38,7 +38,7 @@ public class Reference: NSObject {
     
     
     /**
-     designated initialiser
+     private initialiser
      
      - parameter consumerRef: consumer reference string
      - parameter paymentRef:  payment reference string
@@ -46,9 +46,25 @@ public class Reference: NSObject {
      
      - returns: a Reference object
      */
-    public init(consumerRef: String, paymentRef: String, metaData: [String : String]? = nil) {
+    private init(consumerRef: String, paymentRef: String, metaData: [String : String]? = nil) {
         self.yourConsumerReference = consumerRef
         self.yourPaymentReference = paymentRef
         self.yourPaymentMetaData = metaData
     }
+    
+    
+    /**
+     convenience initialiser that will generate a unique payment reference
+     
+     - parameter consumerRef: the consumer reference for a Reference
+     - parameter metaData:    an optional field for any arbitrary data that is tied to a certrain transaction
+     
+     - returns: a Reference object
+     */
+    public convenience init?(consumerRef: String, metaData: [String : String]? = nil) {
+        guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else { return nil }
+        let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
+        self.init(consumerRef: consumerRef, paymentRef: finalString.substringToIndex(finalString.endIndex.advancedBy(-4)), metaData: metaData)
+    }
+    
 }
