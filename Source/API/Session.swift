@@ -170,7 +170,7 @@ public class Session {
         // json configuration header
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("4.1.0", forHTTPHeaderField: "API-Version")
+        request.addValue("5.0.0", forHTTPHeaderField: "API-Version")
 
         // add the version and lang of the sdk to the header
         var bundle = NSBundle(identifier: "com.judo.JudoKit")
@@ -278,21 +278,18 @@ public class Session {
             }
             
             // did an error occur
-            if let errorMessage = upJSON["errorMessage"] as? String {
-                print(errorMessage)
-                let errorCode = upJSON["errorType"] as? Int ?? JudoError(.Unknown).rawValue()
+            if let errorCode = upJSON["code"] as? Int {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    var userInfo = upJSON
-                    if let modelErrors = upJSON["modelErrors"] as? JSONDictionary {
-                        userInfo = modelErrors
+                    let errorMessage = upJSON["message"] as? String
+                    
+                    var errorCategory: JudoErrorCategory?
+                    if let cat = upJSON["category"] as? Int {
+                        errorCategory = JudoErrorCategory(rawValue: cat)
                     }
                     
-                    var judoErrorCode = JudoError.JudoErrorCode.Unknown
-                    if let judoError = JudoError.JudoErrorCode(rawValue: errorCode) {
-                        judoErrorCode = judoError
-                    }
+                    guard let judoErrorCode = JudoErrorCode(rawValue: errorCode) else { return }
                     
-                    completion(nil, JudoError(judoErrorCode, userInfo))
+                    completion(nil, JudoError(judoErrorCode, errorMessage, errorCategory))
                 })
                 return // BAIL
             }
