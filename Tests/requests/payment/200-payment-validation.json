@@ -1,5 +1,5 @@
 {
-    "errorMessage": "Your good to go!",
-    "errorType": 20,
-    "modelErrors": []
+    "message": "Your good to go!",
+    "code": 20,
+    "category": 0
 }
