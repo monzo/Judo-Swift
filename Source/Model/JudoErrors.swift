@@ -48,6 +48,7 @@ public class JudoError: NSObject, ErrorType {
         self.code = code
         self.category = nil
         self.message = nil
+        self.payload = payload
         super.init()
     }
     
@@ -72,18 +73,22 @@ public class JudoError: NSObject, ErrorType {
 }
 
 @objc public enum JudoErrorCategory: Int {
-    case ProcessingException, DataException, SecurityException, GatewayException
+    case Unknown = 0, RequestError = 1, ModelError = 2, ConfigError = 3, ProcessingError = 4, ExceptionError = 5
     
     public func stringValue() -> String {
         switch self {
-        case ProcessingException:
-            return "ProcessingException"
-        case DataException:
-            return "DataException"
-        case SecurityException:
-            return "SecurityException"
-        case GatewayException:
-            return "GatewayException"
+        case Unknown:
+            return "Unknown"
+        case RequestError:
+            return "RequestError"
+        case ModelError:
+            return "ModelError"
+        case ConfigError:
+            return "ConfigError"
+        case ProcessingError:
+            return "ProcessingError"
+        case ExceptionError:
+            return "ExceptionError"
         }
     }
 }
