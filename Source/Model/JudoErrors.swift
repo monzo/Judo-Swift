@@ -31,90 +31,98 @@ public class JudoError: NSObject, ErrorType {
     public var code: JudoErrorCode
     public var message: String?
     public var category: JudoErrorCategory?
+    public var details: [JudoModelError]?
+    
     public var payload: JSONDictionary?
+    
+    public var explanation: String? = nil
+    public var resolution: String? = nil
     
     public var domain: String { return JudoErrorDomain }
     public var _domain: String { return JudoErrorDomain }
-    public var _code: Int { return 0 }
+    public var _code: Int { return self.code.rawValue }
     
-    public init(_ code: JudoErrorCode, _ message: String? = nil, _ category: JudoErrorCategory? = nil) {
+    public init(_ code: JudoErrorCode, _ message: String? = nil, _ category: JudoErrorCategory? = nil, details: [JudoModelError]? = nil) {
         self.code = code
-        self.category = category
         self.message = message
+        self.category = category
+        self.details = details
         super.init()
     }
     
-    public init(_ code: JudoErrorCode, _ payload: JSONDictionary) {
+    public init(_ code: JudoErrorCode, dict: JSONDictionary) {
+        let errorCode = dict["code"]
+        let errorMessage = dict["message"]
+        let errorCategory = dict["category"]
+        let errorExplanation = dict["explanation"]
+        let errorResolution = dict["resolution"]
+        let detailsArray = dict["details"]
+        
+        if let errorCode = errorCode as? Int, let judoError = JudoErrorCode(rawValue: errorCode) {
+            self.code = judoError
+        } else {
+            self.code = .Unknown
+        }
+        
+        if let errorMessage = errorMessage as? String {
+            self.message = errorMessage
+        }
+        
+        if let errorCategory = errorCategory as? Int, let judoErrorCategory = JudoErrorCategory(rawValue: errorCategory) {
+            self.category = judoErrorCategory
+        }
+        
+        if let errorExplanation = errorExplanation as? String {
+            self.explanation = errorExplanation
+        }
+        
+        if let errorResolution = errorResolution as? String {
+            self.resolution = errorResolution
+        }
+        
+        if let detailsArray = detailsArray as? [JSONDictionary] {
+            var modelItemArray = [JudoModelError]()
+            detailsArray.forEach { modelItemArray.append(JudoModelError(dict: $0)) }
+            self.details = modelItemArray
+        }
+        
+        super.init()
+    }
+    
+    public init(_ code: JudoErrorCode, payload: JSONDictionary) {
         self.code = code
         self.category = nil
         self.message = nil
+        self.details = nil
         self.payload = payload
         super.init()
     }
     
     public static func fromNSError(error: NSError) -> JudoError {
-        // TODO:
-        let error = JudoError(.Unknown, nil)
-        return error
+        if let errorCode = error.userInfo["code"] as? Int, judoErrorCode = JudoErrorCode(rawValue: errorCode) {
+            return JudoError(judoErrorCode, dict: error.userInfo as! JSONDictionary)
+        } else {
+            return JudoError(.Unknown, dict: error.userInfo as! JSONDictionary)
+        }
     }
     
     public func rawValue() -> Int {
-        // TODO:
-        return 0
+        return self.code.rawValue
     }
     
     public func toNSError() -> NSError {
+        var userInfoDict = [String : AnyObject]()
         if let message = self.message {
-            return NSError(domain: JudoErrorDomain, code: self.code.rawValue, userInfo: ["message" : message])
+            userInfoDict["message"] = message
         }
-        return NSError(domain: JudoErrorDomain, code: self.code.rawValue, userInfo: nil)
+        if let category = self.category {
+            userInfoDict["category"] = category.rawValue
+        }
+        if let details = self.details {
+            userInfoDict["details"] = details
+        }
+        return NSError(domain: JudoErrorDomain, code: self.code.rawValue, userInfo: userInfoDict)
     }
     
 }
 
-@objc public enum JudoErrorCategory: Int {
-    case Unknown = 0, RequestError = 1, ModelError = 2, ConfigError = 3, ProcessingError = 4, ExceptionError = 5
-    
-    public func stringValue() -> String {
-        switch self {
-        case Unknown:
-            return "Unknown"
-        case RequestError:
-            return "RequestError"
-        case ModelError:
-            return "ModelError"
-        case ConfigError:
-            return "ConfigError"
-        case ProcessingError:
-            return "ProcessingError"
-        case ExceptionError:
-            return "ExceptionError"
-        }
-    }
-}
-
-
-@objc public enum JudoErrorCode: Int {
-    // MARK: Device Errors
-    case Unknown, ParameterError, ResponseParseError, LuhnValidationError, JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
-    case LocationServicesDisabled = 91
-    
-    // MARK: Card Errors
-    case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
-    
-    // MARK: 3DS Error
-    case ThreeDSAuthRequest, Failed3DSError
-    
-    // MARK: User Errors
-    case UserDidCancel = -999
-    
-    // MARK: Server errors
-    
-    // ProcessingException
-    // DataException
-    // SecurityException
-    // GatewayException
-    
-    case YouAreGoodToGo = 20
-    case AccessForbiddenError = 403
-}

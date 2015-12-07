@@ -278,18 +278,9 @@ public class Session {
             }
             
             // did an error occur
-            if let errorCode = upJSON["code"] as? Int {
+            if let errorCode = upJSON["code"] as? Int, let judoErrorCode = JudoErrorCode(rawValue: errorCode) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    let errorMessage = upJSON["message"] as? String
-                    
-                    var errorCategory: JudoErrorCategory?
-                    if let cat = upJSON["category"] as? Int {
-                        errorCategory = JudoErrorCategory(rawValue: cat)
-                    }
-                    
-                    guard let judoErrorCode = JudoErrorCode(rawValue: errorCode) else { return }
-                    
-                    completion(nil, JudoError(judoErrorCode, errorMessage, errorCategory))
+                    completion(nil, JudoError(judoErrorCode, dict: upJSON))
                 })
                 return // BAIL
             }
@@ -297,7 +288,7 @@ public class Session {
             // check if 3DS was requested
             if upJSON["acsUrl"] != nil && upJSON["paReq"] != nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    completion(nil, JudoError(.ThreeDSAuthRequest, upJSON))
+                    completion(nil, JudoError(.ThreeDSAuthRequest, payload: upJSON))
                 })
                 return // BAIL
             }
