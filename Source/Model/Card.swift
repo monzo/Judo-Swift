@@ -438,7 +438,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 /**
 *  the CardDetails object stores information that is returned from a successful payment or preAuth
 */
-public class CardDetails: NSObject {
+public class CardDetails: NSObject, NSCoding {
     /// The last four digits of the card used for this transaction.
     public let cardLastFour: String?
     /// Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY.
@@ -466,6 +466,47 @@ public class CardDetails: NSObject {
             self.cardNetwork = nil
         }
         super.init()
+    }
+    
+    
+    /**
+     initialise the CardDetails object with a coder
+     
+     - parameter decoder: the decoder object
+     
+     - returns: a CardDetails object or nil
+     */
+    public required init?(coder decoder: NSCoder) {
+        let cardLastFour = decoder.decodeObjectForKey("cardLastFour") as? String?
+        let endDate = decoder.decodeObjectForKey("endDate") as? String?
+        let cardToken = decoder.decodeObjectForKey("cardToken") as? String?
+        let cardNetwork = decoder.decodeObjectForKey("cardNetwork") as? Int?
+        
+        self.cardLastFour = cardLastFour ?? nil
+        self.endDate = endDate ?? nil
+        self.cardToken = cardToken ?? nil
+        if let network = cardNetwork, let kNetwork = network {
+            self.cardNetwork = CardNetwork(rawValue: Int(kNetwork))
+        } else {
+            self.cardNetwork = nil
+        }
+        
+        super.init()
+    }
+    
+    
+    /**
+     encode the receiver CardDetails object
+     
+     - parameter aCoder: the Coder
+     */
+    public func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(self.cardLastFour, forKey: "cardLastFour")
+        aCoder.encodeObject(self.endDate, forKey: "endDate")
+        aCoder.encodeObject(self.cardToken, forKey: "cardToken")
+        if let cardNetwork = self.cardNetwork {
+            aCoder.encodeInt(Int32(cardNetwork.rawValue), forKey: "cardNetwork")
+        }
     }
     
     
