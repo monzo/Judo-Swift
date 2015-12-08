@@ -140,7 +140,7 @@ public class TransactionData: NSObject {
     /// The result of this transactions, this will either be "Success" or "Declined"
     public let result: TransactionResult
     /// A message detailing the result.
-    public let message: String
+    public let message: String?
     /// The number (e.g. "123-456" or "654321") identifying the Merchant to whom payment has been made
     public let judoID: String
     /// The trading name of the Merchant to whom payment has been made
@@ -178,7 +178,6 @@ public class TransactionData: NSObject {
             let createdAt = ISO8601DateFormatter.dateFromString(createdAtString),
             let resultString = dict["result"] as? String,
             let result = TransactionResult(rawValue: resultString),
-            let message = dict["message"] as? String,
             let judoID = dict["judoId"] as? NSNumber,
             let merchantName = dict["merchantName"] as? String,
             let appearsOnStatementAs = dict["appearsOnStatementAs"] as? String,
@@ -211,7 +210,7 @@ public class TransactionData: NSObject {
         self.type = type
         self.createdAt = createdAt
         self.result = result
-        self.message = message
+        self.message = dict["message"] as? String
         self.judoID = String(judoID.integerValue)
         self.merchantName = merchantName
         self.appearsOnStatementAs = appearsOnStatementAs
