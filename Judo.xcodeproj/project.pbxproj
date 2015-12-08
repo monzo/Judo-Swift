@@ -33,6 +33,10 @@
 		DA2620391B627239005544B8 /* 404-preauth-invalid-judoid.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620301B627239005544B8 /* 404-preauth-invalid-judoid.json */; };
 		DA26203A1B627239005544B8 /* 409-preauth-blocked-account.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */; };
 		DA973D0A1BEB8C6A0032266E /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA973D091BEB8C6A0032266E /* String+Validation.swift */; };
+		DA99F51D1C15AB29001EADC6 /* JudoModelErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99F51C1C15AB29001EADC6 /* JudoModelErrorCode.swift */; };
+		DA99F51F1C15AB68001EADC6 /* JudoErrorCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99F51E1C15AB68001EADC6 /* JudoErrorCategory.swift */; };
+		DA99F5231C15ABE7001EADC6 /* JudoErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99F5221C15ABE7001EADC6 /* JudoErrorCode.swift */; };
+		DA99F5251C15F0B8001EADC6 /* JudoModelError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA99F5241C15F0B8001EADC6 /* JudoModelError.swift */; };
 		DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE811B67ADE400C9993D /* Receipt.swift */; };
 		DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAAFCE831B69240600C9993D /* ReceiptTests.swift */; };
 		DADDB43C1BB5A986000D52DC /* 200-payment.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2620151B6251A1005544B8 /* 200-payment.json */; };
@@ -99,6 +103,10 @@
 		DA2620301B627239005544B8 /* 404-preauth-invalid-judoid.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "404-preauth-invalid-judoid.json"; sourceTree = "<group>"; };
 		DA2620311B627239005544B8 /* 409-preauth-blocked-account.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "409-preauth-blocked-account.json"; sourceTree = "<group>"; };
 		DA973D091BEB8C6A0032266E /* String+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+Validation.swift"; path = "Source/Extensions/String+Validation.swift"; sourceTree = "<group>"; };
+		DA99F51C1C15AB29001EADC6 /* JudoModelErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JudoModelErrorCode.swift; path = Source/Model/JudoModelErrorCode.swift; sourceTree = "<group>"; };
+		DA99F51E1C15AB68001EADC6 /* JudoErrorCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JudoErrorCategory.swift; path = Source/Model/JudoErrorCategory.swift; sourceTree = "<group>"; };
+		DA99F5221C15ABE7001EADC6 /* JudoErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JudoErrorCode.swift; path = Source/Model/JudoErrorCode.swift; sourceTree = "<group>"; };
+		DA99F5241C15F0B8001EADC6 /* JudoModelError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JudoModelError.swift; path = Source/Model/JudoModelError.swift; sourceTree = "<group>"; };
 		DAAFCE811B67ADE400C9993D /* Receipt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Receipt.swift; path = Source/API/Receipt.swift; sourceTree = "<group>"; };
 		DAAFCE831B69240600C9993D /* ReceiptTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptTests.swift; sourceTree = "<group>"; };
 		DADDB4441BB94354000D52DC /* 200-payment-validation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "200-payment-validation.json"; sourceTree = "<group>"; };
@@ -152,11 +160,15 @@
 			isa = PBXGroup;
 			children = (
 				DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */,
-				DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */,
 				DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */,
 				DA1C6CB01B6F9C25009F2BE9 /* Address.swift */,
 				DA1C6CB21B6F9C47009F2BE9 /* Reference.swift */,
 				DA1C6CB41B6F9C6F009F2BE9 /* Card.swift */,
+				DAFA400E1B5955CB0094CFCA /* JudoErrors.swift */,
+				DA99F5221C15ABE7001EADC6 /* JudoErrorCode.swift */,
+				DA99F5241C15F0B8001EADC6 /* JudoModelError.swift */,
+				DA99F51C1C15AB29001EADC6 /* JudoModelErrorCode.swift */,
+				DA99F51E1C15AB68001EADC6 /* JudoErrorCategory.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -442,11 +454,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA99F51D1C15AB29001EADC6 /* JudoModelErrorCode.swift in Sources */,
 				DAAFCE821B67ADE400C9993D /* Receipt.swift in Sources */,
 				DA1C6CB11B6F9C25009F2BE9 /* Address.swift in Sources */,
 				DAFA400F1B5955CB0094CFCA /* JudoErrors.swift in Sources */,
 				DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */,
 				DAFA40111B5956570094CFCA /* Payment.swift in Sources */,
+				DA99F5231C15ABE7001EADC6 /* JudoErrorCode.swift in Sources */,
 				DAFA40231B5E3D160094CFCA /* Session.swift in Sources */,
 				DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */,
 				DAFA401F1B595A510094CFCA /* Refund.swift in Sources */,
@@ -456,7 +470,9 @@
 				DAFA401B1B5959420094CFCA /* Collection.swift in Sources */,
 				DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */,
 				DA2620181B62520F005544B8 /* Transaction.swift in Sources */,
+				DA99F5251C15F0B8001EADC6 /* JudoModelError.swift in Sources */,
 				DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */,
+				DA99F51F1C15AB68001EADC6 /* JudoErrorCategory.swift in Sources */,
 				DA973D0A1BEB8C6A0032266E /* String+Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
