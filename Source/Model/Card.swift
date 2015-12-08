@@ -516,14 +516,14 @@ public class CardDetails: NSObject, NSCoding {
      - returns: a string with the last four digits with the right format
      */
     public func formattedLastFour() -> String? {
-        guard let cn = self.cardNetwork,
-                clf = self.cardLastFour else { return nil }
+        guard let cardLastFour = self.cardLastFour else { return nil }
+        guard let cardNetwork = self.cardNetwork else { return "**** \(cardLastFour)" }
         
-        switch cn {
+        switch cardNetwork {
         case .AMEX:
-            return "**** ****** *\(clf)"
+            return "**** ****** *\(cardLastFour)"
         default:
-            return "**** **** **** \(clf)"
+            return "**** **** **** \(cardLastFour)"
         }
     }
     
