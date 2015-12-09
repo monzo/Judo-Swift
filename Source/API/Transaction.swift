@@ -34,6 +34,7 @@ public protocol TransactionPath {
 /// Superclass Helper for Payments and PreAuths
 public class Transaction {
     
+    /// the current transaction if there is one - for preventing multiple transactions running at the same time
     private var currentTransactionReference: String? = nil
     
     /// the judoID for the transaction
