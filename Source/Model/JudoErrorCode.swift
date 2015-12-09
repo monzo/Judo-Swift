@@ -118,7 +118,7 @@ import Foundation
     case ParameterError
     case ResponseParseError
     case LuhnValidationError
-    case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError
+    case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
     case LocationServicesDisabled = 91
     
     // MARK: Card Errors

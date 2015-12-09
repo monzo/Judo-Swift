@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.5.x` Releases - [1.5.0](#150)
 - `1.4.x` Releases - [1.4.0](#140)
 - `1.3.x` Releases - [1.3.0](#130)
 - `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#110)
@@ -11,6 +12,27 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 
+## [1.5.0](https://github.com/JudoPay/Judo-Swift/tag/1.5.0)
+Released on 2015-12-17
+
+#### Added
+- De duplication. payment reference will now be generated as backend API will no longer accept duplicate entries.
+- SDK Version as dedicated field in HTTP Header for REST API calls
+- NSCoding protocol to CardDetails to enable persisting in NSUserDefaults
+
+#### Changed
+- error handling model to match API V5
+- modified Reference object to generate a unique payment reference by default
+
+#### Fixed
+- some typos in licensing headers
+- a bug where the generation of the formatted last four digits of the credit card number would result to nil if the card network was unknown
+- a bug where the field message was not returned from the API
+- minor issue where the payload has not been set when initialising the error object
+- error handling model mock json and fixed minor issue
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
+
+---
 ## [1.4.0](https://github.com/JudoPay/Judo-Swift/tag/1.4.0)
 Released on 2015-11-26
 

@@ -41,7 +41,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Judo', '~> 1.4'
+pod 'Judo', '~> 1.5'
 ```
 
 Then, run the following command:
@@ -65,7 +65,7 @@ $ brew install carthage
 - To integrate Judo into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "JudoPay/Judo-Swift" >= 1.4
+github "JudoPay/Judo-Swift" >= 1.5
 ```
 
 - On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk.
@@ -134,16 +134,16 @@ The Judo Swift SDK takes a reactive approach
 
 ```swift
 let judoID = "100111222"
-let references = Reference(yourConsuerReference: "consumer0053252", yourPaymentReference: "payment123asd", yourPaymentMetaData: nil)
+let references = Reference(yourConsumerReference: "consumer0053252")
 let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
 let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
 let amount = Amount(30)
 let emailAddress = "hans@email.com"
 let mobileNumber = "07100000000"
 
-let judoSecure = JudoSecure()
+let judoShield = JudoShield()
 
-self.judoSecure.locationWithCompletion { (coordinate, error) -> Void in
+self.judoShield.locationWithCompletion { (coordinate, error) -> Void in
     if let error = error {
         self.delegate?.payViewController(self, didEncounterError: error)
     } else {
@@ -151,7 +151,7 @@ self.judoSecure.locationWithCompletion { (coordinate, error) -> Void in
     }
 }
 
-let deviceSignal = judoSecure.deviceSignal()
+let deviceSignal = judoShield.deviceSignal()
 
 do {
 	let makePayment = try Judo.payment(correctJudoID, amount: amount, reference: references)
