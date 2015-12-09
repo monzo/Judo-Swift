@@ -34,6 +34,8 @@ public protocol TransactionPath {
 /// Superclass Helper for Payments and PreAuths
 public class Transaction {
     
+    private var currentTransactionReference: String? = nil
+    
     /// the judoID for the transaction
     public private (set) var judoID: String
     
@@ -196,7 +198,13 @@ public class Transaction {
             throw JudoError(.ParameterError)
         }
         
+        if self.reference.yourPaymentReference == self.currentTransactionReference {
+            throw JudoError(.DuplicateTransactionError)
+        }
+        self.currentTransactionReference = self.reference.yourPaymentReference
+        
         Session.POST(self.path(), parameters: parameters) { (response, error) -> () in
+            self.currentTransactionReference = nil
             block(response, error)
         }
         
