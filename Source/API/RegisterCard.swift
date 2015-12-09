@@ -1,5 +1,5 @@
 //
-//  PreAuth.swift
+//  RegisterCard.swift
 //  Judo
 //
 //  Copyright (c) 2015 Alternative Payments Ltd

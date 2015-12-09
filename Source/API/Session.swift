@@ -180,6 +180,8 @@ public class Session {
         let version = bundle!.infoDictionary?["CFBundleShortVersionString"]
         request.addValue("iOS-Version/\(version) lang/(Swift)", forHTTPHeaderField: "User-Agent")
         
+        request.addValue("iOSSwift-\(version)", forHTTPHeaderField: "Sdk-Version")
+        
         // check if token and secret have been set
         guard let authHeader = self.authorizationHeader else {
             print("token and secret not set")
