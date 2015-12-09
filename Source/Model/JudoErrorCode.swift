@@ -1,5 +1,5 @@
 //
-//  JudoErrors.swift
+//  JudoErrorCode.swift
 //  Judo
 //
 //  Copyright (c) 2015 Alternative Payments Ltd
