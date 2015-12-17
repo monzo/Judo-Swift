@@ -13,7 +13,7 @@
     <a title="Judo Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (84% documented)</p>
+        <p><a href="../index.html">Judo Docs</a> (42% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -52,6 +52,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/JudoError.html">JudoError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JudoModelError.html">JudoModelError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Payment.html">Payment</a>
@@ -107,6 +110,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/CardType.html">CardType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JudoErrorCategory.html">JudoErrorCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JudoErrorCode.html">JudoErrorCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JudoModelErrorCode.html">JudoModelErrorCode</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Enums/Sort.html">Sort</a>
@@ -405,7 +417,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">transaction</span><span class="p">(</span><span class="nv">transactionType</span><span class="p">:</span> <span class="kt">TransactionType</span><span class="p">,</span> <span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="n">throws</span> <span class="o">-&gt;</span> <span class="kt">Transaction</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">transaction</span><span class="p">(</span><span class="nv">transactionType</span><span class="p">:</span> <span class="kt">TransactionType</span><span class="p">,</span> <span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Transaction</span></code></pre>
 
                         </div>
                       </div>
@@ -518,7 +530,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">payment</span><span class="p">(</span><span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="n">throws</span> <span class="o">-&gt;</span> <span class="kt">Payment</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">payment</span><span class="p">(</span><span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Payment</span></code></pre>
 
                         </div>
                       </div>
@@ -618,7 +630,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">preAuth</span><span class="p">(</span><span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="n">throws</span> <span class="o">-&gt;</span> <span class="kt">PreAuth</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">preAuth</span><span class="p">(</span><span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">PreAuth</span></code></pre>
 
                         </div>
                       </div>
@@ -718,7 +730,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerCard</span><span class="p">(</span><span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="n">throws</span> <span class="o">-&gt;</span> <span class="kt">RegisterCard</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerCard</span><span class="p">(</span><span class="nv">judoID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="kt">Reference</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">RegisterCard</span></code></pre>
 
                         </div>
                       </div>
@@ -814,7 +826,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">receipt</span><span class="p">(</span><span class="nv">receiptID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="n">throws</span> <span class="o">-&gt;</span> <span class="kt">Receipt</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">receipt</span><span class="p">(</span><span class="nv">receiptID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Receipt</span></code></pre>
 
                         </div>
                       </div>
@@ -888,7 +900,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">collection</span><span class="p">(</span><span class="nv">receiptID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">paymentReference</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="n">throws</span> <span class="o">-&gt;</span> <span class="kt">Collection</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">collection</span><span class="p">(</span><span class="nv">receiptID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">paymentReference</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Collection</span></code></pre>
 
                         </div>
                       </div>
@@ -988,7 +1000,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">refund</span><span class="p">(</span><span class="nv">receiptID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">paymentReference</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="n">throws</span> <span class="o">-&gt;</span> <span class="kt">Refund</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">public</span> <span class="kd">func</span> <span class="nf">refund</span><span class="p">(</span><span class="nv">receiptID</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="kt">Amount</span><span class="p">,</span> <span class="nv">paymentReference</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Refund</span></code></pre>
 
                         </div>
                       </div>
@@ -1051,7 +1063,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-11-27)</p>
+          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-12-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

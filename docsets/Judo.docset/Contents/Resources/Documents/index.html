@@ -12,7 +12,7 @@
     <a title="Judo  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Judo Docs</a> (84% documented)</p>
+        <p><a href="index.html">Judo Docs</a> (42% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -51,6 +51,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/JudoError.html">JudoError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/JudoModelError.html">JudoModelError</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/Payment.html">Payment</a>
@@ -106,6 +109,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="Enums/CardType.html">CardType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/JudoErrorCategory.html">JudoErrorCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/JudoErrorCode.html">JudoErrorCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/JudoModelErrorCode.html">JudoModelErrorCode</a>
               </li>
               <li class="nav-group-task">
                 <a href="Enums/Sort.html">Sort</a>
@@ -183,7 +195,7 @@
 <span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
 <span class="n">use_frameworks!</span>
 
-<span class="n">pod</span> <span class="s1">'Judo'</span><span class="p">,</span> <span class="s1">'~&gt; 1.4'</span>
+<span class="n">pod</span> <span class="s1">'Judo'</span><span class="p">,</span> <span class="s1">'~&gt; 1.5'</span>
 </code></pre>
 
 <p>Then, run the following command:</p>
@@ -201,7 +213,7 @@
 <ul>
 <li>To integrate Judo into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</li>
 </ul>
-<pre class="highlight plaintext"><code>github "JudoPay/Judo-Swift" &gt;= 1.4
+<pre class="highlight plaintext"><code>github "JudoPay/Judo-Swift" &gt;= 1.5
 </code></pre>
 
 <ul>
@@ -258,16 +270,16 @@
 <p>The Judo Swift SDK takes a reactive approach</p>
 <a href='#card_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='card_payment'>Card Payment</h5>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">judoID</span> <span class="o">=</span> <span class="s">"100111222"</span>
-<span class="k">let</span> <span class="nv">references</span> <span class="o">=</span> <span class="kt">Reference</span><span class="p">(</span><span class="nv">yourConsuerReference</span><span class="p">:</span> <span class="s">"consumer0053252"</span><span class="p">,</span> <span class="nv">yourPaymentReference</span><span class="p">:</span> <span class="s">"payment123asd"</span><span class="p">,</span> <span class="nv">yourPaymentMetaData</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">references</span> <span class="o">=</span> <span class="kt">Reference</span><span class="p">(</span><span class="nv">yourConsumerReference</span><span class="p">:</span> <span class="s">"consumer0053252"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">address</span> <span class="o">=</span> <span class="kt">Address</span><span class="p">(</span><span class="nv">line1</span><span class="p">:</span> <span class="s">"242 Acklam Road"</span><span class="p">,</span> <span class="nv">line2</span><span class="p">:</span> <span class="s">"Westbourne Park"</span><span class="p">,</span> <span class="nv">line3</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">town</span><span class="p">:</span> <span class="s">"London"</span><span class="p">,</span> <span class="nv">postCode</span><span class="p">:</span> <span class="s">"W10 5JJ"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">card</span> <span class="o">=</span> <span class="kt">Card</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="s">"4976000000003436"</span><span class="p">,</span> <span class="nv">expiryDate</span><span class="p">:</span> <span class="s">"12/15"</span><span class="p">,</span> <span class="nv">cv2</span><span class="p">:</span> <span class="s">"452"</span><span class="p">,</span> <span class="nv">address</span><span class="p">:</span> <span class="n">address</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">amount</span> <span class="o">=</span> <span class="kt">Amount</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">emailAddress</span> <span class="o">=</span> <span class="s">"hans@email.com"</span>
 <span class="k">let</span> <span class="nv">mobileNumber</span> <span class="o">=</span> <span class="s">"07100000000"</span>
 
-<span class="k">let</span> <span class="nv">judoSecure</span> <span class="o">=</span> <span class="kt">JudoSecure</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">judoShield</span> <span class="o">=</span> <span class="kt">JudoShield</span><span class="p">()</span>
 
-<span class="k">self</span><span class="o">.</span><span class="n">judoSecure</span><span class="o">.</span><span class="n">locationWithCompletion</span> <span class="p">{</span> <span class="p">(</span><span class="n">coordinate</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
+<span class="k">self</span><span class="o">.</span><span class="n">judoShield</span><span class="o">.</span><span class="n">locationWithCompletion</span> <span class="p">{</span> <span class="p">(</span><span class="n">coordinate</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="k">in</span>
     <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
         <span class="k">self</span><span class="o">.</span><span class="n">delegate</span><span class="p">?</span><span class="o">.</span><span class="nf">payViewController</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">didEncounterError</span><span class="p">:</span> <span class="n">error</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
@@ -275,10 +287,10 @@
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="k">let</span> <span class="nv">deviceSignal</span> <span class="o">=</span> <span class="n">judoSecure</span><span class="o">.</span><span class="nf">deviceSignal</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">deviceSignal</span> <span class="o">=</span> <span class="n">judoShield</span><span class="o">.</span><span class="nf">deviceSignal</span><span class="p">()</span>
 
 <span class="k">do</span> <span class="p">{</span>
-    <span class="k">let</span> <span class="nv">makePayment</span> <span class="o">=</span> <span class="n">try</span> <span class="kt">Judo</span><span class="o">.</span><span class="nf">payment</span><span class="p">(</span><span class="n">correctJudoID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="n">references</span><span class="p">)</span>
+    <span class="k">let</span> <span class="nv">makePayment</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Judo</span><span class="o">.</span><span class="nf">payment</span><span class="p">(</span><span class="n">correctJudoID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="n">references</span><span class="p">)</span>
                                 <span class="o">.</span><span class="nf">card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
                                 <span class="o">.</span><span class="nf">location</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
                                 <span class="o">.</span><span class="nf">deviceSignal</span><span class="p">(</span><span class="n">deviceSignal</span><span class="p">)</span>
@@ -290,7 +302,7 @@
                                         <span class="c1">// success</span>
                                     <span class="p">}</span>
                                 <span class="p">})</span>
-<span class="p">}</span> <span class="n">catch</span> <span class="p">{</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
     <span class="c1">// error creating a Transaction e.g. the judoID could be in a wrong format</span>
 <span class="p">}</span>
 </code></pre>
@@ -356,7 +368,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-11-27)</p>
+          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-12-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

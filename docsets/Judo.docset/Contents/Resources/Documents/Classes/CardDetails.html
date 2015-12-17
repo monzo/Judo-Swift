@@ -13,7 +13,7 @@
     <a title="CardDetails Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (84% documented)</p>
+        <p><a href="../index.html">Judo Docs</a> (42% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -52,6 +52,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/JudoError.html">JudoError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JudoModelError.html">JudoModelError</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Payment.html">Payment</a>
@@ -109,6 +112,15 @@
                 <a href="../Enums/CardType.html">CardType</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Enums/JudoErrorCategory.html">JudoErrorCategory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JudoErrorCode.html">JudoErrorCode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/JudoModelErrorCode.html">JudoModelErrorCode</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Enums/Sort.html">Sort</a>
               </li>
               <li class="nav-group-task">
@@ -151,7 +163,7 @@
             <h1>CardDetails</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardDetails</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardDetails</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCoding</span></code></pre>
 
                 </div>
               </div>
@@ -324,6 +336,105 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:FC4Judo11CardDetailscFMS0_FT5coderCSo7NSCoder_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Judo11CardDetailscFMS0_FT5coderCSo7NSCoder_GSqS0__">init(coder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>initialise the CardDetails object with a coder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>decoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the decoder object</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a CardDetails object or nil</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Judo11CardDetails15encodeWithCoderFS0_FCSo7NSCoderT_"></a>
+                    <a name="//apple_ref/swift/Method/encodeWithCoder(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Judo11CardDetails15encodeWithCoderFS0_FCSo7NSCoderT_">encodeWithCoder(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>encode the receiver CardDetails object</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encodeWithCoder</span><span class="p">(</span><span class="nv">aCoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>aCoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the Coder</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:FC4Judo11CardDetails17formattedLastFourFS0_FT_GSqSS_"></a>
                     <a name="//apple_ref/swift/Method/formattedLastFour()" class="dashAnchor"></a>
                     <a class="token" href="#/s:FC4Judo11CardDetails17formattedLastFourFS0_FT_GSqSS_">formattedLastFour()</a>
@@ -390,7 +501,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-11-27)</p>
+          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-12-17)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
