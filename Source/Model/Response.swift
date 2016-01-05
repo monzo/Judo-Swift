@@ -194,10 +194,10 @@ public class TransactionData: NSObject {
                 self.judoID = ""
                 self.merchantName = ""
                 self.appearsOnStatementAs = ""
-                self.refunds = Amount(amountString: "1", currency: "XOR")
-                self.originalAmount = Amount(amountString: "1", currency: "XOR")
-                self.netAmount = Amount(amountString: "1", currency: "XOR")
-                self.amount = Amount(amountString: "1", currency: "XOR")
+                self.refunds = Amount(amountString: "1", currency: .XOR)
+                self.originalAmount = Amount(amountString: "1", currency: .XOR)
+                self.netAmount = Amount(amountString: "1", currency: .XOR)
+                self.amount = Amount(amountString: "1", currency: .XOR)
                 self.cardDetails = CardDetails(nil)
                 self.consumer = Consumer(consumerToken: "", consumerReference: "")
                 self.rawData = [String : AnyObject]()
@@ -215,25 +215,34 @@ public class TransactionData: NSObject {
         self.merchantName = merchantName
         self.appearsOnStatementAs = appearsOnStatementAs
         
-        if let refunds = dict["refunds"] as? String {
+        if let refunds = dict["refunds"] as? String, let currency = Currency(code: currency) {
             self.refunds = Amount(amountString: refunds, currency: currency)
         } else {
             self.refunds = nil
         }
-
-        if let originalAmount = dict["originalAmount"] as? String {
+        
+        if let originalAmount = dict["originalAmount"] as? String, let currency = Currency(code: currency) {
             self.originalAmount = Amount(amountString: originalAmount, currency: currency)
         } else {
             self.originalAmount = nil
         }
-
-        if let netAmount = dict["netAmount"] as? String {
+        
+        if let netAmount = dict["netAmount"] as? String, let currency = Currency(code: currency) {
             self.netAmount = Amount(amountString: netAmount, currency: currency)
         } else {
             self.netAmount = nil
         }
-
-        self.amount = Amount(amountString: amountString, currency: currency)
+        
+        if let currency = Currency(code: currency) {
+            self.amount = Amount(amountString: amountString, currency: currency)
+        } else {
+            self.amount = Amount(amountString: "1", currency: .XOR)
+            self.cardDetails = CardDetails(nil)
+            self.consumer = Consumer(consumerToken: "", consumerReference: "")
+            self.rawData = [String : AnyObject]()
+            super.init()
+            throw JudoError(.CurrencyNotSupportedError)
+        }
         
         self.cardDetails = CardDetails(cardDetailsDict)
         self.consumer = Consumer(consumerDict)

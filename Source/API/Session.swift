@@ -367,7 +367,7 @@ public class Session {
         
         if let amount = amount {
             parametersDict["amount"] = amount.amount
-            parametersDict["currency"] = amount.currency
+            parametersDict["currency"] = amount.currency.description()
         } else {
             return nil
         }
