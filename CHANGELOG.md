@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 
 
 ## [1.5.0](https://github.com/JudoPay/Judo-Swift/tag/1.5.0)
-Released on 2015-12-17
+Released on 2016-01-14
 
 #### Added
 - De duplication. payment reference will now be generated as backend API will no longer accept duplicate entries.
@@ -21,6 +21,7 @@ Released on 2015-12-17
 - NSCoding protocol to CardDetails to enable persisting in NSUserDefaults
 
 #### Changed
+- updated currency to allow only strongly typed currencies
 - error handling model to match API V5
 - modified Reference object to generate a unique payment reference by default
 

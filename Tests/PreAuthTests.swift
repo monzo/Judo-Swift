@@ -36,7 +36,7 @@ class PreAuthTests: XCTestCase {
     
     func testPreAuth() {
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let amount = Amount(amountString: "30", currency: "GBP")
+        let amount = Amount(amountString: "30", currency: .GBP)
         do {
             let preauth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references)
             XCTAssertNotNil(preauth)
@@ -52,7 +52,7 @@ class PreAuthTests: XCTestCase {
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
-        let amount = Amount(amountString: "30", currency: "GBP")
+        let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
         
@@ -85,7 +85,7 @@ class PreAuthTests: XCTestCase {
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
         let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
-        let amount = Amount(amountString: "30", currency: "GBP")
+        let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
         
@@ -137,7 +137,7 @@ class PreAuthTests: XCTestCase {
         let luhnInvalidJudoID = "33224433"
         var parameterError = false
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let amount = Amount(amountString: "30", currency: "GBP")
+        let amount = Amount(amountString: "30", currency: .GBP)
         
         // When too short
         do {
@@ -187,7 +187,7 @@ class PreAuthTests: XCTestCase {
     func testJudoMakeInvalidReferencesPreAuth() {
         // Given
         guard let references = Reference(consumerRef: "") else { return }
-        let amount = Amount(amountString: "30", currency: "GBP")
+        let amount = Amount(amountString: "30", currency: .GBP)
         
         // When
         do {

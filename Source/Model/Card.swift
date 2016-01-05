@@ -154,10 +154,31 @@ public class Card: NSObject {
             return self.patternString()?.stringByReplacingOccurrencesOfString("X", withString: "0")
         }
     }
+    
 }
 
 
+extension Card.Configuration: Comparable { }
 
+public func ==(x: Card.Configuration, y: Card.Configuration) -> Bool {
+    return x.cardLength == y.cardLength && x.cardNetwork == y.cardNetwork
+}
+
+public func <(x: Card.Configuration, y: Card.Configuration) -> Bool {
+    return x.cardLength < y.cardLength
+}
+
+public func <=(x: Card.Configuration, y: Card.Configuration) -> Bool {
+    return x.cardLength <= y.cardLength
+}
+
+public func >(x: Card.Configuration, y: Card.Configuration) -> Bool {
+    return x.cardLength > y.cardLength
+}
+
+public func >=(x: Card.Configuration, y: Card.Configuration) -> Bool {
+    return x.cardLength >= y.cardLength
+}
 
 /**
 the CardType enum is a value type for CardNetwork to further identify card types
@@ -370,7 +391,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
      - returns: a CardNetwork if the prefix matches a given set of CardNetworks or CardNetwork.Unknown
      */
     public static func networkForString(string: String, constrainedToNetworks networks: [CardNetwork]) -> CardNetwork {
-        let result = networks.filter({ $0.prefixes().filter({ string.beginsWith($0) }).count > 0 })
+        let result = networks.filter({ $0.prefixes().filter({ string.hasPrefix($0) }).count > 0 })
         if result.count == 1 {
             return result[0]
         }
@@ -548,22 +569,4 @@ public class CardDetails: NSObject, NSCoding {
     
 }
 
-
-extension String {
-    
-    /**
-    helper method to check wether the string begins with another given string
-    
-    - Parameter str: prefix string to compare
-    
-    - Returns: boolean indicating wether the prefix matches or not
-    */
-    func beginsWith (str: String) -> Bool {
-        if let range = self.rangeOfString(str) {
-            return range.startIndex == self.startIndex
-        }
-        return false
-    }
-    
-}
 
