@@ -215,34 +215,25 @@ public class TransactionData: NSObject {
         self.merchantName = merchantName
         self.appearsOnStatementAs = appearsOnStatementAs
         
-        if let refunds = dict["refunds"] as? String, let currency = Currency(code: currency) {
-            self.refunds = Amount(amountString: refunds, currency: currency)
+        if let refunds = dict["refunds"] as? String {
+            self.refunds = Amount(amountString: refunds, currency: Currency(currency))
         } else {
             self.refunds = nil
         }
         
-        if let originalAmount = dict["originalAmount"] as? String, let currency = Currency(code: currency) {
-            self.originalAmount = Amount(amountString: originalAmount, currency: currency)
+        if let originalAmount = dict["originalAmount"] as? String {
+            self.originalAmount = Amount(amountString: originalAmount, currency: Currency(currency))
         } else {
             self.originalAmount = nil
         }
         
-        if let netAmount = dict["netAmount"] as? String, let currency = Currency(code: currency) {
-            self.netAmount = Amount(amountString: netAmount, currency: currency)
+        if let netAmount = dict["netAmount"] as? String {
+            self.netAmount = Amount(amountString: netAmount, currency: Currency(currency))
         } else {
             self.netAmount = nil
         }
         
-        if let currency = Currency(code: currency) {
-            self.amount = Amount(amountString: amountString, currency: currency)
-        } else {
-            self.amount = Amount(amountString: "1", currency: .XOR)
-            self.cardDetails = CardDetails(nil)
-            self.consumer = Consumer(consumerToken: "", consumerReference: "")
-            self.rawData = [String : AnyObject]()
-            super.init()
-            throw JudoError(.CurrencyNotSupportedError)
-        }
+        self.amount = Amount(amountString: amountString, currency: Currency(currency))
         
         self.cardDetails = CardDetails(cardDetailsDict)
         self.consumer = Consumer(consumerDict)

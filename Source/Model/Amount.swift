@@ -46,125 +46,30 @@ public class Amount: NSObject {
     
 }
 
-public enum Currency {
-    case AUD, CAD, CHF, CZK, DKK, EUR, GBP, HKD, HUF, JPY, NOK, NZD, PLN, SEK, USD, ZAR, XOR
+@objc public class Currency: NSObject {
+    public let rawValue: String
     
-    public init?(code: String) {
-        switch code {
-        case "AUD":
-            self = .AUD
-        case "CAD":
-            self = .CAD
-        case "CHF":
-            self = .CHF
-        case "CZK":
-            self = .CZK
-        case "DKK":
-            self = .DKK
-        case "EUR":
-            self = .EUR
-        case "GBP":
-            self = .GBP
-        case "HKD":
-            self = .HKD
-        case "HUF":
-            self = .HUF
-        case "JPY":
-            self = .JPY
-        case "NOK":
-            self = .NOK
-        case "NZD":
-            self = .NZD
-        case "PLN":
-            self = .PLN
-        case "SEK":
-            self = .SEK
-        case "USD":
-            self = .USD
-        case "ZAR":
-            self = .ZAR
-        default:
-            return nil
-        }
+    public init(_ fromRaw: String) {
+        self.rawValue = fromRaw
     }
     
-    public func title() -> String {
-        switch self {
-        case AUD:
-            return "Australian Dollar"
-        case CAD:
-            return "Canadian Dollar"
-        case CHF:
-            return "Swiss Franc"
-        case CZK:
-            return "Czech Republic Krona"
-        case DKK:
-            return "Danish Krone"
-        case EUR:
-            return "Euro"
-        case GBP:
-            return "Pound sterling"
-        case HKD:
-            return "Hong Kong Dollar"
-        case HUF:
-            return "Hungarian Forint"
-        case JPY:
-            return "Japanese Yen"
-        case NOK:
-            return "Norwegian Krone"
-        case NZD:
-            return "New Zealand Dollar"
-        case PLN:
-            return "Polish Xloty"
-        case SEK:
-            return "Swedish Krona"
-        case USD:
-            return "United States Dollar"
-        case ZAR:
-            return "South African Rand"
-        case XOR:
-            return "Unsupported Currency"
-        }
-    }
+    public static let AUD = Currency("AUD")
+    public static let CAD = Currency("CAD")
+    public static let CHF = Currency("CHF")
+    public static let CZK = Currency("CZK")
+    public static let DKK = Currency("DKK")
+    public static let EUR = Currency("EUR")
+    public static let GBP = Currency("GBP")
+    public static let HKD = Currency("HKD")
+    public static let HUF = Currency("HUF")
+    public static let JPY = Currency("JPY")
+    public static let NOK = Currency("NOK")
+    public static let NZD = Currency("NZD")
+    public static let PLN = Currency("PLN")
+    public static let SEK = Currency("SEK")
+    public static let USD = Currency("USD")
+    public static let ZAR = Currency("ZAR")
+    public static let XOR = Currency("Unsupported Currency")
     
-    public func description() -> String {
-        switch self {
-        case AUD:
-            return "AUD"
-        case CAD:
-            return "CAD"
-        case CHF:
-            return "CHF"
-        case CZK:
-            return "CZK"
-        case DKK:
-            return "DKK"
-        case EUR:
-            return "EUR"
-        case GBP:
-            return "GBP"
-        case HKD:
-            return "HKD"
-        case HUF:
-            return "HUF"
-        case JPY:
-            return "JPY"
-        case NOK:
-            return "NOK"
-        case NZD:
-            return "NZD"
-        case PLN:
-            return "PLN"
-        case SEK:
-            return "SEK"
-        case USD:
-            return "USD"
-        case ZAR:
-            return "ZAR"
-        case XOR:
-            return "Unsupported Currency"
-        }
-    }
-
 }
 
