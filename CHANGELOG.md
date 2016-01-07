@@ -27,6 +27,8 @@ Released on 2016-01-14
 - modified Reference object to generate a unique payment reference by default
 
 #### Fixed
+- an issue with the cardNetwork that was not decoded in the correct type (int)
+- an issue where errors of the NSURLErrorDomain were not passed through properly
 - some typos in licensing headers
 - a bug where the generation of the formatted last four digits of the credit card number would result to nil if the card network was unknown
 - a bug where the field message was not returned from the API

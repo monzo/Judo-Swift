@@ -484,7 +484,7 @@ public class CardDetails: NSObject, NSCoding {
         if let cardType = dict?["cardType"] as? Int {
             self.cardNetwork = CardNetwork(rawValue: cardType)
         } else {
-            self.cardNetwork = nil
+            self.cardNetwork = .Unknown
         }
         super.init()
     }
@@ -501,17 +501,12 @@ public class CardDetails: NSObject, NSCoding {
         let cardLastFour = decoder.decodeObjectForKey("cardLastFour") as? String?
         let endDate = decoder.decodeObjectForKey("endDate") as? String?
         let cardToken = decoder.decodeObjectForKey("cardToken") as? String?
-        let cardNetwork = decoder.decodeObjectForKey("cardNetwork") as? Int?
+        let cardNetwork = decoder.decodeIntForKey("cardNetwork")
         
         self.cardLastFour = cardLastFour ?? nil
         self.endDate = endDate ?? nil
         self.cardToken = cardToken ?? nil
-        if let network = cardNetwork, let kNetwork = network {
-            self.cardNetwork = CardNetwork(rawValue: Int(kNetwork))
-        } else {
-            self.cardNetwork = nil
-        }
-        
+        self.cardNetwork = CardNetwork(rawValue: Int(cardNetwork))
         super.init()
     }
     
@@ -527,6 +522,8 @@ public class CardDetails: NSObject, NSCoding {
         aCoder.encodeObject(self.cardToken, forKey: "cardToken")
         if let cardNetwork = self.cardNetwork {
             aCoder.encodeInt(Int32(cardNetwork.rawValue), forKey: "cardNetwork")
+        } else {
+            aCoder.encodeInt(0, forKey: "cardNetwork")
         }
     }
     
