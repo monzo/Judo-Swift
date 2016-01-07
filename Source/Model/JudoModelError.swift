@@ -29,12 +29,15 @@ public class JudoModelError: NSObject {
     public var fieldName: String?
     public var message: String?
     public var detail: String?
+    public var rawValue: JSONDictionary?
     
     public init(dict: JSONDictionary) {
         self.code = JudoModelErrorCode(rawValue: dict["code"] as! Int)
         self.fieldName = dict["fieldName"] as? String
         self.message = dict["message"] as? String
         self.detail = dict["detail"] as? String
+        self.rawValue = dict
         super.init()
     }
+    
 }
