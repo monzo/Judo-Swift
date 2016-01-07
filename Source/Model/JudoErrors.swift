@@ -33,6 +33,8 @@ public class JudoError: NSObject, ErrorType {
     public var category: JudoErrorCategory?
     public var details: [JudoModelError]?
     
+    public var bridgedError: NSError?
+    
     public var payload: JSONDictionary?
     
     public var explanation: String? = nil
@@ -98,11 +100,20 @@ public class JudoError: NSObject, ErrorType {
         super.init()
     }
     
+    public init(_ code: JudoErrorCode, bridgedError: NSError) {
+        self.code = code
+        self.category = nil
+        self.message = nil
+        self.details = nil
+        self.bridgedError = bridgedError
+        super.init()
+    }
+    
     public static func fromNSError(error: NSError) -> JudoError {
         if let errorCode = error.userInfo["code"] as? Int, judoErrorCode = JudoErrorCode(rawValue: errorCode) {
             return JudoError(judoErrorCode, dict: error.userInfo as! JSONDictionary)
         } else {
-            return JudoError(.Unknown, dict: error.userInfo as! JSONDictionary)
+            return JudoError(.Unknown, bridgedError: error)
         }
     }
     
@@ -111,6 +122,9 @@ public class JudoError: NSObject, ErrorType {
     }
     
     public func toNSError() -> NSError {
+        if let bridgedError = self.bridgedError {
+            return bridgedError
+        }
         var userInfoDict = [String : AnyObject]()
         if let message = self.message {
             userInfoDict["message"] = message
@@ -120,6 +134,9 @@ public class JudoError: NSObject, ErrorType {
         }
         if let details = self.details {
             userInfoDict["details"] = details
+        }
+        if let modelErrors = self.details {
+            userInfoDict["modelErrors"] = modelErrors.map({ $0.rawValue }).flatMap({ $0 })
         }
         return NSError(domain: JudoErrorDomain, code: self.code.rawValue, userInfo: userInfoDict)
     }
