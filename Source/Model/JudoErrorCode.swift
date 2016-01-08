@@ -122,7 +122,7 @@ import Foundation
     case LocationServicesDisabled = 91
     
     // MARK: Card Errors
-    case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+    case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry, InvalidCardNetwork
     
     // MARK: 3DS Error
     case ThreeDSAuthRequest, Failed3DSError
