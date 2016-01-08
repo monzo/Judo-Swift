@@ -109,6 +109,14 @@ public class JudoError: NSObject, ErrorType {
         super.init()
     }
     
+    public init(_ code: JudoErrorCode, message: String) {
+        self.code = code
+        self.category = nil
+        self.message = message
+        self.details = nil
+        super.init()
+    }
+    
     public static func fromNSError(error: NSError) -> JudoError {
         if let errorCode = error.userInfo["code"] as? Int, judoErrorCode = JudoErrorCode(rawValue: errorCode) {
             return JudoError(judoErrorCode, dict: error.userInfo as! JSONDictionary)

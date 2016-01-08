@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 Released on 2016-01-14
 
 #### Added
+- ability to initialise an error with a code and message
 - De duplication. payment reference will now be generated as backend API will no longer accept duplicate entries.
 - bridging NSError value for errors that are not conforming to the JudoErrorDomain
 - SDK Version as dedicated field in HTTP Header for REST API calls
