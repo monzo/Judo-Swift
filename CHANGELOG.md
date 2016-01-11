@@ -17,7 +17,7 @@ Released on 2016-01-14
 
 #### Added
 - Ability to initialize an error with a code and message
-- Duplication prevention - unique payment reference will now be generated as backend API will no longer accept duplicated entries
+- Duplicaition prevention - payment reference will be uniquely checked against previous transactions to block any duplication of the same transaction
 - Bridging NSError value for errors that are not conforming to the JudoErrorDomain
 - SDK version as dedicated field in HTTP Header for REST API calls
 - NSCoding protocol to CardDetails to enable persisting in NSUserDefaults
