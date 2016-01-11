@@ -16,25 +16,25 @@ All notable changes to this project will be documented in this file.
 Released on 2016-01-14
 
 #### Added
-- ability to initialise an error with a code and message
-- De duplication. payment reference will now be generated as backend API will no longer accept duplicate entries.
-- bridging NSError value for errors that are not conforming to the JudoErrorDomain
-- SDK Version as dedicated field in HTTP Header for REST API calls
+- Ability to initialize an error with a code and message
+- Duplication prevention - unique payment reference will now be generated as backend API will no longer accept duplicated entries
+- Bridging NSError value for errors that are not conforming to the JudoErrorDomain
+- SDK version as dedicated field in HTTP Header for REST API calls
 - NSCoding protocol to CardDetails to enable persisting in NSUserDefaults
 
 #### Changed
-- updated currency to allow only strongly typed currencies
-- error handling model to match API V5
-- modified Reference object to generate a unique payment reference by default
+- Updated currency to allow only strongly typed currencies
+- Error handling model to match our latest API Version 5
+- Modified Reference object to generate a unique payment reference by default
 
 #### Fixed
-- an issue with the cardNetwork that was not decoded in the correct type (int)
-- an issue where errors of the NSURLErrorDomain were not passed through properly
-- some typos in licensing headers
-- a bug where the generation of the formatted last four digits of the credit card number would result to nil if the card network was unknown
-- a bug where the field message was not returned from the API
-- minor issue where the payload has not been set when initialising the error object
-- error handling model mock json and fixed minor issue
+- An issue with the cardNetwork that was not decoded in the correct type (int)
+- An issue where errors of the NSURLErrorDomain were not passed through properly
+- Some typos in licensing headers
+- A bug where the generation of the formatted last four digits of the credit card number would result to nil if the card network was unknown
+- A bug where the field message was not returned from the API
+- Minor issue where the payload has not been set when initializing the error object
+- Error handling model mock json and fixed minor issue
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
