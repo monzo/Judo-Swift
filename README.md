@@ -6,23 +6,23 @@
 [![Twitter](https://img.shields.io/badge/twitter-@JudoPayments-orange.svg)](http://twitter.com/JudoPayments)
 [![Build Status](https://travis-ci.org/JudoPay/Judo-Swift.svg)](http://travis-ci.org/JudoPay/Judo-Swift)
 
-# Judo Swift SDK #
+# judoNative SDK for Swift
 
-This is the new Judo Swift SDK. It contains base work to easily access the REST API with all the validation and helper methods needed to make simple payments with a fully custom UI. If you are interested in doing easy transaction without having to implement a full custom UI, Fraud prevention, 3DS, AVS, etc as well as PCI compliance, have a look at the [JudoKit](https://github.com/JudoPay/JudoKit) project which contains this as a base module.
+This is the new judoNative Swift SDK. It contains base work to easily access the REST API with all the validation and helper methods needed to make simple payments with a fully custom UI. If you are interested in a simple integration of payments without having to implement a full custom UI, fraud prevention, 3DS, AVS, etc as well as PCI compliance yourself, have a look at the [judoKit](https://github.com/JudoPay/JudoKit) project which contains this as a base module.
 
-If you still decide to implement everything yourself we strongly recommend you to use the [JudoSecure](https://github.com/JudoPay/Judo-Security) Framework and send the device related information along with transaction requests to ensure safety and fraud security for all your payments.
+If you still would like to implement everything yourself, we strongly recommend you to use the [judoSecure](https://github.com/JudoPay/Judo-Security) Framework and send device related information along with transaction requests to ensure safety and fraud security for all your payments.
 
 
-### What is this project for? ###
+### What is this project for?
 
-The Judo Swift SDK is a framework for accessing the [JudoPay](https://www.judopay.com/) Backend API for making and accepting payments inside your app as easy and frictionless as possible.
+The judoNative Swift SDK is a framework for accessing the [judoPay](https://www.judopay.com/) backend API for making and accepting payments inside your app as easy and frictionless as possible.
 
 ## Integration
 
-### Sign up for judopayments
+### Sign up judo's platform
 
-- To use the Judo SDK, you'll need to [sign up](https://www.judopay.com/signup) and get your app token 
-- the SDK has to be integrated in your project using one of the following methods
+- To use judo SDKs, you'll need to [sign up](https://www.judopay.com/signup) and get your app token. 
+- the SDK has to be integrated into your project using one of the following methods:
 
 #### CocoaPods
 
@@ -34,7 +34,7 @@ CocoaPods 0.39 supports Swift and embedded frameworks. You can install it with t
 $ gem install cocoapods
 ```
 
-add Judo to your `Podfile` to integrate it into your Xcode project:
+add judo to your `Podfile` to integrate it into your Xcode project:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -62,7 +62,7 @@ $ brew update
 $ brew install carthage
 ```
 
-- To integrate Judo into your Xcode project using Carthage, specify it in your `Cartfile`:
+- To integrate judo into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "JudoPay/Judo-Swift" >= 1.5
@@ -75,19 +75,19 @@ github "JudoPay/Judo-Swift" >= 1.5
 /usr/local/bin/carthage copy-frameworks
 ```
 
-and add the paths to the frameworks you want to use under “Input Files”, e.g.:
+And add the paths to the frameworks you want to use under “Input Files”, e.g.:
 
 ```
 $(SRCROOT)/Carthage/Build/iOS/Judo.framework
 ```
 
-### Manual Integration
+### Manual integration
 
-You can integrate Judo into your project manually if you prefer not to use dependency management.
+You can integrate judo into your project manually if you prefer not to use dependency management.
 
-#### Adding the Framework
+#### Adding the framework
 
-- Add Judo as a [submodule](http://git-scm.com/docs/git-submodule) by opening the Terminal, changing into your project directory, and entering the following command:
+- Add judo as a [submodule](http://git-scm.com/docs/git-submodule) by opening the Terminal, changing into your project directory, and entering the following command:
 
 ```bash
 $ git submodule add https://github.com/JudoPay/Judo-Swift
@@ -101,19 +101,19 @@ $ git submodule add https://github.com/JudoPay/Judo-Swift
 - Select `Judo.framework` nested inside the `Workspace` folder on the top.
 
 
-### Further Setup
+### Further setup
 
-- add `import Judo` to the top of the file where you want to use the SDK.
+- Add `import Judo` to the top of the file where you want to use the SDK.
 
-- To instruct the SDK to communicate with the sandbox, include the following line  `Judo.sandboxed = true` When you are ready to go live you can remove this line. We would recommend to put this in the method `didFinishLaunchingWithOptions` in your AppDelegate
+- To instruct the SDK to communicate with the sandbox, include the following line  `Judo.sandboxed = true`. When you are ready to go live you can remove this line. We would recommend to put this in the method `didFinishLaunchingWithOptions` in your AppDelegate.
 
-- You can also set your key and secret here if you do not wish to include it in all subsequent calls `Judo.setToken(token:, secret:)`
+- You can also set your key and secret here if you do not wish to include it in all subsequent calls `Judo.setToken(token:, secret:)`.
 
 
 ### Examples
 
 #### Token and Secret
-the token and secret are accessible from your JudoPay Account [here](https://portal.judopay.com/Developer) after you have created an App and either generated sandbox or live tokens. We recommend you to set this in your AppDelegate in the `didFinishLaunchingWithOptions` method
+The token and secret are accessible from your judo account [here](https://portal.judopay.com/Developer). After you have created an app you can either generated sandbox or live tokens. We recommend you to set this in your AppDelegate in the `didFinishLaunchingWithOptions` method.
 
 ```swift
 let token = "a3xQdxP6iHdWg1zy"
@@ -126,11 +126,11 @@ Judo.setToken(token, secret: secret)
 // Judo.didSetTokenAndSecret() returns true
 ```
 
-#### Make a simple Payment
+#### Make a simple payment
 
-The Judo Swift SDK takes a reactive approach
+The judoNative Swift SDK takes a reactive approach.
 
-##### Card Payment
+##### Card payment
 
 ```swift
 let judoID = "100111222"
@@ -171,7 +171,7 @@ do {
 }
 ```
 
-##### Token Payment
+##### Token payment
 ```swift
 Judo.payment(correctJudoID, amount: amount, reference: references)
 	.paymentToken(payToken)
@@ -187,9 +187,9 @@ Judo.payment(correctJudoID, amount: amount, reference: references)
 	})
 ```
 
-notice that the only difference is calling `.paymentToken(payToken)` with a valid `PaymentToken` instead of `.card(card)` for making a token payment instead of a card payment. This process is the same for preAuths and Token preAuths
+Notice that the only difference is calling `.paymentToken(payToken)` with a valid `PaymentToken` instead of `.card(card)` for making a token payment instead of a card payment. This process is the same for pre-authorizations and token pre-authorizations.
 
-##### Card PreAuth
+##### Card pre-authorization
 
 ```
 Judo.preAuth(correctJudoID, amount: amount, reference: references)
@@ -206,7 +206,7 @@ Judo.preAuth(correctJudoID, amount: amount, reference: references)
 	})
 ```
 
-##### Token PreAuth
+##### Token pre-authorization
 
 ```
 Judo.preAuth(correctJudoID, amount: amount, reference: references)
