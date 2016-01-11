@@ -71,7 +71,7 @@ public extension String {
     
     
     /**
-     method to check wether string contains only numbers and letters
+     method to check whether string contains only numbers and letters
      
      - returns: true if string consists of numbers and letters
      */
@@ -81,7 +81,7 @@ public extension String {
     }
     
     /**
-     method to check wether string contains only numbers and letters
+     method to check whether string contains only numbers and letters
      
      - returns: true if string consists of numbers and letters
      */

@@ -66,15 +66,12 @@ public class Judo {
     
     
     /**
-    a function to check wether a token and secret has been set
+    a function to check whether a token and secret has been set
     
-    - Returns: a Boolean indicating wether the parameters have been set
+    - Returns: a Boolean indicating whether the parameters have been set
     */
     static public func didSetTokenAndSecret() -> Bool {
-        if let _ = Session.authorizationHeader {
-            return true
-        }
-        return false
+        return Session.authorizationHeader != nil
     }
     
     
