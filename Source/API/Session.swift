@@ -39,7 +39,7 @@ public class Session {
     /// token and secret are saved in the authorizationHeader for authentication of REST API calls
     static var authorizationHeader: String?
     
-    /// static variable that defines wether local json files should be used instead of the actual REST API
+    /// static variable that defines whether local json files should be used instead of the actual REST API
     internal static var isTesting = false
     
     
@@ -236,7 +236,7 @@ public class Session {
     Helper Method to create a JSON HTTP request with authentication
     
     - Parameter request: the request that is accessed
-    - Parameter completion: a block that gets called when the call finishes, it carries two objects that indicate wether the call was a success or a failure
+    - Parameter completion: a block that gets called when the call finishes, it carries two objects that indicate whether the call was a success or a failure
     
     - Returns: a NSURLSessionDataTask that can be used to manipulate the call
     */
