@@ -7,12 +7,15 @@
     <meta charset='utf-8'>
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a title="Judo  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Judo Docs</a> (42% documented)</p>
+        <p><a href="index.html">Judo Docs</a> (40% documented)</p>
+        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -45,6 +48,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/Consumer.html">Consumer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Currency.html">Currency</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/Judo.html">Judo</a>
@@ -135,6 +141,26 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:ZF4Judooi1lFTCCS_4Card13ConfigurationS1__Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:ZF4Judooi2leFTCCS_4Card13ConfigurationS1__Sb">&lt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:ZF4Judooi2eeFTCCS_4Card13ConfigurationS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:ZF4Judooi1gFTCCS_4Card13ConfigurationS1__Sb">&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:ZF4Judooi2geFTCCS_4Card13ConfigurationS1__Sb">&gt;=(_:_:)</a>
               </li>
             </ul>
           </li>
@@ -273,7 +299,7 @@
 <span class="k">let</span> <span class="nv">references</span> <span class="o">=</span> <span class="kt">Reference</span><span class="p">(</span><span class="nv">yourConsumerReference</span><span class="p">:</span> <span class="s">"consumer0053252"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">address</span> <span class="o">=</span> <span class="kt">Address</span><span class="p">(</span><span class="nv">line1</span><span class="p">:</span> <span class="s">"242 Acklam Road"</span><span class="p">,</span> <span class="nv">line2</span><span class="p">:</span> <span class="s">"Westbourne Park"</span><span class="p">,</span> <span class="nv">line3</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">town</span><span class="p">:</span> <span class="s">"London"</span><span class="p">,</span> <span class="nv">postCode</span><span class="p">:</span> <span class="s">"W10 5JJ"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">card</span> <span class="o">=</span> <span class="kt">Card</span><span class="p">(</span><span class="nv">number</span><span class="p">:</span> <span class="s">"4976000000003436"</span><span class="p">,</span> <span class="nv">expiryDate</span><span class="p">:</span> <span class="s">"12/15"</span><span class="p">,</span> <span class="nv">cv2</span><span class="p">:</span> <span class="s">"452"</span><span class="p">,</span> <span class="nv">address</span><span class="p">:</span> <span class="n">address</span><span class="p">)</span>
-<span class="k">let</span> <span class="nv">amount</span> <span class="o">=</span> <span class="kt">Amount</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">amount</span> <span class="o">=</span> <span class="kt">Amount</span><span class="p">(</span><span class="nv">amountString</span><span class="p">:</span> <span class="s">"30"</span><span class="p">,</span> <span class="nv">currency</span><span class="p">:</span> <span class="o">.</span><span class="kt">GBP</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">emailAddress</span> <span class="o">=</span> <span class="s">"hans@email.com"</span>
 <span class="k">let</span> <span class="nv">mobileNumber</span> <span class="o">=</span> <span class="s">"07100000000"</span>
 
@@ -368,8 +394,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-12-17)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

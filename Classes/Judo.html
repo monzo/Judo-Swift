@@ -7,13 +7,16 @@
     <meta charset='utf-8'>
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
+    
   </head>
   <body>
     <a name="//apple_ref/swift/Class/Judo" class="dashAnchor"></a>
     <a title="Judo Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (42% documented)</p>
+        <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
+        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -46,6 +49,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Consumer.html">Consumer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Currency.html">Currency</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/Judo.html">Judo</a>
@@ -140,6 +146,26 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF4Judooi1lFTCCS_4Card13ConfigurationS1__Sb">&lt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF4Judooi2leFTCCS_4Card13ConfigurationS1__Sb">&lt;=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF4Judooi2eeFTCCS_4Card13ConfigurationS1__Sb">==(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF4Judooi1gFTCCS_4Card13ConfigurationS1__Sb">&gt;(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF4Judooi2geFTCCS_4Card13ConfigurationS1__Sb">&gt;=(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -197,6 +223,9 @@
 
                         </div>
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L38-L46">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -224,6 +253,9 @@
 
                         </div>
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L50">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -243,14 +275,16 @@
                         <p>a mandatory function that sets the token and secret for making payments with Judo</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter token:  a string object representing the token
+    <p class="aside-title">Parameter</p>
+    Parameter token:  a string object representing the token
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter secret: a string object representing the secret
+</div>
 
-        </div>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter secret: a string object representing the secret
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -294,6 +328,9 @@
                           </tbody>
                         </table>
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L59-L65">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -310,13 +347,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>a function to check wether a token and secret has been set</p>
+                        <p>a function to check whether a token and secret has been set</p>
 
 <div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          a Boolean indicating wether the parameters have been set
+    <p class="aside-title">Returns</p>
+    a Boolean indicating whether the parameters have been set
 
-        </div>
+</div>
 
                       </div>
                       <div class="declaration">
@@ -329,8 +366,11 @@
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>a Boolean indicating wether the parameters have been set</p>
+                        <p>a Boolean indicating whether the parameters have been set</p>
 
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L73-L75">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -364,6 +404,9 @@
                         <p>true if device is jailbroken</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L83-L86">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -383,34 +426,46 @@
                         <p>starting point and a reactive method to create a transaction that is sent to a certain judo ID</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter transactionType: the type of the transaction (payment, preauth or registercard)
+    <p class="aside-title">Parameter</p>
+    Parameter transactionType: the type of the transaction (payment, preauth or registercard)
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter judoID:          the recipient - has to be between 6 and 10 characters and luhn-valid
+</div>
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter amount:          the amount of the Payment
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter judoID:          the recipient - has to be between 6 and 10 characters and luhn-valid
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          <p>Parameter reference:       the reference</p>
+</div>
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>JudoIDInvalidError    judoID does not match the given length or is not luhn valid</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter amount:          the amount of the Payment
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>InvalidOperationError if you call this method with .Refund as a transactionType</p>
+</div>
 
-        </div><div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          <p>a Payment Object</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter reference:       the reference</p>
 
-        </div>
+</div>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>JudoIDInvalidError    judoID does not match the given length or is not luhn valid</p>
+
+</div>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>InvalidOperationError if you call this method with .Refund as a transactionType</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>a Payment Object</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -485,6 +540,9 @@
                         <p>a Payment Object</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L102-L111">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -504,26 +562,34 @@
                         <p>starting point and a reactive method to create a payment that is sent to a certain judo ID</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
+    <p class="aside-title">Parameter</p>
+    Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter amount:    the amount of the Payment
+</div>
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          <p>Parameter reference: the reference</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter amount:    the amount of the Payment
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>JudoIDInvalidError judoID does not match the given length or is not luhn valid</p>
+</div>
 
-        </div><div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          <p>a Payment Object</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter reference: the reference</p>
 
-        </div>
+</div>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>JudoIDInvalidError judoID does not match the given length or is not luhn valid</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>a Payment Object</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -585,6 +651,9 @@
                         <p>a Payment Object</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L125-L127">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -604,26 +673,34 @@
                         <p>starting point and a reactive method to create a preAuth that is sent to a certain judo ID</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
+    <p class="aside-title">Parameter</p>
+    Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter amount:    the amount of the PreAuth
+</div>
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          <p>Parameter reference: the reference</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter amount:    the amount of the PreAuth
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>JudoIDInvalidError judoID does not match the given length or is not luhn valid</p>
+</div>
 
-        </div><div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          <p>a PreAuth Object</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter reference: the reference</p>
 
-        </div>
+</div>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>JudoIDInvalidError judoID does not match the given length or is not luhn valid</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>a PreAuth Object</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -685,6 +762,9 @@
                         <p>a PreAuth Object</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L141-L143">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -704,26 +784,34 @@
                         <p>starting point and a reactive method to create a RegisterCard that is sent to a certain judo ID</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
+    <p class="aside-title">Parameter</p>
+    Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter amount:    the amount of the RegisterCard
+</div>
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          <p>Parameter reference: the reference</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter amount:    the amount of the RegisterCard
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>JudoIDInvalidError judoID does not match the given length or is not luhn valid</p>
+</div>
 
-        </div><div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          <p>a RegisterCard Object</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter reference: the reference</p>
 
-        </div>
+</div>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>JudoIDInvalidError judoID does not match the given length or is not luhn valid</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>a RegisterCard Object</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -785,6 +873,9 @@
                         <p>a RegisterCard Object</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L157-L159">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -808,18 +899,22 @@
 <p>If you want to use the receipt function - you need to enable that in the Judo Dashboard - Your Apps - Permissions for the given App</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          <p>Parameter receiptID: the receipt id as a String</p>
+    <p class="aside-title">Parameter</p>
+    <p>Parameter receiptID: the receipt id as a String</p>
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>LuhnValidationError if the receiptID does not match</p>
+</div>
 
-        </div><div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          <p>a Receipt Object for reactive usage</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>LuhnValidationError if the receiptID does not match</p>
 
-        </div>
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>a Receipt Object for reactive usage</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -855,6 +950,9 @@
                         <p>a Receipt Object for reactive usage</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L175-L177">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -874,26 +972,34 @@
                         <p>Creates a Collection object which can be used to collect a previously pre-authenticated transaction</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter receiptID:        the receipt of the previously authorized transaction
+    <p class="aside-title">Parameter</p>
+    Parameter receiptID:        the receipt of the previously authorized transaction
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter amount:           the amount to be transacted
+</div>
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          <p>Parameter paymentReference: the payment reference string</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter amount:           the amount to be transacted
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>LuhnValidationError judoID does not match the given length or is not luhn valid</p>
+</div>
 
-        </div><div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          <p>a Collection object for reactive usage</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter paymentReference: the payment reference string</p>
 
-        </div>
+</div>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>LuhnValidationError judoID does not match the given length or is not luhn valid</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>a Collection object for reactive usage</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -955,6 +1061,9 @@
                         <p>a Collection object for reactive usage</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L191-L193">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -974,26 +1083,34 @@
                         <p>Creates a Refund object which can be used to refund a previous transaction</p>
 
 <div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter receiptID:        the receipt of the previous transaction
+    <p class="aside-title">Parameter</p>
+    Parameter receiptID:        the receipt of the previous transaction
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          Parameter amount:           the amount to be refunded (will check if funds are available in your account)
+</div>
 
-        </div><div class="aside aside-parameter">
-          <p class="aside-title">Parameter</p>
-          <p>Parameter paymentReference: the payment reference string</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    Parameter amount:           the amount to be refunded (will check if funds are available in your account)
 
-        </div><div class="aside aside-throws">
-          <p class="aside-title">Throws</p>
-          <p>LuhnValidationError judoID does not match the given length or is not luhn valid</p>
+</div>
 
-        </div><div class="aside aside-returns">
-          <p class="aside-title">Returns</p>
-          <p>a Collection object for reactive usage</p>
+<div class="aside aside-parameter">
+    <p class="aside-title">Parameter</p>
+    <p>Parameter paymentReference: the payment reference string</p>
 
-        </div>
+</div>
+
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p>LuhnValidationError judoID does not match the given length or is not luhn valid</p>
+
+</div>
+
+<div class="aside aside-returns">
+    <p class="aside-title">Returns</p>
+    <p>a Collection object for reactive usage</p>
+
+</div>
 
                       </div>
                       <div class="declaration">
@@ -1055,6 +1172,9 @@
                         <p>a Collection object for reactive usage</p>
 
                       </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L207-L209">Show on GitHub</a>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -1063,8 +1183,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2015 <a class="link" href="http://judopay.com/" target="_blank" rel="external">Hamon Ben Riazy</a>. All rights reserved. (Last updated: 2015-12-17)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.4.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

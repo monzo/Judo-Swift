@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>CardDetails Class Reference</title>
+    <title>Currency Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/CardDetails" class="dashAnchor"></a>
-    <a title="CardDetails Class Reference"></a>
+    <a name="//apple_ref/swift/Class/Currency" class="dashAnchor"></a>
+    <a title="Currency Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
@@ -23,7 +23,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Judo Reference</a>
         <img id="carat" src="../img/carat.png" />
-        CardDetails Class Reference
+        Currency Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -186,14 +186,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>CardDetails</h1>
-              <div class="declaration">
-                <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CardDetails</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCoding</span></code></pre>
-
-                </div>
-              </div>
-            <p>the CardDetails object stores information that is returned from a successful payment or preAuth</p>
+            <h1>Currency</h1>
+            <p>Undocumented</p>
 
           </section>
           <section class="section task-group-section">
@@ -202,9 +196,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC4Judo11CardDetails12cardLastFourGSqSS_"></a>
-                    <a name="//apple_ref/swift/Property/cardLastFour" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC4Judo11CardDetails12cardLastFourGSqSS_">cardLastFour</a>
+                    <a name="/s:vC4Judo8Currency8rawValueSS"></a>
+                    <a name="//apple_ref/swift/Property/rawValue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4Judo8Currency8rawValueSS">rawValue</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -212,19 +206,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The last four digits of the card used for this transaction.</p>
+                        <p>Undocumented</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cardLastFour</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L464">Show on GitHub</a>
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -232,99 +218,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vC4Judo11CardDetails7endDateGSqSS_"></a>
-                    <a name="//apple_ref/swift/Property/endDate" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC4Judo11CardDetails7endDateGSqSS_">endDate</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">endDate</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L466">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC4Judo11CardDetails9cardTokenGSqSS_"></a>
-                    <a name="//apple_ref/swift/Property/cardToken" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC4Judo11CardDetails9cardTokenGSqSS_">cardToken</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Can be used to charge future payments against this card.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cardToken</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L468">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:vC4Judo11CardDetails11cardNetworkGSqOS_11CardNetwork_"></a>
-                    <a name="//apple_ref/swift/Property/cardNetwork" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vC4Judo11CardDetails11cardNetworkGSqOS_11CardNetwork_">cardNetwork</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>the card network</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cardNetwork</span><span class="p">:</span> <span class="kt">CardNetwork</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L470">Show on GitHub</a>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:FC4Judo11CardDetailscFMS0_FGSqGVSs10DictionarySSPSs9AnyObject___S0_"></a>
+                    <a name="/s:FC4Judo8CurrencycFMS0_FSSS0_"></a>
                     <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC4Judo11CardDetailscFMS0_FGSqGVSs10DictionarySSPSs9AnyObject___S0_">init(_:)</a>
+                    <a class="token" href="#/s:FC4Judo8CurrencycFMS0_FSSS0_">init(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -332,44 +228,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>designated initialiser for Card Details</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">dict</span><span class="p">:</span> <span class="kt">JSONDictionary</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>dict</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>all parameters as a dictionary</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>a CardDetails object</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L480-L490">Show on GitHub</a>
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L52-L54">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -377,9 +240,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC4Judo11CardDetailscFMS0_FT5coderCSo7NSCoder_GSqS0__"></a>
-                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC4Judo11CardDetailscFMS0_FT5coderCSo7NSCoder_GSqS0__">init(coder:)</a>
+                    <a name="/s:ZvC4Judo8Currency3AUDS0_"></a>
+                    <a name="//apple_ref/swift/Variable/AUD" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3AUDS0_">AUD</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -387,44 +250,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>initialise the CardDetails object with a coder</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">decoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>decoder</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>the decoder object</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>a CardDetails object or nil</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L500-L511">Show on GitHub</a>
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -432,9 +262,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC4Judo11CardDetails15encodeWithCoderFS0_FCSo7NSCoderT_"></a>
-                    <a name="//apple_ref/swift/Method/encodeWithCoder(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC4Judo11CardDetails15encodeWithCoderFS0_FCSo7NSCoderT_">encodeWithCoder(_:)</a>
+                    <a name="/s:ZvC4Judo8Currency3CADS0_"></a>
+                    <a name="//apple_ref/swift/Variable/CAD" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3CADS0_">CAD</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -442,39 +272,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>encode the receiver CardDetails object</p>
+                        <p>Undocumented</p>
 
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">encodeWithCoder</span><span class="p">(</span><span class="nv">aCoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>aCoder</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>the Coder</p>
-
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L519-L528">Show on GitHub</a>
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -482,9 +284,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC4Judo11CardDetails17formattedLastFourFS0_FT_GSqSS_"></a>
-                    <a name="//apple_ref/swift/Method/formattedLastFour()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC4Judo11CardDetails17formattedLastFourFS0_FT_GSqSS_">formattedLastFour()</a>
+                    <a name="/s:ZvC4Judo8Currency3CHFS0_"></a>
+                    <a name="//apple_ref/swift/Variable/CHF" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3CHFS0_">CHF</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -492,24 +294,11 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>get a formatted string with the right whitespacing for a certain card type</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">formattedLastFour</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>a string with the last four digits with the right format</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L536-L546">Show on GitHub</a>
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -517,9 +306,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FC4Judo11CardDetails16formattedEndDateFS0_FT_GSqSS_"></a>
-                    <a name="//apple_ref/swift/Method/formattedEndDate()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FC4Judo11CardDetails16formattedEndDateFS0_FT_GSqSS_">formattedEndDate()</a>
+                    <a name="/s:ZvC4Judo8Currency3CZKS0_"></a>
+                    <a name="//apple_ref/swift/Variable/CZK" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3CZKS0_">CZK</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -527,24 +316,297 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>get a formatted string with the right slash for a date</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">formattedEndDate</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="p">?</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>a string with the date as shown on the credit card with the right format</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L554-L565">Show on GitHub</a>
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3DKKS0_"></a>
+                    <a name="//apple_ref/swift/Variable/DKK" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3DKKS0_">DKK</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3EURS0_"></a>
+                    <a name="//apple_ref/swift/Variable/EUR" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3EURS0_">EUR</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3GBPS0_"></a>
+                    <a name="//apple_ref/swift/Variable/GBP" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3GBPS0_">GBP</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3HKDS0_"></a>
+                    <a name="//apple_ref/swift/Variable/HKD" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3HKDS0_">HKD</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3HUFS0_"></a>
+                    <a name="//apple_ref/swift/Variable/HUF" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3HUFS0_">HUF</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3JPYS0_"></a>
+                    <a name="//apple_ref/swift/Variable/JPY" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3JPYS0_">JPY</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3NOKS0_"></a>
+                    <a name="//apple_ref/swift/Variable/NOK" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3NOKS0_">NOK</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3NZDS0_"></a>
+                    <a name="//apple_ref/swift/Variable/NZD" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3NZDS0_">NZD</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3PLNS0_"></a>
+                    <a name="//apple_ref/swift/Variable/PLN" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3PLNS0_">PLN</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3SEKS0_"></a>
+                    <a name="//apple_ref/swift/Variable/SEK" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3SEKS0_">SEK</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3USDS0_"></a>
+                    <a name="//apple_ref/swift/Variable/USD" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3USDS0_">USD</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3ZARS0_"></a>
+                    <a name="//apple_ref/swift/Variable/ZAR" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3ZARS0_">ZAR</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC4Judo8Currency3XORS0_"></a>
+                    <a name="//apple_ref/swift/Variable/XOR" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC4Judo8Currency3XORS0_">XOR</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L0">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

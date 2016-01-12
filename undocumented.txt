@@ -135,6 +135,7 @@ JudoErrors.swift
 	public var message: String?
 	public var category: JudoErrorCategory?
 	public var details: [JudoModelError]?
+	public var bridgedError: NSError?
 	public var payload: JSONDictionary?
 	public var explanation: String? = nil
 	public var resolution: String? = nil
@@ -144,6 +145,8 @@ JudoErrors.swift
 	public init(_ code: JudoErrorCode, _ message: String? = nil, _ category: JudoErrorCategory? = nil, details: [JudoModelError]? = nil)
 	public init(_ code: JudoErrorCode, dict: JSONDictionary)
 	public init(_ code: JudoErrorCode, payload: JSONDictionary)
+	public init(_ code: JudoErrorCode, bridgedError: NSError)
+	public init(_ code: JudoErrorCode, message: String)
 	public static func fromNSError(error: NSError) -> JudoError
 	public func rawValue() -> Int
 	public func toNSError() -> NSError
@@ -240,24 +243,32 @@ JudoErrorCode.swift
 	case ParameterError
 	case ResponseParseError
 	case LuhnValidationError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
-	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
+	case JudoIDInvalidError, SerializationError, RequestError, TokenSecretError, CardAndTokenError, CardOrTokenMissingError, PKPaymentMissingError, JailbrokenDeviceDisallowedError, InvalidOperationError, DuplicateTransactionError, CurrencyNotSupportedError
 	case LocationServicesDisabled = 91
-	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
-	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
-	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
-	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry, InvalidCardNetwork
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry, InvalidCardNetwork
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry, InvalidCardNetwork
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry, InvalidCardNetwork
+	case CardLengthMismatchError, InputLengthMismatchError, InvalidCardNumber, InvalidEntry, InvalidCardNetwork
 	case ThreeDSAuthRequest, Failed3DSError
 	case ThreeDSAuthRequest, Failed3DSError
 	case UserDidCancel = -999
+Card.swift
+	public func ==(x: Card.Configuration, y: Card.Configuration) -> Bool
+	public func <(x: Card.Configuration, y: Card.Configuration) -> Bool
+	public func <=(x: Card.Configuration, y: Card.Configuration) -> Bool
+	public func >(x: Card.Configuration, y: Card.Configuration) -> Bool
+	public func >=(x: Card.Configuration, y: Card.Configuration) -> Bool
 Transaction.swift
 	static var path: String {get}
 JudoModelError.swift
@@ -266,10 +277,31 @@ JudoModelError.swift
 	public var fieldName: String?
 	public var message: String?
 	public var detail: String?
+	public var rawValue: JSONDictionary?
 	public init(dict: JSONDictionary)
 Amount.swift
-	public init(decimalNumber: NSDecimalNumber, currency: String)
-	public init(amountString: String, currency: String)
+	public init(decimalNumber: NSDecimalNumber, currency: Currency)
+	public init(amountString: String, currency: Currency)
+	@objc public class Currency: NSObject
+	public let rawValue: String
+	public init(_ fromRaw: String)
+	public static let AUD = Currency("AUD")
+	public static let CAD = Currency("CAD")
+	public static let CHF = Currency("CHF")
+	public static let CZK = Currency("CZK")
+	public static let DKK = Currency("DKK")
+	public static let EUR = Currency("EUR")
+	public static let GBP = Currency("GBP")
+	public static let HKD = Currency("HKD")
+	public static let HUF = Currency("HUF")
+	public static let JPY = Currency("JPY")
+	public static let NOK = Currency("NOK")
+	public static let NZD = Currency("NZD")
+	public static let PLN = Currency("PLN")
+	public static let SEK = Currency("SEK")
+	public static let USD = Currency("USD")
+	public static let ZAR = Currency("ZAR")
+	public static let XOR = Currency("Unsupported Currency")
 JudoErrorCategory.swift
 	@objc public enum JudoErrorCategory: Int
 	case Unknown = 0, RequestError = 1, ModelError = 2, ConfigError = 3, ProcessingError = 4, ExceptionError = 5
