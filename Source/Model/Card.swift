@@ -472,7 +472,10 @@ public class CardDetails: NSObject, NSCoding {
     public let cardNumber: String?
     /// description string for print functions
     override public var description: String {
-        return "cardLastFour: \(self.formattedLastFour() ?? "N/A"), endDate: \(self.formattedEndDate() ?? "N/A"), cardNetwork: \(self.cardNetwork?.stringValue() ?? "N/A")"
+        let formattedLastFour = self.formattedLastFour() ?? "N/A"
+        let formattedEndDate = self.formattedEndDate() ?? "N/A"
+        let cardNetworkString = self.cardNetwork?.stringValue() ?? "N/A"
+        return "cardLastFour: \(formattedLastFour), endDate: \(formattedEndDate), cardNetwork: \(cardNetworkString)"
     }
     
     
