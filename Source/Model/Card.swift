@@ -487,10 +487,25 @@ public class CardDetails: NSObject, NSCoding {
      
      - returns: a CardDetails object
      */
-    public convenience init(cardNumber: String?, endDate: String?) {
+    public convenience init(cardNumber: String?, expiryMonth: Int?, expiryYear: Int?) {
         var dict = JSONDictionary()
         dict["cardNumber"] = cardNumber
-        dict["endDate"] = endDate
+        
+        guard let expiryMonth = expiryMonth, let expiryYear = expiryYear else { self.init(dict); return }
+
+        let dateComponents = NSDateComponents()
+        dateComponents.month = expiryMonth
+        dateComponents.year = expiryYear
+        
+        if let gregorian = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) {
+            if let date = gregorian.dateFromComponents(dateComponents) {
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "MM/yy"
+                let dateString = dateFormatter.stringFromDate(date)
+                dict["endDate"] = dateString
+            }
+        }
+        
         self.init(dict)
     }
     
