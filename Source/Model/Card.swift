@@ -468,6 +468,28 @@ public class CardDetails: NSObject, NSCoding {
     public let cardToken: String?
     /// the card network
     public let cardNetwork: CardNetwork?
+    /// the card number if available
+    public let cardNumber: String?
+    /// description string for print functions
+    override public var description: String {
+        return "cardLastFour: \(self.formattedLastFour() ?? "N/A"), endDate: \(self.formattedEndDate() ?? "N/A"), cardNetwork: \(self.cardNetwork?.stringValue() ?? "N/A")"
+    }
+    
+    
+    /**
+     convenience initializer that takes in a card number and an expiry date in case a transaction should be made with pre-known information
+     
+     - parameter cardNumber: a card number as a String
+     - parameter endDate:    an enddate in MM/YY format as a String
+     
+     - returns: a CardDetails object
+     */
+    public convenience init(cardNumber: String?, endDate: String?) {
+        var dict = JSONDictionary()
+        dict["cardNumber"] = cardNumber
+        dict["endDate"] = endDate
+        self.init(dict)
+    }
     
     
     /**
@@ -481,6 +503,7 @@ public class CardDetails: NSObject, NSCoding {
         self.cardLastFour = dict?["cardLastfour"] as? String
         self.endDate = dict?["endDate"] as? String
         self.cardToken = dict?["cardToken"] as? String
+        self.cardNumber = dict?["cardNumber"] as? String
         if let cardType = dict?["cardType"] as? Int {
             self.cardNetwork = CardNetwork(rawValue: cardType)
         } else {
@@ -507,6 +530,7 @@ public class CardDetails: NSObject, NSCoding {
         self.endDate = endDate ?? nil
         self.cardToken = cardToken ?? nil
         self.cardNetwork = CardNetwork(rawValue: Int(cardNetwork))
+        self.cardNumber = nil
         super.init()
     }
     
