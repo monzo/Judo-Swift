@@ -177,7 +177,7 @@ public class Session {
         if bundle == nil {
             bundle = NSBundle(forClass: self)
         }
-        let version = bundle!.infoDictionary?["CFBundleShortVersionString"]
+        let version = bundle!.infoDictionary?["CFBundleShortVersionString"] ?? "Unknown"
         request.addValue("iOS-Version/\(version) lang/(Swift)", forHTTPHeaderField: "User-Agent")
         
         request.addValue("iOSSwift-\(version)", forHTTPHeaderField: "Sdk-Version")
