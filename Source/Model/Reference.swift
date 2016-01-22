@@ -1,5 +1,5 @@
 //
-//  Model.swift
+//  Reference.swift
 //  Judo
 //
 //  Copyright (c) 2016 Alternative Payments Ltd
