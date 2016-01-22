@@ -26,7 +26,7 @@ import Foundation
 
 
 /**
- a Mirror of the backend error set
+ A Mirror of the backend error set
  
  - JudoId_Not_Supplied:                               JudoId_Not_Supplied description
  - JudoId_Not_Supplied_1:                             JudoId_Not_Supplied_1 description
