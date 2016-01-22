@@ -2,9 +2,25 @@
 //  Response.swift
 //  Judo
 //
-//  Created by Hamon Riazy on 03/08/2015.
-//  Copyright © 2015 Judo Payments. All rights reserved.
+//  Copyright (c) 2016 Alternative Payments Ltd
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 
 import Foundation
 
@@ -12,16 +28,16 @@ import Foundation
 /**
  **Response**
  
- Response object is created out of the JSON response of the Judo API for seemless handling of values returned in any call 
+ Response object is created out of the JSON response of the judo API for seamless handling of values returned in any call. 
  
- the response object can hold multiple Transaction objects and supports pagination if available
+ The response object can hold multiple transaction objects and supports pagination if available.
  
- In most cases (successful Payment, PreAuth or RegisterCard operation) a Response object will hold one TransactionData object. Supporting CollectionType protocol, you can access the elements by subscripting `let transactionData = response[0]` or using the available variable `response.first` as a more readable approach
+ In most cases (successful Payment, Pre-auth or RegisterCard operation) a Response object will hold one TransactionData object. Supporting CollectionType protocol, you can access the elements by subscripting `let transactionData = response[0]` or using the available variable `response.first` as a more readable approach.
  
  
 */
 public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
-    /// the current pagination response
+    /// The current pagination response
     public let pagination: Pagination?
     /// The array that contains the transaction response objects
     public private (set) var items = [TransactionData]()
@@ -30,7 +46,7 @@ public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
     
     
     /**
-     convenience initializer for ArrayLiteralConvertible support
+     Convenience initializer for ArrayLiteralConvertible support
      
      - parameter elements: elements in a sequential type
      
@@ -57,7 +73,7 @@ public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
     
     
     /**
-    add an element on to the items
+    Add an element on to the items
     
     - Parameter element: the element to add to the items Array
     */
@@ -67,7 +83,7 @@ public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
     
     
     /**
-    calculate the next page from available data
+    Calculate the next page from available data
     
     - Returns: a newly calculated Pagination object based on the Response object
     */
@@ -129,22 +145,23 @@ extension Response: SequenceType, CollectionType {
 /**
  **PaymentToken**
  
- a PaymentToken object which is one part to be used in any token transactions
+ a
+ APaymentToken object which is one part to be used in any token transactions
 */
 public class PaymentToken: NSObject {
     /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
     public let consumerToken: String
     /// Can be used to charge future payments against this card.
     public let cardToken: String
-    /// cv2 of the card
+    /// CV2 of the card
     public var cv2: String?
     
     
     /**
-     designated initialiser for non-optional values
+     Designated initializer for non-optional values
      
-     - parameter consumerToken: consumer token string
-     - parameter cardToken:     card token string
+     - parameter consumerToken: Consumer token string
+     - parameter cardToken:     Card token string
      
      - returns: a PaymentToken object
      */
@@ -171,9 +188,9 @@ public class Consumer: NSObject {
     
     
     /**
-     designated initialiser
+     Designated initializer
      
-     - parameter dict: the consumer dictionary which was return from the Judo REST API
+     - parameter dict: the consumer dictionary which was return from the judo REST API
      
      - returns: a Consumer object
      */
@@ -185,10 +202,10 @@ public class Consumer: NSObject {
     
     
     /**
-     designated initialiser
+     Designated initializer
      
-     - parameter consumerToken:     a consumer token string
-     - parameter consumerReference: a consumer reference string
+     - parameter consumerToken:     A consumer token string
+     - parameter consumerReference: A consumer reference string
      
      - returns: a consumer object
      */
@@ -204,16 +221,16 @@ public class Consumer: NSObject {
 /**
  **TransactionData**
  
- TransactionResult is an object that references all information in correspondance with a Transaction with the Judo API
+ TransactionResult is an object that references all information in correspondance with a Transaction with the judo API
 */
 public class TransactionData: NSObject {
-    /// our reference for this transaction. Keep track of this as it's needed to process refunds or collections later
+    /// Our reference for this transaction. Keep track of this as it's needed to process refunds or collections later
     public let receiptID: String
     /// Your original reference for this payment
     public let yourPaymentReference: String
     /// The type of Transaction, either "Payment" or "Refund"
     public let type: TransactionType
-    /// date and time of the Transaction including time zone offset
+    /// Date and time of the Transaction including time zone offset
     public let createdAt: NSDate
     /// The result of this transactions, this will either be "Success" or "Declined"
     public let result: TransactionResult
@@ -235,13 +252,13 @@ public class TransactionData: NSObject {
     public let amount: Amount
     /// Information about the card used in this transaction
     public let cardDetails: CardDetails
-    /// details of the Consumer for use in repeat payments
+    /// Details of the Consumer for use in repeat payments
     public let consumer: Consumer
-    /// raw data of the received dictionary
+    /// Raw data of the received dictionary
     public let rawData: [String : AnyObject]
     
     /**
-    create a TransactionData Object from a dictionary
+    Create a TransactionData Object from a dictionary
     
     - Parameter dict: the dictionary
     
@@ -322,7 +339,7 @@ public class TransactionData: NSObject {
     
     
     /**
-    generates a PaymentToken object from existing information
+    Generates a PaymentToken object from existing information
     
     - Returns: a PaymentToken object that has been generated from the current objects information
     */
@@ -336,17 +353,17 @@ public class TransactionData: NSObject {
 /**
  Type of Transaction
  
- - Payment: a Payment Transaction
- - PreAuth: a PreAuth Transaction
- - Refund:  a Refund Transaction
+ - Payment: A Payment Transaction
+ - PreAuth: A Pre-auth Transaction
+ - Refund:  A Refund Transaction
  - RegisterCard: Register a Card
 */
-public enum TransactionType: String {
-    /// a Payment Transaction
+Public enum TransactionType: String {
+    /// A Payment Transaction
     case Payment
-    /// a PreAuth Transaction
+    /// A Pre-auth Transaction
     case PreAuth
-    /// a Refund Transaction
+    /// A Refund Transaction
     case Refund
     /// TransactionTypeRegisterCard for registering a card for a later transaction
     case RegisterCard
@@ -356,23 +373,23 @@ public enum TransactionType: String {
 /**
  Result of a Transaction
  
- - Success:  successful transaction
- - Declined: declined transaction
- - Error:    something went wrong
+ - Success:  Successful transaction
+ - Declined: Declined transaction
+ - Error:    Something went wrong
 */
 public enum TransactionResult: String {
-    /// successful transaction
+    /// Successful transaction
     case Success
-    /// declined transaction
+    /// Declined transaction
     case Declined
-    /// something went wrong
+    /// Something went wrong
     case Error
 }
 
 // MARK: Helper
 
 
-/// formatter for ISO8601 Dates that are returned from the webservice
+/// Formatter for ISO8601 Dates that are returned from the webservice
 let ISO8601DateFormatter: NSDateFormatter = {
     let dateFormatter = NSDateFormatter()
     let enUSPOSIXLocale = NSLocale(localeIdentifier: "en_US_POSIX")
