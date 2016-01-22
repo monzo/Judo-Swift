@@ -26,10 +26,10 @@ import Foundation
 import CoreLocation
 import PassKit
 
-/// the valid lengths of any judoId
+/// The valid lengths of any judo Id
 internal let kJudoIDLenght = (6...10)
 
-/// typealias for any Key value storage type objects
+/// Typealias for any Key value storage type objects
 public typealias JSONDictionary = [String : AnyObject]
 
 public typealias JudoCompletionBlock = (Response?, JudoError?) -> ()
@@ -38,15 +38,15 @@ public typealias JudoCompletionBlock = (Response?, JudoError?) -> ()
 public class Session {
     
     
-    /// token and secret are saved in the authorizationHeader for authentication of REST API calls
+    /// Token and secret are saved in the authorizationHeader for authentication of REST API calls
     static var authorizationHeader: String?
     
-    /// static variable that defines whether local json files should be used instead of the actual REST API
+    /// Static variable that defines whether local json files should be used instead of the actual REST API
     internal static var isTesting = false
     
     
     /**
-    POST Helper Method for accessing the Judo REST API
+    POST Helper Method for accessing the judo REST API
     
     - Parameter path:       the path
     - Parameter parameters: information that is set in the HTTP Body
@@ -54,13 +54,13 @@ public class Session {
     */
     public static func POST(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
         
-        // create request
+        // Create request
         let request = self.judoRequest(Judo.endpoint + path)
         
-        // request method
+        // Rquest method
         request.HTTPMethod = "POST"
         
-        // safely create request body for the request
+        // Safely create request body for the request
         let requestBody: NSData?
         
         do {
@@ -75,16 +75,16 @@ public class Session {
         
         request.HTTPBody = requestBody
         
-        // create a data task
+        // Create a data task
         let task = self.task(request, completion: completion)
         
-        // initiate the request
+        // Initiate the request
         task.resume()
     }
     
     
     /**
-    GET Helper Method for accessing the Judo REST API
+    GET Helper Method for accessing the judo REST API
     
     - Parameter path:       the path
     - Parameter parameters: information that is set in the HTTP Body
@@ -92,7 +92,7 @@ public class Session {
     */
     static func GET(path: String, parameters: JSONDictionary?, completion: JudoCompletionBlock) {
         
-        // create request
+        // Create request
         let request = self.judoRequest(Judo.endpoint + path)
         
         request.HTTPMethod = "GET"
@@ -113,26 +113,26 @@ public class Session {
         
         let task = self.task(request, completion: completion)
         
-        // initiate the request
+        // Initiate the request
         task.resume()
     }
     
     
     /**
-    PUT Helper Method for accessing the Judo REST API - PUT should only be accessed for 3DS transactions to fulfill the transaction
+    PUT Helper Method for accessing the judo REST API - PUT should only be accessed for 3DS transactions to fulfill the transaction
     
     - Parameter path:       the path
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
     static func PUT(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
-        // create request
+        // Create request
         let request = self.judoRequest(Judo.endpoint + path)
         
-        // request method
+        // Request method
         request.HTTPMethod = "PUT"
         
-        // safely create request body for the request
+        // Safely create request body for the request
         let requestBody: NSData?
         
         do {
@@ -147,10 +147,10 @@ public class Session {
         
         request.HTTPBody = requestBody
         
-        // create a data task
+        // Create a data task
         let task = self.task(request, completion: completion)
         
-        // initiate the request
+        // Initiate the request
         task.resume()
     }
     
@@ -174,7 +174,7 @@ public class Session {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("5.0.0", forHTTPHeaderField: "API-Version")
 
-        // add the version and lang of the sdk to the header
+        // Adds the version and lang of the SDK to the header
         var bundle = NSBundle(identifier: "com.judo.JudoKit")
         if bundle == nil {
             bundle = NSBundle(forClass: self)
@@ -184,14 +184,14 @@ public class Session {
         
         request.addValue("iOSSwift-\(version)", forHTTPHeaderField: "Sdk-Version")
         
-        // check if token and secret have been set
+        // Check if token and secret have been set
         guard let authHeader = self.authorizationHeader else {
             print("token and secret not set")
             assertionFailure("token and secret not set")
             return request
         }
         
-        // set auth header
+        // Set auth header
         request.addValue(authHeader, forHTTPHeaderField: "Authorization")
         return request
     }
@@ -245,7 +245,7 @@ public class Session {
     public static func task(request: NSURLRequest, completion: JudoCompletionBlock) -> NSURLSessionDataTask {
         return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, resp, err) -> Void in
             
-            // error handling
+            // Error handling
             if data == nil, let error = err {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(nil, JudoError.fromNSError(error))
@@ -253,7 +253,7 @@ public class Session {
                 return // BAIL
             }
             
-            // unwrap response data
+            // Unwrap response data
             guard let upData = data else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(nil, JudoError(.RequestError))
@@ -261,7 +261,7 @@ public class Session {
                 return // BAIL
             }
             
-            // serialize JSON Dict
+            // Serialize JSON Dictionary
             let json: JSONDictionary?
             do {
                 json = try NSJSONSerialization.JSONObjectWithData(upData, options: NSJSONReadingOptions.AllowFragments) as? JSONDictionary
@@ -273,7 +273,7 @@ public class Session {
                 return // BAIL
             }
             
-            // unwrap optional dictionary
+            // Unwrap optional dictionary
             guard let upJSON = json else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(nil, JudoError(.SerializationError))
@@ -281,7 +281,7 @@ public class Session {
                 return
             }
             
-            // did an error occur
+            // If an error occur
             if let errorCode = upJSON["code"] as? Int, let judoErrorCode = JudoErrorCode(rawValue: errorCode) {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(nil, JudoError(judoErrorCode, dict: upJSON))
@@ -289,7 +289,7 @@ public class Session {
                 return // BAIL
             }
             
-            // check if 3DS was requested
+            // Check if 3DS was requested
             if upJSON["acsUrl"] != nil && upJSON["paReq"] != nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     completion(nil, JudoError(.ThreeDSAuthRequest, payload: upJSON))
@@ -297,7 +297,7 @@ public class Session {
                 return // BAIL
             }
             
-            // create pagination object
+            // Create pagination object
             var paginationResponse: Pagination?
             
             if let offset = upJSON["offset"] as? NSNumber, let pageSize = upJSON["pageSize"] as? NSNumber, let sort = upJSON["sort"] as? String {
@@ -337,16 +337,16 @@ public class Session {
     /**
     Helper method to create all the parameters necessary for a Transaction
     
-    - parameter judoID:       the number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
+    - parameter judoID:       The number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
     - parameter amount:       The amount and currency to process
-    - parameter reference:    the reference object with payment ref, consumer ref and meta data
-    - parameter card:         the card object containing card info if available
-    - parameter token:        the token if available
-    - parameter pkPayment:    the pkPayment object for an ApplePay Transaction if available
-    - parameter location:     the location if available
-    - parameter email:        the email address as a string if available
-    - parameter mobile:       the mobile phone number as a string if available
-    - parameter deviceSignal: the device signal for fraud prevention [more info](https://github.com/judopay/judoshield)
+    - parameter reference:    The reference object with payment ref, consumer ref and meta data
+    - parameter card:         The card object containing card info if available
+    - parameter token:        The token if available
+    - parameter pkPayment:    The pkPayment object for an Apple Pay Transaction if available
+    - parameter location:     The location if available
+    - parameter email:        The email address as a string if available
+    - parameter mobile:       The mobile phone number as a string if available
+    - parameter deviceSignal: The device signal for fraud prevention [more info](https://github.com/judopay/judoshield)
     
     - returns: a Dictionary Object for sending information necessary for a Transaction
     */
@@ -438,7 +438,7 @@ public class Session {
     /**
     Helper method to create a dictionary of all the parameters necessary for a refund or a collection
     
-    - parameter receiptId:        the receipt id for a refund or a collection
+    - parameter receiptId:        The receipt ID for a refund or a collection
     - parameter amount:           The amount to process
     - parameter paymentReference: the payment reference
     
@@ -457,7 +457,7 @@ public class Session {
 /**
  **Pagination**
 
- struct to save state of a paginated response
+ Struct to save state of a paginated response
 */
 public struct Pagination {
     var pageSize: Int = 10
@@ -467,12 +467,12 @@ public struct Pagination {
 
 
 /**
- enum to identify sorting direction
+ Enum to identify sorting direction
  
  - Descending: Descended Sorting
  - Ascending:  Ascended Sorting
  */
-public enum Sort: String {
+Public enum Sort: String {
     /// Descended Sorting
     case Descending = "time-descending"
     /// Ascended Sorting
