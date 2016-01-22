@@ -26,7 +26,7 @@ import Foundation
 
 
 /**
- Mirror of the Judo API Error category
+ Mirror of the judo API Error category
 
  - Unknown:          Unknown Error Cateogry
  - RequestError:     Request Error Category
@@ -51,7 +51,7 @@ import Foundation
     
     
     /**
-     string value of the receiving error cateogory
+     String value of the receiving error cateogory
      
      - returns: a String representation of the receiver
      */
