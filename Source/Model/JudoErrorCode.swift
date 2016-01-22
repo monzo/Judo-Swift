@@ -26,7 +26,7 @@ import Foundation
 
 
 /**
- a Mirror of the backend error set
+ A mirror of the backend error set
  
  - General_Error:                                         General_Error
  - General_Model_Error:                                   General_Model_Error
@@ -363,12 +363,12 @@ import Foundation
     case InvalidCardNetwork
     
     // MARK: 3DS Error
-    /// Not a real error but needed to identify when a 3DS routing has been requested by the Judo API
+    /// Not a real error but needed to identify when a 3DS routing has been requested by the judo API
     case ThreeDSAuthRequest
     /// Failed3DSError
     case Failed3DSError
     
     // MARK: User Errors
-    /// receied when user cancels the payment
+    /// Received when user cancels the payment
     case UserDidCancel = -999
 }
