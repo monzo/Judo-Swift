@@ -47,7 +47,9 @@ let discoverPrefixes: [String]  = {
 
 
 /**
-*  the Card object stores all the necessary card information to make a transaction
+ **Card**
+ 
+ Card objects store all the necessary card information for making transactions
 */
 public class Card: NSObject {
     
@@ -92,7 +94,9 @@ public class Card: NSObject {
     }
     
     /**
-    *  Card Configuration consists of a Card Network and a given length
+     **Card.Configuration**
+     
+     Card Configuration consists of a Card Network and a given length
     */
     public class Configuration: NSObject {
         /// the network of the configuration
@@ -502,7 +506,11 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 
 
 /**
-*  the CardDetails object stores information that is returned from a successful payment or preAuth
+ **CardDetails**
+ 
+ the CardDetails object stores information that is returned from a successful payment or preAuth
+ 
+ this class also implements the `NSCoding` protocol to enable serialization for persistency
 */
 public class CardDetails: NSObject, NSCoding {
     /// The last four digits of the card used for this transaction.

@@ -26,7 +26,9 @@ import Foundation
 
 
 /**
- *  the BillingCountry enum is supposed to simplify identifying a billing country for the Credit Card
+ **BillingCountry**
+ 
+ BillingCountry enum to simplify identifying a billing country for a given Card
  */
 @objc public enum BillingCountry: Int {
     /// United Kingdom
@@ -99,7 +101,9 @@ import Foundation
 }
 
 /**
-*  the Address object stores information around the address that is related to a card
+ **Address object for card transactions**
+ 
+ the Address object stores information around the address that is related to a card
 */
 public class Address: NSObject {
     /// line one of the address

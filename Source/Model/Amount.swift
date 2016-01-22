@@ -26,7 +26,9 @@ import Foundation
 
 
 /**
-*  the Amount object stores information regarding the amount and currency for a transaction
+ **Amount**
+ 
+ Amount object stores information about an amount and the corresponding currency for a transaction
 */
 public class Amount: NSObject {
     /// The currency ISO Code - GBP is default

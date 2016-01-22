@@ -32,6 +32,7 @@ internal let kJudoIDLenght = (6...10)
 /// typealias for any Key value storage type objects
 public typealias JSONDictionary = [String : AnyObject]
 
+public typealias JudoCompletionBlock = (Response?, JudoError?) -> ()
 
 /// The Session struct is a wrapper for the REST API calls
 public class Session {
@@ -51,7 +52,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    public static func POST(path: String, parameters: JSONDictionary, completion: (Response?, JudoError?) -> Void) {
+    public static func POST(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
         
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
@@ -89,7 +90,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func GET(path: String, parameters: JSONDictionary?, completion: ((Response?, JudoError?) -> ())) {
+    static func GET(path: String, parameters: JSONDictionary?, completion: JudoCompletionBlock) {
         
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
@@ -124,7 +125,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func PUT(path: String, parameters: JSONDictionary, completion: ((Response?, JudoError?) -> ())) {
+    static func PUT(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
         // create request
         let request = self.judoRequest(Judo.endpoint + path)
         
@@ -241,7 +242,7 @@ public class Session {
     
     - Returns: a NSURLSessionDataTask that can be used to manipulate the call
     */
-    public static func task(request: NSURLRequest, completion: (Response?, JudoError?) -> Void) -> NSURLSessionDataTask {
+    public static func task(request: NSURLRequest, completion: JudoCompletionBlock) -> NSURLSessionDataTask {
         return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, resp, err) -> Void in
             
             // error handling
@@ -304,7 +305,8 @@ public class Session {
             }
             
             let result = Response(paginationResponse)
-
+            
+            
             do {
                 if let results = upJSON["results"] as? Array<JSONDictionary> {
                     for item in results {
@@ -453,7 +455,9 @@ public class Session {
 // MARK: Pagination
 
 /**
-*  struct to save state on a paginated response
+ **Pagination**
+
+ struct to save state of a paginated response
 */
 public struct Pagination {
     var pageSize: Int = 10
@@ -463,7 +467,7 @@ public struct Pagination {
 
 
 /**
- struct to identify sorting direction
+ enum to identify sorting direction
  
  - Descending: Descended Sorting
  - Ascending:  Ascended Sorting

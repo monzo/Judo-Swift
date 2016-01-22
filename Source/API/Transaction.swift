@@ -188,7 +188,7 @@ public class Transaction {
     
     - Throws: ParameterError one or more of the given parameters were in the incorrect format or nil
     */
-    public func completion(block: (Response?, JudoError?) -> ()) throws -> Self {
+    public func completion(block: JudoCompletionBlock) throws -> Self {
         
         if (self.card != nil && self.payToken != nil) {
             throw JudoError(.CardAndTokenError)
@@ -223,7 +223,7 @@ public class Transaction {
     
     - Returns: reactive self
     */
-    public func threeDSecure(dictionary: JSONDictionary, receiptID: String, block: (Response?, JudoError?) -> ()) -> Self {
+    public func threeDSecure(dictionary: JSONDictionary, receiptID: String, block: JudoCompletionBlock) -> Self {
         
         var paymentDetails = JSONDictionary()
         
@@ -252,7 +252,7 @@ public class Transaction {
     
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(block: (Response?, JudoError?) -> ()) {
+    public static func list(block: JudoCompletionBlock) {
         self.list(nil, block: block)
     }
     
@@ -265,7 +265,7 @@ public class Transaction {
     - Parameter pagination: The offset, number of items and order in which to return the items
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(pagination: Pagination?, block: (Response?, JudoError?) -> ()) {
+    public static func list(pagination: Pagination?, block: JudoCompletionBlock) {
         var path = (self as! TransactionPath.Type).path
         if let pag = pagination {
             path += "?pageSize=\(pag.pageSize)&offset=\(pag.offset)&sort=\(pag.sort.rawValue)"

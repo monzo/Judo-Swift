@@ -91,7 +91,7 @@ public class Receipt: NSObject {
     
     - Returns: reactive self
     */
-    public func completion(block: ((Response?, JudoError?) -> ())) -> Self {
+    public func completion(block: JudoCompletionBlock) -> Self {
         var path = "transactions"
 
         if let rec = self.receiptID {
@@ -113,7 +113,7 @@ public class Receipt: NSObject {
     - Parameter pagination: The offset, number of items and order in which to return the items
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(pagination: Pagination, block: (Response?, JudoError?) -> ()) {
+    public static func list(pagination: Pagination, block: JudoCompletionBlock) {
         let path = "transactions?pageSize=\(pagination.pageSize)&offset=\(pagination.offset)&sort=\(pagination.sort.rawValue)"
         Session.GET(path, parameters: nil) { (dictionary, error) -> () in
             block(dictionary, error)

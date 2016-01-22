@@ -10,13 +10,38 @@ import Foundation
 
 
 /**
-*  Response object that stores an array of items and includes pagination information if available
+ **Response**
+ 
+ Response object is created out of the JSON response of the Judo API for seemless handling of values returned in any call 
+ 
+ the response object can hold multiple Transaction objects and supports pagination if available
+ 
+ In most cases (successful Payment, PreAuth or RegisterCard operation) a Response object will hold one TransactionData object. Supporting CollectionType protocol, you can access the elements by subscripting `let transactionData = response[0]` or using the available variable `response.first` as a more readable approach
+ 
+ 
 */
-public class Response: NSObject {
+public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
     /// the current pagination response
     public let pagination: Pagination?
     /// The array that contains the transaction response objects
-    public private (set) var items = Array<TransactionData>()
+    public private (set) var items = [TransactionData]()
+    /// Helper to count in case of Generation of elements for loops
+    public var indexInSequence = 0
+    
+    
+    /**
+     convenience initializer for ArrayLiteralConvertible support
+     
+     - parameter elements: elements in a sequential type
+     
+     - returns: a Response object
+     */
+    public convenience required init(arrayLiteral elements: TransactionData...) {
+        self.init()
+        for element in elements {
+            self.append(element)
+        }
+    }
     
     
     /**
@@ -44,18 +69,67 @@ public class Response: NSObject {
     /**
     calculate the next page from available data
     
-    :returns: a newly calculated Pagination object based on the Response object
+    - Returns: a newly calculated Pagination object based on the Response object
     */
     public func nextPage() -> Pagination? {
         guard let page = self.pagination else { return nil }
         
         return Pagination(pageSize: page.pageSize, offset: page.offset + page.pageSize, sort: page.sort)
     }
+    
+    // MARK: - GeneratorType
+    
+    /**
+    GeneratorType method to aid when using the object in a loop
+    
+    - returns: generated next element
+    */
+    public func next() -> TransactionData? {
+        switch items {
+        case _ where !items.isEmpty:
+            if indexInSequence < items.count {
+                let element = items[indexInSequence]
+                indexInSequence++
+                return element
+            }
+            indexInSequence = 0
+            return nil
+        default:
+            return nil
+        }
+    }
+    
+}
+
+
+/// Response extensions for SequenceType and CollectionType
+extension Response: SequenceType, CollectionType {
+
+    public typealias Index = Int
+    
+    public var startIndex: Int {
+        return 0
+    }
+    
+    public var endIndex: Int {
+        return items.endIndex
+    }
+    
+    public subscript(i: Int) -> TransactionData {
+        return items[i]
+    }
+    
+    public func generate() -> IndexingGenerator<[TransactionData]> {
+        return self.items.generate()
+    }
+
 }
 
 
 /**
-*  a PaymentToken object is necessary to make a token payment or token preAuth
+ **PaymentToken**
+ 
+ a PaymentToken object which is one part to be used in any token transactions
 */
 public class PaymentToken: NSObject {
     /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
@@ -85,7 +159,9 @@ public class PaymentToken: NSObject {
 
 
 /**
-*  details of the Consumer for use in repeat payments.
+ **Consumer**
+ 
+ Consumer stores information about a reference and a consumer token to be used in any kind of token transaction.
 */
 public class Consumer: NSObject {
     /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
@@ -126,7 +202,9 @@ public class Consumer: NSObject {
 
 
 /**
-*  TransactionResult will hold all the information from a transaction response
+ **TransactionData**
+ 
+ TransactionResult is an object that references all information in correspondance with a Transaction with the Judo API
 */
 public class TransactionData: NSObject {
     /// our reference for this transaction. Keep track of this as it's needed to process refunds or collections later
@@ -276,11 +354,11 @@ public enum TransactionType: String {
 
 
 /**
-Result of a Transaction
-
-- Success:  successful transaction
-- Declined: declined transaction
-- Error:    something went wrong
+ Result of a Transaction
+ 
+ - Success:  successful transaction
+ - Declined: declined transaction
+ - Error:    something went wrong
 */
 public enum TransactionResult: String {
     /// successful transaction

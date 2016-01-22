@@ -29,7 +29,9 @@ public let JudoErrorDomain = "com.judopay.error"
 
 
 /**
- *  the JudoError object holds all the information about errors that occurred within the SDK or at any stage when making a call to the Judo API
+ **JudoError**
+ 
+ the JudoError object holds all the information about errors that occurred within the SDK or at any stage when making a call to the Judo API
  */
 public class JudoError: NSObject, ErrorType {
     

@@ -26,7 +26,23 @@ import Foundation
 
 
 /**
-*  the Reference object is supposed to simplify storing reference data like consumer or payment references
+ 
+ **Referencing a transaction**
+ 
+ the Reference object is supposed to simplify storing reference data like consumer, payment references and metadata dictionary that can hold an arbitrary set of key value based information
+ 
+ you create a reference object by calling the initializer with a reference of your consumer.
+ 
+ If you have used the reference to register a card, make sure that the consumer reference stays the same for making token based transactions
+ 
+ ```
+ guard let references = Reference(consumerRef: "consumer0053252") else { return }
+ ```
+ 
+ the Reference initializer returns an optional because of the payment reference which is being generated using the `identifierForVendor()` method on `UIDevice.currentDevice()`. The method returns an optional value and thus can return nil in certain device states
+
+ If the value is nil, wait and get the value again later. This happens, for example, after the device has been restarted but before the user has unlocked the device
+
 */
 public class Reference: NSObject {
     /// Your reference for this consumer
@@ -38,7 +54,7 @@ public class Reference: NSObject {
     
     
     /**
-     private initialiser
+     private designated initialiser
      
      - parameter consumerRef: consumer reference string
      - parameter paymentRef:  payment reference string
