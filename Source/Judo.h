@@ -24,9 +24,9 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for Judo.
+//! Project version number for judo.
 FOUNDATION_EXPORT double JudoVersionNumber;
 
-//! Project version string for Judo.
+//! Project version string for judo.
 FOUNDATION_EXPORT const unsigned char JudoVersionString[];
 
