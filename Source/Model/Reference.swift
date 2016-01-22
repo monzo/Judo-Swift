@@ -39,9 +39,9 @@ import Foundation
  guard let references = Reference(consumerRef: "consumer0053252") else { return }
  ```
  
- the Reference initializer returns an optional because of the payment reference which is being generated using the `identifierForVendor()` method on `UIDevice.currentDevice()`. The method returns an optional value and thus can return nil in certain device states
+ the Reference initializer returns an optional because of the payment reference which is being generated using the `identifierForVendor()` method on `UIDevice.currentDevice()`. The method returns an optional value and thus can return nil in certain device states.
 
- If the value is nil, wait and get the value again later. This happens, for example, after the device has been restarted but before the user has unlocked the device
+ If the value is nil, wait and get the value again later. This happens, for example, after the device has been restarted but before the user has unlocked the device.
 
 */
 public class Reference: NSObject {
@@ -54,11 +54,11 @@ public class Reference: NSObject {
     
     
     /**
-     private designated initialiser
+     Private designated initializer
      
-     - parameter consumerRef: consumer reference string
-     - parameter paymentRef:  payment reference string
-     - parameter metaData:    meta data dictionary (defaults to nil)
+     - parameter consumerRef: Consumer reference string
+     - parameter paymentRef:  Payment reference string
+     - parameter metaData:    Meta data dictionary (defaults to nil)
      
      - returns: a Reference object
      */
@@ -70,10 +70,10 @@ public class Reference: NSObject {
     
     
     /**
-     convenience initialiser that will generate a unique payment reference
+     Convenience initializer that will generate a unique payment reference
      
-     - parameter consumerRef: the consumer reference for a Reference
-     - parameter metaData:    an optional field for any arbitrary data that is tied to a certrain transaction
+     - parameter consumerRef: The consumer reference for a Reference
+     - parameter metaData:    An optional field for any arbitrary data that is tied to a certrain transaction
      
      - returns: a Reference object
      */
