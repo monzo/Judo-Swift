@@ -26,10 +26,10 @@ import Foundation
 
 
 /** 
-You can get a copy of the receipt for an individual transaction by creating a Receipt Object and calling `.completion(() -> ())` including the receipt id for the transaction in the path.
-Alternatively you can receive a list of all the Transactions. By default it will return 10 transactions. These results are returned in time descending order by default, so it will return the latest 10 transactions.
+You can get a copy of the receipt for an individual transaction by creating a Receipt Object and calling `.completion(() -> ())` including the receipt ID for the transaction in the path.
+Alternatively, you can receive a list of all the transactions. By default it will return 10 transactions. These results are returned in time-descending order by default, so it will return the latest 10 transactions.
 
-### receipt by ID
+### Receipt by ID
 ```swift
     Judo.receipt(receiptID).completion({ (dict, error) -> () in
         if let _ = error {
@@ -40,7 +40,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
     })
 ```
 
-### all receipts
+### All receipts
 ```swift
     Judo.receipt(nil).completion({ (dict, error) -> () in
         if let _ = error {
@@ -57,11 +57,11 @@ public class Receipt: NSObject {
     private (set) var receiptID: String?
     
     /**
-    initialization for a Receipt Object
+    Initialization for a Receipt Object
     
-    If you want to use the receipt function - you need to enable that in the Judo Dashboard
+    If you want to use the receipt function, you need to enable it in your judo Dashboard
     
-    - Parameter receiptID: the receipt id as a String - if nil, completion function will return a list of all transactions
+    - Parameter receiptID: the receipt ID as a String - if nil, completion function will return a list of all transactions
     
     - Returns: a Receipt Object for reactive usage
     
@@ -72,7 +72,7 @@ public class Receipt: NSObject {
         self.receiptID = receiptID
         super.init()
 
-        // check if device is jailbroken and sdk was set to restrict access
+        // Check if device is jailbroken and SDK was set to restrict access
         if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
             throw JudoError(.JailbrokenDeviceDisallowedError)
         }
@@ -85,7 +85,7 @@ public class Receipt: NSObject {
     
 
     /**
-    completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods
+    Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods.
     
     - Parameter block: a completion block that is called when the request finishes
     
