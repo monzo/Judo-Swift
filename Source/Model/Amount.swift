@@ -38,7 +38,7 @@ public class Amount: NSObject {
     
     
     /**
-     initializer for Amount
+     Initializer for amount
      
      - parameter decimalNumber: a decimal number with the value of an amount to transact
      - parameter currency:      the currency of the amount to transact
@@ -52,7 +52,7 @@ public class Amount: NSObject {
     
     
     /**
-     initializer for Amount
+     Initializer for Amount
      
      - parameter amountString: a string with the value of an amount to transact
      - parameter currency:     the currency of the amount to transact
@@ -69,11 +69,11 @@ public class Amount: NSObject {
 
 /// Collection of static identifiers for all supported currencies
 @objc public class Currency: NSObject {
-    /// raw value of the currency as a String
+    /// Raw value of the currency as a String
     public let rawValue: String
     
     /**
-     designated initializer
+     Designated initializer
      
      - parameter fromRaw: raw string value of the currency based on ISO standards
      
