@@ -28,7 +28,7 @@ import Foundation
 /**
  **BillingCountry**
  
- BillingCountry enum to simplify identifying a billing country for a given Card
+ BillingCountry enum to simplify identifying a billing country for a given card
  */
 @objc public enum BillingCountry: Int {
     /// United Kingdom
@@ -41,12 +41,12 @@ import Foundation
     case Other
     
     
-    /// simple helper to receive all values of the struct as an array
+    /// Simple helper to receive all values of the struct as an array
     public static let allValues = [UK, USA, Canada, Other]
     
     
     /**
-     Transacting with AMEX required ISO codes instead of Unicode representation of a Country
+     Transacting with AMEX required ISO codes instead of Unicode representation of a country
      
      - returns: the ISO code as an Int for the receiver
      */
@@ -65,7 +65,7 @@ import Foundation
     
     
     /**
-     different countries have different names for Postal Code description. This method returns the receivers version of a string representation
+     Different countries have different names for postal code description. This method returns the receivers version of a string representation
      
      - returns: a String
      */
@@ -82,7 +82,7 @@ import Foundation
     
     
     /**
-     get a string representation of a title
+     Get a string representation of a title
      
      - returns: a String object
      */
@@ -103,24 +103,24 @@ import Foundation
 /**
  **Address object for card transactions**
  
- the Address object stores information around the address that is related to a card
+ The Address object stores information around the address that is related to a card
 */
 public class Address: NSObject {
-    /// line one of the address
+    /// Line one of the address
     public let line1: String?
-    /// line two of the address
+    /// Line two of the address
     public let line2: String?
-    /// line three of the address
+    /// Line three of the address
     public let line3: String?
-    /// town of the address
+    /// Town of the address
     public let town: String?
-    /// post code of the address
+    /// Post code of the address
     public let postCode: String?
-    /// billing country of the address
+    /// Billing country of the address
     public let country: BillingCountry?
     
     /**
-     designated initialiser
+     Designated initializer
      
      - parameter line1:    line one
      - parameter line2:    line two
@@ -142,7 +142,7 @@ public class Address: NSObject {
     
     
     /**
-     dictionary representation of the address object
+     Dictionary representation of the address object
      
      - returns: a dictionary containing all available infos
      */
