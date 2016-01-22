@@ -34,11 +34,29 @@ public class Amount: NSObject {
     /// The amount to process, to two decimal places
     public var amount: NSDecimalNumber
     
+    
+    /**
+     initializer for Amount
+     
+     - parameter decimalNumber: a decimal number with the value of an amount to transact
+     - parameter currency:      the currency of the amount to transact
+     
+     - returns: an Amount object
+     */
     public init(decimalNumber: NSDecimalNumber, currency: Currency) {
         self.currency = currency
         self.amount = decimalNumber
     }
     
+    
+    /**
+     initializer for Amount
+     
+     - parameter amountString: a string with the value of an amount to transact
+     - parameter currency:     the currency of the amount to transact
+     
+     - returns: an Amount object
+     */
     public init(amountString: String, currency: Currency) {
         self.amount = NSDecimalNumber(string: amountString)
         self.currency = currency
@@ -46,30 +64,56 @@ public class Amount: NSObject {
     
 }
 
+
+/// Collection of static identifiers for all supported currencies
 @objc public class Currency: NSObject {
+    /// raw value of the currency as a String
     public let rawValue: String
     
+    /**
+     designated initializer
+     
+     - parameter fromRaw: raw string value of the currency based on ISO standards
+     
+     - returns: a Currency object
+     */
     public init(_ fromRaw: String) {
         self.rawValue = fromRaw
     }
     
+    /// Australian Dollars
     public static let AUD = Currency("AUD")
+    /// Canadian Dollars
     public static let CAD = Currency("CAD")
+    /// Swiss Franks
     public static let CHF = Currency("CHF")
+    /// Czech Republic Koruna
     public static let CZK = Currency("CZK")
+    /// Danish Krone
     public static let DKK = Currency("DKK")
+    /// Euro
     public static let EUR = Currency("EUR")
+    /// British Pound
     public static let GBP = Currency("GBP")
+    /// Hong Kong Dollar
     public static let HKD = Currency("HKD")
+    /// Hungarian Forint
     public static let HUF = Currency("HUF")
+    /// Japanese Yen
     public static let JPY = Currency("JPY")
+    /// Norwegian Krone
     public static let NOK = Currency("NOK")
+    /// New Zealand Dollar
     public static let NZD = Currency("NZD")
+    /// Polish Zloty
     public static let PLN = Currency("PLN")
+    /// Swedish Krone
     public static let SEK = Currency("SEK")
+    /// United States Dollar
     public static let USD = Currency("USD")
+    /// South African Rand
     public static let ZAR = Currency("ZAR")
+    /// Unsupported Currency
     public static let XOR = Currency("Unsupported Currency")
-    
 }
 

@@ -26,9 +26,10 @@ import Foundation
 import CoreLocation
 import PassKit
 
+/// the valid lengths of any judoId
 internal let kJudoIDLenght = (6...10)
 
-
+/// typealias for any Key value storage type objects
 public typealias JSONDictionary = [String : AnyObject]
 
 

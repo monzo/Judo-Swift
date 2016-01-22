@@ -24,26 +24,53 @@
 
 import Foundation
 
+/// judo global error domain specification
 public let JudoErrorDomain = "com.judopay.error"
 
+
+/**
+ *  the JudoError object holds all the information about errors that occurred within the SDK or at any stage when making a call to the Judo API
+ */
 public class JudoError: NSObject, ErrorType {
     
+    /// the judo error code
     public var code: JudoErrorCode
+    /// the message of the error
     public var message: String?
+    /// the category of the error
     public var category: JudoErrorCategory?
+    /// an array of model errors if available
     public var details: [JudoModelError]?
     
+    /// a reference for a NSError version of the receiver
     public var bridgedError: NSError?
     
+    /// a payload if available
     public var payload: JSONDictionary?
     
+    /// an explanation if available (nil by default)
     public var explanation: String? = nil
+    /// a resolution if available (nil by default)
     public var resolution: String? = nil
     
+    /// domain (mandatory string for ErrorType subclassing)
     public var domain: String { return JudoErrorDomain }
+    /// _domain (mandatory string for ErrorType subclassing)
     public var _domain: String { return JudoErrorDomain }
+    /// code (mandatory string for ErrorType subclassing)
     public var _code: Int { return self.code.rawValue }
     
+    
+    /**
+     initializer
+     
+     - parameter code:     error code
+     - parameter message:  optional error message
+     - parameter category: optional error category
+     - parameter details:  optional error details
+     
+     - returns: a JudoError object
+     */
     public init(_ code: JudoErrorCode, _ message: String? = nil, _ category: JudoErrorCategory? = nil, details: [JudoModelError]? = nil) {
         self.code = code
         self.message = message
@@ -52,6 +79,15 @@ public class JudoError: NSObject, ErrorType {
         super.init()
     }
     
+    
+    /**
+     initializer
+     
+     - parameter code: error code
+     - parameter dict: error details dictionary
+     
+     - returns: a JudoError object
+     */
     public init(_ code: JudoErrorCode, dict: JSONDictionary) {
         let errorCode = dict["code"]
         let errorMessage = dict["message"]
@@ -91,6 +127,15 @@ public class JudoError: NSObject, ErrorType {
         super.init()
     }
     
+    
+    /**
+     initializer
+     
+     - parameter code:    a JudoErrorCode
+     - parameter payload: a payload to pass on with the error
+     
+     - returns: a JudoError object
+     */
     public init(_ code: JudoErrorCode, payload: JSONDictionary) {
         self.code = code
         self.category = nil
@@ -100,6 +145,15 @@ public class JudoError: NSObject, ErrorType {
         super.init()
     }
     
+    
+    /**
+     initializer
+     
+     - parameter code:         a JudoErrorCode
+     - parameter bridgedError: the original NSError
+     
+     - returns: a JudoError object
+     */
     public init(_ code: JudoErrorCode, bridgedError: NSError) {
         self.code = code
         self.category = nil
@@ -109,6 +163,15 @@ public class JudoError: NSObject, ErrorType {
         super.init()
     }
     
+    
+    /**
+     initializer
+     
+     - parameter code:    a JudoErrorCode
+     - parameter message: a message that describes the error
+     
+     - returns: a JudoError object
+     */
     public init(_ code: JudoErrorCode, message: String) {
         self.code = code
         self.category = nil
@@ -117,6 +180,14 @@ public class JudoError: NSObject, ErrorType {
         super.init()
     }
     
+    
+    /**
+     bridge an NSError to JudoError
+     
+     - parameter error: the NSError to bridge from
+     
+     - returns: a JudoError object
+     */
     public static func fromNSError(error: NSError) -> JudoError {
         if let errorCode = error.userInfo["code"] as? Int, judoErrorCode = JudoErrorCode(rawValue: errorCode) {
             return JudoError(judoErrorCode, dict: error.userInfo as! JSONDictionary)
@@ -125,10 +196,22 @@ public class JudoError: NSObject, ErrorType {
         }
     }
     
+    
+    /**
+     get the raw value of the code of the receiver
+     
+     - returns: judo error code as Integer
+     */
     public func rawValue() -> Int {
         return self.code.rawValue
     }
     
+    
+    /**
+     bridge an object of JudoError type to NSError
+     
+     - returns: an NSError object
+     */
     public func toNSError() -> NSError {
         if let bridgedError = self.bridgedError {
             return bridgedError

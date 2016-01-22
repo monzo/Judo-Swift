@@ -28,6 +28,7 @@ import PassKit
 
 /// intended for subclassing paths
 public protocol TransactionPath {
+    /// path variable made for subclassing
     static var path: String {get}
 }
 

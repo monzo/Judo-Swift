@@ -24,13 +24,27 @@
 
 import Foundation
 
+/// Judo Model Error object
 public class JudoModelError: NSObject {
+    /// the error code of the model error
     public var code: JudoModelErrorCode?
+    /// the field name of the error
     public var fieldName: String?
+    /// the message of the error
     public var message: String?
+    /// the detail of the error
     public var detail: String?
+    /// raw value of the information passed
     public var rawValue: JSONDictionary?
     
+    
+    /**
+     designated initializer with an object received from the Judo API
+     
+     - parameter dict: a key value storage containing model error information
+     
+     - returns: a JudoModelError object
+     */
     public init(dict: JSONDictionary) {
         self.code = JudoModelErrorCode(rawValue: dict["code"] as! Int)
         self.fieldName = dict["fieldName"] as? String

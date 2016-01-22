@@ -157,25 +157,70 @@ public class Card: NSObject {
     
 }
 
-
+// MARK: - Card.Configurations Protocol extensions
 extension Card.Configuration: Comparable { }
 
+
+/**
+ equals function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the two objects are equal
+ */
 public func ==(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength == y.cardLength && x.cardNetwork == y.cardNetwork
 }
 
+
+/**
+ lower function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is lower than the right hand sides cardLength
+ */
 public func <(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength < y.cardLength
 }
 
+
+/**
+ lower or equal function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is lower than or equals the right hand sides cardLength
+ */
 public func <=(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength <= y.cardLength
 }
 
+
+/**
+ greater function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is greater than the right hand sides cardLength
+ */
 public func >(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength > y.cardLength
 }
 
+
+/**
+ greater or equal function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is greater than or equals the right hand sides cardLength
+ */
 public func >=(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength >= y.cardLength
 }

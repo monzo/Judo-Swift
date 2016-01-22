@@ -24,9 +24,37 @@
 
 import Foundation
 
+
+/**
+ Mirror of the Judo API Error category
+
+ - Unknown:          Unknown Error Cateogry
+ - RequestError:     Request Error Category
+ - ModelError:       Model Error Category
+ - ConfigError:      Config Error Category
+ - ProcessingError:  Processing Error Category
+ - ExceptionError:   Exception Error Category
+ */
 @objc public enum JudoErrorCategory: Int {
-    case Unknown = 0, RequestError = 1, ModelError = 2, ConfigError = 3, ProcessingError = 4, ExceptionError = 5
+    /// Unknown
+    case Unknown = 0
+    /// RequestError
+    case RequestError = 1
+    /// ModelError
+    case ModelError = 2
+    /// ConfigError
+    case ConfigError = 3
+    /// ProcessingError
+    case ProcessingError = 4
+    /// ExceptionError
+    case ExceptionError = 5
     
+    
+    /**
+     string value of the receiving error cateogory
+     
+     - returns: a String representation of the receiver
+     */
     public func stringValue() -> String {
         switch self {
         case Unknown:

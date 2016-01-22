@@ -17,6 +17,7 @@ Released on 2016-01-14
 #### Added
 - Card number information to CardDetails object
 - Package file for future Swift package manager
+- 100% Documented
 
 #### Changed
 
