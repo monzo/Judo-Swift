@@ -25,9 +25,9 @@
 import Foundation
 
 /** 
-Refunding a successful payment is easy, it simply requires you to identify the original receipt ID for the payment and the amount you wish to refund. When we've received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you make a Refund with the SDK.
+Refunding a successful payment is easy, simply identify the original receipt ID for the payment and the amount you wish to refund. When we've received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you can make a Refund with the SDK.
 
-### refund by ID, amount and reference
+### Refund by ID, amount and reference
 ```swift
     Judo.refund(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
         if let error = error {
@@ -41,16 +41,16 @@ Refunding a successful payment is easy, it simply requires you to identify the o
 */
 public class Refund: NSObject {
     
-    /// the receipt ID for a refund
+    /// The receipt ID for a refund
     public private (set) var receiptID: String
-    /// the amount of the refund
+    /// The amount of the refund
     public private (set) var amount: Amount
-    /// the payment reference String for a refund
+    /// The payment reference String for a refund
     public private (set) var paymentReference: String
     
     
     /**
-    starting point and a reactive method to create a Refund
+    Starting point and a reactive method to create a Refund
     
     - Parameter judoID: the number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
     - Parameter amount: The amount to process
@@ -59,18 +59,18 @@ public class Refund: NSObject {
     - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     */
     init(receiptID: String, amount: Amount, paymentReference: String) throws {
-        // initialise variables
+        // Initialize variables
         self.receiptID = receiptID
         self.amount = amount
         self.paymentReference = paymentReference
         super.init()
         
-        // check if device is jailbroken and sdk was set to restrict access
+        // Check if device is jailbroken and SDK was set to restrict access
         if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
             throw JudoError(.JailbrokenDeviceDisallowedError)
         }
         
-        // luhn check the receipt id
+        // Luhn check the receipt ID
         if !receiptID.isLuhnValid() {
             throw JudoError(.LuhnValidationError)
         }
@@ -78,7 +78,7 @@ public class Refund: NSObject {
     
     
     /**
-    completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods
+    Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods
     
     - Parameter block: a completion block that is called when the request finishes
     
