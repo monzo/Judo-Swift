@@ -39,7 +39,7 @@ public extension String {
     }
     
     
-    /// String by stripping all non-digic characters
+    /// String by stripping all non-digit characters
     public var stripped: String {
         get {
             if self.isNumeric() {
@@ -54,9 +54,9 @@ public extension String {
     }
     
     /**
-     Method to check if a string is LUHN valid
+     Method to check if a string is Luhn valid
      
-     - returns: true if given string is luhn valid
+     - returns: true if given string is Luhn valid
      */
     public func isLuhnValid() -> Bool {
         guard self.isNumeric() else {
