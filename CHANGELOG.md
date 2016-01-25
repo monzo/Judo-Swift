@@ -17,8 +17,8 @@ Released on 2016-01-14
 #### Added
 - Card number information to CardDetails object
 - Package file for future Swift package manager
-- 100% Documented
-- Updated Documentation and added a lot of new snippets
+- 100% documented
+- Updated documentation and added a lot of new snippets
 - Response class now conforms to SequenceType, CollectionType, GeneratorType and ArrayLiteralConvertible
 
 #### Changed
@@ -32,7 +32,7 @@ Released on 2016-01-14
 
 #### Added
 - Ability to initialize an error with a code and message
-- Duplicaition prevention - payment reference will be uniquely checked against previous transactions to block any duplication of the same transaction
+- Duplicate transaction prevention - payment reference will be uniquely checked against previous transactions to block any duplication of the same transaction
 - Bridging NSError value for errors that are not conforming to the JudoErrorDomain
 - SDK version as dedicated field in HTTP Header for REST API calls
 - NSCoding protocol to CardDetails to enable persisting in NSUserDefaults
@@ -57,22 +57,22 @@ Released on 2016-01-14
 Released on 2015-11-26
 
 #### Added
-- added RegisterCard as a TransactionType
-- full accessibility from Objective C projects
-- cardnetwork now is parsed from response
-- mirrored card network enum from backend
+- Added RegisterCard as a TransactionType
+- Full accessibility from Objective C projects
+- Cardnetwork now is parsed from response
+- Mirrored card network enum from backend
 - InvalidOperation error
-- new Transaction function that takes a transactiontype
-- more helper methods to Card
+- New transaction function that takes a transactiontype
+- More helper methods to Card
 
 #### Changed
 - converting structs to classes and enums conforming to int for objc compability
 - exposed JudoErrorCodes enum to objc
 
 #### Fixed
-- fixed a bug where an optional value was force unwrapped when empty
-- fixing slashes in user agent header
-- fixed a bug where creation of PaymentToken would fail
+- Fixed a bug where an optional value was force unwrapped when empty
+- Fixing slashes in user agent header
+- Fixed a bug where creation of PaymentToken would fail
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
@@ -80,12 +80,12 @@ Released on 2015-11-26
 Released on 2015-11-05
 
 #### Added
-- check for jailbroken devices
-- boolean that can be set to ignore or restrict transactions from jailbroken devices
+- Check for jailbroken devices
+- Boolean that can be set to ignore or restrict transactions from jailbroken devices
 - CV2 in PaymentToken struct for repeat payments
 
 #### Removed
-- unnecessary variable for allowed card networks in judo
+- Unnecessary variable for allowed card networks in judo
 
 #### Changed
 - Error Handling revisited, enhanced and prepared for upcoming backend release
@@ -108,14 +108,14 @@ Released on 2015-09-29
 
 #### Added
 - Added Judo-Swift-ApplePay
-- Travis yaml and configured shared scheme for CI integration
-- session tests to mock REST API and test without actual connection
+- Travis yml and configured shared scheme for CI integration
+- Session tests to mock REST API and test without actual connection
 
 #### Updated
-- amount can only be initialized when an amount and a currency string is passed
-- simplified implementation
-- post code titles for different countries
-- security code title defaults changed to be more descriptive and understandable
+- Amount can only be initialized when an amount and a currency string is passed
+- Simplified implementation
+- Post code titles for different countries
+- Security code title defaults changed to be more descriptive and understandable
 
 #### Fixed
 - Tests
@@ -126,14 +126,14 @@ Released on 2015-09-29
 Released on 2015-09-18
 
 #### Updated
-- simplified implementation
-- updated documentation
-- added more ways to initialize a Card Object
-- minimized lines of code in a few methods
-- created custom initializes instead of static methods
+- Simplified implementation
+- Updated documentation
+- Added more ways to initialize a Card Object
+- Minimized lines of code in a few methods
+- Created custom initializes instead of static methods
 
 #### Fixed
-- a few typo fixes
+- A few typo fixes
 - Tests
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
@@ -142,25 +142,25 @@ Released on 2015-09-18
 Released on 2015-09-15
 
 #### Added
-- title function to card for security code
-- method that returns length of security code
-- method that generates payment token from response
-- country to card address detail info
+- Title function to card for security code
+- Method that returns length of security code
+- Method that generates payment token from response
+- Country to card address detail info
 - Maestro fields and AVS
-- card registration as a seperate class and endpoint
+- Card registration as a seperate class and endpoint
 - 3DS Transaction Detection
-- ability to send deviceSignal to backend for fraud prevention
+- Ability to send deviceSignal to backend for fraud prevention
 - Error TransactionResult
-- comments
+- Comments
 - Errors
 
 #### Fixed
-- card security code title
-- placeholder method to cardconfig
-- directing execution back on to main thread when it did not
+- Card security code title
+- Placeholder method to cardconfig
+- Directing execution back on to main thread when it did not
 
 #### Removed
-- unneccessary code
+- Unneccessary code
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
@@ -168,7 +168,7 @@ Released on 2015-09-15
 Released on 2015-08-26
 
 #### Updated
-- new endpoints that conform to iOS9 ATS ([further info here](https://developer.apple.com/library/prerelease/mac/technotes/App-Transport-Security-Technote/index.html))
+- New endpoints that conform to iOS9 ATS ([further info here](https://developer.apple.com/library/prerelease/mac/technotes/App-Transport-Security-Technote/index.html))
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
@@ -176,26 +176,26 @@ Released on 2015-08-26
 Released on 2015-08-24
 
 #### Added
-- adding default values overloading for optional parameters
-- adding missing card networks
-- added card specific errors
-- added missing constants
-- added string representation method to Card enum
-- adding cardnetwork constraints
+- Adding default values overloading for optional parameters
+- Adding missing card networks
+- Added card specific errors
+- Added missing constants
+- Added string representation method to Card enum
+- Adding cardnetwork constraints
 	- Added by [Hamon Ben Riazy](https://github.com/ryce).
 
 #### Updated
-- setting deployment target
-- using NSDecimalNumber instead of Double for currency precision
-- moved card configuration to Judo Base Module
-- moving functions to base SDK
+- Setting deployment target
+- Using NSDecimalNumber instead of Double for currency precision
+- Moved card configuration to judo Base Module
+- Moving functions to base SDK
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
 ## [0.1.6](https://github.com/JudoPay/Judo-Swift/tag/0.1.6)
-- fixing tests - added PreAuth TransactionType and path correction
-- modifying accessors for module subclass access
-- created public initializers
+- Fixing tests - added pre-auth TransactionType and path correction
+- Modifying accessors for module subclass access
+- Created public initializers
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
@@ -213,7 +213,7 @@ Released on 2015-08-03
 Released on 2015-07-30
 
 #### Updated
-- fixed podspec and cocoapod issues
+- Fixed podspec and CocoaPod issues
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
@@ -221,5 +221,5 @@ Released on 2015-07-30
 Released on 2015-07-30.
 
 #### Added
-- Initial release of Judo-swift.
+- Initial release of Judo-Swift.
   - Added by [Hamon Ben Riazy](https://github.com/ryce).
