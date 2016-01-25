@@ -58,14 +58,14 @@ class ListTests: XCTestCase {
     }
     
     func testJudoPaginatedListPayments() {
-        // GIVEN
+        // Given
         let pagination = Pagination(pageSize: 14, offset: 44, sort: Sort.Descending)
         
         let expectation = self.expectationWithDescription("list all payments for given pagination")
         
-        // WHEN
+        // When
         Payment.list(pagination) { (response, error) -> () in
-            // THEN
+            // Then
             if let _ = error {
                 XCTFail()
             } else {
