@@ -28,44 +28,45 @@ import PassKit
 
 /// intended for subclassing paths
 public protocol TransactionPath {
+    /// path variable made for subclassing
     static var path: String {get}
 }
 
-/// Superclass Helper for Payments and PreAuths
+/// Superclass Helper for Payments and Pre-auths
 public class Transaction {
     
-    /// the current transaction if there is one - for preventing multiple transactions running at the same time
+    /// The current transaction if there is one - for preventing multiple transactions running at the same time
     private var currentTransactionReference: String? = nil
     
-    /// the judoID for the transaction
+    /// The judo ID for the transaction
     public private (set) var judoID: String
     
-    /// the reference of the transaction
+    /// The reference of the transaction
     public private (set) var reference: Reference
-    /// the amount and currency of the transaction
+    /// The amount and currency of the transaction
     public private (set) var amount: Amount
     
-    /// the card info of the transaction
+    /// The card info of the transaction
     public private (set) var card: Card?
-    /// the payment token of the transaction
+    /// The payment token of the transaction
     public private (set) var payToken: PaymentToken?
     
-    /// location coordinate for fraud prevention in this transaction
+    /// Location coordinate for fraud prevention in this transaction
     public private (set) var location: CLLocationCoordinate2D?
-    /// device identification for this transaction
+    /// Device identification for this transaction
     public private (set) var deviceSignal: JSONDictionary?
     
-    /// mobile number of the entity initiating the transaction
+    /// Mobile number of the entity initiating the transaction
     public private (set) var mobileNumber: String?
-    /// email address of the entity initiating the transaction
+    /// Email address of the entity initiating the transaction
     public private (set) var emailAddress: String?
     
-    /// support for apple Pay transactions added in Base
+    /// Support for Apple Pay transactions added in Base
     public private (set) var pkPayment: PKPayment?
     
 
     /**
-    starting point and a reactive method to create a payment or preAuth
+    Starting point and a reactive method to create a payment or pre-auth
     
     - Parameter judoID: the number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
     - Parameter amount: The amount to process
@@ -78,12 +79,12 @@ public class Transaction {
         self.amount = amount
         self.reference = reference
         
-        // check if device is jailbroken and sdk was set to restrict access
+        // Check if device is jailbroken and SDK was set to restrict access
         if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
             throw JudoError(.JailbrokenDeviceDisallowedError)
         }
         
-        // judoid validation
+        // judo ID validation
         let strippedJudoID = judoID.stripped
         
         if !strippedJudoID.isLuhnValid() {
@@ -112,7 +113,7 @@ public class Transaction {
 
     
     /**
-    if a card payment or a card registration has been previously made, add the token to make a repeat payment
+    If a card payment or a card registration has been previously made, add the token to make a repeat payment
     
     - Parameter token: a token-string from a previous payment or registration
     
@@ -125,7 +126,7 @@ public class Transaction {
     
     
     /**
-    reactive method to set location information of the user, this method is optional and is used for fraud prevention
+    Reactive method to set location information of the user, this method is optional and is used for fraud prevention
     
     - Parameter location: a CLLocationCoordinate2D which represents the current location of the user
     
@@ -138,7 +139,7 @@ public class Transaction {
     
     
     /**
-    reactive method to set device signal information of the device, this method is optional and is used for fraud prevention
+    Reactive method to set device signal information of the device, this method is optional and is used for fraud prevention
     
     - Parameter deviceSignal: a Dictionary which contains information about the device
     
@@ -151,7 +152,7 @@ public class Transaction {
     
     
     /**
-    reactive method to set contact information of the user such as mobile number and email address, this method is optional
+    Reactive method to set contact information of the user such as mobile number and email address, this method is optional
     
     - Parameter mobileNumber: a mobile number String
     - Parameter emailAddress: an email address String
@@ -166,7 +167,7 @@ public class Transaction {
     
     
     /**
-    for creating an ApplePay Transaction, use this method to add the PKPayment object
+    For creating an Apple Pay Transaction, use this method to add the PKPayment object
     
     - Parameter payment: the PKPayment object
     
@@ -179,7 +180,7 @@ public class Transaction {
     
 
     /**
-    completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods
+    Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods
     
     - Parameter block: a completion block that is called when the request finishes
     
@@ -187,7 +188,7 @@ public class Transaction {
     
     - Throws: ParameterError one or more of the given parameters were in the incorrect format or nil
     */
-    public func completion(block: (Response?, JudoError?) -> ()) throws -> Self {
+    public func completion(block: JudoCompletionBlock) throws -> Self {
         
         if (self.card != nil && self.payToken != nil) {
             throw JudoError(.CardAndTokenError)
@@ -214,7 +215,7 @@ public class Transaction {
     
     
     /**
-    threeDSecure call - this method will automatically trigger a Session Call to the Judo REST API and execute the finalizing 3DS call on top of the information that had been sent in the previous methods
+    threeDSecure call - this method will automatically trigger a Session Call to the judo REST API and execute the finalizing 3DS call on top of the information that had been sent in the previous methods
     
     - Parameter dictionary: the dictionary that contains all the information from the 3DS UIWebView Request
     - Parameter receiptID: the receipt for the given Transaction
@@ -222,7 +223,7 @@ public class Transaction {
     
     - Returns: reactive self
     */
-    public func threeDSecure(dictionary: JSONDictionary, receiptID: String, block: (Response?, JudoError?) -> ()) -> Self {
+    public func threeDSecure(dictionary: JSONDictionary, receiptID: String, block: JudoCompletionBlock) -> Self {
         
         var paymentDetails = JSONDictionary()
         
@@ -251,20 +252,20 @@ public class Transaction {
     
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(block: (Response?, JudoError?) -> ()) {
+    public static func list(block: JudoCompletionBlock) {
         self.list(nil, block: block)
     }
     
     
     /**
-    This method will return a list of transactions, filtered to just show the payment or preAuth transactions.
+    This method will return a list of transactions, filtered to just show the payment or pre-auth transactions.
     
     See [List all transactions](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/#transactions>) for more information.
     
     - Parameter pagination: The offset, number of items and order in which to return the items
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(pagination: Pagination?, block: (Response?, JudoError?) -> ()) {
+    public static func list(pagination: Pagination?, block: JudoCompletionBlock) {
         var path = (self as! TransactionPath.Type).path
         if let pag = pagination {
             path += "?pageSize=\(pag.pageSize)&offset=\(pag.offset)&sort=\(pag.sort.rawValue)"

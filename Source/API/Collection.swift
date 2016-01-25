@@ -26,7 +26,7 @@ import Foundation
 
 
 /** 
-A Collection transaction is the counterpart to a PreAuth transaction. While the PreAuth transaction reserves funds on a Consumer's card the collection initiates the transfer of those reserved funds into your judo account.
+A Collection transaction is the counterpart to a Pre-authorization transaction. While the Pre-auth transaction reserves funds on a Consumer's card, the Collection initiates the transfer of those reserved funds into your judo account.
 
 ### collection by ID, amount and reference
 ```swift
@@ -53,7 +53,7 @@ public class Collection: NSObject {
     /**
     starting point and a reactive method to create a Collection
     
-    - Parameter judoID: the number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
+    - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
     - Parameter amount: The amount to process
     - Parameter reference: the reference
     
@@ -65,12 +65,12 @@ public class Collection: NSObject {
         self.paymentReference = paymentReference
         super.init()
         
-        // check if device is jailbroken and sdk was set to restrict access
+        // Check if device is jailbroken and SDK was set to restrict access
         if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
             throw JudoError(.JailbrokenDeviceDisallowedError)
         }
         
-        // luhn check the receipt id
+        // Luhn check the receipt ID
         if !receiptID.isLuhnValid() {
             throw JudoError(.LuhnValidationError)
         }
@@ -78,13 +78,13 @@ public class Collection: NSObject {
     
     
     /**
-    completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods
+    Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods
     
     - Parameter block: a completion block that is called when the request finishes
     
     - Returns: reactive self
     */
-    public func completion(block: (Response?, JudoError?) -> ()) -> Self {
+    public func completion(block: JudoCompletionBlock) -> Self {
         
         let parameters = Session.progressionParameters(self.receiptID, amount: self.amount, paymentReference: self.paymentReference)
         

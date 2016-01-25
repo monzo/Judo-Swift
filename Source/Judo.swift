@@ -26,15 +26,15 @@ import Foundation
 
 
 /**
- *  Entry point of interaction with the Judo Swift SDK
+ *  Entry point of interaction with the judo Swift SDK
  */
 public class Judo {
     
-    /// the endpoint for REST API calls to the Judo API
+    /// The endpoint for REST API calls to the judo API
     static private (set) var endpoint = "https://gw1.judopay.com/"
     
     
-    /// set the app to sandboxed mode
+    /// Set the app to sandboxed mode
     static public var sandboxed: Bool = false {
         didSet {
             if sandboxed {
@@ -46,12 +46,12 @@ public class Judo {
     }
     
     
-    /// boolean that will restrict access from jailbroken devices
+    /// Boolean that will restrict access from jailbroken devices
     static public var allowJailbrokenDevices: Bool = true
     
     
     /**
-    a mandatory function that sets the token and secret for making payments with Judo
+    A mandatory function that sets the token and secret for making payments with judo
     
     - Parameter token:  a string object representing the token
     - Parameter secret: a string object representing the secret
@@ -66,7 +66,7 @@ public class Judo {
     
     
     /**
-    a function to check whether a token and secret has been set
+    A function to check whether a token and secret has been set
     
     - Returns: a Boolean indicating whether the parameters have been set
     */
@@ -76,7 +76,7 @@ public class Judo {
     
     
     /**
-     a method that checks if the device it is currently running on is jailbroken or not
+     A method that checks if the device it is currently running on is jailbroken or not
      
      - returns: true if device is jailbroken
      */
@@ -87,12 +87,12 @@ public class Judo {
     
     
     /**
-     starting point and a reactive method to create a transaction that is sent to a certain judo ID
+     Starting point and a reactive method to create a transaction that is sent to a certain judo ID
      
-     - Parameter transactionType: the type of the transaction (payment, preauth or registercard)
-     - Parameter judoID:          the recipient - has to be between 6 and 10 characters and luhn-valid
-     - Parameter amount:          the amount of the Payment
-     - Parameter reference:       the reference
+     - Parameter transactionType: The type of the transaction (payment, pre-auth or registercard)
+     - Parameter judoID:          The recipient - has to be between 6 and 10 characters and luhn-valid
+     - Parameter amount:          The amount of the Payment
+     - Parameter reference:       The reference
      
      - Throws: JudoIDInvalidError    judoID does not match the given length or is not luhn valid
      - Throws: InvalidOperationError if you call this method with .Refund as a transactionType
@@ -112,11 +112,11 @@ public class Judo {
     
     
     /**
-    starting point and a reactive method to create a payment that is sent to a certain judo ID
+    Starting point and a reactive method to create a payment that is sent to a certain judo ID
     
-    - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
-    - Parameter amount:    the amount of the Payment
-    - Parameter reference: the reference
+    - Parameter judoID:    The recipient - has to be between 6 and 10 characters and luhn-valid
+    - Parameter amount:    The amount of the Payment
+    - Parameter reference: The reference
     
     - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
     
@@ -128,15 +128,15 @@ public class Judo {
     
     
     /**
-    starting point and a reactive method to create a preAuth that is sent to a certain judo ID
+    Starting point and a reactive method to create a pre-auth that is sent to a certain judo ID
     
-    - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
-    - Parameter amount:    the amount of the PreAuth
-    - Parameter reference: the reference
+    - Parameter judoID:    The recipient - has to be between 6 and 10 characters and LUHN valid
+    - Parameter amount:    The amount of the pre-auth
+    - Parameter reference: The reference
     
-    - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
+    - Throws: JudoIDInvalidError judoID does not match the given length or is not LUHN valid
     
-    - Returns: a PreAuth Object
+    - Returns: pre-auth Object
     */
     static public func preAuth(judoID: String, amount: Amount, reference: Reference) throws -> PreAuth {
         return try PreAuth(judoID: judoID, amount: amount, reference: reference)
@@ -144,13 +144,13 @@ public class Judo {
     
     
     /**
-    starting point and a reactive method to create a RegisterCard that is sent to a certain judo ID
+    Starting point and a reactive method to create a RegisterCard that is sent to a certain judo ID
     
-    - Parameter judoID:    the recipient - has to be between 6 and 10 characters and luhn-valid
-    - Parameter amount:    the amount of the RegisterCard
-    - Parameter reference: the reference
+    - Parameter judoID:    The recipient - has to be between 6 and 10 characters and LUHN valid
+    - Parameter amount:    The amount of the RegisterCard
+    - Parameter reference: The reference
     
-    - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
+    - Throws: JudoIDInvalidError judoID does not match the given length or is not LUHN valid
     
     - Returns: a RegisterCard Object
     */
@@ -160,13 +160,13 @@ public class Judo {
     
     
     /**
-    creates a Receipt object which can be used to query for the receipt of a given id
+    Creates a Receipt object which can be used to query for the receipt of a given ID.
     
-    the receipt id has to be luhn valid, an Error will be thrown if the receipt id does not pass the luhn check
+    The receipt ID has to be LUHN valid, an error will be thrown if the receipt ID does not pass the LUHN check.
     
-    If you want to use the receipt function - you need to enable that in the Judo Dashboard - Your Apps - Permissions for the given App
+    If you want to use the receipt function - you need to enable that in the judo Dashboard - Your Apps - Permissions for the given App
     
-    - Parameter receiptID: the receipt id as a String
+    - Parameter receiptID: The receipt ID as a String
     
     - Throws: LuhnValidationError if the receiptID does not match
     
@@ -178,13 +178,13 @@ public class Judo {
     
     
     /**
-    Creates a Collection object which can be used to collect a previously pre-authenticated transaction
+    Creates a Collection object which can be used to collect a previously pre-authorized transaction
     
-    - Parameter receiptID:        the receipt of the previously authorized transaction
-    - Parameter amount:           the amount to be transacted
-    - Parameter paymentReference: the payment reference string
+    - Parameter receiptID:        The receipt of the previously authorized transaction
+    - Parameter amount:           The amount to be transacted
+    - Parameter paymentReference: The payment reference string
     
-    - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
+    - Throws: LuhnValidationError judoID does not match the given length or is not LUHN valid
     
     - Returns: a Collection object for reactive usage
     */
@@ -196,11 +196,11 @@ public class Judo {
     /**
     Creates a Refund object which can be used to refund a previous transaction
     
-    - Parameter receiptID:        the receipt of the previous transaction
-    - Parameter amount:           the amount to be refunded (will check if funds are available in your account)
-    - Parameter paymentReference: the payment reference string
+    - Parameter receiptID:        The receipt of the previous transaction
+    - Parameter amount:           The amount to be refunded (will check if funds are available in your account)
+    - Parameter paymentReference: The payment reference string
     
-    - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
+    - Throws: LuhnValidationError judoID does not match the given length or is not LUHN valid
     
     - Returns: a Collection object for reactive usage
     */

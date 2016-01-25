@@ -26,16 +26,16 @@ import Foundation
 
 
 /**
-When you want to process a payment transaction you create a Payment object and start adding the necessary Information. This Transaction supports two types of Payments. You can process payments using a full set of card details, or by referencing a previously processed transaction.
+When you want to process a payment transaction, you create a Payment object and start adding the necessary information. This transaction supports two types of Payments. You can process payments using a full set of card details, or by referencing a previously processed transaction.
 
 - Card Payment
     - For payments where you have the full card details including the card number.
 - Token Payment
     - For processing payments using a saved card (requires the Card token and Consumer token values).
 
-`Transaction` contains all the necessary implementation of Payments and PreAuths since these are very closely related
+`Transaction` contains all the necessary implementation of Payments and Pre-auths since these are very closely related.
 
-### Card Payment
+### Card payment
 
 ```swift
     Judo.payment(correctJudoID, amount: amount, reference: references)
@@ -51,7 +51,7 @@ When you want to process a payment transaction you create a Payment object and s
         })
 ```
 
-### Token Payment
+### Token payment
 
 ```swift token payment
     Judo.payment(correctJudoID, amount: amount, reference: references)
@@ -67,7 +67,7 @@ When you want to process a payment transaction you create a Payment object and s
         })
 ```
 
-learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>)
+Learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>)
 
 */
 public class Payment: Transaction, TransactionPath {
@@ -77,13 +77,13 @@ public class Payment: Transaction, TransactionPath {
     
     
     /**
-    If you need to check a payment before actually processing it you use the validate call, we'll perform our internal checks on the payment without sending it to consumer's bank. We check the merchant identified by the judo ID can accept the payment, the card can be accepted and the card number passes the LUHN test.
+    If you need to check a payment before actually processing it, you can use the validate call, we'll perform our internal checks on the payment without sending it to consumer's bank. We check if the merchant identified by the judo ID can accept the payment, if the card can be accepted and if the card number passes the LUHN test.
     
     - Parameter block: a completion block that is called when the request finishes
     
     - Returns: reactive Self
     */
-    public func validate(block: ((Response?, JudoError?) -> ())) throws -> Self {
+    public func validate(block: (JudoCompletionBlock)) throws -> Self {
         if (self.card != nil && self.payToken != nil) {
             throw JudoError(.CardAndTokenError)
         } else if self.card == nil && self.payToken == nil {

@@ -28,7 +28,7 @@ import Foundation
 public extension String {
     
     
-    /// string by stripping all whitespaces
+    /// String by stripping all whitespaces
     public var strippedWhitespaces: String {
         get {
             return self.stringByReplacingOccurrencesOfString(" ", withString: "")
@@ -39,7 +39,7 @@ public extension String {
     }
     
     
-    /// string by stripping all non-digic characters
+    /// String by stripping all non-digit characters
     public var stripped: String {
         get {
             if self.isNumeric() {
@@ -54,9 +54,9 @@ public extension String {
     }
     
     /**
-     method to check if a string is luhn valid
+     Method to check if a string is Luhn valid
      
-     - returns: true if given string is luhn valid
+     - returns: true if given string is Luhn valid
      */
     public func isLuhnValid() -> Bool {
         guard self.isNumeric() else {
@@ -71,7 +71,7 @@ public extension String {
     
     
     /**
-     method to check whether string contains only numbers and letters
+     Method to check whether string contains only numbers and letters
      
      - returns: true if string consists of numbers and letters
      */
@@ -81,7 +81,7 @@ public extension String {
     }
     
     /**
-     method to check whether string contains only numbers and letters
+     Method to check whether string contains only numbers and letters
      
      - returns: true if string consists of numbers and letters
      */

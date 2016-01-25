@@ -32,14 +32,14 @@ let CUPPattern          = "XXXXXX XXXXXXXXXXXXX"
 let DinersClubPattern   = "XXXX XXXXXX XXXX"
 
 
-// these should be computed once and then referenced - O(n)
+// These should be computed once and then referenced - O(n)
 let masterCardPrefixes          = ([Int](2221...2720)).map({ String($0) }) + ([Int](51...55)).map { String($0) }
 let maestroPrefixes             = ([Int](56...69)).map({ String($0) }) + ["50"]
 let dinersClubPrefixes          = ([Int](300...305)).map({ String($0) }) + ["36", "38", "39", "309"]
 let instaPaymentPrefixes        = ([Int](637...639)).map({ String($0) })
 let JCBPrefixes                 = ([Int](3528...3589)).map({ String($0) })
 
-// expression was too complex to be executed in one line 😩😭💥
+// Expression was too complex to be executed in one line 😩😭💥
 let discoverPrefixes: [String]  = {
     let discover = ([Int](644...649)).map({ String($0) }) + ([Int](622126...622925)).map({ String($0) })
     return discover + ["65", "6011"]
@@ -47,13 +47,15 @@ let discoverPrefixes: [String]  = {
 
 
 /**
-*  the Card object stores all the necessary card information to make a transaction
+ **Card**
+ 
+ Card objects store all the necessary card information for making transactions
 */
 public class Card: NSObject {
     
-    /// the minimum card length constant
+    /// The minimum card length constant
     public static let minimumLength = 12
-    /// the maximum card length constant
+    /// The maximum card length constant
     public static let maximumLength = 19
     
     /// The card number should be submitted without any whitespace or non-numeric characters
@@ -71,14 +73,14 @@ public class Card: NSObject {
     
     
     /**
-     designated initialiser for the Card struct
+     Designated initializer for the Card struct
      
-     - parameter number:      the card number (long number)
-     - parameter expiryDate:  the expiry date of the card
-     - parameter cv2:         the security code number of the card
-     - parameter address:     the address of the card holder where the account is registered (AVS)
-     - parameter startDate:   in case of transacting with maestro cards, the start date (optional)
-     - parameter issueNumber: in case of transacting with maestro cards, the issue number (optional)
+     - parameter number:      The card number (long number)
+     - parameter expiryDate:  The expiry date of the card
+     - parameter cv2:         The security code number of the card
+     - parameter address:     The address of the card holder where the account is registered (AVS)
+     - parameter startDate:   In case of transacting with maestro cards, the start date (optional)
+     - parameter issueNumber: In case of transacting with maestro cards, the issue number (optional)
      
      - returns: a Card object
      */
@@ -92,16 +94,18 @@ public class Card: NSObject {
     }
     
     /**
-    *  Card Configuration consists of a Card Network and a given length
+     **Card.Configuration**
+     
+     Card Configuration consists of a Card Network and a given length
     */
     public class Configuration: NSObject {
-        /// the network of the configuration
+        /// The network of the configuration
         public let cardNetwork: CardNetwork
-        /// the length of the card for this configuration
+        /// The length of the card for this configuration
         public let cardLength: Int
         
         /**
-         designated initialiser for a card configuration
+         Designated initializer for a card configuration
          
          - parameter cardNetwork: the card network (eg. Visa, MasterCard or AMEX)
          - parameter cardLength:  the length of the card number (eg. 16 or 19 for Maestro cards)
@@ -115,7 +119,7 @@ public class Card: NSObject {
         
         
         /**
-        helper method to get a pattern string for a certain configuration
+        Helper method to get a pattern string for a certain configuration
         
         - Returns: a given String with the correct pattern
         */
@@ -146,7 +150,7 @@ public class Card: NSObject {
         
         
         /**
-        helper method to get a placeholder string for a certain configuration
+        Helper method to get a placeholder string for a certain configuration
         
         - Returns: a given String as a placeholder
         */
@@ -157,31 +161,76 @@ public class Card: NSObject {
     
 }
 
-
+// MARK: - Card.Configurations Protocol extensions
 extension Card.Configuration: Comparable { }
 
+
+/**
+ Equals function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the two objects are equal
+ */
 public func ==(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength == y.cardLength && x.cardNetwork == y.cardNetwork
 }
 
+
+/**
+ Lower function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is lower than the right hand sides cardLength
+ */
 public func <(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength < y.cardLength
 }
 
+
+/**
+ Lower or equal function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is lower than or equals the right hand sides cardLength
+ */
 public func <=(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength <= y.cardLength
 }
 
+
+/**
+ Greater function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is greater than the right hand sides cardLength
+ */
 public func >(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength > y.cardLength
 }
 
+
+/**
+ Greater or equal function for two Card.Configuration objects
+ 
+ - parameter x: left hand side Card.Configuration
+ - parameter y: right hand side Card.Configuration
+ 
+ - returns: boolean indicating whether the lhs objects cardLength is greater than or equals the right hand sides cardLength
+ */
 public func >=(x: Card.Configuration, y: Card.Configuration) -> Bool {
     return x.cardLength >= y.cardLength
 }
 
 /**
-the CardType enum is a value type for CardNetwork to further identify card types
+The CardType enum is a value type for CardNetwork to further identify card types
 
 - Debit:   Debit Card type
 - Credit:  Credit Card type
@@ -198,7 +247,7 @@ the CardType enum is a value type for CardNetwork to further identify card types
 
 
 /**
-the CardNetwork enum depicts the Card Network type of a given Card object
+The CardNetwork enum depicts the Card Network type of a given Card object
 
 - Visa:             Visa Card Network
 - MasterCard:       MasterCard Network
@@ -281,7 +330,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
     
     
     /**
-     the string value of the receiver
+     The string value of the receiver
      
      - returns: a string describing the receiver
      */
@@ -346,7 +395,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
     
     
     /**
-    the prefixes determine which card network a number belongs to, this method provides an array with one or many prefixes for a given type
+    The prefixes determine which card network a number belongs to, this method provides an array with one or many prefixes for a given type
     
     - Returns: an Array containing all the possible prefixes for a type
     */
@@ -383,7 +432,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
     
     
     /**
-     the card network type for a given card number string and constrained to a set of networks
+     The card network type for a given card number string and constrained to a set of networks
      
      - parameter string:   the card number as a string
      - parameter networks: the networks allowed for detection
@@ -400,7 +449,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
     
     
     /**
-     the card network type for a given card number
+     The card network type for a given card number
      
      - parameter string: the card number as a string
      
@@ -413,7 +462,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
     
 
     /**
-    security code name for a certain card
+    Security code name for a certain card
     
     - Returns: a String for the title of a certain security code
     */
@@ -440,7 +489,7 @@ the CardNetwork enum depicts the Card Network type of a given Card object
     
     
     /**
-    security code length for a card type
+    Security code length for a card type
     
     - Returns: an Int with the code length
     */
@@ -457,20 +506,24 @@ the CardNetwork enum depicts the Card Network type of a given Card object
 
 
 /**
-*  the CardDetails object stores information that is returned from a successful payment or preAuth
+ **CardDetails**
+ 
+ The CardDetails object stores information that is returned from a successful payment or pre-auth
+ 
+ This class also implements the `NSCoding` protocol to enable serialization for persistency
 */
 public class CardDetails: NSObject, NSCoding {
-    /// The last four digits of the card used for this transaction.
+    /// The last four digits of the card used for this transaction
     public let cardLastFour: String?
-    /// Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY.
+    /// Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY
     public let endDate: String?
-    /// Can be used to charge future payments against this card.
+    /// Can be used to charge future payments against this card
     public let cardToken: String?
-    /// the card network
+    /// The card network
     public let cardNetwork: CardNetwork?
-    /// the card number if available
+    /// The card number if available
     public let cardNumber: String?
-    /// description string for print functions
+    /// Description string for print functions
     override public var description: String {
         let formattedLastFour = self.formattedLastFour() ?? "N/A"
         let formattedEndDate = self.formattedEndDate() ?? "N/A"
@@ -480,7 +533,7 @@ public class CardDetails: NSObject, NSCoding {
     
     
     /**
-     convenience initializer that takes in a card number and an expiry date in case a transaction should be made with pre-known information
+     Convenience initializer that takes in a card number and an expiry date in case a transaction should be made with pre-known information
      
      - parameter cardNumber: a card number as a String
      - parameter endDate:    an enddate in MM/YY format as a String
@@ -511,7 +564,7 @@ public class CardDetails: NSObject, NSCoding {
     
     
     /**
-     designated initialiser for Card Details
+     Designated initializer for Card Details
      
      - parameter dict: all parameters as a dictionary
      
@@ -532,7 +585,7 @@ public class CardDetails: NSObject, NSCoding {
     
     
     /**
-     initialise the CardDetails object with a coder
+     Initialise the CardDetails object with a coder
      
      - parameter decoder: the decoder object
      
@@ -554,7 +607,7 @@ public class CardDetails: NSObject, NSCoding {
     
     
     /**
-     encode the receiver CardDetails object
+     Encode the receiver CardDetails object
      
      - parameter aCoder: the Coder
      */
@@ -571,7 +624,7 @@ public class CardDetails: NSObject, NSCoding {
     
     
     /**
-     get a formatted string with the right whitespacing for a certain card type
+     Get a formatted string with the right whitespacing for a certain card type
      
      - returns: a string with the last four digits with the right format
      */
@@ -589,7 +642,7 @@ public class CardDetails: NSObject, NSCoding {
     
     
     /**
-     get a formatted string with the right slash for a date
+     Get a formatted string with the right slash for a date
      
      - returns: a string with the date as shown on the credit card with the right format
      */
