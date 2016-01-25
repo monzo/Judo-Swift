@@ -472,7 +472,7 @@ public struct Pagination {
  - Descending: Descended Sorting
  - Ascending:  Ascended Sorting
  */
-Public enum Sort: String {
+public enum Sort: String {
     /// Descended Sorting
     case Descending = "time-descending"
     /// Ascended Sorting

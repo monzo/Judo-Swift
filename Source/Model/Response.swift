@@ -358,7 +358,7 @@ public class TransactionData: NSObject {
  - Refund:  A Refund Transaction
  - RegisterCard: Register a Card
 */
-Public enum TransactionType: String {
+public enum TransactionType: String {
     /// A Payment Transaction
     case Payment
     /// A Pre-auth Transaction
