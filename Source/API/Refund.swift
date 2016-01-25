@@ -52,7 +52,7 @@ public class Refund: NSObject {
     /**
     Starting point and a reactive method to create a Refund
     
-    - Parameter judoID: the number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
+    - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
     - Parameter amount: The amount to process
     - Parameter reference: the reference
     
