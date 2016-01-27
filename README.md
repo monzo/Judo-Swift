@@ -12,6 +12,7 @@ This is the new judoNative Swift SDK. It contains base work to easily access the
 
 If you still would like to implement everything yourself, we strongly recommend you to use the [judoSecure](https://github.com/JudoPay/Judo-Security) Framework and send device related information along with transaction requests to ensure safety and fraud security for all your payments.
 
+##### **\*\*\*Due to industry-wide security updates, versions below 1.5.1 of this SDK will no longer be supported after 1st Oct 2016. For more information regarding these updates, please read our blog [here](http://hub.judopay.com/pci31-security-updates/).*****
 
 ### What is this project for?
 
@@ -41,7 +42,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Judo', '~> 1.5'
+pod 'Judo', '~> 1.5.1'
 ```
 
 Then, run the following command:
@@ -65,7 +66,7 @@ $ brew install carthage
 - To integrate judo into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "JudoPay/Judo-Swift" >= 1.5
+github "JudoPay/Judo-Swift" >= 1.5.1
 ```
 
 - On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk.
