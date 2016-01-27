@@ -14,9 +14,8 @@
     <a title="Refund Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p><a href="../index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -181,6 +180,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -193,9 +200,9 @@
 
                 </div>
               </div>
-            <p>Refunding a successful payment is easy, it simply requires you to identify the original receipt ID for the payment and the amount you wish to refund. When we&rsquo;ve received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you make a Refund with the SDK.</p>
+            <p>Refunding a successful payment is easy, simply identify the original receipt ID for the payment and the amount you wish to refund. When we&rsquo;ve received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you can make a Refund with the SDK.</p>
 
-<p><a href='#refund_by_id_amount_and_reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='refund_by_id_amount_and_reference'>refund by ID, amount and reference</h3>
+<p><a href='#refund_by_id_amount_and_reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='refund_by_id_amount_and_reference'>Refund by ID, amount and reference</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">refund</span><span class="p">(</span><span class="n">receiptID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">paymentReference</span><span class="p">:</span> <span class="n">payRef</span><span class="p">)</span><span class="o">.</span><span class="nf">completion</span><span class="p">({</span> <span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
         <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
             <span class="c1">// error</span>
@@ -222,7 +229,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the receipt ID for a refund</p>
+                        <p>The receipt ID for a refund</p>
 
                       </div>
                       <div class="declaration">
@@ -234,7 +241,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Refund.swift#L45">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Refund.swift#L45">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -252,7 +259,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the amount of the refund</p>
+                        <p>The amount of the refund</p>
 
                       </div>
                       <div class="declaration">
@@ -264,7 +271,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Refund.swift#L47">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Refund.swift#L47">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -282,7 +289,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the payment reference String for a refund</p>
+                        <p>The payment reference String for a refund</p>
 
                       </div>
                       <div class="declaration">
@@ -294,7 +301,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Refund.swift#L49">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Refund.swift#L49">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -312,7 +319,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods</p>
+                        <p>Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods</p>
 
 <div class="aside aside-parameter">
     <p class="aside-title">Parameter</p>
@@ -331,7 +338,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">completion</span><span class="p">(</span><span class="nv">block</span><span class="p">:</span> <span class="p">(</span><span class="kt">Response</span><span class="p">?,</span> <span class="kt">JudoError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">completion</span><span class="p">(</span><span class="nv">block</span><span class="p">:</span> <span class="kt">JudoCompletionBlock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
                       </div>
@@ -361,7 +368,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Refund.swift#L87-L96">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Refund.swift#L87-L96">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -371,7 +378,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

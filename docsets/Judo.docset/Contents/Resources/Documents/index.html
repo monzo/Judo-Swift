@@ -13,9 +13,8 @@
     <a title="Judo  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+        <p><a href="index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -180,6 +179,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -193,20 +200,21 @@
 <a href="http://http://cocoadocs.org/docsets/Judo"><img src="https://img.shields.io/cocoapods/p/Judo.svg" alt="Platform"></a>
 <a href="http://twitter.com/JudoPayments"><img src="https://img.shields.io/badge/twitter-@JudoPayments-orange.svg" alt="Twitter"></a>
 <a href="http://travis-ci.org/JudoPay/Judo-Swift"><img src="https://travis-ci.org/JudoPay/Judo-Swift.svg" alt="Build Status"></a></p>
-<a href='#judo_swift_sdk' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='judo_swift_sdk'>Judo Swift SDK</h1>
+<a href='#judonative_sdk_for_swift' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='judonative_sdk_for_swift'>judoNative SDK for Swift</h1>
 
-<p>This is the new Judo Swift SDK. It contains base work to easily access the REST API with all the validation and helper methods needed to make simple payments with a fully custom UI. If you are interested in doing easy transaction without having to implement a full custom UI, Fraud prevention, 3DS, AVS, etc as well as PCI compliance, have a look at the <a href="https://github.com/JudoPay/JudoKit">JudoKit</a> project which contains this as a base module.</p>
+<p>This is the new judoNative Swift SDK. It contains base work to easily access the REST API with all the validation and helper methods needed to make simple payments with a fully custom UI. If you are interested in a simple integration of payments without having to implement a full custom UI, fraud prevention, 3DS, AVS, etc as well as PCI compliance yourself, have a look at the <a href="https://github.com/JudoPay/JudoKit">judoKit</a> project which contains this as a base module.</p>
 
-<p>If you still decide to implement everything yourself we strongly recommend you to use the <a href="https://github.com/JudoPay/Judo-Security">JudoSecure</a> Framework and send the device related information along with transaction requests to ensure safety and fraud security for all your payments.</p>
+<p>If you still would like to implement everything yourself, we strongly recommend you to use the <a href="https://github.com/JudoPay/Judo-Security">judoSecure</a> Framework and send device related information along with transaction requests to ensure safety and fraud security for all your payments.</p>
+<a href='#strong_due_to_industry_wide_security_updates_versions_below_1_5_1_of_this_sdk_will_no_longer_be_supported_after_1st_oct_2016_for_more_information_regarding_these_updates_please_read_our_blog_a_href_http_hub_judopay_com_pci31_security_updates_here_a_strong' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='strong_due_to_industry_wide_security_updates_versions_below_1_5_1_of_this_sdk_will_no_longer_be_supported_after_1st_oct_2016_for_more_information_regarding_these_updates_please_read_our_blog_a_href_http_hub_judopay_com_pci31_security_updates_here_a_strong'><strong>***Due to industry-wide security updates, versions below 1.5.1 of this SDK will no longer be supported after 1st Oct 2016. For more information regarding these updates, please read our blog <a href="http://hub.judopay.com/pci31-security-updates/">here</a>.</strong>***</h5>
 <a href='#what_is_this_project_for' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='what_is_this_project_for'>What is this project for?</h3>
 
-<p>The Judo Swift SDK is a framework for accessing the <a href="https://www.judopay.com/">JudoPay</a> Backend API for making and accepting payments inside your app as easy and frictionless as possible.</p>
+<p>The judoNative Swift SDK is a framework for accessing the <a href="https://www.judopay.com/">judoPay</a> backend API for making and accepting payments inside your app as easy and frictionless as possible.</p>
 <a href='#integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='integration'>Integration</h2>
-<a href='#sign_up_for_judopayments' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='sign_up_for_judopayments'>Sign up for judopayments</h3>
+<a href='#sign_up_judo_39_s_platform' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='sign_up_judo_39_s_platform'>Sign up judo&rsquo;s platform</h3>
 
 <ul>
-<li>To use the Judo SDK, you&rsquo;ll need to <a href="https://www.judopay.com/signup">sign up</a> and get your app token</li>
-<li>the SDK has to be integrated in your project using one of the following methods</li>
+<li>To use judo SDKs, you&rsquo;ll need to <a href="https://www.judopay.com/signup">sign up</a> and get your app token.</li>
+<li>the SDK has to be integrated into your project using one of the following methods:</li>
 </ul>
 <a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='cocoapods'>CocoaPods</h4>
 
@@ -216,12 +224,12 @@
 <pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
 </code></pre>
 
-<p>add Judo to your <code>Podfile</code> to integrate it into your Xcode project:</p>
+<p>add judo to your <code>Podfile</code> to integrate it into your Xcode project:</p>
 <pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
 <span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
 <span class="n">use_frameworks!</span>
 
-<span class="n">pod</span> <span class="s1">'Judo'</span><span class="p">,</span> <span class="s1">'~&gt; 1.5'</span>
+<span class="n">pod</span> <span class="s1">'Judo'</span><span class="p">,</span> <span class="s1">'~&gt; 1.5.1'</span>
 </code></pre>
 
 <p>Then, run the following command:</p>
@@ -237,9 +245,9 @@
 </code></pre>
 
 <ul>
-<li>To integrate Judo into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</li>
+<li>To integrate judo into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</li>
 </ul>
-<pre class="highlight plaintext"><code>github "JudoPay/Judo-Swift" &gt;= 1.5
+<pre class="highlight plaintext"><code>github "JudoPay/Judo-Swift" &gt;= 1.5.1
 </code></pre>
 
 <ul>
@@ -249,16 +257,16 @@
 <pre class="highlight shell"><code>/usr/local/bin/carthage copy-frameworks
 </code></pre>
 
-<p>and add the paths to the frameworks you want to use under “Input Files”, e.g.:</p>
+<p>And add the paths to the frameworks you want to use under “Input Files”, e.g.:</p>
 <pre class="highlight plaintext"><code>$(SRCROOT)/Carthage/Build/iOS/Judo.framework
 </code></pre>
-<a href='#manual_integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manual_integration'>Manual Integration</h3>
+<a href='#manual_integration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manual_integration'>Manual integration</h3>
 
-<p>You can integrate Judo into your project manually if you prefer not to use dependency management.</p>
-<a href='#adding_the_framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='adding_the_framework'>Adding the Framework</h4>
+<p>You can integrate judo into your project manually if you prefer not to use dependency management.</p>
+<a href='#adding_the_framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='adding_the_framework'>Adding the framework</h4>
 
 <ul>
-<li>Add Judo as a <a href="http://git-scm.com/docs/git-submodule">submodule</a> by opening the Terminal, changing into your project directory, and entering the following command:</li>
+<li>Add judo as a <a href="http://git-scm.com/docs/git-submodule">submodule</a> by opening the Terminal, changing into your project directory, and entering the following command:</li>
 </ul>
 <pre class="highlight shell"><code><span class="gp">$ </span>git submodule add https://github.com/JudoPay/Judo-Swift
 </code></pre>
@@ -271,17 +279,17 @@
 <li>Click on the <code>+</code> button under the <q>Linked Frameworks and Libraries</q> section.</li>
 <li>Select <code>Judo.framework</code> nested inside the <code>Workspace</code> folder on the top.</li>
 </ul>
-<a href='#further_setup' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='further_setup'>Further Setup</h3>
+<a href='#further_setup' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='further_setup'>Further setup</h3>
 
 <ul>
-<li><p>add <code>import Judo</code> to the top of the file where you want to use the SDK.</p></li>
-<li><p>To instruct the SDK to communicate with the sandbox, include the following line  <code>Judo.sandboxed = true</code> When you are ready to go live you can remove this line. We would recommend to put this in the method <code>didFinishLaunchingWithOptions</code> in your AppDelegate</p></li>
-<li><p>You can also set your key and secret here if you do not wish to include it in all subsequent calls <code>Judo.setToken(token:, secret:)</code></p></li>
+<li><p>Add <code>import Judo</code> to the top of the file where you want to use the SDK.</p></li>
+<li><p>To instruct the SDK to communicate with the sandbox, include the following line  <code>Judo.sandboxed = true</code>. When you are ready to go live you can remove this line. We would recommend to put this in the method <code>didFinishLaunchingWithOptions</code> in your AppDelegate.</p></li>
+<li><p>You can also set your key and secret here if you do not wish to include it in all subsequent calls <code>Judo.setToken(token:, secret:)</code>.</p></li>
 </ul>
 <a href='#examples' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='examples'>Examples</h3>
 <a href='#token_and_secret' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='token_and_secret'>Token and Secret</h4>
 
-<p>the token and secret are accessible from your JudoPay Account <a href="https://portal.judopay.com/Developer">here</a> after you have created an App and either generated sandbox or live tokens. We recommend you to set this in your AppDelegate in the <code>didFinishLaunchingWithOptions</code> method</p>
+<p>The token and secret are accessible from your judo account <a href="https://portal.judopay.com/Developer">here</a>. After you have created an app you can either generated sandbox or live tokens. We recommend you to set this in your AppDelegate in the <code>didFinishLaunchingWithOptions</code> method.</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">token</span> <span class="o">=</span> <span class="s">"a3xQdxP6iHdWg1zy"</span>
 <span class="k">let</span> <span class="nv">secret</span> <span class="o">=</span> <span class="s">"2094c2f5484ba42557917aad2b2c2d294a35dddadb93de3c35d6910e6c461bfb"</span>
 
@@ -291,10 +299,10 @@
 
 <span class="c1">// Judo.didSetTokenAndSecret() returns true</span>
 </code></pre>
-<a href='#make_a_simple_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='make_a_simple_payment'>Make a simple Payment</h4>
+<a href='#make_a_simple_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='make_a_simple_payment'>Make a simple payment</h4>
 
-<p>The Judo Swift SDK takes a reactive approach</p>
-<a href='#card_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='card_payment'>Card Payment</h5>
+<p>The judoNative Swift SDK takes a reactive approach.</p>
+<a href='#card_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='card_payment'>Card payment</h5>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">judoID</span> <span class="o">=</span> <span class="s">"100111222"</span>
 <span class="k">let</span> <span class="nv">references</span> <span class="o">=</span> <span class="kt">Reference</span><span class="p">(</span><span class="nv">yourConsumerReference</span><span class="p">:</span> <span class="s">"consumer0053252"</span><span class="p">)</span>
 <span class="k">let</span> <span class="nv">address</span> <span class="o">=</span> <span class="kt">Address</span><span class="p">(</span><span class="nv">line1</span><span class="p">:</span> <span class="s">"242 Acklam Road"</span><span class="p">,</span> <span class="nv">line2</span><span class="p">:</span> <span class="s">"Westbourne Park"</span><span class="p">,</span> <span class="nv">line3</span><span class="p">:</span> <span class="kc">nil</span><span class="p">,</span> <span class="nv">town</span><span class="p">:</span> <span class="s">"London"</span><span class="p">,</span> <span class="nv">postCode</span><span class="p">:</span> <span class="s">"W10 5JJ"</span><span class="p">)</span>
@@ -332,7 +340,7 @@
     <span class="c1">// error creating a Transaction e.g. the judoID could be in a wrong format</span>
 <span class="p">}</span>
 </code></pre>
-<a href='#token_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='token_payment'>Token Payment</h5>
+<a href='#token_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='token_payment'>Token payment</h5>
 <pre class="highlight swift"><code><span class="kt">Judo</span><span class="o">.</span><span class="nf">payment</span><span class="p">(</span><span class="n">correctJudoID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="n">references</span><span class="p">)</span>
     <span class="o">.</span><span class="nf">paymentToken</span><span class="p">(</span><span class="n">payToken</span><span class="p">)</span>
     <span class="o">.</span><span class="nf">location</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
@@ -347,8 +355,8 @@
     <span class="p">})</span>
 </code></pre>
 
-<p>notice that the only difference is calling <code>.paymentToken(payToken)</code> with a valid <code>PaymentToken</code> instead of <code>.card(card)</code> for making a token payment instead of a card payment. This process is the same for preAuths and Token preAuths</p>
-<a href='#card_preauth' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='card_preauth'>Card PreAuth</h5>
+<p>Notice that the only difference is calling <code>.paymentToken(payToken)</code> with a valid <code>PaymentToken</code> instead of <code>.card(card)</code> for making a token payment instead of a card payment. This process is the same for pre-authorizations and token pre-authorizations.</p>
+<a href='#card_pre_authorization' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='card_pre_authorization'>Card pre-authorization</h5>
 <pre class="highlight plaintext"><code>Judo.preAuth(correctJudoID, amount: amount, reference: references)
     .card(card)
     .location(location)
@@ -362,7 +370,7 @@
         }
     })
 </code></pre>
-<a href='#token_preauth' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='token_preauth'>Token PreAuth</h5>
+<a href='#token_pre_authorization' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h5 id='token_pre_authorization'>Token pre-authorization</h5>
 <pre class="highlight plaintext"><code>Judo.preAuth(correctJudoID, amount: amount, reference: references)
     .paymentToken(payToken)
     .location(location)
@@ -394,7 +402,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

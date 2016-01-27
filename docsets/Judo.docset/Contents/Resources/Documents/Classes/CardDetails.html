@@ -14,9 +14,8 @@
     <a title="CardDetails Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p><a href="../index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -181,6 +180,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -193,7 +200,11 @@
 
                 </div>
               </div>
-            <p>the CardDetails object stores information that is returned from a successful payment or preAuth</p>
+            <p><strong>CardDetails</strong></p>
+
+<p>The CardDetails object stores information that is returned from a successful payment or pre-auth</p>
+
+<p>This class also implements the <code>NSCoding</code> protocol to enable serialization for persistency</p>
 
           </section>
           <section class="section task-group-section">
@@ -212,7 +223,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The last four digits of the card used for this transaction.</p>
+                        <p>The last four digits of the card used for this transaction</p>
 
                       </div>
                       <div class="declaration">
@@ -224,7 +235,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L464">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L517">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -242,7 +253,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY.</p>
+                        <p>Expiry date of the card used for this transaction formatted as a two digit month and year i.e. MM/YY</p>
 
                       </div>
                       <div class="declaration">
@@ -254,7 +265,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L466">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L519">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -272,7 +283,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Can be used to charge future payments against this card.</p>
+                        <p>Can be used to charge future payments against this card</p>
 
                       </div>
                       <div class="declaration">
@@ -284,7 +295,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L468">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L521">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -302,7 +313,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the card network</p>
+                        <p>The card network</p>
 
                       </div>
                       <div class="declaration">
@@ -314,7 +325,135 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L470">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L523">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4Judo11CardDetails10cardNumberGSqSS_"></a>
+                    <a name="//apple_ref/swift/Property/cardNumber" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4Judo11CardDetails10cardNumberGSqSS_">cardNumber</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The card number if available</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L525">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC4Judo11CardDetails11descriptionSS"></a>
+                    <a name="//apple_ref/swift/Property/description" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC4Judo11CardDetails11descriptionSS">description</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Description string for print functions</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">override</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">description</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L527-L532">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC4Judo11CardDetailscFMS0_FT10cardNumberGSqSS_11expiryMonthGSqSi_10expiryYearGSqSi__S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(cardNumber:expiryMonth:expiryYear:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC4Judo11CardDetailscFMS0_FT10cardNumberGSqSS_11expiryMonthGSqSi_10expiryYearGSqSi__S0_">init(cardNumber:expiryMonth:expiryYear:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Convenience initializer that takes in a card number and an expiry date in case a transaction should be made with pre-known information</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">cardNumber</span><span class="p">:</span> <span class="kt">String</span><span class="p">?,</span> <span class="nv">expiryMonth</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?,</span> <span class="nv">expiryYear</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>cardNumber</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>a card number as a String</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>endDate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an enddate in MM/YY format as a String</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>a CardDetails object</p>
+
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L543-L563">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -332,7 +471,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>designated initialiser for Card Details</p>
+                        <p>Designated initializer for Card Details</p>
 
                       </div>
                       <div class="declaration">
@@ -369,7 +508,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L480-L490">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L573-L584">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -387,7 +526,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>initialise the CardDetails object with a coder</p>
+                        <p>Initialise the CardDetails object with a coder</p>
 
                       </div>
                       <div class="declaration">
@@ -424,7 +563,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L500-L511">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L594-L606">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -442,7 +581,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>encode the receiver CardDetails object</p>
+                        <p>Encode the receiver CardDetails object</p>
 
                       </div>
                       <div class="declaration">
@@ -474,7 +613,7 @@
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L519-L528">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L614-L623">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -492,7 +631,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>get a formatted string with the right whitespacing for a certain card type</p>
+                        <p>Get a formatted string with the right whitespacing for a certain card type</p>
 
                       </div>
                       <div class="declaration">
@@ -509,7 +648,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L536-L546">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L631-L641">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -527,7 +666,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>get a formatted string with the right slash for a date</p>
+                        <p>Get a formatted string with the right slash for a date</p>
 
                       </div>
                       <div class="declaration">
@@ -544,7 +683,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L554-L565">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L649-L660">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -554,7 +693,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

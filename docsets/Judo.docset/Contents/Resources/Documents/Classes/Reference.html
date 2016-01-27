@@ -14,9 +14,8 @@
     <a title="Reference Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p><a href="../index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -181,6 +180,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -193,7 +200,20 @@
 
                 </div>
               </div>
-            <p>the Reference object is supposed to simplify storing reference data like consumer or payment references</p>
+            <p><strong>Referencing a transaction</strong></p>
+
+<p>the Reference object is supposed to simplify storing reference data like consumer, payment references and metadata dictionary that can hold an arbitrary set of key value based information</p>
+
+<p>you create a reference object by calling the initializer with a reference of your consumer.</p>
+
+<p>If you have used the reference to register a card, make sure that the consumer reference stays the same for making token based transactions</p>
+
+<pre class="highlight plaintext"><code>guard let references = Reference(consumerRef: "consumer0053252") else { return }
+</code></pre>
+
+<p>the Reference initializer returns an optional because of the payment reference which is being generated using the <code>identifierForVendor()</code> method on <code>UIDevice.currentDevice()</code>. The method returns an optional value and thus can return nil in certain device states.</p>
+
+<p>If the value is nil, wait and get the value again later. This happens, for example, after the device has been restarted but before the user has unlocked the device.</p>
 
           </section>
           <section class="section task-group-section">
@@ -224,7 +244,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Reference.swift#L33">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Reference.swift#L49">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -254,7 +274,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Reference.swift#L35">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Reference.swift#L51">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -284,7 +304,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Reference.swift#L37">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Reference.swift#L53">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -302,7 +322,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>convenience initialiser that will generate a unique payment reference</p>
+                        <p>Convenience initializer that will generate a unique payment reference</p>
 
                       </div>
                       <div class="declaration">
@@ -325,7 +345,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>the consumer reference for a Reference</p>
+                                  <p>The consumer reference for a Reference</p>
 
                                 </div>
                               </td>
@@ -338,7 +358,7 @@
                               </td>
                               <td>
                                 <div>
-                                  <p>an optional field for any arbitrary data that is tied to a certrain transaction</p>
+                                  <p>An optional field for any arbitrary data that is tied to a certrain transaction</p>
 
                                 </div>
                               </td>
@@ -352,7 +372,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Reference.swift#L64-L68">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Reference.swift#L80-L84">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -362,7 +382,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

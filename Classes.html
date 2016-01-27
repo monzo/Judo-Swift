@@ -13,9 +13,8 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+        <p><a href="index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -180,6 +179,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -205,10 +212,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>You can get a copy of the receipt for an individual transaction by creating a Receipt Object and calling <code>.completion(() -&gt; ())</code> including the receipt id for the transaction in the path.
-Alternatively you can receive a list of all the Transactions. By default it will return 10 transactions. These results are returned in time descending order by default, so it will return the latest 10 transactions.</p>
+                        <p>You can get a copy of the receipt for an individual transaction by creating a Receipt Object and calling <code>.completion(() -&gt; ())</code> including the receipt ID for the transaction in the path.
+Alternatively, you can receive a list of all the transactions. By default it will return 10 transactions. These results are returned in time-descending order by default, so it will return the latest 10 transactions.</p>
 
-<p><a href='#receipt_by_id' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='receipt_by_id'>receipt by ID</h3>
+<p><a href='#receipt_by_id' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='receipt_by_id'>Receipt by ID</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">receipt</span><span class="p">(</span><span class="n">receiptID</span><span class="p">)</span><span class="o">.</span><span class="nf">completion</span><span class="p">({</span> <span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
         <span class="k">if</span> <span class="k">let</span> <span class="nv"><em></span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
             <span class="c1">// error</span>
@@ -217,7 +224,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
         <span class="p">}</span>
     <span class="p">})</span>
 </code></pre>
-<a href='#all_receipts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='all_receipts'>all receipts</h3>
+<a href='#all_receipts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='all_receipts'>All receipts</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">receipt</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="nf">completion</span><span class="p">({</span> <span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
         <span class="k">if</span> <span class="k">let</span> <span class="nv"></em></span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
             <span class="c1">// error</span>
@@ -238,7 +245,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Receipt.swift#L54-L123">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Receipt.swift#L54-L123">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -260,7 +267,9 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the Address object stores information around the address that is related to a card</p>
+                        <p><strong>Address object for card transactions</strong></p>
+
+<p>The Address object stores information around the address that is related to a card</p>
 
                         <a href="Classes/Address.html" class="slightly-smaller">See more</a>
                       </div>
@@ -273,7 +282,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Address.swift#L104-L168">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Address.swift#L108-L172">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -295,12 +304,22 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p><strong>JudoError</strong></p>
+
+<p>The JudoError object holds all the information about errors that occurred within the SDK or at any stage when making a call to the judo API</p>
 
                         <a href="Classes/JudoError.html" class="slightly-smaller">See more</a>
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">JudoError</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">ErrorType</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrors.swift#L29-L152">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrors.swift#L36-L237">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -322,24 +341,24 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>When you want to process a pre Authentication you create a PreAuth object and start adding the necessary Information. This Transaction supports two types of PreAuths. You can process preauths using a full set of card details, or by referencing a previously processed transaction.</p>
+                        <p>When you want to process a Pre-authorization, you create a Pre-auth object and start adding the necessary information. This Transaction supports two types of Pre-auths. You can process Pre-auths using a full set of card details, or by referencing a previously processed transaction.</p>
 
 <ul>
-<li>Card PreAuth
+<li>Card Pre-auth
 
 <ul>
-<li>For preauths where you have the full card details including the card number.</li>
+<li>For pre-auths where you have the full card details including the card number.</li>
 </ul></li>
-<li>Token Pre Auth
+<li>Token Pre-auth
 
 <ul>
 <li>For processing payments using a saved card (requires the Card token and Consumer token values).</li>
 </ul></li>
 </ul>
 
-<p><a href="Transaction"><code><a href="Classes/Transaction.html">Transaction</a></code></a> contains all the necessary implementation of Payments and PreAuths since these are very closely related</p>
+<p><a href="Transaction"><code><a href="Classes/Transaction.html">Transaction</a></code></a> contains all the necessary implementation of Payments and Pre-auths since these are very closely related.</p>
 
-<p><a href='#card_preauth' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='card_preauth'>Card PreAuth</h3>
+<p><a href='#card_pre_auth' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='card_pre_auth'>Card Pre-auth</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">preauth</span><span class="p">(</span><span class="n">correctJudoID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="n">references</span><span class="p">)</span>
         <span class="o">.</span><span class="nf">card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
         <span class="o">.</span><span class="nf">location</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
@@ -352,7 +371,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
             <span class="p">}</span>
         <span class="p">})</span>
 </code></pre>
-&lt;a href=&rsquo;#token</em>preauth&rsquo; class=&lsquo;anchor&rsquo; aria-hidden=true&gt;<span class="header-anchor"></span></a><h3 id='token_preauth'>Token PreAuth</h3></p>
+&lt;a href=&rsquo;#token</em>pre_auth&rsquo; class=&lsquo;anchor&rsquo; aria-hidden=true&gt;<span class="header-anchor"></span></a><h3 id='token_pre_auth'>Token Pre-auth</h3></p>
 
 <p><code>swift token payment
     Judo.payment(correctJudoID, amount: amount, reference: references)
@@ -368,7 +387,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
         })
 </code></p>
 
-<p>learn more <a href="https://www.judopay.com/docs/v4_1/restful-api/api-reference/">here</a></p>
+<p>Learn more <a href="https://www.judopay.com/docs/v4_1/restful-api/api-reference/">here</a></p>
 
                         <a href="Classes/PreAuth.html" class="slightly-smaller">See more</a>
                       </div>
@@ -381,7 +400,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/PreAuth.swift#L73-L78">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/PreAuth.swift#L73-L78">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -403,7 +422,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>When you want to process a payment transaction you create a Payment object and start adding the necessary Information. This Transaction supports two types of Payments. You can process payments using a full set of card details, or by referencing a previously processed transaction.</p>
+                        <p>When you want to process a payment transaction, you create a Payment object and start adding the necessary information. This transaction supports two types of Payments. You can process payments using a full set of card details, or by referencing a previously processed transaction.</p>
 
 <ul>
 <li>Card Payment
@@ -418,9 +437,9 @@ Alternatively you can receive a list of all the Transactions. By default it will
 </ul></li>
 </ul>
 
-<p><code><a href="Classes/Transaction.html">Transaction</a></code> contains all the necessary implementation of Payments and PreAuths since these are very closely related</p>
+<p><code><a href="Classes/Transaction.html">Transaction</a></code> contains all the necessary implementation of Payments and Pre-auths since these are very closely related.</p>
 
-<p><a href='#card_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='card_payment'>Card Payment</h3>
+<p><a href='#card_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='card_payment'>Card payment</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">payment</span><span class="p">(</span><span class="n">correctJudoID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="n">references</span><span class="p">)</span>
         <span class="o">.</span><span class="nf">card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
         <span class="o">.</span><span class="nf">location</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
@@ -433,7 +452,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
             <span class="p">}</span>
         <span class="p">})</span>
 </code></pre>
-&lt;a href=&rsquo;#token</em>payment&rsquo; class=&lsquo;anchor&rsquo; aria-hidden=true&gt;<span class="header-anchor"></span></a><h3 id='token_payment'>Token Payment</h3></p>
+&lt;a href=&rsquo;#token</em>payment&rsquo; class=&lsquo;anchor&rsquo; aria-hidden=true&gt;<span class="header-anchor"></span></a><h3 id='token_payment'>Token payment</h3></p>
 
 <p><code>swift token payment
     Judo.payment(correctJudoID, amount: amount, reference: references)
@@ -449,7 +468,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
         })
 </code></p>
 
-<p>learn more <a href="https://www.judopay.com/docs/v4_1/restful-api/api-reference/">here</a></p>
+<p>Learn more <a href="https://www.judopay.com/docs/v4_1/restful-api/api-reference/">here</a></p>
 
                         <a href="Classes/Payment.html" class="slightly-smaller">See more</a>
                       </div>
@@ -462,7 +481,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Payment.swift#L73-L104">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Payment.swift#L73-L104">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -497,7 +516,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Session.swift#L36-L449">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Session.swift#L38-L452">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -519,7 +538,9 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the Card object stores all the necessary card information to make a transaction</p>
+                        <p><strong>Card</strong></p>
+
+<p>Card objects store all the necessary card information for making transactions</p>
 
                         <a href="Classes/Card.html" class="slightly-smaller">See more</a>
                       </div>
@@ -532,11 +553,22 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L52-L158">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L54-L162">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Card.Configurations%20Protocol%20extensions"></a>
+                <a name="//apple_ref/swift/Section/Card.Configurations Protocol extensions" class="dashAnchor"></a>
+                <a href="#/Card.Configurations%20Protocol%20extensions">
+                  <h3 class="section-name">Card.Configurations Protocol extensions</h3>
+                </a>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -550,7 +582,11 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the CardDetails object stores information that is returned from a successful payment or preAuth</p>
+                        <p><strong>CardDetails</strong></p>
+
+<p>The CardDetails object stores information that is returned from a successful payment or pre-auth</p>
+
+<p>This class also implements the <code>NSCoding</code> protocol to enable serialization for persistency</p>
 
                         <a href="Classes/CardDetails.html" class="slightly-smaller">See more</a>
                       </div>
@@ -563,7 +599,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L462-L567">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L515-L662">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -585,9 +621,9 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Refunding a successful payment is easy, it simply requires you to identify the original receipt ID for the payment and the amount you wish to refund. When we&rsquo;ve received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you make a Refund with the SDK.</p>
+                        <p>Refunding a successful payment is easy, simply identify the original receipt ID for the payment and the amount you wish to refund. When we&rsquo;ve received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you can make a Refund with the SDK.</p>
 
-<p><a href='#refund_by_id_amount_and_reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='refund_by_id_amount_and_reference'>refund by ID, amount and reference</h3>
+<p><a href='#refund_by_id_amount_and_reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='refund_by_id_amount_and_reference'>Refund by ID, amount and reference</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">refund</span><span class="p">(</span><span class="n">receiptID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">paymentReference</span><span class="p">:</span> <span class="n">payRef</span><span class="p">)</span><span class="o">.</span><span class="nf">completion</span><span class="p">({</span> <span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
         <span class="k">if</span> <span class="k">let</span> <span class="nv">error</span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
             <span class="c1">// error</span>
@@ -608,7 +644,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Refund.swift#L42-L98">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Refund.swift#L42-L98">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -630,7 +666,13 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Response object that stores an array of items and includes pagination information if available</p>
+                        <p><strong>Response</strong></p>
+
+<p>Response object is created out of the JSON response of the judo API for seamless handling of values returned in any call. </p>
+
+<p>The response object can hold multiple transaction objects and supports pagination if available.</p>
+
+<p>In most cases (successful Payment, Pre-auth or RegisterCard operation) a Response object will hold one TransactionData object. Supporting CollectionType protocol, you can access the elements by subscripting <code>let transactionData = response[0]</code> or using the available variable <code>response.first</code> as a more readable approach.</p>
 
                         <a href="Classes/Response.html" class="slightly-smaller">See more</a>
                       </div>
@@ -638,12 +680,12 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Response</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Response</span><span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">GeneratorType</span><span class="p">,</span> <span class="kt">ArrayLiteralConvertible</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Response.swift#L15-L54">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Response.swift#L39-L118">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -661,7 +703,10 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>a PaymentToken object is necessary to make a token payment or token preAuth</p>
+                        <p><strong>PaymentToken</strong></p>
+
+<p>a
+APaymentToken object which is one part to be used in any token transactions</p>
 
                         <a href="Classes/PaymentToken.html" class="slightly-smaller">See more</a>
                       </div>
@@ -674,7 +719,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Response.swift#L60-L84">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Response.swift#L168-L192">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -692,7 +737,9 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>details of the Consumer for use in repeat payments.</p>
+                        <p><strong>Consumer</strong></p>
+
+<p>Consumer stores information about a reference and a consumer token to be used in any kind of token transaction.</p>
 
                         <a href="Classes/Consumer.html" class="slightly-smaller">See more</a>
                       </div>
@@ -705,7 +752,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Response.swift#L90-L125">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Response.swift#L200-L235">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -723,7 +770,9 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>TransactionResult will hold all the information from a transaction response</p>
+                        <p><strong>TransactionData</strong></p>
+
+<p>TransactionResult is an object that references all information in correspondance with a Transaction with the judo API</p>
 
                         <a href="Classes/TransactionData.html" class="slightly-smaller">See more</a>
                       </div>
@@ -736,7 +785,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Response.swift#L131-L255">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Response.swift#L243-L367">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -758,7 +807,20 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the Reference object is supposed to simplify storing reference data like consumer or payment references</p>
+                        <p><strong>Referencing a transaction</strong></p>
+
+<p>the Reference object is supposed to simplify storing reference data like consumer, payment references and metadata dictionary that can hold an arbitrary set of key value based information</p>
+
+<p>you create a reference object by calling the initializer with a reference of your consumer.</p>
+
+<p>If you have used the reference to register a card, make sure that the consumer reference stays the same for making token based transactions</p>
+
+<pre class="highlight plaintext"><code>guard let references = Reference(consumerRef: "consumer0053252") else { return }
+</code></pre>
+
+<p>the Reference initializer returns an optional because of the payment reference which is being generated using the <code>identifierForVendor()</code> method on <code>UIDevice.currentDevice()</code>. The method returns an optional value and thus can return nil in certain device states.</p>
+
+<p>If the value is nil, wait and get the value again later. This happens, for example, after the device has been restarted but before the user has unlocked the device.</p>
 
                         <a href="Classes/Reference.html" class="slightly-smaller">See more</a>
                       </div>
@@ -771,7 +833,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Reference.swift#L31-L70">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Reference.swift#L47-L86">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -793,7 +855,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Entry point of interaction with the Judo Swift SDK</p>
+                        <p>Entry point of interaction with the judo Swift SDK</p>
 
                         <a href="Classes/Judo.html" class="slightly-smaller">See more</a>
                       </div>
@@ -806,7 +868,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Judo.swift#L31-L211">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Judo.swift#L31-L211">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -828,7 +890,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A Collection transaction is the counterpart to a PreAuth transaction. While the PreAuth transaction reserves funds on a Consumer&rsquo;s card the collection initiates the transfer of those reserved funds into your judo account.</p>
+                        <p>A Collection transaction is the counterpart to a Pre-authorization transaction. While the Pre-auth transaction reserves funds on a Consumer&rsquo;s card, the Collection initiates the transfer of those reserved funds into your judo account.</p>
 
 <p><a href='#collection_by_id_amount_and_reference' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='collection_by_id_amount_and_reference'>collection by ID, amount and reference</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">collection</span><span class="p">(</span><span class="n">receiptID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">paymentReference</span><span class="p">:</span> <span class="n">payRef</span><span class="p">)</span><span class="o">.</span><span class="nf">completion</span><span class="p">({</span> <span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
@@ -851,7 +913,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Collection.swift#L43-L98">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Collection.swift#L43-L98">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -885,7 +947,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/RegisterCard.swift#L56-L61">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/RegisterCard.swift#L56-L61">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -907,7 +969,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Superclass Helper for Payments and PreAuths</p>
+                        <p>Superclass Helper for Payments and Pre-auths</p>
 
                         <a href="Classes/Transaction.html" class="slightly-smaller">See more</a>
                       </div>
@@ -920,7 +982,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Transaction.swift#L35-L287">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Transaction.swift#L36-L288">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -942,12 +1004,20 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Judo Model Error object</p>
 
                         <a href="Classes/JudoModelError.html" class="slightly-smaller">See more</a>
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">JudoModelError</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoModelError.swift#L27-L43">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoModelError.swift#L28-L57">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -969,7 +1039,9 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the Amount object stores information regarding the amount and currency for a transaction</p>
+                        <p><strong>Amount</strong></p>
+
+<p>Amount object stores information about an amount and the corresponding currency for a transaction</p>
 
                         <a href="Classes/Amount.html" class="slightly-smaller">See more</a>
                       </div>
@@ -982,7 +1054,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L31-L47">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Amount.swift#L33-L67">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1000,12 +1072,20 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Collection of static identifiers for all supported currencies</p>
 
                         <a href="Classes/Currency.html" class="slightly-smaller">See more</a>
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">class</span> <span class="kt">Currency</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Amount.swift#L49-L74">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Amount.swift#L71-L120">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1015,7 +1095,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

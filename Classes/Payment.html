@@ -14,9 +14,8 @@
     <a title="Payment Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p><a href="../index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -181,6 +180,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -193,7 +200,7 @@
 
                 </div>
               </div>
-            <p>When you want to process a payment transaction you create a Payment object and start adding the necessary Information. This Transaction supports two types of Payments. You can process payments using a full set of card details, or by referencing a previously processed transaction.</p>
+            <p>When you want to process a payment transaction, you create a Payment object and start adding the necessary information. This transaction supports two types of Payments. You can process payments using a full set of card details, or by referencing a previously processed transaction.</p>
 
 <ul>
 <li>Card Payment
@@ -208,9 +215,9 @@
 </ul></li>
 </ul>
 
-<p><code><a href="../Classes/Transaction.html">Transaction</a></code> contains all the necessary implementation of Payments and PreAuths since these are very closely related</p>
+<p><code><a href="../Classes/Transaction.html">Transaction</a></code> contains all the necessary implementation of Payments and Pre-auths since these are very closely related.</p>
 
-<p><a href='#card_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='card_payment'>Card Payment</h3>
+<p><a href='#card_payment' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='card_payment'>Card payment</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">payment</span><span class="p">(</span><span class="n">correctJudoID</span><span class="p">,</span> <span class="nv">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">,</span> <span class="nv">reference</span><span class="p">:</span> <span class="n">references</span><span class="p">)</span>
         <span class="o">.</span><span class="nf">card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span>
         <span class="o">.</span><span class="nf">location</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
@@ -223,7 +230,7 @@
             <span class="p">}</span>
         <span class="p">})</span>
 </code></pre>
-&lt;a href=&rsquo;#token</em>payment&rsquo; class=&lsquo;anchor&rsquo; aria-hidden=true&gt;<span class="header-anchor"></span></a><h3 id='token_payment'>Token Payment</h3></p>
+&lt;a href=&rsquo;#token</em>payment&rsquo; class=&lsquo;anchor&rsquo; aria-hidden=true&gt;<span class="header-anchor"></span></a><h3 id='token_payment'>Token payment</h3></p>
 
 <p><code>swift token payment
     Judo.payment(correctJudoID, amount: amount, reference: references)
@@ -239,7 +246,7 @@
         })
 </code></p>
 
-<p>learn more <a href="https://www.judopay.com/docs/v4_1/restful-api/api-reference/">here</a></p>
+<p>Learn more <a href="https://www.judopay.com/docs/v4_1/restful-api/api-reference/">here</a></p>
 
           </section>
           <section class="section task-group-section">
@@ -270,7 +277,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Payment.swift#L76">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Payment.swift#L76">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -288,7 +295,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>If you need to check a payment before actually processing it you use the validate call, we&rsquo;ll perform our internal checks on the payment without sending it to consumer&rsquo;s bank. We check the merchant identified by the judo ID can accept the payment, the card can be accepted and the card number passes the LUHN test.</p>
+                        <p>If you need to check a payment before actually processing it, you can use the validate call, we&rsquo;ll perform our internal checks on the payment without sending it to consumer&rsquo;s bank. We check if the merchant identified by the judo ID can accept the payment, if the card can be accepted and if the card number passes the LUHN test.</p>
 
 <div class="aside aside-parameter">
     <p class="aside-title">Parameter</p>
@@ -307,7 +314,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">block</span><span class="p">:</span> <span class="p">((</span><span class="kt">Response</span><span class="p">?,</span> <span class="kt">JudoError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">()))</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="nv">block</span><span class="p">:</span> <span class="p">(</span><span class="kt">JudoCompletionBlock</span><span class="p">))</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
                       </div>
@@ -337,7 +344,7 @@
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Payment.swift#L86-L102">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Payment.swift#L86-L102">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -347,7 +354,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

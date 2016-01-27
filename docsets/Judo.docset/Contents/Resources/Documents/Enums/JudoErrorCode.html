@@ -14,9 +14,8 @@
     <a title="JudoErrorCode Enum Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p><a href="../index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -181,13 +180,141 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
         <section>
           <section class="section">
             <h1>JudoErrorCode</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JudoErrorCode</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                </div>
+              </div>
+            <p>A mirror of the backend error set</p>
+
+<ul>
+<li>General_Error:                                         General_Error</li>
+<li>General_Model_Error:                                   General_Model_Error</li>
+<li>Unauthorized:                                          Unauthorized</li>
+<li>Payment_System_Error:                                  Payment_System_Error</li>
+<li>Payment_Declined:                                      Payment_Declined</li>
+<li>Payment_Failed:                                        Payment_Failed</li>
+<li>Transaction_Not_Found:                                 Transaction_Not_Found</li>
+<li>Validation_Passed:                                     Validation_Passed</li>
+<li>Uncaught_Error:                                        Uncaught_Error</li>
+<li>Server_Error:                                          Server_Error</li>
+<li>Invalid_From_Date:                                     Invalid_From_Date</li>
+<li>Invalid_To_Date:                                       Invalid_To_Date</li>
+<li>CantFindWebPayment:                                    CantFindWebPayment</li>
+<li>General_Error_Simple_Application:                      General_Error_Simple_Application</li>
+<li>InvalidApiVersion:                                     InvalidApiVersion</li>
+<li>MissingApiVersion:                                     MissingApiVersion</li>
+<li>PreAuthExpired:                                        PreAuthExpired</li>
+<li>Collection_Original_Transaction_Wrong_Type:            Collection_Original_Transaction_Wrong_Type</li>
+<li>Currency_Must_Equal_Original_Transaction:              Currency_Must_Equal_Original_Transaction</li>
+<li>Cannot_Collect_A_Voided_Transaction:                   Cannot_Collect_A_Voided_Transaction</li>
+<li>Collection_Exceeds_PreAuth:                            Collection_Exceeds_PreAuth</li>
+<li>Refund_Original_Transaction_Wrong_Type:                Refund_Original_Transaction_Wrong_Type</li>
+<li>Cannot_Refund_A_Voided_Transaction:                    Cannot_Refund_A_Voided_Transaction</li>
+<li>Refund_Exceeds_Original_Transaction:                   Refund_Exceeds_Original_Transaction</li>
+<li>Void_Original_Transaction_Wrong_Type:                  Void_Original_Transaction_Wrong_Type</li>
+<li>Void_Original_Transaction_Is_Already_Void:             Void_Original_Transaction_Is_Already_Void</li>
+<li>Void_Original_Transaction_Has_Been_Collected:          Void_Original_Transaction_Has_Been_Collected</li>
+<li>Void_Original_Transaction_Amount_Not_Equal_To_Preauth: Void_Original_Transaction_Amount_Not_Equal_To_Preauth</li>
+<li>UnableToAccept:                                        UnableToAccept</li>
+<li>AccountLocationNotFound:                               AccountLocationNotFound</li>
+<li>AccessDeniedToTransaction:                             AccessDeniedToTransaction</li>
+<li>NoConsumerForTransaction:                              NoConsumerForTransaction</li>
+<li>TransactionNotEnrolledInThreeDSecure:                  TransactionNotEnrolledInThreeDSecure</li>
+<li>TransactionAlreadyAuthorizedByThreeDSecure:            TransactionAlreadyAuthorizedByThreeDSecure</li>
+<li>ThreeDSecureNotSuccessful:                             ThreeDSecureNotSuccessful</li>
+<li>ApUnableToDecrypt:                                     ApUnableToDecrypt</li>
+<li>ReferencedTransactionNotFound:                         ReferencedTransactionNotFound</li>
+<li>ReferencedTransactionNotSuccessful:                    ReferencedTransactionNotSuccessful</li>
+<li>TestCardNotAllowed:                                    TestCardNotAllowed</li>
+<li>Collection_Not_Valid:                                  Collection_Not_Valid</li>
+<li>Refund_Original_Transaction_Null:                      Refund_Original_Transaction_Null</li>
+<li>Refund_Not_Valid:                                      Refund_Not_Valid</li>
+<li>Void_Not_Valid:                                        Void_Not_Valid</li>
+<li>Unknown:                                               Unknown</li>
+<li>CardTokenInvalid:                                      CardTokenInvalid</li>
+<li>UnknownPaymentModel:                                   UnknownPaymentModel</li>
+<li>UnableToRouteTransaction:                              UnableToRouteTransaction</li>
+<li>CardTypeNotSupported:                                  CardTypeNotSupported</li>
+<li>CardCv2Invalid:                                        CardCv2Invalid</li>
+<li>CardTokenDoesntMatchConsumer:                          CardTokenDoesntMatchConsumer</li>
+<li>WebPaymentReferenceInvalid:                            WebPaymentReferenceInvalid</li>
+<li>WebPaymentAccountLocationNotFound:                     WebPaymentAccountLocationNotFound</li>
+<li>RegisterCardWithWrongTransactionType:                  RegisterCardWithWrongTransactionType</li>
+<li>InvalidAmountToRegisterCard:                           InvalidAmountToRegisterCard</li>
+<li>ContentTypeNotSpecifiedOrUnsupported:                  ContentTypeNotSpecifiedOrUnsupported</li>
+<li>InternalErrorAuthenticating:                           InternalErrorAuthenticating</li>
+<li>TransactionNotFound:                                   TransactionNotFound</li>
+<li>ResourceNotFound:                                      ResourceNotFound</li>
+<li>LackOfPermissionsUnauthorized:                         LackOfPermissionsUnauthorized</li>
+<li>ContentTypeNotSupported:                               ContentTypeNotSupported</li>
+<li>AuthenticationFailure:                                 AuthenticationFailure</li>
+<li>Not_Found:                                             Not_Found</li>
+<li>MustProcessPreAuthByToken:                             MustProcessPreAuthByToken</li>
+<li>ApplicationModelIsNull:                                ApplicationModelIsNull</li>
+<li>ApplicationModelRequiresReference:                     ApplicationModelRequiresReference</li>
+<li>ApplicationHasAlreadyGoneLive:                         ApplicationHasAlreadyGoneLive</li>
+<li>MissingProductSelection:                               MissingProductSelection</li>
+<li>AccountNotInSandbox:                                   AccountNotInSandbox</li>
+<li>ApplicationRecIdRequired:                              ApplicationRecIdRequired</li>
+<li>RequestNotProperlyFormatted:                           RequestNotProperlyFormatted</li>
+<li>NoApplicationReferenceFound:                           NoApplicationReferenceFound</li>
+<li>NotSupportedFileType:                                  NotSupportedFileType</li>
+<li>ErrorWithFileUpload:                                   ErrorWithFileUpload</li>
+<li>EmptyApplicationReference:                             EmptyApplicationReference</li>
+<li>ApplicationDoesNotExist:                               ApplicationDoesNotExist</li>
+<li>UnknownSortSpecified:                                  UnknownSortSpecified</li>
+<li>PageSizeLessThanOne:                                   PageSizeLessThanOne</li>
+<li>PageSizeMoreThanFiveHundred:                           PageSizeMoreThanFiveHundred</li>
+<li>OffsetLessThanZero:                                    OffsetLessThanZero</li>
+<li>InvalidMerchantId:                                     InvalidMerchantId</li>
+<li>MerchantIdNotFound:                                    MerchantIdNotFound</li>
+<li>NoProductsWereFound:                                   NoProductsWereFound</li>
+<li>OnlyTheJudoPartnerCanSubmitSimpleApplications:         OnlyTheJudoPartnerCanSubmitSimpleApplications</li>
+<li>UnableToParseDocument:                                 UnableToParseDocument</li>
+<li>UnableToFindADefaultAccountLocation:                   UnableToFindADefaultAccountLocation</li>
+<li>WebpaymentsShouldBeCreatedByPostingToUrl:              WebpaymentsShouldBeCreatedByPostingToUrl</li>
+<li>InvalidMd:                                             InvalidMd</li>
+<li>InvalidReceiptId:                                      InvalidReceiptId</li>
+<li>ParameterError:                                        ParameterError</li>
+<li>ResponseParseError:                                    ResponseParseError</li>
+<li>LuhnValidationError:                                   LuhnValidationError</li>
+<li>JudoIDInvalidError:                                    JudoIDInvalidError</li>
+<li>SerializationError:                                    SerializationError</li>
+<li>RequestError:                                          RequestError</li>
+<li>TokenSecretError:                                      TokenSecretError</li>
+<li>CardAndTokenError:                                     CardAndTokenError</li>
+<li>CardOrTokenMissingError:                               CardOrTokenMissingError</li>
+<li>PKPaymentMissingError:                                 PKPaymentMissingError</li>
+<li>JailbrokenDeviceDisallowedError:                       JailbrokenDeviceDisallowedError</li>
+<li>InvalidOperationError:                                 InvalidOperationError</li>
+<li>DuplicateTransactionError:                             DuplicateTransactionError</li>
+<li>CurrencyNotSupportedError:                             CurrencyNotSupportedError</li>
+<li>LocationServicesDisabled:                              LocationServicesDisabled</li>
+<li>CardLengthMismatchError:                               CardLengthMismatchError</li>
+<li>InputLengthMismatchError:                              InputLengthMismatchError</li>
+<li>InvalidCardNumber:                                     InvalidCardNumber</li>
+<li>InvalidEntry:                                          InvalidEntry</li>
+<li>InvalidCardNetwork:                                    InvalidCardNetwork</li>
+<li>ThreeDSAuthRequest:                                    ThreeDSAuthRequest</li>
+<li>Failed3DSError:                                        Failed3DSError</li>
+<li>UserDidCancel:                                         UserDidCancel</li>
+</ul>
 
           </section>
           <section class="section task-group-section">
@@ -206,11 +333,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>General_Error</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">General_Error</span> <span class="o">=</span> <span class="mi">0</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L145">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -232,11 +367,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>General_Model_Error</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">General_Model_Error</span> <span class="o">=</span> <span class="mi">1</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L147">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -258,11 +401,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Unauthorized</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Unauthorized</span> <span class="o">=</span> <span class="mi">7</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L149">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -284,11 +435,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Payment_System_Error</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Payment_System_Error</span> <span class="o">=</span> <span class="mi">9</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L151">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -310,11 +469,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Payment_Declined</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Payment_Declined</span> <span class="o">=</span> <span class="mi">11</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L153">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -336,11 +503,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Payment_Failed</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Payment_Failed</span> <span class="o">=</span> <span class="mi">12</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L155">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -362,11 +537,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Transaction_Not_Found</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Transaction_Not_Found</span> <span class="o">=</span> <span class="mi">19</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L157">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -388,11 +571,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Validation_Passed</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Validation_Passed</span> <span class="o">=</span> <span class="mi">20</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L159">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -414,11 +605,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Uncaught_Error</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Uncaught_Error</span> <span class="o">=</span> <span class="mi">21</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L161">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -440,11 +639,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Server_Error</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Server_Error</span> <span class="o">=</span> <span class="mi">22</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L163">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -466,11 +673,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Invalid_From_Date</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Invalid_From_Date</span> <span class="o">=</span> <span class="mi">23</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L165">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -492,11 +707,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Invalid_To_Date</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Invalid_To_Date</span> <span class="o">=</span> <span class="mi">24</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L167">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -518,11 +741,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CantFindWebPayment</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CantFindWebPayment</span> <span class="o">=</span> <span class="mi">25</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L169">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -544,11 +775,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>General_Error_Simple_Application</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">General_Error_Simple_Application</span> <span class="o">=</span> <span class="mi">26</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L171">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -570,11 +809,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidApiVersion</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidApiVersion</span> <span class="o">=</span> <span class="mi">40</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L173">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -596,11 +843,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>MissingApiVersion</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">MissingApiVersion</span> <span class="o">=</span> <span class="mi">41</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L175">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -622,11 +877,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>PreAuthExpired</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">PreAuthExpired</span> <span class="o">=</span> <span class="mi">42</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L177">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -648,11 +911,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Collection_Original_Transaction_Wrong_Type</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Collection_Original_Transaction_Wrong_Type</span> <span class="o">=</span> <span class="mi">43</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L179">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -674,11 +945,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Currency_Must_Equal_Original_Transaction</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Currency_Must_Equal_Original_Transaction</span> <span class="o">=</span> <span class="mi">44</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L181">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -700,11 +979,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Cannot_Collect_A_Voided_Transaction</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Cannot_Collect_A_Voided_Transaction</span> <span class="o">=</span> <span class="mi">45</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L183">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -726,11 +1013,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Collection_Exceeds_PreAuth</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Collection_Exceeds_PreAuth</span> <span class="o">=</span> <span class="mi">46</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L185">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -752,11 +1047,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Refund_Original_Transaction_Wrong_Type</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Refund_Original_Transaction_Wrong_Type</span> <span class="o">=</span> <span class="mi">47</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L187">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -778,11 +1081,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Cannot_Refund_A_Voided_Transaction</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Cannot_Refund_A_Voided_Transaction</span> <span class="o">=</span> <span class="mi">48</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L189">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -804,11 +1115,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Refund_Exceeds_Original_Transaction</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Refund_Exceeds_Original_Transaction</span> <span class="o">=</span> <span class="mi">49</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L191">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -830,11 +1149,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Void_Original_Transaction_Wrong_Type</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Void_Original_Transaction_Wrong_Type</span> <span class="o">=</span> <span class="mi">50</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L193">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -856,11 +1183,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Void_Original_Transaction_Is_Already_Void</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Void_Original_Transaction_Is_Already_Void</span> <span class="o">=</span> <span class="mi">51</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L195">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -882,11 +1217,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Void_Original_Transaction_Has_Been_Collected</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Void_Original_Transaction_Has_Been_Collected</span> <span class="o">=</span> <span class="mi">52</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L197">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -908,11 +1251,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Void_Original_Transaction_Amount_Not_Equal_To_Preauth</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Void_Original_Transaction_Amount_Not_Equal_To_Preauth</span> <span class="o">=</span> <span class="mi">53</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L199">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -934,11 +1285,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>UnableToAccept</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">UnableToAccept</span> <span class="o">=</span> <span class="mi">54</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L201">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -960,11 +1319,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>AccountLocationNotFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">AccountLocationNotFound</span> <span class="o">=</span> <span class="mi">55</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L203">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -986,11 +1353,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>AccessDeniedToTransaction</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">AccessDeniedToTransaction</span> <span class="o">=</span> <span class="mi">56</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L205">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1012,11 +1387,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>NoConsumerForTransaction</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">NoConsumerForTransaction</span> <span class="o">=</span> <span class="mi">57</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L207">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1038,11 +1421,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>TransactionNotEnrolledInThreeDSecure</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">TransactionNotEnrolledInThreeDSecure</span> <span class="o">=</span> <span class="mi">58</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L209">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1064,11 +1455,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>TransactionAlreadyAuthorizedByThreeDSecure</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">TransactionAlreadyAuthorizedByThreeDSecure</span> <span class="o">=</span> <span class="mi">59</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L211">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1090,11 +1489,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ThreeDSecureNotSuccessful</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ThreeDSecureNotSuccessful</span> <span class="o">=</span> <span class="mi">60</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L213">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1116,11 +1523,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ApUnableToDecrypt</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ApUnableToDecrypt</span> <span class="o">=</span> <span class="mi">61</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L215">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1142,11 +1557,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ReferencedTransactionNotFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ReferencedTransactionNotFound</span> <span class="o">=</span> <span class="mi">62</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L217">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1168,11 +1591,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ReferencedTransactionNotSuccessful</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ReferencedTransactionNotSuccessful</span> <span class="o">=</span> <span class="mi">63</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L219">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1194,11 +1625,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>TestCardNotAllowed</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">TestCardNotAllowed</span> <span class="o">=</span> <span class="mi">64</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L221">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1220,11 +1659,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Collection_Not_Valid</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Collection_Not_Valid</span> <span class="o">=</span> <span class="mi">65</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L223">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1246,11 +1693,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Refund_Original_Transaction_Null</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Refund_Original_Transaction_Null</span> <span class="o">=</span> <span class="mi">66</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L225">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1272,11 +1727,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Refund_Not_Valid</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Refund_Not_Valid</span> <span class="o">=</span> <span class="mi">67</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L227">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1298,11 +1761,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Void_Not_Valid</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Void_Not_Valid</span> <span class="o">=</span> <span class="mi">68</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L229">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1324,11 +1795,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Unknown</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Unknown</span> <span class="o">=</span> <span class="mi">69</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L231">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1350,11 +1829,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CardTokenInvalid</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CardTokenInvalid</span> <span class="o">=</span> <span class="mi">70</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L233">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1376,11 +1863,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>UnknownPaymentModel</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">UnknownPaymentModel</span> <span class="o">=</span> <span class="mi">71</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L235">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1402,11 +1897,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>UnableToRouteTransaction</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">UnableToRouteTransaction</span> <span class="o">=</span> <span class="mi">72</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L237">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1428,11 +1931,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CardTypeNotSupported</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CardTypeNotSupported</span> <span class="o">=</span> <span class="mi">73</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L239">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1454,11 +1965,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CardCv2Invalid</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CardCv2Invalid</span> <span class="o">=</span> <span class="mi">74</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L241">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1480,11 +1999,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CardTokenDoesntMatchConsumer</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CardTokenDoesntMatchConsumer</span> <span class="o">=</span> <span class="mi">75</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L243">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1506,11 +2033,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>WebPaymentReferenceInvalid</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">WebPaymentReferenceInvalid</span> <span class="o">=</span> <span class="mi">76</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L245">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1532,11 +2067,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>WebPaymentAccountLocationNotFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">WebPaymentAccountLocationNotFound</span> <span class="o">=</span> <span class="mi">77</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L247">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1558,11 +2101,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>RegisterCardWithWrongTransactionType</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">RegisterCardWithWrongTransactionType</span> <span class="o">=</span> <span class="mi">78</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L249">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1584,11 +2135,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidAmountToRegisterCard</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidAmountToRegisterCard</span> <span class="o">=</span> <span class="mi">79</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L251">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1610,11 +2169,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ContentTypeNotSpecifiedOrUnsupported</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ContentTypeNotSpecifiedOrUnsupported</span> <span class="o">=</span> <span class="mi">80</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L253">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1636,11 +2203,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InternalErrorAuthenticating</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InternalErrorAuthenticating</span> <span class="o">=</span> <span class="mi">81</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L255">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1662,11 +2237,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>TransactionNotFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">TransactionNotFound</span> <span class="o">=</span> <span class="mi">82</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L257">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1688,11 +2271,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ResourceNotFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ResourceNotFound</span> <span class="o">=</span> <span class="mi">83</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L259">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1714,11 +2305,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>LackOfPermissionsUnauthorized</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">LackOfPermissionsUnauthorized</span> <span class="o">=</span> <span class="mi">84</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L261">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1740,11 +2339,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ContentTypeNotSupported</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ContentTypeNotSupported</span> <span class="o">=</span> <span class="mi">85</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L263">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1766,11 +2373,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>AuthenticationFailure</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">AuthenticationFailure</span> <span class="o">=</span> <span class="mi">403</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L265">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1792,11 +2407,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Not_Found</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Not_Found</span> <span class="o">=</span> <span class="mi">404</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L267">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1818,11 +2441,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>MustProcessPreAuthByToken</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">MustProcessPreAuthByToken</span> <span class="o">=</span> <span class="mi">4002</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L269">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1844,11 +2475,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ApplicationModelIsNull</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ApplicationModelIsNull</span> <span class="o">=</span> <span class="mi">20000</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L271">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1870,11 +2509,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ApplicationModelRequiresReference</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ApplicationModelRequiresReference</span> <span class="o">=</span> <span class="mi">20001</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L273">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1896,11 +2543,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ApplicationHasAlreadyGoneLive</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ApplicationHasAlreadyGoneLive</span> <span class="o">=</span> <span class="mi">20002</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L275">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1922,11 +2577,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>MissingProductSelection</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">MissingProductSelection</span> <span class="o">=</span> <span class="mi">20003</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L277">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1948,11 +2611,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>AccountNotInSandbox</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">AccountNotInSandbox</span> <span class="o">=</span> <span class="mi">20004</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L279">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -1974,11 +2645,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ApplicationRecIdRequired</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ApplicationRecIdRequired</span> <span class="o">=</span> <span class="mi">20005</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L281">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2000,11 +2679,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>RequestNotProperlyFormatted</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">RequestNotProperlyFormatted</span> <span class="o">=</span> <span class="mi">20006</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L283">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2026,11 +2713,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>NoApplicationReferenceFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">NoApplicationReferenceFound</span> <span class="o">=</span> <span class="mi">20007</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L285">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2052,11 +2747,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>NotSupportedFileType</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">NotSupportedFileType</span> <span class="o">=</span> <span class="mi">20008</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L287">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2078,11 +2781,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ErrorWithFileUpload</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ErrorWithFileUpload</span> <span class="o">=</span> <span class="mi">20009</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L289">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2104,11 +2815,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>EmptyApplicationReference</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">EmptyApplicationReference</span> <span class="o">=</span> <span class="mi">20010</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L291">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2130,11 +2849,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ApplicationDoesNotExist</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ApplicationDoesNotExist</span> <span class="o">=</span> <span class="mi">20011</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L293">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2156,11 +2883,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>UnknownSortSpecified</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">UnknownSortSpecified</span> <span class="o">=</span> <span class="mi">20013</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L295">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2182,11 +2917,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>PageSizeLessThanOne</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">PageSizeLessThanOne</span> <span class="o">=</span> <span class="mi">20014</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L297">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2208,11 +2951,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>PageSizeMoreThanFiveHundred</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">PageSizeMoreThanFiveHundred</span> <span class="o">=</span> <span class="mi">20015</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L299">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2234,11 +2985,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>OffsetLessThanZero</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">OffsetLessThanZero</span> <span class="o">=</span> <span class="mi">20016</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L301">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2260,11 +3019,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidMerchantId</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidMerchantId</span> <span class="o">=</span> <span class="mi">20017</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L303">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2286,11 +3053,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>MerchantIdNotFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">MerchantIdNotFound</span> <span class="o">=</span> <span class="mi">20018</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L305">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2312,11 +3087,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>NoProductsWereFound</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">NoProductsWereFound</span> <span class="o">=</span> <span class="mi">20019</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L307">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2338,11 +3121,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>OnlyTheJudoPartnerCanSubmitSimpleApplications</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">OnlyTheJudoPartnerCanSubmitSimpleApplications</span> <span class="o">=</span> <span class="mi">20020</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L309">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2364,11 +3155,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>UnableToParseDocument</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">UnableToParseDocument</span> <span class="o">=</span> <span class="mi">20021</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L311">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2390,11 +3189,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>UnableToFindADefaultAccountLocation</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">UnableToFindADefaultAccountLocation</span> <span class="o">=</span> <span class="mi">20022</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L313">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2416,11 +3223,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>WebpaymentsShouldBeCreatedByPostingToUrl</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">WebpaymentsShouldBeCreatedByPostingToUrl</span> <span class="o">=</span> <span class="mi">20023</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L315">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2442,11 +3257,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidMd</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidMd</span> <span class="o">=</span> <span class="mi">20025</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L317">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2468,11 +3291,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidReceiptId</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidReceiptId</span> <span class="o">=</span> <span class="mi">20026</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L319">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2494,11 +3325,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ParameterError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ParameterError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L323">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2520,11 +3359,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>ResponseParseError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ResponseParseError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L325">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2546,11 +3393,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>LuhnValidationError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">LuhnValidationError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L327">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2572,15 +3427,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>JudoIDInvalidError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JudoIDInvalidError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L329">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2594,15 +3461,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>SerializationError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">SerializationError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L331">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2616,15 +3495,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>RequestError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">RequestError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L333">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2638,15 +3529,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>TokenSecretError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">TokenSecretError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L335">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2660,15 +3563,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CardAndTokenError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CardAndTokenError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L337">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2682,15 +3597,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CardOrTokenMissingError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CardOrTokenMissingError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L339">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2704,15 +3631,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>PKPaymentMissingError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">PKPaymentMissingError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L341">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2726,15 +3665,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>JailbrokenDeviceDisallowedError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">JailbrokenDeviceDisallowedError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L343">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2748,15 +3699,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidOperationError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidOperationError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L345">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2770,15 +3733,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>DuplicateTransactionError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">DuplicateTransactionError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L347">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2792,11 +3767,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CurrencyNotSupportedError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CurrencyNotSupportedError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L349">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2818,11 +3801,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>LocationServicesDisabled = 91</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">LocationServicesDisabled</span> <span class="o">=</span> <span class="mi">91</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L351">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2844,15 +3835,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>CardLengthMismatchError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">CardLengthMismatchError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L355">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2866,15 +3869,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InputLengthMismatchError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InputLengthMismatchError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L357">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2888,15 +3903,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidCardNumber</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidCardNumber</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L359">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2910,15 +3937,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidEntry</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidEntry</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L361">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2932,11 +3971,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>InvalidCardNetwork</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">InvalidCardNetwork</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L363">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -2958,15 +4005,27 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Not a real error but needed to identify when a 3DS routing has been requested by the judo API</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">ThreeDSAuthRequest</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L367">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -2980,11 +4039,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Failed3DSError</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">Failed3DSError</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L369">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3006,11 +4073,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Received when user cancels the payment</p>
 
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">case</span> <span class="kt">UserDidCancel</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L0">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L373">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -3020,7 +4095,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

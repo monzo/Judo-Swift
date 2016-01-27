@@ -14,9 +14,8 @@
     <a title="Receipt Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+        <p><a href="../index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -181,6 +180,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -193,10 +200,10 @@
 
                 </div>
               </div>
-            <p>You can get a copy of the receipt for an individual transaction by creating a Receipt Object and calling <code>.completion(() -&gt; ())</code> including the receipt id for the transaction in the path.
-Alternatively you can receive a list of all the Transactions. By default it will return 10 transactions. These results are returned in time descending order by default, so it will return the latest 10 transactions.</p>
+            <p>You can get a copy of the receipt for an individual transaction by creating a Receipt Object and calling <code>.completion(() -&gt; ())</code> including the receipt ID for the transaction in the path.
+Alternatively, you can receive a list of all the transactions. By default it will return 10 transactions. These results are returned in time-descending order by default, so it will return the latest 10 transactions.</p>
 
-<p><a href='#receipt_by_id' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='receipt_by_id'>receipt by ID</h3>
+<p><a href='#receipt_by_id' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='receipt_by_id'>Receipt by ID</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">receipt</span><span class="p">(</span><span class="n">receiptID</span><span class="p">)</span><span class="o">.</span><span class="nf">completion</span><span class="p">({</span> <span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
         <span class="k">if</span> <span class="k">let</span> <span class="nv"><em></span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
             <span class="c1">// error</span>
@@ -205,7 +212,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
         <span class="p">}</span>
     <span class="p">})</span>
 </code></pre>
-<a href='#all_receipts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='all_receipts'>all receipts</h3>
+<a href='#all_receipts' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='all_receipts'>All receipts</h3>
 <pre class="highlight swift"><code>    <span class="kt">Judo</span><span class="o">.</span><span class="nf">receipt</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span><span class="o">.</span><span class="nf">completion</span><span class="p">({</span> <span class="p">(</span><span class="n">dict</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="k">in</span>
         <span class="k">if</span> <span class="k">let</span> <span class="nv"></em></span> <span class="o">=</span> <span class="n">error</span> <span class="p">{</span>
             <span class="c1">// error</span>
@@ -232,7 +239,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>completion caller - this method will automatically trigger a Session Call to the Judo REST API and execute the request based on the information that were set in the previous methods</p>
+                        <p>Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods.</p>
 
 <div class="aside aside-parameter">
     <p class="aside-title">Parameter</p>
@@ -251,7 +258,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">completion</span><span class="p">(</span><span class="nv">block</span><span class="p">:</span> <span class="p">((</span><span class="kt">Response</span><span class="p">?,</span> <span class="kt">JudoError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">()))</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">completion</span><span class="p">(</span><span class="nv">block</span><span class="p">:</span> <span class="kt">JudoCompletionBlock</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="k">Self</span></code></pre>
 
                         </div>
                       </div>
@@ -281,7 +288,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
 
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Receipt.swift#L94-L105">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Receipt.swift#L94-L105">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -320,7 +327,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">list</span><span class="p">(</span><span class="nv">pagination</span><span class="p">:</span> <span class="kt">Pagination</span><span class="p">,</span> <span class="nv">block</span><span class="p">:</span> <span class="p">(</span><span class="kt">Response</span><span class="p">?,</span> <span class="kt">JudoError</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="p">())</span></code></pre>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">list</span><span class="p">(</span><span class="nv">pagination</span><span class="p">:</span> <span class="kt">Pagination</span><span class="p">,</span> <span class="nv">block</span><span class="p">:</span> <span class="kt">JudoCompletionBlock</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -358,7 +365,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Receipt.swift#L116-L121">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Receipt.swift#L116-L121">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -368,7 +375,7 @@ Alternatively you can receive a list of all the Transactions. By default it will
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

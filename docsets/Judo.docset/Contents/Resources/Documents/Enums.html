@@ -13,9 +13,8 @@
     <a title="Enums  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Judo Docs</a> (40% documented)</p>
-        <p class="header-right"><a href="https://github.com/JudoPay/Judo-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fjudopay%2Egithub%2Eio%2FJudo%2DSwift%2Fdocsets%2FJudo%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+        <p><a href="index.html">Judo Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/judopay/Judo-Swift"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -180,6 +179,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:4Judo14JSONDictionary">JSONDictionary</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -205,12 +212,151 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A Mirror of the backend error set</p>
+
+<ul>
+<li>JudoId_Not_Supplied:                               JudoId_Not_Supplied description</li>
+<li>JudoId_Not_Supplied_1:                             JudoId_Not_Supplied_1 description</li>
+<li>JudoId_Not_Valid:                                  JudoId_Not_Valid description</li>
+<li>JudoId_Not_Valid_1:                                JudoId_Not_Valid_1 description</li>
+<li>Amount_Greater_Than_0:                             Amount_Greater_Than_0 description</li>
+<li>Amount_Not_Valid:                                  Amount_Not_Valid description</li>
+<li>Amount_Two_Decimal_Places:                         Amount_Two_Decimal_Places description</li>
+<li>Amount_Between_0_And_5000:                         Amount_Between_0_And_5000 description</li>
+<li>Partner_Service_Fee_Not_Valid:                     Partner_Service_Fee_Not_Valid description</li>
+<li>Partner_Service_Fee_Between_0_And_5000:            Partner_Service_Fee_Between_0_And_5000 description</li>
+<li>Consumer_Reference_Not_Supplied:                   Consumer_Reference_Not_Supplied description</li>
+<li>Consumer_Reference_Not_Supplied_1:                 Consumer_Reference_Not_Supplied_1 description</li>
+<li>Consumer_Reference_Length:                         Consumer_Reference_Length description</li>
+<li>Consumer_Reference_Length_1:                       Consumer_Reference_Length_1 description</li>
+<li>Consumer_Reference_Length_2:                       Consumer_Reference_Length_2 description</li>
+<li>Payment_Reference_Not_Supplied:                    Payment_Reference_Not_Supplied description</li>
+<li>Payment_Reference_Not_Supplied_1:                  Payment_Reference_Not_Supplied_1 description</li>
+<li>Payment_Reference_Not_Supplied_2:                  Payment_Reference_Not_Supplied_2 description</li>
+<li>Payment_Reference_Not_Supplied_3:                  Payment_Reference_Not_Supplied_3 description</li>
+<li>Payment_Reference_Length:                          Payment_Reference_Length description</li>
+<li>Payment_Reference_Length_1:                        Payment_Reference_Length_1 description</li>
+<li>Payment_Reference_Length_2:                        Payment_Reference_Length_2 description</li>
+<li>Payment_Reference_Length_3:                        Payment_Reference_Length_3 description</li>
+<li>Payment_Reference_Length_4:                        Payment_Reference_Length_4 description</li>
+<li>Currency_Required:                                 Currency_Required description</li>
+<li>Currency_Length:                                   Currency_Length description</li>
+<li>Currency_Not_Supported:                            Currency_Not_Supported description</li>
+<li>Device_Category_Unknown:                           Device_Category_Unknown description</li>
+<li>Card_Number_Not_Supplied:                          Card_Number_Not_Supplied description</li>
+<li>Test_Cards_Only_In_Sandbox:                        Test_Cards_Only_In_Sandbox description</li>
+<li>Card_Number_Invalid:                               Card_Number_Invalid description</li>
+<li>Three_Digit_CV2_Not_Supplied:                      Three_Digit_CV2_Not_Supplied description</li>
+<li>Four_Digit_CV2_Not_Supplied:                       Four_Digit_CV2_Not_Supplied description</li>
+<li>CV2_Not_Valid:                                     CV2_Not_Valid description</li>
+<li>CV2_Not_Valid_1:                                   CV2_Not_Valid_1 description</li>
+<li>Start_Date_Or_Issue_Number_Must_Be_Supplied:       Start_Date_Or_Issue_Number_Must_Be_Supplied description</li>
+<li>Start_Date_Not_Supplied:                           Start_Date_Not_Supplied description</li>
+<li>Start_Date_Wrong_Length:                           Start_Date_Wrong_Length description</li>
+<li>Start_Date_Not_Valid:                              Start_Date_Not_Valid description</li>
+<li>Start_Date_Not_Valid_Format:                       Start_Date_Not_Valid_Format description</li>
+<li>Start_Date_Too_Far_In_Past:                        Start_Date_Too_Far_In_Past description</li>
+<li>Start_Date_Month_Outside_Expected_Range:           Start_Date_Month_Outside_Expected_Range description</li>
+<li>Issue_Number_Outside_Expected_Range:               Issue_Number_Outside_Expected_Range description</li>
+<li>Expiry_Date_Not_Supplied:                          Expiry_Date_Not_Supplied description</li>
+<li>Expiry_Date_Wrong_Length:                          Expiry_Date_Wrong_Length description</li>
+<li>Expiry_Date_Not_Valid:                             Expiry_Date_Not_Valid description</li>
+<li>Expiry_Date_In_Past:                               Expiry_Date_In_Past description</li>
+<li>Expiry_Date_Too_Far_In_Future:                     Expiry_Date_Too_Far_In_Future description</li>
+<li>Expiry_Date_Month_Outside_Expected_Range:          Expiry_Date_Month_Outside_Expected_Range description</li>
+<li>Postcode_Not_Valid:                                Postcode_Not_Valid description</li>
+<li>Postcode_Not_Supplied:                             Postcode_Not_Supplied description</li>
+<li>Postcode_Is_Invalid:                               Postcode_Is_Invalid description</li>
+<li>Card_Token_Not_Supplied:                           Card_Token_Not_Supplied description</li>
+<li>Card_Token_Original_Transaction_Failed:            Card_Token_Original_Transaction_Failed description</li>
+<li>ThreeDSecure_PaRes_Not_Supplied:                   ThreeDSecure_PaRes_Not_Supplied description</li>
+<li>ReceiptId_Not_Supplied:                            ReceiptId_Not_Supplied description</li>
+<li>ReceiptId_Is_Invalid:                              ReceiptId_Is_Invalid description</li>
+<li>Transaction_Type_In_Url_Invalid:                   Transaction_Type_In_Url_Invalid description</li>
+<li>Partner_Application_Reference_Not_Supplied:        Partner_Application_Reference_Not_Supplied description</li>
+<li>Partner_Application_Reference_Not_Supplied_1:      Partner_Application_Reference_Not_Supplied_1 description</li>
+<li>Type_Of_Company_Not_Supplied:                      Type_Of_Company_Not_Supplied description</li>
+<li>Type_Of_Company_Unknown:                           Type_Of_Company_Unknown description</li>
+<li>Principle_Not_Supplied:                            Principle_Not_Supplied description</li>
+<li>Principle_Salutation_Unknown:                      Principle_Salutation_Unknown description</li>
+<li>Principle_First_Name_Not_Supplied:                 Principle_First_Name_Not_Supplied description</li>
+<li>Principle_First_Name_Length:                       Principle_First_Name_Length description</li>
+<li>Principle_First_Name_Not_Supplied_1:               Principle_First_Name_Not_Supplied_1 description</li>
+<li>Principle_Last_Name_Not_Supplied:                  Principle_Last_Name_Not_Supplied description</li>
+<li>Principle_Last_Name_Length:                        Principle_Last_Name_Length description</li>
+<li>Principle_Last_Name_Not_Supplied_1:                Principle_Last_Name_Not_Supplied_1 description</li>
+<li>Principle_Email_Or_Mobile_Not_Supplied:            Principle_Email_Or_Mobile_Not_Supplied description</li>
+<li>Principle_Email_Address_Not_supplied:              Principle_Email_Address_Not_supplied description</li>
+<li>Principle_Email_Address_Length:                    Principle_Email_Address_Length description</li>
+<li>Principle_Email_Address_Not_Valid:                 Principle_Email_Address_Not_Valid description</li>
+<li>Principle_Email_Address_Domain_Not_Valid:          Principle_Email_Address_Domain_Not_Valid description</li>
+<li>Principle_Mobile_Or_Email_Not_Supplied:            Principle_Mobile_Or_Email_Not_Supplied description</li>
+<li>Principle_Mobile_Number_Not_Valid:                 Principle_Mobile_Number_Not_Valid description</li>
+<li>Principle_Mobile_Number_Not_Valid_1:               Principle_Mobile_Number_Not_Valid_1 description</li>
+<li>Principle_Mobile_Number_Length:                    Principle_Mobile_Number_Length description</li>
+<li>Principle_Home_Phone_Not_Valid:                    Principle_Home_Phone_Not_Valid description</li>
+<li>Principle_Date_Of_Birth_Not_Supplied:              Principle_Date_Of_Birth_Not_Supplied description</li>
+<li>Principle_Date_Of_Birth_Not_Valid:                 Principle_Date_Of_Birth_Not_Valid description</li>
+<li>Principle_Date_Of_Birth_Age:                       Principle_Date_Of_Birth_Age description</li>
+<li>Location_Trading_Name_Not_Supplied:                Location_Trading_Name_Not_Supplied description</li>
+<li>Location_Partner_Reference_Not_Supplied:           Location_Partner_Reference_Not_Supplied description</li>
+<li>Location_Partner_Reference_Not_Supplied_1:         Location_Partner_Reference_Not_Supplied_1 description</li>
+<li>Location_Partner_Reference_Length:                 Location_Partner_Reference_Length description</li>
+<li>First_Name_Not_supplied:                           First_Name_Not_supplied description</li>
+<li>First_Name_Length:                                 First_Name_Length description</li>
+<li>Last_Name_Not_Supplied:                            Last_Name_Not_Supplied description</li>
+<li>Last_Name_Length:                                  Last_Name_Length description</li>
+<li>Email_Address_Not_Supplied:                        Email_Address_Not_Supplied description</li>
+<li>Email_Address_Length:                              Email_Address_Length description</li>
+<li>Email_Address_Not_Valid:                           Email_Address_Not_Valid description</li>
+<li>Email_Address_Domain_Not_Valid:                    Email_Address_Domain_Not_Valid description</li>
+<li>Schedule_Start_Date_Not_Supplied:                  Schedule_Start_Date_Not_Supplied description</li>
+<li>Schedule_Start_Date_Format_Not_Valid:              Schedule_Start_Date_Format_Not_Valid description</li>
+<li>Schedule_End_Date_Not_Supplied:                    Schedule_End_Date_Not_Supplied description</li>
+<li>Schedule_End_Date_Format_Not_Valid:                Schedule_End_Date_Format_Not_Valid description</li>
+<li>Schedule_End_Date_Must_Be_Greater_Than_Start_Date: Schedule_End_Date_Must_Be_Greater_Than_Start_Date description</li>
+<li>Schedule_Repeat_Not_Supplied:                      Schedule_Repeat_Not_Supplied description</li>
+<li>Schedule_Repeat_Must_Be_Greater_Than_1:            Schedule_Repeat_Must_Be_Greater_Than_1 description</li>
+<li>Schedule_Interval_Not_Valid:                       Schedule_Interval_Not_Valid description</li>
+<li>Schedule_Interval_Must_Be_Minimum_5:               Schedule_Interval_Must_Be_Minimum_5 description</li>
+<li>ItemsPerPage_Not_Supplied:                         ItemsPerPage_Not_Supplied description</li>
+<li>ItemsPerPage_Out_Of_Range:                         ItemsPerPage_Out_Of_Range description</li>
+<li>PageNumber_Not_Supplied:                           PageNumber_Not_Supplied description</li>
+<li>PageNumber_Out_Of_Range:                           PageNumber_Out_Of_Range description</li>
+<li>Legal_Name_Not_Supplied:                           Legal_Name_Not_Supplied description</li>
+<li>Company_Number_Not_Supplied:                       Company_Number_Not_Supplied description</li>
+<li>Company_Number_Wrong_Length:                       Company_Number_Wrong_Length description</li>
+<li>Current_Address_Not_Supplied:                      Current_Address_Not_Supplied description</li>
+<li>Building_Number_Or_Name_Not_Supplied:              Building_Number_Or_Name_Not_Supplied description</li>
+<li>Building_Number_Or_Name_Length:                    Building_Number_Or_Name_Length description</li>
+<li>Address_Line1_Not_Supplied:                        Address_Line1_Not_Supplied description</li>
+<li>Address_Line1_Length:                              Address_Line1_Length description</li>
+<li>SortCode_Not_Supplied:                             SortCode_Not_Supplied description</li>
+<li>SortCode_Not_Valid:                                SortCode_Not_Valid description</li>
+<li>Account_Number_Not_Supplied:                       Account_Number_Not_Supplied description</li>
+<li>Account_number_Not_Valid:                          Account_number_Not_Valid description</li>
+<li>Location_Turnover_Greater_Than_0:                  Location_Turnover_Greater_Than_0 description</li>
+<li>Average_Transaction_Value_Not_Supplied:            Average_Transaction_Value_Not_Supplied description</li>
+<li>Average_Transaction_Value_Greater_Than_0:          Average_Transaction_Value_Greater_Than_0 description</li>
+<li>Average_Transaction_Value_Greater_Than_Turnover:   Average_Transaction_Value_Greater_Than_Turnover description</li>
+<li>MccCode_Not_Supplied:                              MccCode_Not_Supplied description</li>
+<li>MccCode_Unknown:                                   MccCode_Unknown description</li>
+<li>Generic_Is_Invalid:                                Generic_Is_Invalid description</li>
+<li>Generic_Html_Invalid:                              Generic_Html_Invalid description</li>
+</ul>
 
                         <a href="Enums/JudoModelErrorCode.html" class="slightly-smaller">See more</a>
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JudoModelErrorCode</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoModelErrorCode.swift#L27-L156">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoModelErrorCode.swift#L160-L417">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -232,7 +378,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the BillingCountry enum is supposed to simplify identifying a billing country for the Credit Card</p>
+                        <p><strong>BillingCountry</strong></p>
+
+<p>BillingCountry enum to simplify identifying a billing country for a given card</p>
 
                         <a href="Enums/BillingCountry.html" class="slightly-smaller">See more</a>
                       </div>
@@ -245,7 +393,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Address.swift#L31-L99">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Address.swift#L33-L101">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -267,12 +415,134 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>A mirror of the backend error set</p>
+
+<ul>
+<li>General_Error:                                         General_Error</li>
+<li>General_Model_Error:                                   General_Model_Error</li>
+<li>Unauthorized:                                          Unauthorized</li>
+<li>Payment_System_Error:                                  Payment_System_Error</li>
+<li>Payment_Declined:                                      Payment_Declined</li>
+<li>Payment_Failed:                                        Payment_Failed</li>
+<li>Transaction_Not_Found:                                 Transaction_Not_Found</li>
+<li>Validation_Passed:                                     Validation_Passed</li>
+<li>Uncaught_Error:                                        Uncaught_Error</li>
+<li>Server_Error:                                          Server_Error</li>
+<li>Invalid_From_Date:                                     Invalid_From_Date</li>
+<li>Invalid_To_Date:                                       Invalid_To_Date</li>
+<li>CantFindWebPayment:                                    CantFindWebPayment</li>
+<li>General_Error_Simple_Application:                      General_Error_Simple_Application</li>
+<li>InvalidApiVersion:                                     InvalidApiVersion</li>
+<li>MissingApiVersion:                                     MissingApiVersion</li>
+<li>PreAuthExpired:                                        PreAuthExpired</li>
+<li>Collection_Original_Transaction_Wrong_Type:            Collection_Original_Transaction_Wrong_Type</li>
+<li>Currency_Must_Equal_Original_Transaction:              Currency_Must_Equal_Original_Transaction</li>
+<li>Cannot_Collect_A_Voided_Transaction:                   Cannot_Collect_A_Voided_Transaction</li>
+<li>Collection_Exceeds_PreAuth:                            Collection_Exceeds_PreAuth</li>
+<li>Refund_Original_Transaction_Wrong_Type:                Refund_Original_Transaction_Wrong_Type</li>
+<li>Cannot_Refund_A_Voided_Transaction:                    Cannot_Refund_A_Voided_Transaction</li>
+<li>Refund_Exceeds_Original_Transaction:                   Refund_Exceeds_Original_Transaction</li>
+<li>Void_Original_Transaction_Wrong_Type:                  Void_Original_Transaction_Wrong_Type</li>
+<li>Void_Original_Transaction_Is_Already_Void:             Void_Original_Transaction_Is_Already_Void</li>
+<li>Void_Original_Transaction_Has_Been_Collected:          Void_Original_Transaction_Has_Been_Collected</li>
+<li>Void_Original_Transaction_Amount_Not_Equal_To_Preauth: Void_Original_Transaction_Amount_Not_Equal_To_Preauth</li>
+<li>UnableToAccept:                                        UnableToAccept</li>
+<li>AccountLocationNotFound:                               AccountLocationNotFound</li>
+<li>AccessDeniedToTransaction:                             AccessDeniedToTransaction</li>
+<li>NoConsumerForTransaction:                              NoConsumerForTransaction</li>
+<li>TransactionNotEnrolledInThreeDSecure:                  TransactionNotEnrolledInThreeDSecure</li>
+<li>TransactionAlreadyAuthorizedByThreeDSecure:            TransactionAlreadyAuthorizedByThreeDSecure</li>
+<li>ThreeDSecureNotSuccessful:                             ThreeDSecureNotSuccessful</li>
+<li>ApUnableToDecrypt:                                     ApUnableToDecrypt</li>
+<li>ReferencedTransactionNotFound:                         ReferencedTransactionNotFound</li>
+<li>ReferencedTransactionNotSuccessful:                    ReferencedTransactionNotSuccessful</li>
+<li>TestCardNotAllowed:                                    TestCardNotAllowed</li>
+<li>Collection_Not_Valid:                                  Collection_Not_Valid</li>
+<li>Refund_Original_Transaction_Null:                      Refund_Original_Transaction_Null</li>
+<li>Refund_Not_Valid:                                      Refund_Not_Valid</li>
+<li>Void_Not_Valid:                                        Void_Not_Valid</li>
+<li>Unknown:                                               Unknown</li>
+<li>CardTokenInvalid:                                      CardTokenInvalid</li>
+<li>UnknownPaymentModel:                                   UnknownPaymentModel</li>
+<li>UnableToRouteTransaction:                              UnableToRouteTransaction</li>
+<li>CardTypeNotSupported:                                  CardTypeNotSupported</li>
+<li>CardCv2Invalid:                                        CardCv2Invalid</li>
+<li>CardTokenDoesntMatchConsumer:                          CardTokenDoesntMatchConsumer</li>
+<li>WebPaymentReferenceInvalid:                            WebPaymentReferenceInvalid</li>
+<li>WebPaymentAccountLocationNotFound:                     WebPaymentAccountLocationNotFound</li>
+<li>RegisterCardWithWrongTransactionType:                  RegisterCardWithWrongTransactionType</li>
+<li>InvalidAmountToRegisterCard:                           InvalidAmountToRegisterCard</li>
+<li>ContentTypeNotSpecifiedOrUnsupported:                  ContentTypeNotSpecifiedOrUnsupported</li>
+<li>InternalErrorAuthenticating:                           InternalErrorAuthenticating</li>
+<li>TransactionNotFound:                                   TransactionNotFound</li>
+<li>ResourceNotFound:                                      ResourceNotFound</li>
+<li>LackOfPermissionsUnauthorized:                         LackOfPermissionsUnauthorized</li>
+<li>ContentTypeNotSupported:                               ContentTypeNotSupported</li>
+<li>AuthenticationFailure:                                 AuthenticationFailure</li>
+<li>Not_Found:                                             Not_Found</li>
+<li>MustProcessPreAuthByToken:                             MustProcessPreAuthByToken</li>
+<li>ApplicationModelIsNull:                                ApplicationModelIsNull</li>
+<li>ApplicationModelRequiresReference:                     ApplicationModelRequiresReference</li>
+<li>ApplicationHasAlreadyGoneLive:                         ApplicationHasAlreadyGoneLive</li>
+<li>MissingProductSelection:                               MissingProductSelection</li>
+<li>AccountNotInSandbox:                                   AccountNotInSandbox</li>
+<li>ApplicationRecIdRequired:                              ApplicationRecIdRequired</li>
+<li>RequestNotProperlyFormatted:                           RequestNotProperlyFormatted</li>
+<li>NoApplicationReferenceFound:                           NoApplicationReferenceFound</li>
+<li>NotSupportedFileType:                                  NotSupportedFileType</li>
+<li>ErrorWithFileUpload:                                   ErrorWithFileUpload</li>
+<li>EmptyApplicationReference:                             EmptyApplicationReference</li>
+<li>ApplicationDoesNotExist:                               ApplicationDoesNotExist</li>
+<li>UnknownSortSpecified:                                  UnknownSortSpecified</li>
+<li>PageSizeLessThanOne:                                   PageSizeLessThanOne</li>
+<li>PageSizeMoreThanFiveHundred:                           PageSizeMoreThanFiveHundred</li>
+<li>OffsetLessThanZero:                                    OffsetLessThanZero</li>
+<li>InvalidMerchantId:                                     InvalidMerchantId</li>
+<li>MerchantIdNotFound:                                    MerchantIdNotFound</li>
+<li>NoProductsWereFound:                                   NoProductsWereFound</li>
+<li>OnlyTheJudoPartnerCanSubmitSimpleApplications:         OnlyTheJudoPartnerCanSubmitSimpleApplications</li>
+<li>UnableToParseDocument:                                 UnableToParseDocument</li>
+<li>UnableToFindADefaultAccountLocation:                   UnableToFindADefaultAccountLocation</li>
+<li>WebpaymentsShouldBeCreatedByPostingToUrl:              WebpaymentsShouldBeCreatedByPostingToUrl</li>
+<li>InvalidMd:                                             InvalidMd</li>
+<li>InvalidReceiptId:                                      InvalidReceiptId</li>
+<li>ParameterError:                                        ParameterError</li>
+<li>ResponseParseError:                                    ResponseParseError</li>
+<li>LuhnValidationError:                                   LuhnValidationError</li>
+<li>JudoIDInvalidError:                                    JudoIDInvalidError</li>
+<li>SerializationError:                                    SerializationError</li>
+<li>RequestError:                                          RequestError</li>
+<li>TokenSecretError:                                      TokenSecretError</li>
+<li>CardAndTokenError:                                     CardAndTokenError</li>
+<li>CardOrTokenMissingError:                               CardOrTokenMissingError</li>
+<li>PKPaymentMissingError:                                 PKPaymentMissingError</li>
+<li>JailbrokenDeviceDisallowedError:                       JailbrokenDeviceDisallowedError</li>
+<li>InvalidOperationError:                                 InvalidOperationError</li>
+<li>DuplicateTransactionError:                             DuplicateTransactionError</li>
+<li>CurrencyNotSupportedError:                             CurrencyNotSupportedError</li>
+<li>LocationServicesDisabled:                              LocationServicesDisabled</li>
+<li>CardLengthMismatchError:                               CardLengthMismatchError</li>
+<li>InputLengthMismatchError:                              InputLengthMismatchError</li>
+<li>InvalidCardNumber:                                     InvalidCardNumber</li>
+<li>InvalidEntry:                                          InvalidEntry</li>
+<li>InvalidCardNetwork:                                    InvalidCardNetwork</li>
+<li>ThreeDSAuthRequest:                                    ThreeDSAuthRequest</li>
+<li>Failed3DSError:                                        Failed3DSError</li>
+<li>UserDidCancel:                                         UserDidCancel</li>
+</ul>
 
                         <a href="Enums/JudoErrorCode.html" class="slightly-smaller">See more</a>
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JudoErrorCode</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCode.swift#L27-L132">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCode.swift#L143-L374">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -301,7 +571,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>struct to identify sorting direction</p>
+                        <p>Enum to identify sorting direction</p>
 
 <ul>
 <li>Descending: Descended Sorting</li>
@@ -319,7 +589,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/API/Session.swift#L470-L475">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/API/Session.swift#L475-L480">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -327,6 +597,13 @@
               </ul>
             </div>
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Card.Configurations%20Protocol%20extensions"></a>
+                <a name="//apple_ref/swift/Section/Card.Configurations Protocol extensions" class="dashAnchor"></a>
+                <a href="#/Card.Configurations%20Protocol%20extensions">
+                  <h3 class="section-name">Card.Configurations Protocol extensions</h3>
+                </a>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -341,7 +618,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the CardType enum is a value type for CardNetwork to further identify card types</p>
+                        <p>The CardType enum is a value type for CardNetwork to further identify card types</p>
 
 <ul>
 <li>Debit:   Debit Card type</li>
@@ -360,7 +637,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L190-L197">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L239-L246">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -378,7 +655,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>the CardNetwork enum depicts the Card Network type of a given Card object</p>
+                        <p>The CardNetwork enum depicts the Card Network type of a given Card object</p>
 
 <ul>
 <li>Visa:             Visa Card Network</li>
@@ -407,7 +684,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Card.swift#L217-L456">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Card.swift#L266-L505">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -432,9 +709,9 @@
                         <p>Type of Transaction</p>
 
 <ul>
-<li>Payment: a Payment Transaction</li>
-<li>PreAuth: a PreAuth Transaction</li>
-<li>Refund:  a Refund Transaction</li>
+<li>Payment: A Payment Transaction</li>
+<li>PreAuth: A Pre-auth Transaction</li>
+<li>Refund:  A Refund Transaction</li>
 <li>RegisterCard: Register a Card</li>
 </ul>
 
@@ -449,7 +726,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Response.swift#L266-L275">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Response.swift#L378-L387">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -470,9 +747,9 @@
                         <p>Result of a Transaction</p>
 
 <ul>
-<li>Success:  successful transaction</li>
-<li>Declined: declined transaction</li>
-<li>Error:    something went wrong</li>
+<li>Success:  Successful transaction</li>
+<li>Declined: Declined transaction</li>
+<li>Error:    Something went wrong</li>
 </ul>
 
                         <a href="Enums/TransactionResult.html" class="slightly-smaller">See more</a>
@@ -486,7 +763,7 @@
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/Response.swift#L285-L292">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/Response.swift#L397-L404">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -508,12 +785,29 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Mirror of the judo API Error category</p>
+
+<ul>
+<li>Unknown:          Unknown Error Cateogry</li>
+<li>RequestError:     Request Error Category</li>
+<li>ModelError:       Model Error Category</li>
+<li>ConfigError:      Config Error Category</li>
+<li>ProcessingError:  Processing Error Category</li>
+<li>ExceptionError:   Exception Error Category</li>
+</ul>
 
                         <a href="Enums/JudoErrorCategory.html" class="slightly-smaller">See more</a>
                       </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">@objc</span> <span class="kd">public</span> <span class="kd">enum</span> <span class="kt">JudoErrorCategory</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/JudoPay/Judo-Swift/tree/1.5/Source/Model/JudoErrorCategory.swift#L27-L46">Show on GitHub</a>
+                        <a href="https://github.com/judopay/Judo-Swift/tree/1.5.1/Source/Model/JudoErrorCategory.swift#L38-L74">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -523,7 +817,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://judopayments.com" target="_blank" rel="external">Judo Payments</a>. All rights reserved. (Last updated: 2016-01-12)</p>
+          <p>&copy; 2016 <a class="link" href="https://judopay.com" target="_blank" rel="external">Hamon</a>. All rights reserved. (Last updated: 2016-01-27)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.5.0</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
