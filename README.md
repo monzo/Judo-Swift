@@ -12,6 +12,7 @@ This is the new judoNative Swift SDK. It contains base work to easily access the
 
 If you still would like to implement everything yourself, we strongly recommend you to use the [judoSecure](https://github.com/JudoPay/Judo-Security) Framework and send device related information along with transaction requests to ensure safety and fraud security for all your payments.
 
+#### **\*\*\*Due to industry-wide security updates, versions below 1.5.1 of this SDK will no longer be supported after 1st Oct 2016. For more information regarding these updates, please read our blog [here](http://hub.judopay.com/pci31-security-updates/).*****
 
 ### What is this project for?
 
