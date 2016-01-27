@@ -120,21 +120,38 @@ public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
 
 /// Response extensions for SequenceType and CollectionType
 extension Response: SequenceType, CollectionType {
-
+    
     public typealias Index = Int
     
+    /// start index of the sequence
     public var startIndex: Int {
         return 0
     }
     
+    
+    /// end index of the sequence
     public var endIndex: Int {
         return items.endIndex
     }
     
+    
+    /**
+     create a subscript for a given index
+     
+     - parameter i: index of subscript
+     
+     - returns: subscript for a given index
+     */
     public subscript(i: Int) -> TransactionData {
         return items[i]
     }
     
+    
+    /**
+     generator for the TransactionData type
+     
+     - returns: an IndexingGenerator object
+     */
     public func generate() -> IndexingGenerator<[TransactionData]> {
         return self.items.generate()
     }
