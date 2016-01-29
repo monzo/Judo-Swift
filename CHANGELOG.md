@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 ## [1.5.1](https://github.com/JudoPay/Judo-Swift/tag/1.5.1)
-Released on 2016-01-14
+Released on 2016-01-29
 
 #### Added
 - Card number information to CardDetails object
@@ -20,10 +20,6 @@ Released on 2016-01-14
 - 100% documented
 - Updated documentation and added a lot of new snippets
 - Response class now conforms to SequenceType, CollectionType, GeneratorType and ArrayLiteralConvertible
-
-#### Changed
-
-#### Fixed
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
