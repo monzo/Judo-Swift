@@ -202,10 +202,26 @@ public class Judo {
     
     - Throws: LuhnValidationError judoID does not match the given length or is not LUHN valid
     
-    - Returns: a Collection object for reactive usage
+    - Returns: a Refund object for reactive usage
     */
     static public func refund(receiptID: String, amount: Amount, paymentReference: String) throws -> Refund {
         return try Refund(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
+    }
+    
+    
+    /**
+     Creates a VoidTransaction object which can be used to void a previous preAuth
+     
+     - Parameter receiptID:        The receipt of the previous transaction
+     - Parameter amount:           The amount to be refunded (will check if funds are available in your account)
+     - Parameter paymentReference: The payment reference string
+     
+     - Throws: LuhnValidationError judoID does not match the given length or is not LUHN valid
+     
+     - Returns: a Void object for reactive usage
+     */
+    static public func voidTransaction(receiptID: String, amount: Amount, paymentReference: String) throws -> VoidTransaction {
+        return try VoidTransaction(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
     }
     
 }

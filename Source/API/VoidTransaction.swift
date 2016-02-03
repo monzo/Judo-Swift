@@ -73,7 +73,7 @@ public class VoidTransaction: NSObject {
         
         let parameters = Session.progressionParameters(self.receiptID, amount: self.amount, paymentReference: self.paymentReference)
         
-        Session.POST("/transactions/refunds", parameters: parameters) { (dict, error) -> Void in
+        Session.POST("/transactions/voids", parameters: parameters) { (dict, error) -> Void in
             block(dict, error)
         }
         
