@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B02ED101C6268640045C705 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02ED0F1C6268640045C705 /* Session.swift */; };
 		DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0DC8931BA317C9002FBECC /* RegisterCard.swift */; };
 		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
 		DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */; };
@@ -62,7 +63,7 @@
 		DAFA401B1B5959420094CFCA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401A1B5959420094CFCA /* Collection.swift */; };
 		DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401C1B59596B0094CFCA /* PreAuth.swift */; };
 		DAFA401F1B595A510094CFCA /* Refund.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401E1B595A510094CFCA /* Refund.swift */; };
-		DAFA40231B5E3D160094CFCA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40221B5E3D160094CFCA /* Session.swift */; };
+		DAFA40231B5E3D160094CFCA /* Void.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40221B5E3D160094CFCA /* Void.swift */; };
 		DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40241B5E9A870094CFCA /* SessionTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B02ED0F1C6268640045C705 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/API/Session.swift; sourceTree = "<group>"; };
 		DA0DC8931BA317C9002FBECC /* RegisterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = RegisterCard.swift; path = Source/API/RegisterCard.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Model/Response.swift; sourceTree = "<group>"; };
 		DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Amount.swift; path = Source/Model/Amount.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -126,7 +128,7 @@
 		DAFA401A1B5959420094CFCA /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Collection.swift; path = Source/API/Collection.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAFA401C1B59596B0094CFCA /* PreAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = PreAuth.swift; path = Source/API/PreAuth.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAFA401E1B595A510094CFCA /* Refund.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Refund.swift; path = Source/API/Refund.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		DAFA40221B5E3D160094CFCA /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Session.swift; path = Source/API/Session.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		DAFA40221B5E3D160094CFCA /* Void.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Void.swift; path = Source/API/Void.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAFA40241B5E9A870094CFCA /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,14 +178,15 @@
 		DA1C6CAD1B6F9B4F009F2BE9 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				DA2620171B62520F005544B8 /* Transaction.swift */,
+				DAFA401A1B5959420094CFCA /* Collection.swift */,
 				DAFA40101B5956570094CFCA /* Payment.swift */,
 				DAFA401C1B59596B0094CFCA /* PreAuth.swift */,
-				DA0DC8931BA317C9002FBECC /* RegisterCard.swift */,
 				DAAFCE811B67ADE400C9993D /* Receipt.swift */,
-				DAFA401A1B5959420094CFCA /* Collection.swift */,
 				DAFA401E1B595A510094CFCA /* Refund.swift */,
-				DAFA40221B5E3D160094CFCA /* Session.swift */,
+				DA0DC8931BA317C9002FBECC /* RegisterCard.swift */,
+				3B02ED0F1C6268640045C705 /* Session.swift */,
+				DA2620171B62520F005544B8 /* Transaction.swift */,
+				DAFA40221B5E3D160094CFCA /* Void.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -461,13 +464,14 @@
 				DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */,
 				DAFA40111B5956570094CFCA /* Payment.swift in Sources */,
 				DA99F5231C15ABE7001EADC6 /* JudoErrorCode.swift in Sources */,
-				DAFA40231B5E3D160094CFCA /* Session.swift in Sources */,
+				DAFA40231B5E3D160094CFCA /* Void.swift in Sources */,
 				DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */,
 				DAFA401F1B595A510094CFCA /* Refund.swift in Sources */,
 				DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */,
 				DA1C6CB31B6F9C47009F2BE9 /* Reference.swift in Sources */,
 				DAFA400D1B5949330094CFCA /* Judo.swift in Sources */,
 				DAFA401B1B5959420094CFCA /* Collection.swift in Sources */,
+				3B02ED101C6268640045C705 /* Session.swift in Sources */,
 				DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */,
 				DA2620181B62520F005544B8 /* Transaction.swift in Sources */,
 				DA99F5251C15F0B8001EADC6 /* JudoModelError.swift in Sources */,
