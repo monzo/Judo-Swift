@@ -63,7 +63,7 @@
 		DAFA401B1B5959420094CFCA /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401A1B5959420094CFCA /* Collection.swift */; };
 		DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401C1B59596B0094CFCA /* PreAuth.swift */; };
 		DAFA401F1B595A510094CFCA /* Refund.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA401E1B595A510094CFCA /* Refund.swift */; };
-		DAFA40231B5E3D160094CFCA /* Void.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40221B5E3D160094CFCA /* Void.swift */; };
+		DAFA40231B5E3D160094CFCA /* VoidTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40221B5E3D160094CFCA /* VoidTransaction.swift */; };
 		DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA40241B5E9A870094CFCA /* SessionTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,7 +128,7 @@
 		DAFA401A1B5959420094CFCA /* Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Collection.swift; path = Source/API/Collection.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAFA401C1B59596B0094CFCA /* PreAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = PreAuth.swift; path = Source/API/PreAuth.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAFA401E1B595A510094CFCA /* Refund.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Refund.swift; path = Source/API/Refund.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		DAFA40221B5E3D160094CFCA /* Void.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Void.swift; path = Source/API/Void.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		DAFA40221B5E3D160094CFCA /* VoidTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VoidTransaction.swift; path = Source/API/VoidTransaction.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DAFA40241B5E9A870094CFCA /* SessionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,7 +186,7 @@
 				DA0DC8931BA317C9002FBECC /* RegisterCard.swift */,
 				3B02ED0F1C6268640045C705 /* Session.swift */,
 				DA2620171B62520F005544B8 /* Transaction.swift */,
-				DAFA40221B5E3D160094CFCA /* Void.swift */,
+				DAFA40221B5E3D160094CFCA /* VoidTransaction.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 				DAFA401D1B59596B0094CFCA /* PreAuth.swift in Sources */,
 				DAFA40111B5956570094CFCA /* Payment.swift in Sources */,
 				DA99F5231C15ABE7001EADC6 /* JudoErrorCode.swift in Sources */,
-				DAFA40231B5E3D160094CFCA /* Void.swift in Sources */,
+				DAFA40231B5E3D160094CFCA /* VoidTransaction.swift in Sources */,
 				DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */,
 				DAFA401F1B595A510094CFCA /* Refund.swift in Sources */,
 				DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */,
