@@ -42,7 +42,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Judo', '~> 1.5.1'
+pod 'Judo', '~> 1.5.2'
 ```
 
 Then, run the following command:
@@ -66,7 +66,7 @@ $ brew install carthage
 - To integrate judo into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "JudoPay/Judo-Swift" >= 1.5.1
+github "JudoPay/Judo-Swift" >= 1.5.2
 ```
 
 - On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk.
@@ -94,12 +94,18 @@ You can integrate judo into your project manually if you prefer not to use depen
 $ git submodule add https://github.com/JudoPay/Judo-Swift
 ```
 
+To initiate the submodule you have to execute the following command
+
+```bash
+$ git submodule update --init
+```
+
 - Open the new `Judo` folder, and drag the `Judo.xcodeproj` into the Project Navigator of your application's Xcode project.
 - Select the `Judo.xcodeproj` in the Project Navigator and verify the deployment target matches that of your application target.
 - Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
 - In the tab bar at the top of that window, open the "General" panel.
-- Click on the `+` button under the "Linked Frameworks and Libraries" section.
-- Select `Judo.framework` nested inside the `Workspace` folder on the top.
+- Click on the `+` button under the "Embedded Binaries" section.
+- Select `Judo.framework` nested inside the `Products` folder on the top.
 
 
 ### Further setup
