@@ -328,24 +328,24 @@ public class TransactionData: NSObject {
         self.appearsOnStatementAs = appearsOnStatementAs
         
         if let refunds = dict["refunds"] as? String {
-            self.refunds = Amount(amountString: refunds, currency: Currency(currency))
+            self.refunds = Amount(amountString: refunds.strippedCommas, currency: Currency(currency))
         } else {
             self.refunds = nil
         }
         
         if let originalAmount = dict["originalAmount"] as? String {
-            self.originalAmount = Amount(amountString: originalAmount, currency: Currency(currency))
+            self.originalAmount = Amount(amountString: originalAmount.strippedCommas, currency: Currency(currency))
         } else {
             self.originalAmount = nil
         }
         
         if let netAmount = dict["netAmount"] as? String {
-            self.netAmount = Amount(amountString: netAmount, currency: Currency(currency))
+            self.netAmount = Amount(amountString: netAmount.strippedCommas, currency: Currency(currency))
         } else {
             self.netAmount = nil
         }
         
-        self.amount = Amount(amountString: amountString, currency: Currency(currency))
+        self.amount = Amount(amountString: amountString.strippedCommas, currency: Currency(currency))
         
         self.cardDetails = CardDetails(cardDetailsDict)
         self.consumer = Consumer(consumerDict)

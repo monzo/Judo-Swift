@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
-- `1.5.x` Releases - [1.5.0](#150) | [1.5.1](#151)
+- `1.5.x` Releases - [1.5.0](#150) | [1.5.1](#151) | [1.5.2](#152)
 - `1.4.x` Releases - [1.4.0](#140)
 - `1.3.x` Releases - [1.3.0](#130)
 - `1.2.x` Releases - [1.2.0](#120) | [1.2.1](#110)
@@ -11,6 +11,14 @@ All notable changes to this project will be documented in this file.
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
+## [1.5.2](https://github.com/JudoPay/Judo-Swift/tag/1.5.2)
+Released on 2016-02-03
+
+#### Added
+- The response parser will now remove commas from any amount strings - this is due to an issue with the API returning british formatted monetary values
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
+
+---
 ## [1.5.1](https://github.com/JudoPay/Judo-Swift/tag/1.5.1)
 Released on 2016-01-29
 

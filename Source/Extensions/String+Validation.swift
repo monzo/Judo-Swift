@@ -53,6 +53,17 @@ public extension String {
         }
     }
     
+    
+    /// String by stripping commas
+    public var strippedCommas: String {
+        get {
+            return self.stringByReplacingOccurrencesOfString(",", withString: "")
+        }
+        set {
+            // do nothing
+        }
+    }
+    
     /**
      Method to check if a string is Luhn valid
      
