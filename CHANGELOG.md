@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
-## [1.6.0](https://github.com/JudoPay/Judo-Swift/tag/1.6.0)
+## [1.6.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.6.0)
 to be Released on 2016-02-18
 
 #### Added
