@@ -19,12 +19,16 @@ to be Released on 2016-02-18
 - Ability to Void a preAuth
 
 a function has been added to `Judo`
-```
+```swift
 static public func voidTransaction(receiptID: String, amount: Amount, paymentReference: String) throws -> VoidTransaction
 ```
 
 This creates a new class `VoidTransaction` which 
 
+- A parameter for setting initialRecurringPayment
+```swift
+public private (set) var initialRecurringPayment: Bool = false
+```
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
