@@ -50,11 +50,6 @@ public class VoidTransaction: NSObject {
         self.paymentReference = paymentReference
         super.init()
         
-        // Check if device is jailbroken and SDK was set to restrict access
-        if !Judo.allowJailbrokenDevices && Judo.isJailbroken() {
-            throw JudoError(.JailbrokenDeviceDisallowedError)
-        }
-        
         // Luhn check the receipt ID
         if !receiptID.isLuhnValid() {
             throw JudoError(.LuhnValidationError)

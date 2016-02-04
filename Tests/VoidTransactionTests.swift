@@ -26,19 +26,19 @@ import XCTest
 @testable import Judo
 
 class VoidTransactionTests: XCTestCase {
-
+    
+    let judo = try! Judo(token: token, secret: secret)
+    
     override func setUp() {
         super.setUp()
         
-        Judo.setToken(token, secret: secret)
-        
         Session.isTesting = true
-        Judo.sandboxed = true
+        judo.sandboxed = true
     }
     
     override func tearDown() {
         Session.isTesting = false
-        Judo.sandboxed = false
+        judo.sandboxed = false
         
         super.tearDown()
     }
@@ -53,7 +53,7 @@ class VoidTransactionTests: XCTestCase {
         
         // When
         do {
-            let refund = try Judo.voidTransaction(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+            let refund = try judo.voidTransaction(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 } else {

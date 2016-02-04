@@ -27,20 +27,20 @@ import XCTest
 
 class CollectionTests: XCTestCase {
     
+    let judo = try! Judo(token: token, secret: secret)
+    
     override func setUp() {
         super.setUp()
 
-        Judo.setToken(token, secret: secret)
-        
         Session.isTesting = true
-        Judo.sandboxed = true
+        judo.sandboxed = true
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
         Session.isTesting = false
-        Judo.sandboxed = false
+        judo.sandboxed = false
+        
+        super.tearDown()
     }
     
     func testCollection() {
@@ -53,7 +53,7 @@ class CollectionTests: XCTestCase {
 
         // When
         do {
-            let collection = try Judo.collection(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+            let collection = try judo.collection(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 }

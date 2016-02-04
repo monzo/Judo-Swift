@@ -42,7 +42,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Judo', '~> 1.5.2'
+pod 'Judo', '~> 2.0'
 ```
 
 Then, run the following command:
@@ -66,7 +66,7 @@ $ brew install carthage
 - To integrate judo into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "JudoPay/Judo-Swift" >= 1.5.2
+github "JudoPay/Judo-Swift" >= 2.0
 ```
 
 - On your application targets’ “General” settings tab, in the “Linked Frameworks and Libraries” section, drag and drop each framework you want to use from the Carthage/Build folder on disk.
@@ -112,9 +112,9 @@ $ git submodule update --init
 
 - Add `import Judo` to the top of the file where you want to use the SDK.
 
-- To instruct the SDK to communicate with the sandbox, include the following line  `Judo.sandboxed = true`. When you are ready to go live you can remove this line. We would recommend to put this in the method `didFinishLaunchingWithOptions` in your AppDelegate.
+- To instruct the SDK to communicate with the sandbox, include the following line  `myJudoSession.sandboxed = true`. When you are ready to go live you can remove this line. We would recommend you to put this in your Root ViewController implementation and pass it as a parameter to every subsequent class that uses Judo.
 
-- You can also set your key and secret here if you do not wish to include it in all subsequent calls `Judo.setToken(token:, secret:)`.
+- You can also set your key and secret here if you do not wish to include it in all subsequent calls `myJudoSession.setToken(token:, secret:)`.
 
 
 ### Examples
@@ -126,11 +126,15 @@ The token and secret are accessible from your judo account [here](https://portal
 let token = "a3xQdxP6iHdWg1zy"
 let secret = "2094c2f5484ba42557917aad2b2c2d294a35dddadb93de3c35d6910e6c461bfb"
 
-// Judo.didSetTokenAndSecret() returns false
+...
+let myJudoSession = Judo()
 
-Judo.setToken(token, secret: secret)
+// myJudoSession.didSetTokenAndSecret() returns false
 
-// Judo.didSetTokenAndSecret() returns true
+...
+let myJudoSession = Judo(token, secret: secret)
+
+// myJudoSession.didSetTokenAndSecret() returns true
 ```
 
 #### Make a simple payment
@@ -140,6 +144,9 @@ The judoNative Swift SDK takes a reactive approach.
 ##### Card payment
 
 ```swift
+let myJudoSession = Judo("your token", secret: "your secret")
+...
+
 let judoID = "100111222"
 let references = Reference(yourConsumerReference: "consumer0053252")
 let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
@@ -161,7 +168,7 @@ self.judoShield.locationWithCompletion { (coordinate, error) -> Void in
 let deviceSignal = judoShield.deviceSignal()
 
 do {
-	let makePayment = try Judo.payment(correctJudoID, amount: amount, reference: references)
+	let makePayment = try myJudoSession.payment(correctJudoID, amount: amount, reference: references)
 								.card(card)
 								.location(location)
 								.deviceSignal(deviceSignal)
@@ -180,18 +187,20 @@ do {
 
 ##### Token payment
 ```swift
-Judo.payment(correctJudoID, amount: amount, reference: references)
-	.paymentToken(payToken)
-	.location(location)
-	.deviceSignal(deviceSignal)
-	.contact(mobileNumber, emailAddress)
-	.completion({ (data, error) -> () in
-		if let _ = error {
-			// failure
-		} else {
-			// success
-		}
-	})
+let myJudoSession = Judo("your token", secret: "your secret")
+...
+myJudoSession.payment(correctJudoID, amount: amount, reference: references)
+		 	 .paymentToken(payToken)
+			 .location(location)
+			 .deviceSignal(deviceSignal)
+			 .contact(mobileNumber, emailAddress)
+			 .completion({ (data, error) -> () in
+				 if let _ = error {
+					 // failure
+				 } else {
+					 // success
+		 		 }
+			 })
 ```
 
 Notice that the only difference is calling `.paymentToken(payToken)` with a valid `PaymentToken` instead of `.card(card)` for making a token payment instead of a card payment. This process is the same for pre-authorizations and token pre-authorizations.
@@ -199,35 +208,39 @@ Notice that the only difference is calling `.paymentToken(payToken)` with a vali
 ##### Card pre-authorization
 
 ```
-Judo.preAuth(correctJudoID, amount: amount, reference: references)
-	.card(card)
-	.location(location)
-	.deviceSignal(deviceSignal)
-	.contact(mobileNumber, emailAddress)
-	.completion({ (data, error) -> () in
-		if let _ = error {
-			// error
-		} else {
-			// success
-		}
-	})
+let myJudoSession = Judo("your token", secret: "your secret")
+...
+myJudoSession.preAuth(correctJudoID, amount: amount, reference: references)
+			 .card(card)
+			 .location(location)
+			 .deviceSignal(deviceSignal)
+		 	 .contact(mobileNumber, emailAddress)
+			 .completion({ (data, error) -> () in
+				 if let _ = error {
+					 // error
+				 } else {
+					 // success
+				 }
+			 })
 ```
 
 ##### Token pre-authorization
 
 ```
-Judo.preAuth(correctJudoID, amount: amount, reference: references)
-	.paymentToken(payToken)
-	.location(location)
-	.deviceSignal(deviceSignal)
-	.contact(mobileNumber, emailAddress)
-	.completion({ (data, error) -> () in
-		if let _ = error {
-			// error
-		} else {
-			// success
-		}
-	})
+let myJudoSession = Judo("your token", secret: "your secret")
+...
+myJudoSession.preAuth(correctJudoID, amount: amount, reference: references)
+			 .paymentToken(payToken)
+			 .location(location)
+			 .deviceSignal(deviceSignal)
+			 .contact(mobileNumber, emailAddress)
+			 .completion({ (data, error) -> () in
+				 if let _ = error {
+					 // error
+				 } else {
+					 // success
+				 }
+			 })
 ```
 
 ### Contribution guidelines

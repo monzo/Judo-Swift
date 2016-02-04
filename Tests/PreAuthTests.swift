@@ -28,24 +28,22 @@ import CoreLocation
 
 class PreAuthTests: XCTestCase {
     
-    
+    let judo = try! Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()
 
-        Judo.setToken(token, secret: secret)
-        
         Session.isTesting = true
-        Judo.sandboxed = true
+        judo.sandboxed = true
     }
     
     
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
         Session.isTesting = false
-        Judo.sandboxed = false
+        judo.sandboxed = false
+        
+        super.tearDown()
     }
     
     
@@ -54,7 +52,7 @@ class PreAuthTests: XCTestCase {
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let amount = Amount(amountString: "30", currency: .GBP)
         do {
-            let preauth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references)
+            let preauth = try judo.preAuth(strippedJudoID, amount: amount, reference: references)
             XCTAssertNotNil(preauth)
         } catch {
             XCTFail("exception thrown: \(error)")
@@ -78,7 +76,7 @@ class PreAuthTests: XCTestCase {
         
         // When
         do {
-            let makePreAuth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
+            let makePreAuth = try judo.preAuth(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 }
@@ -111,7 +109,7 @@ class PreAuthTests: XCTestCase {
         
         // When
         do {
-            let makePreAuth = try Judo.preAuth(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
+            let makePreAuth = try judo.preAuth(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 } else {
@@ -121,7 +119,7 @@ class PreAuthTests: XCTestCase {
                     }
                     let payToken = PaymentToken(consumerToken: uData.items.first!.consumer.consumerToken, cardToken: uData.items.first!.cardDetails.cardToken!)
                     do {
-                        try Judo.preAuth(strippedJudoID, amount: amount, reference: references).paymentToken(payToken).completion({ (data, error) -> () in
+                        try self.judo.preAuth(strippedJudoID, amount: amount, reference: references).paymentToken(payToken).completion({ (data, error) -> () in
                             if let error = error {
                                 XCTFail("api call failed with error: \(error)")
                             } else {
@@ -157,7 +155,7 @@ class PreAuthTests: XCTestCase {
         
         // When too short
         do {
-            try Judo.preAuth(tooShortJudoID, amount: amount, reference: references) // this should fail
+            try judo.preAuth(tooShortJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             // Then
             switch error.code {
@@ -172,7 +170,7 @@ class PreAuthTests: XCTestCase {
         parameterError = false
         // When too long
         do {
-            try Judo.preAuth(tooLongJudoID, amount: amount, reference: references) // this should fail
+            try judo.preAuth(tooLongJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             switch error.code {
             case .JudoIDInvalidError:
@@ -186,7 +184,7 @@ class PreAuthTests: XCTestCase {
         parameterError = false
         // When
         do {
-            try Judo.preAuth(luhnInvalidJudoID, amount: amount, reference: references) // this should fail
+            try judo.preAuth(luhnInvalidJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             switch error.code {
             case .JudoIDInvalidError:
@@ -207,7 +205,7 @@ class PreAuthTests: XCTestCase {
         
         // When
         do {
-            try Judo.preAuth(strippedJudoID, amount: amount, reference: references)
+            try judo.preAuth(strippedJudoID, amount: amount, reference: references)
         } catch {
             XCTFail("exception thrown: \(error)")
         }
