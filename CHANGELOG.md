@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.6.x` Releases - [1.6.0](#160)
 - `1.5.x` Releases - [1.5.0](#150) | [1.5.1](#151) | [1.5.2](#152)
 - `1.4.x` Releases - [1.4.0](#140)
 - `1.3.x` Releases - [1.3.0](#130)
@@ -11,7 +12,23 @@ All notable changes to this project will be documented in this file.
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
-## [1.5.2](https://github.com/JudoPay/Judo-Swift/tag/1.5.2)
+## [1.6.0](https://github.com/JudoPay/Judo-Swift/tag/1.6.0)
+to be Released on 2016-02-18
+
+#### Added
+- Ability to Void a preAuth
+
+a function has been added to `Judo`
+```
+static public func voidTransaction(receiptID: String, amount: Amount, paymentReference: String) throws -> VoidTransaction
+```
+
+This creates a new class `VoidTransaction` which 
+
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
+
+---
+## [1.5.2](https://github.com/JudoPay/Judo-Swift/releases/tag/1.5.2)
 Released on 2016-02-03
 
 #### Added
@@ -19,7 +36,7 @@ Released on 2016-02-03
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.5.1](https://github.com/JudoPay/Judo-Swift/tag/1.5.1)
+## [1.5.1](https://github.com/JudoPay/Judo-Swift/releases/tag/1.5.1)
 Released on 2016-01-29
 
 #### Added
@@ -31,7 +48,7 @@ Released on 2016-01-29
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.5.0](https://github.com/JudoPay/Judo-Swift/tag/1.5.0)
+## [1.5.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.5.0)
 Released on 2016-01-14
 
 #### Added
@@ -57,7 +74,7 @@ Released on 2016-01-14
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.4.0](https://github.com/JudoPay/Judo-Swift/tag/1.4.0)
+## [1.4.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.4.0)
 Released on 2015-11-26
 
 #### Added
@@ -80,7 +97,7 @@ Released on 2015-11-26
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.3.0](https://github.com/JudoPay/Judo-Swift/tag/1.3.0)
+## [1.3.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.3.0)
 Released on 2015-11-05
 
 #### Added
@@ -99,7 +116,7 @@ Released on 2015-11-05
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.2.1](https://github.com/JudoPay/Judo-Swift/tag/1.2.1)
+## [1.2.1](https://github.com/JudoPay/Judo-Swift/releases/tag/1.2.1)
 Released on 2015-10-20
 
 #### Fixed
@@ -107,7 +124,7 @@ Released on 2015-10-20
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.2.0](https://github.com/JudoPay/Judo-Swift/tag/1.2.0)
+## [1.2.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.2.0)
 Released on 2015-09-29
 
 #### Added
@@ -126,7 +143,7 @@ Released on 2015-09-29
   - Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.1.0](https://github.com/JudoPay/Judo-Swift/tag/1.1.0)
+## [1.1.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.1.0)
 Released on 2015-09-18
 
 #### Updated
@@ -142,7 +159,7 @@ Released on 2015-09-18
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [1.0.0](https://github.com/JudoPay/Judo-Swift/tag/1.0.0)
+## [1.0.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.0.0)
 Released on 2015-09-15
 
 #### Added
@@ -168,7 +185,7 @@ Released on 2015-09-15
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [0.2.1](https://github.com/JudoPay/Judo-Swift/tag/0.2.1)
+## [0.2.1](https://github.com/JudoPay/Judo-Swift/releases/tag/0.2.1)
 Released on 2015-08-26
 
 #### Updated
@@ -176,7 +193,7 @@ Released on 2015-08-26
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [0.2.0](https://github.com/JudoPay/Judo-Swift/tag/0.2.0)
+## [0.2.0](https://github.com/JudoPay/Judo-Swift/releases/tag/0.2.0)
 Released on 2015-08-24
 
 #### Added
@@ -196,14 +213,14 @@ Released on 2015-08-24
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [0.1.6](https://github.com/JudoPay/Judo-Swift/tag/0.1.6)
+## [0.1.6](https://github.com/JudoPay/Judo-Swift/releases/tag/0.1.6)
 - Fixing tests - added pre-auth TransactionType and path correction
 - Modifying accessors for module subclass access
 - Created public initializers
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
-## [0.1.5](https://github.com/JudoPay/Judo-Swift/tag/0.1.5)
+## [0.1.5](https://github.com/JudoPay/Judo-Swift/releases/tag/0.1.5)
 Released on 2015-08-03
 
 #### Added

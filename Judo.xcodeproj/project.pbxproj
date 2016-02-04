@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B02ED101C6268640045C705 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02ED0F1C6268640045C705 /* Session.swift */; };
+		3B02ED121C6358570045C705 /* VoidTransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B02ED111C6358570045C705 /* VoidTransactionTests.swift */; };
 		DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0DC8931BA317C9002FBECC /* RegisterCard.swift */; };
 		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
 		DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */; };
@@ -79,6 +80,7 @@
 
 /* Begin PBXFileReference section */
 		3B02ED0F1C6268640045C705 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/API/Session.swift; sourceTree = "<group>"; };
+		3B02ED111C6358570045C705 /* VoidTransactionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VoidTransactionTests.swift; sourceTree = "<group>"; };
 		DA0DC8931BA317C9002FBECC /* RegisterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = RegisterCard.swift; path = Source/API/RegisterCard.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Model/Response.swift; sourceTree = "<group>"; };
 		DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Amount.swift; path = Source/Model/Amount.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -309,14 +311,15 @@
 			children = (
 				DA2620141B624EE9005544B8 /* requests */,
 				DAFA40031B5939E60094CFCA /* Info.plist */,
+				DAFA40161B5958480094CFCA /* CollectionTests.swift */,
 				DAFA40011B5939E60094CFCA /* JudoTests.swift */,
+				DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */,
 				DAFA40121B5957E80094CFCA /* PaymentTests.swift */,
 				DAFA40141B5958340094CFCA /* PreAuthTests.swift */,
 				DAAFCE831B69240600C9993D /* ReceiptTests.swift */,
-				DAFA40161B5958480094CFCA /* CollectionTests.swift */,
 				DAFA40181B5958560094CFCA /* RefundTests.swift */,
 				DAFA40241B5E9A870094CFCA /* SessionTests.swift */,
-				DA1C6CB61B6F9E86009F2BE9 /* ListTests.swift */,
+				3B02ED111C6358570045C705 /* VoidTransactionTests.swift */,
 			);
 			name = JudoTests;
 			path = Tests;
@@ -489,6 +492,7 @@
 				DA1C6CB71B6F9E86009F2BE9 /* ListTests.swift in Sources */,
 				DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */,
 				DAFA40191B5958560094CFCA /* RefundTests.swift in Sources */,
+				3B02ED121C6358570045C705 /* VoidTransactionTests.swift in Sources */,
 				DAFA40131B5957E80094CFCA /* PaymentTests.swift in Sources */,
 				DAFA40021B5939E60094CFCA /* JudoTests.swift in Sources */,
 				DAFA40151B5958340094CFCA /* PreAuthTests.swift in Sources */,
