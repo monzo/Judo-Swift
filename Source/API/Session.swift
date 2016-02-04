@@ -350,7 +350,7 @@ public class Session {
     
     - returns: a Dictionary Object for sending information necessary for a Transaction
     */
-    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, pkPayment: PKPayment?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?) -> NSDictionary? {
+    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, pkPayment: PKPayment?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?, initialRecurringPayment: Bool = false) -> NSDictionary? {
         let parametersDict = NSMutableDictionary()
         if let ref = reference {
             parametersDict["yourConsumerReference"] = ref.yourConsumerReference
@@ -429,6 +429,10 @@ public class Session {
         
         if let devSignal = deviceSignal {
             parametersDict["clientDetails"] = devSignal
+        }
+        
+        if initialRecurringPayment {
+            parametersDict["InitialRecurringPayment"] = initialRecurringPayment
         }
         
         return parametersDict

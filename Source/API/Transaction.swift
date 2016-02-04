@@ -64,6 +64,9 @@ public class Transaction {
     /// Support for Apple Pay transactions added in Base
     public private (set) var pkPayment: PKPayment?
     
+    /// hidden parameter to enable recurring payments
+    public private (set) var initialRecurringPayment: Bool = false
+    
 
     /**
     Starting point and a reactive method to create a payment or pre-auth
@@ -196,7 +199,7 @@ public class Transaction {
             throw JudoError(.CardOrTokenMissingError)
         }
         
-        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, pkPayment: self.pkPayment, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
+        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, pkPayment: self.pkPayment, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal, initialRecurringPayment: self.initialRecurringPayment) as? JSONDictionary else {
             throw JudoError(.ParameterError)
         }
         

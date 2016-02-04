@@ -1,5 +1,5 @@
 //
-//  RefundTests.swift
+//  VoidTransactionTests.swift
 //  Judo
 //
 //  Copyright (c) 2016 Alternative Payments Ltd
@@ -25,8 +25,8 @@
 import XCTest
 @testable import Judo
 
-class RefundTests: XCTestCase {
-    
+class VoidTransactionTests: XCTestCase {
+
     override func setUp() {
         super.setUp()
         
@@ -42,25 +42,25 @@ class RefundTests: XCTestCase {
         
         super.tearDown()
     }
-    
-    func testRefund() {
+
+    func testVoidTransaction() {
         // Given
         let receiptID = "1497684"
         let amount = Amount(decimalNumber: 30, currency: .GBP)
         let payRef = "payment123asd"
         
-        let expectation = self.expectationWithDescription("refund expectation")
-
+        let expectation = self.expectationWithDescription("void expectation")
+        
         // When
         do {
-            let refund = try Judo.refund(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+            let refund = try Judo.voidTransaction(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 } else {
                     expectation.fulfill()
                 }
             })
-
+            
             // Then
             XCTAssertNotNil(refund)
         } catch {
@@ -69,5 +69,12 @@ class RefundTests: XCTestCase {
         
         self.waitForExpectationsWithTimeout(30, handler: nil)
     }
-    
+
+    func testPerformanceExample() {
+        // This is an example of a performance test case.
+        self.measureBlock {
+            // Put the code you want to measure the time of here.
+        }
+    }
+
 }
