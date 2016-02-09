@@ -16,6 +16,9 @@ All notable changes to this project will be documented in this file.
 ## [2.0.0](https://github.com/JudoPay/Judo-Swift/releases/tag/2.0.0)
 to be Released on 2016-02-18
 
+#### Added
+- Brazilien Real static accessor in `Currency`
+
 #### Changed
 - removed static accessors in favor of creating a session var in each project
 

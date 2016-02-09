@@ -85,6 +85,8 @@ public class Amount: NSObject {
     
     /// Australian Dollars
     public static let AUD = Currency("AUD")
+    /// Brazilian Real
+    public static let BRL = Currency("BRL")
     /// Canadian Dollars
     public static let CAD = Currency("CAD")
     /// Swiss Franks
