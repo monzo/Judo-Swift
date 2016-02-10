@@ -76,7 +76,7 @@ import Foundation
         case .Canada:
             return "Postal code"
         default:
-            return "Post code"
+            return "Postcode"
         }
     }
     
