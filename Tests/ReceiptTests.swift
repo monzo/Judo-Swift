@@ -26,21 +26,21 @@ import XCTest
 @testable import Judo
 
 class ReceiptTests: XCTestCase {
-
+    
+    let judo = try! Judo(token: token, secret: secret)
+    
     override func setUp() {
         super.setUp()
 
-        Judo.setToken(token, secret: secret)
-        
         Session.isTesting = true
-        Judo.sandboxed = true
+        judo.sandboxed = true
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         Session.isTesting = false
-        Judo.sandboxed = false
+        judo.sandboxed = false
     }
 
     func testJudoTransactionReceipt() {
@@ -50,7 +50,7 @@ class ReceiptTests: XCTestCase {
         let expectation = self.expectationWithDescription("receipt fetch expectation")
         
         do {
-            try Judo.receipt(receiptID).completion({ (dict, error) -> () in
+            try judo.receipt(receiptID).completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 } else {
@@ -70,7 +70,7 @@ class ReceiptTests: XCTestCase {
         let expectation = self.expectationWithDescription("all receipts fetch expectation")
         
         do {
-            try Judo.receipt().completion({ (dict, error) -> () in
+            try judo.receipt().completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                 } else {

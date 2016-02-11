@@ -27,20 +27,20 @@ import XCTest
 
 class ListTests: XCTestCase {
     
+    let judo = try! Judo(token: token, secret: secret)
+    
     override func setUp() {
         super.setUp()
         
-        Judo.setToken(token, secret: secret)
-        
         Session.isTesting = true
-        Judo.sandboxed = true
+        judo.sandboxed = true
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         Session.isTesting = false
-        Judo.sandboxed = false
+        judo.sandboxed = false
     }
     
     func testJudoListPayments() {

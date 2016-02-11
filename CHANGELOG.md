@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
+- `2.0.x` Releases - [2.0.0](#200)
 - `1.6.x` Releases - [1.6.0](#160)
 - `1.5.x` Releases - [1.5.0](#150) | [1.5.1](#151) | [1.5.2](#152)
 - `1.4.x` Releases - [1.4.0](#140)
@@ -12,8 +13,41 @@ All notable changes to this project will be documented in this file.
 - `0.2.x` Releases - [0.2.0](#020) | [0.2.1](#021)
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
-## [1.6.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.6.0)
+## [2.0.0](https://github.com/JudoPay/Judo-Swift/releases/tag/2.0.0)
 to be Released on 2016-02-18
+
+#### Added
+- Brazilien Real static accessor in `Currency`
+
+#### Changed
+- removed static accessors in favor of creating a session var in each project
+
+all functions and properties in `Judo` are not `static` anymore
+
+- We moved the endpoint method from `Judo` and placed it into the `Session` class which makes more sense as an origin for this variable
+
+- A new init() method that initializes your Judo session with a given token and secret
+```swift
+let myJudoSession = Judo("your token", secret: "your secret")
+```
+- in light of creating the Judo session the method which checks if a device is jailbroken has been moved into the initializer. It throws an exception in case the code is executed on a jailbroken device. If you need to restrict usage on Jailbroken devices, use the following method instead
+
+```swift
+let myJudoSession = try Judo("your token", secret: "your secret", allowJailbrokenDevices: true)
+```
+
+you can except that the only exception that is thrown is the `JailbrokenDeviceDisallowedError` so you could also do the following.
+
+```swift
+let myJudoSession = try? Judo("your token", secret: "your secret", allowJailbrokenDevices: true)
+```
+
+In this case, if the code was executed on a jailbroken device, the myJudoSession optional will be nil.
+	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
+
+---
+## [1.6.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.6.0)
+to be Released on 2016-02-09
 
 #### Added
 - Ability to Void a preAuth

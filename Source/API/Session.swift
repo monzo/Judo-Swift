@@ -37,6 +37,20 @@ public typealias JudoCompletionBlock = (Response?, JudoError?) -> ()
 /// The Session struct is a wrapper for the REST API calls
 public class Session {
     
+    /// The endpoint for REST API calls to the judo API
+    static private (set) var endpoint = "https://gw1.judopay.com/"
+    
+    
+    /// Set the app to sandboxed mode
+    static public var sandboxed: Bool = false {
+        didSet {
+            if sandboxed {
+                endpoint = "https://gw1.judopay-sandbox.com/"
+            } else {
+                endpoint = "https://gw1.judopay.com/"
+            }
+        }
+    }
     
     /// Token and secret are saved in the authorizationHeader for authentication of REST API calls
     static var authorizationHeader: String?
@@ -55,7 +69,7 @@ public class Session {
     public static func POST(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
         
         // Create request
-        let request = self.judoRequest(Judo.endpoint + path)
+        let request = self.judoRequest(endpoint + path)
         
         // Rquest method
         request.HTTPMethod = "POST"
@@ -93,7 +107,7 @@ public class Session {
     static func GET(path: String, parameters: JSONDictionary?, completion: JudoCompletionBlock) {
         
         // Create request
-        let request = self.judoRequest(Judo.endpoint + path)
+        let request = self.judoRequest(endpoint + path)
         
         request.HTTPMethod = "GET"
         
@@ -127,7 +141,7 @@ public class Session {
     */
     static func PUT(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
         // Create request
-        let request = self.judoRequest(Judo.endpoint + path)
+        let request = self.judoRequest(endpoint + path)
         
         // Request method
         request.HTTPMethod = "PUT"
@@ -205,7 +219,7 @@ public class Session {
     - Returns: a JSON HTTP request to a local file for testing purposes
     */
     private static func test_judoRequest(url: String) -> NSMutableURLRequest {
-        let path = url.stringByReplacingOccurrencesOfString(Judo.endpoint, withString: "")
+        let path = url.stringByReplacingOccurrencesOfString(endpoint, withString: "")
         
         var fileName: String?
         
