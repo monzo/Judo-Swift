@@ -38,34 +38,111 @@ public class Transaction {
     /// The current transaction if there is one - for preventing multiple transactions running at the same time
     private var currentTransactionReference: String? = nil
     
+    internal var parameters = [String:AnyObject]();
+    
     /// The judo ID for the transaction
-    public private (set) var judoID: String
+    public private (set) var judoID: String {
+        didSet {
+            self.parameters["judoId"] = judoID
+        }
+    }
     
     /// The reference of the transaction
-    public private (set) var reference: Reference
+    public private (set) var reference: Reference {
+        didSet {
+            self.parameters["yourConsumerReference"] = reference.yourConsumerReference
+            self.parameters["yourPaymentReference"] = reference.yourPaymentReference
+            if let metaData = reference.yourPaymentMetaData {
+                self.parameters["yourPaymentMetaData"] = metaData
+            }
+        }
+    }
     /// The amount and currency of the transaction
-    public private (set) var amount: Amount
+    public private (set) var amount: Amount {
+        didSet {
+            self.parameters["amount"] = amount.amount
+            self.parameters["currency"] = amount.currency.rawValue
+        }
+    }
     
     /// The card info of the transaction
-    public private (set) var card: Card?
+    public private (set) var card: Card? {
+        didSet {
+            self.parameters["cardNumber"] = card?.number
+            self.parameters["expiryDate"] = card?.expiryDate
+            self.parameters["cv2"] = card?.cv2
+            self.parameters["cardAddress"] = card?.address?.dictionaryRepresentation()
+            self.parameters["startDate"] = card?.startDate
+            self.parameters["issueNumber"] = card?.issueNumber
+        }
+    }
     /// The payment token of the transaction
-    public private (set) var payToken: PaymentToken?
+    public private (set) var payToken: PaymentToken? {
+        didSet {
+            self.parameters["consumerToken"] = payToken?.consumerToken
+            self.parameters["cardToken"] = payToken?.cardToken
+            self.parameters["cv2"] = payToken?.cv2
+        }
+    }
     
     /// Location coordinate for fraud prevention in this transaction
-    public private (set) var location: CLLocationCoordinate2D?
+    public private (set) var location: CLLocationCoordinate2D? {
+        didSet {
+            guard let location = location else { return }
+            self.parameters["consumerLocation"] = ["latitude":NSNumber(double: location.latitude), "longitude":NSNumber(double: location.longitude)]
+        }
+    }
     /// Device identification for this transaction
-    public private (set) var deviceSignal: JSONDictionary?
+    public private (set) var deviceSignal: JSONDictionary? {
+        didSet {
+            self.parameters["clientDetails"] = deviceSignal
+        }
+    }
     
     /// Mobile number of the entity initiating the transaction
-    public private (set) var mobileNumber: String?
+    public private (set) var mobileNumber: String? {
+        didSet {
+            self.parameters["mobileNumber"] = mobileNumber
+        }
+    }
     /// Email address of the entity initiating the transaction
-    public private (set) var emailAddress: String?
+    public private (set) var emailAddress: String? {
+        didSet {
+            self.parameters["emailAddress"] = emailAddress
+        }
+    }
     
     /// Support for Apple Pay transactions added in Base
-    public private (set) var pkPayment: PKPayment?
+    public private (set) var pkPayment: PKPayment? {
+        didSet {
+            guard let pkPayment = pkPayment else { return }
+            var tokenDict = JSONDictionary()
+            if #available(iOS 9.0, *) {
+                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentMethod.displayName
+            } else {
+                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentInstrumentName
+            }
+            if #available(iOS 9.0, *) {
+                tokenDict["paymentNetwork"] = pkPayment.token.paymentMethod.network
+            } else {
+                tokenDict["paymentNetwork"] = pkPayment.token.paymentNetwork
+            }
+            do {
+                tokenDict["paymentData"] = try NSJSONSerialization.JSONObjectWithData(pkPayment.token.paymentData, options: NSJSONReadingOptions.MutableLeaves) as? JSONDictionary
+            } catch {
+                return // BAIL
+            }
+            
+            self.parameters["pkPayment"] = ["token":tokenDict]
+        }
+    }
     
     /// hidden parameter to enable recurring payments
-    public private (set) var initialRecurringPayment: Bool = false
+    public private (set) var initialRecurringPayment: Bool = false {
+        didSet {
+            self.parameters["InitialRecurringPayment"] = initialRecurringPayment
+        }
+    }
     
 
     /**
@@ -176,7 +253,7 @@ public class Transaction {
         return self
     }
     
-
+    
     /**
     Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods
     
@@ -194,19 +271,12 @@ public class Transaction {
             throw JudoError(.CardOrTokenMissingError)
         }
         
-        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, pkPayment: self.pkPayment, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal, initialRecurringPayment: self.initialRecurringPayment) as? JSONDictionary else {
-            throw JudoError(.ParameterError)
-        }
-        
         if self.reference.yourPaymentReference == self.currentTransactionReference {
             throw JudoError(.DuplicateTransactionError)
         }
         self.currentTransactionReference = self.reference.yourPaymentReference
         
-        Session.POST(self.path(), parameters: parameters) { (response, error) -> () in
-            self.currentTransactionReference = nil
-            block(response, error)
-        }
+        Session.POST(self.path(), parameters: self.parameters, completion: block)
         
         return self
     }
@@ -235,9 +305,7 @@ public class Transaction {
         
         paymentDetails["receiptID"] = receiptID
         
-        Session.PUT("transactions/" + receiptID, parameters: paymentDetails) { (response, error) -> () in
-            block(response, error)
-        }
+        Session.PUT("transactions/" + receiptID, parameters: paymentDetails, completion: block)
 
         return self
     }
@@ -268,9 +336,7 @@ public class Transaction {
         if let pag = pagination {
             path += "?pageSize=\(pag.pageSize)&offset=\(pag.offset)&sort=\(pag.sort.rawValue)"
         }
-        Session.GET(path, parameters: nil) { (dictionary, error) -> () in
-            block(dictionary, error)
-        }
+        Session.GET(path, parameters: nil, completion: block)
     }
     
     
@@ -284,3 +350,4 @@ public class Transaction {
     }
 
 }
+
