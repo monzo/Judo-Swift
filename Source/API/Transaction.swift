@@ -159,6 +159,15 @@ public class Transaction {
         self.amount = amount
         self.reference = reference
         
+        self.parameters["judoId"] = judoID
+        self.parameters["amount"] = amount.amount
+        self.parameters["currency"] = amount.currency.rawValue
+        self.parameters["yourConsumerReference"] = reference.yourConsumerReference
+        self.parameters["yourPaymentReference"] = reference.yourPaymentReference
+        if let metaData = reference.yourPaymentMetaData {
+            self.parameters["yourPaymentMetaData"] = metaData
+        }
+        
         // judo ID validation
         let strippedJudoID = judoID.stripped
         
