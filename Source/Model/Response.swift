@@ -105,7 +105,7 @@ public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
         case _ where !items.isEmpty:
             if indexInSequence < items.count {
                 let element = items[indexInSequence]
-                indexInSequence++
+                indexInSequence.advancedBy(1)
                 return element
             }
             indexInSequence = 0
