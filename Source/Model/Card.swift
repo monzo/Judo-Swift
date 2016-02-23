@@ -33,17 +33,22 @@ let DinersClubPattern   = "XXXX XXXXXX XXXX"
 
 
 // These should be computed once and then referenced - O(n)
-let masterCardPrefixes          = ([Int](2221...2720)).map({ String($0) }) + ([Int](51...55)).map { String($0) }
-let maestroPrefixes             = ([Int](56...69)).map({ String($0) }) + ["50"]
-let dinersClubPrefixes          = ([Int](300...305)).map({ String($0) }) + ["36", "38", "39", "309"]
-let instaPaymentPrefixes        = ([Int](637...639)).map({ String($0) })
-let JCBPrefixes                 = ([Int](3528...3589)).map({ String($0) })
+let maestroPrefixes: [String]      = Array([([Int](56...69)).map({ String($0) }), ["50"]].flatten())
+let dinersClubPrefixes: [String]   = Array([([Int](300...305)).map({ String($0) }), ["36", "38", "39", "309"]].flatten())
+let instaPaymentPrefixes: [String] = ([Int](637...639)).map({ String($0) })
+let JCBPrefixes: [String]          = ([Int](3528...3589)).map({ String($0) })
 
 // Expression was too complex to be executed in one line 😩😭💥
-let discoverPrefixes: [String]  = {
-    let discover = ([Int](644...649)).map({ String($0) }) + ([Int](622126...622925)).map({ String($0) })
-    return discover + ["65", "6011"]
-    }()
+let masterCardPrefixes: [String]   = {
+    let m1: [String] = Array(([Int](2221...2720)).map({ String($0) }))
+    let m2: [String] = Array(([Int](51...55)).map({ String($0) }))
+    return Array([m1, m2].flatten())
+}()
+let discoverPrefixes: [String]     = {
+    let d1: [String] = Array(([Int](644...649)).map({ String($0) }))
+    let d2: [String] = Array(([Int](622126...622925)).map({ String($0) }))
+    return Array([d1, d2, ["65", "6011"]].flatten())
+}()
 
 
 /**
