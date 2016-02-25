@@ -41,28 +41,53 @@ class CollectionTests: XCTestCase {
     
     func testCollection() {
         // Given
-        let receiptID = "1497684"
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
-        let payRef = "payment123asd"
+        let emailAddress = "hans@email.com"
+        let mobileNumber = "07100000000"
         
-        let expectation = self.expectationWithDescription("collection expectation")
-
+        let expectation = self.expectationWithDescription("payment expectation")
+        
         // When
         do {
-            let collection = try judo.collection(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+            let makePreAuth = try judo.preAuth(strippedJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
+                    expectation.fulfill()
+                    return
                 }
-                expectation.fulfill();
+                
+                guard let receiptId = data?.first?.receiptID else {
+                    XCTFail("receipt ID was not available in response")
+                    expectation.fulfill()
+                    return
+                }
+                
+                // When
+                do {
+                    let collection = try self.judo.collection(receiptId, amount: amount).completion({ (dict, error) -> () in
+                        if let error = error {
+                            XCTFail("api call failed with error: \(error)")
+                        }
+                        expectation.fulfill();
+                    })
+                    
+                    // Then
+                    XCTAssertNotNil(collection)
+                } catch {
+                    XCTFail("exception thrown: \(error)")
+                }
             })
-            
             // Then
-            XCTAssertNotNil(collection)
+            XCTAssertNotNil(makePreAuth)
+            XCTAssertEqual(makePreAuth.judoID, strippedJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }
         
         self.waitForExpectationsWithTimeout(30, handler: nil)
+        
     }
     
 }

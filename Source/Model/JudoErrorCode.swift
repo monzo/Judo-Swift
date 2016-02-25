@@ -138,6 +138,7 @@ import Foundation
  - InvalidCardNetwork:                                    InvalidCardNetwork
  - ThreeDSAuthRequest:                                    ThreeDSAuthRequest
  - Failed3DSError:                                        Failed3DSError
+ - UnknownError:                                          UnknownError
  - UserDidCancel:                                         UserDidCancel
  */
 @objc public enum JudoErrorCode: Int {
@@ -367,6 +368,8 @@ import Foundation
     case ThreeDSAuthRequest
     /// Failed3DSError
     case Failed3DSError
+    /// UnknownError
+    case UnknownError
     
     // MARK: User Errors
     /// Received when user cancels the payment

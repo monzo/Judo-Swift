@@ -32,15 +32,11 @@ class SessionTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     override func tearDown() {
-        Session.isTesting = false
         judo.sandboxed = false
-        
         super.tearDown()
     }
         

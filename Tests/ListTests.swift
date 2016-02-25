@@ -31,15 +31,11 @@ class ListTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        Session.isTesting = false
         judo.sandboxed = false
     }
     

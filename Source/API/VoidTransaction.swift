@@ -31,7 +31,7 @@ public class VoidTransaction: NSObject {
     /// The amount of the refund
     public private (set) var amount: Amount
     /// The payment reference String for a refund
-    public private (set) var paymentReference: String
+    public private (set) var paymentReference: String = ""
     
     
     /**
@@ -43,13 +43,18 @@ public class VoidTransaction: NSObject {
      
      - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
      */
-    init(receiptID: String, amount: Amount, paymentReference: String) throws {
+    init(receiptID: String, amount: Amount) throws {
         // Initialize variables
         self.receiptID = receiptID
         self.amount = amount
-        self.paymentReference = paymentReference
         super.init()
         
+        guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
+            throw JudoError(.UnknownError)
+        }
+        let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
+        self.paymentReference = finalString.substringToIndex(finalString.endIndex.advancedBy(-4))
+
         // Luhn check the receipt ID
         if !receiptID.isLuhnValid() {
             throw JudoError(.LuhnValidationError)

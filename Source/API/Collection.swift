@@ -47,7 +47,7 @@ public class Collection: NSObject {
     /// the amount of the collection
     private (set) var amount: Amount
     /// the payment reference String for a collection
-    private (set) var paymentReference: String
+    private (set) var paymentReference: String = ""
     
     
     /**
@@ -59,11 +59,17 @@ public class Collection: NSObject {
     
     - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     */
-    init(receiptID: String, amount: Amount, paymentReference: String) throws {
+    init(receiptID: String, amount: Amount) throws {
         self.receiptID = receiptID
         self.amount = amount
-        self.paymentReference = paymentReference
+        
         super.init()
+        
+        guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
+            throw JudoError(.UnknownError)
+        }
+        let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
+        self.paymentReference = finalString.substringToIndex(finalString.endIndex.advancedBy(-4))
         
         // Luhn check the receipt ID
         if !receiptID.isLuhnValid() {

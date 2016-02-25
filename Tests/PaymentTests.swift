@@ -33,17 +33,13 @@ class PaymentTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     
     
     override func tearDown() {
-        Session.isTesting = false
         judo.sandboxed = false
-        
         super.tearDown()
     }
     
@@ -65,8 +61,7 @@ class PaymentTests: XCTestCase {
     func testJudoMakeValidPayment() {
         // Given
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
@@ -80,9 +75,8 @@ class PaymentTests: XCTestCase {
             let makePayment = try judo.payment(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
-                    expectation.fulfill()
                 }
+                expectation.fulfill()
             })
             // Then
             XCTAssertNotNil(makePayment)
@@ -99,8 +93,7 @@ class PaymentTests: XCTestCase {
     func testJudoMakeValidTokenPayment() {
         // Given
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
@@ -124,9 +117,8 @@ class PaymentTests: XCTestCase {
                         try self.judo.payment(strippedJudoID, amount: amount, reference: references).paymentToken(payToken).completion({ (data, error) -> () in
                             if let error = error {
                                 XCTFail("api call failed with error: \(error)")
-                            } else {
-                                expectation.fulfill()
                             }
+                            expectation.fulfill()
                         })
                     } catch {
                         XCTFail("exception thrown: \(error)")
@@ -203,8 +195,7 @@ class PaymentTests: XCTestCase {
     func testJudoValidation() {
         // Given
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
