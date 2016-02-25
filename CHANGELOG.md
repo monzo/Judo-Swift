@@ -21,6 +21,9 @@ to be Released on 2016-02-18
 
 #### Changed
 - removed static accessors in favor of creating a session var in each project
+- date fields now have an error message
+- tests now run directly using the sandboxed api
+- removed api mocks from package
 
 all functions and properties in `Judo` are not `static` anymore
 
