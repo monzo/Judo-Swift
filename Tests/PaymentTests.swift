@@ -29,7 +29,7 @@ import CoreLocation
 
 class PaymentTests: XCTestCase {
     
-    let judo = try! Judo(token: token, secret: secret)
+    let judo = Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()
@@ -161,7 +161,7 @@ class PaymentTests: XCTestCase {
         } catch let error as JudoError {
             // Then
             switch error.code {
-            case .JudoIDInvalidError:
+            case .JudoIDInvalidError, .LuhnValidationError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -175,7 +175,7 @@ class PaymentTests: XCTestCase {
             try judo.payment(tooLongJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             switch error.code {
-            case .JudoIDInvalidError:
+            case .JudoIDInvalidError, .LuhnValidationError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -189,7 +189,7 @@ class PaymentTests: XCTestCase {
             try judo.payment(luhnInvalidJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             switch error.code {
-            case .JudoIDInvalidError:
+            case .JudoIDInvalidError, .LuhnValidationError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
