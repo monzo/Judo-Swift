@@ -32,17 +32,13 @@ class PreAuthTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     
     
     override func tearDown() {
-        Session.isTesting = false
         judo.sandboxed = false
-        
         super.tearDown()
     }
     
@@ -64,8 +60,7 @@ class PreAuthTests: XCTestCase {
     func testJudoMakeValidPreAuth() {
         // Given
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
+        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
