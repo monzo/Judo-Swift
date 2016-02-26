@@ -51,7 +51,7 @@ class CollectionTests: XCTestCase {
         
         // When
         do {
-            let makePreAuth = try judo.preAuth(strippedJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
+            let makePreAuth = try judo.preAuth(myJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                     expectation.fulfill()
@@ -81,7 +81,7 @@ class CollectionTests: XCTestCase {
             })
             // Then
             XCTAssertNotNil(makePreAuth)
-            XCTAssertEqual(makePreAuth.judoID, strippedJudoID)
+            XCTAssertEqual(makePreAuth.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }

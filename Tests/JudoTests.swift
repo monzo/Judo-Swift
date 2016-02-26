@@ -28,7 +28,7 @@ import XCTest
 let token = "<#YOUR TOKEN#>"
 let secret = "<#YOUR SECRET#>"
 
-let strippedJudoID = "100000009"
+let myJudoID = "100000009"
 
 class JudoTests: XCTestCase {
     

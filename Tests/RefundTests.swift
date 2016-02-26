@@ -51,7 +51,7 @@ class RefundTests: XCTestCase {
         
         // When
         do {
-            let makePayment = try judo.payment(strippedJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
+            let makePayment = try judo.payment(myJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                     expectation.fulfill()
@@ -80,7 +80,7 @@ class RefundTests: XCTestCase {
             })
             // Then
             XCTAssertNotNil(makePayment)
-            XCTAssertEqual(makePayment.judoID, strippedJudoID)
+            XCTAssertEqual(makePayment.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }
