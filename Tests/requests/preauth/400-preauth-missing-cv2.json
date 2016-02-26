@@ -1,8 +1,0 @@
-{
-   "errorMessage": "Invalid request",
-   "errorType": 1,
-   "modelErrors": [   {
-      "fieldName": "Cv2",
-      "errorMessage": "Please enter the 3 digit card security code."
-   }]
-}
