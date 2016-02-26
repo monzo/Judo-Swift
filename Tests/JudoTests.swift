@@ -28,11 +28,11 @@ import XCTest
 let token = "<#YOUR TOKEN#>"
 let secret = "<#YOUR SECRET#>"
 
-let strippedJudoID = "100000009"
+let myJudoID = "100000009"
 
 class JudoTests: XCTestCase {
     
-    let judo = try! Judo(token: token, secret: secret)
+    let judo = Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()

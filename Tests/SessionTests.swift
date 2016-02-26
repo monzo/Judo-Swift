@@ -28,50 +28,18 @@ import CoreLocation
 
 class SessionTests: XCTestCase {
     
-    let judo = try! Judo(token: token, secret: secret)
+    let judo = Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()
-        
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     override func tearDown() {
-        Session.isTesting = false
         judo.sandboxed = false
-        
         super.tearDown()
     }
-    
-    func testPOST() {
-        // Given
-        guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
-        let amount = Amount(amountString: "30", currency: .GBP)
-        let emailAddress = "hans@email.com"
-        let mobileNumber = "07100000000"
-        let path = "transactions/payments"
-        let location = CLLocationCoordinate2D(latitude: 0, longitude: 65)
-
-        guard let parameters = Session.transactionParameters(strippedJudoID, amount: amount, reference: references, card: card, token: nil, pkPayment: nil, location: location, email: emailAddress, mobile: mobileNumber, deviceSignal: nil) as? [String : AnyObject] else {
-            XCTFail()
-            return
-        }
         
-        // When
-        let expectation = self.expectationWithDescription("payment expectation")
-        
-        Session.POST(path, parameters: parameters) { (receipt, error) -> () in
-            expectation.fulfill()
-        }
-        
-        // Then
-        self.waitForExpectationsWithTimeout(30.0, handler: nil)
-        
-    }
-    
     func testLuhnCheck() {
         let validLuhnNumber = "100963875"
         XCTAssertTrue(validLuhnNumber.isLuhnValid())

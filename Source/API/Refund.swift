@@ -27,9 +27,9 @@ import Foundation
 /** 
 Refunding a successful payment is easy, simply identify the original receipt ID for the payment and the amount you wish to refund. When we've received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you can make a Refund with the SDK.
 
-### Refund by ID, amount and reference
+### Refund by ID and amount
 ```swift
-    Judo.refund(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+    myJudoSession.refund(receiptID, amount: amount).completion({ (dict, error) -> () in
         if let error = error {
             // error
         } else {
@@ -46,7 +46,7 @@ public class Refund: NSObject {
     /// The amount of the refund
     public private (set) var amount: Amount
     /// The payment reference String for a refund
-    public private (set) var paymentReference: String
+    public private (set) var paymentReference: String = ""
     
     
     /**
@@ -54,16 +54,20 @@ public class Refund: NSObject {
     
     - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
     - Parameter amount: The amount to process
-    - Parameter reference: the reference
     
     - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     */
-    init(receiptID: String, amount: Amount, paymentReference: String) throws {
+    init(receiptID: String, amount: Amount) throws {
         // Initialize variables
         self.receiptID = receiptID
         self.amount = amount
-        self.paymentReference = paymentReference
         super.init()
+        
+        guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
+            throw JudoError(.UnknownError)
+        }
+        let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
+        self.paymentReference = finalString.substringToIndex(finalString.endIndex.advancedBy(-4))
         
         // Luhn check the receipt ID
         if !receiptID.isLuhnValid() {

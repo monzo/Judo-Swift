@@ -29,21 +29,17 @@ import CoreLocation
 
 class PaymentTests: XCTestCase {
     
-    let judo = try! Judo(token: token, secret: secret)
+    let judo = Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()
-        
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     
     
     override func tearDown() {
-        Session.isTesting = false
         judo.sandboxed = false
-        
         super.tearDown()
     }
     
@@ -53,7 +49,7 @@ class PaymentTests: XCTestCase {
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
         let amount = Amount(amountString: "30", currency: .GBP)
         do {
-            let payment = try judo.payment(strippedJudoID, amount: amount, reference: references)
+            let payment = try judo.payment(myJudoID, amount: amount, reference: references)
             XCTAssertNotNil(payment)
         } catch {
             XCTFail()
@@ -65,8 +61,7 @@ class PaymentTests: XCTestCase {
     func testJudoMakeValidPayment() {
         // Given
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
@@ -77,16 +72,15 @@ class PaymentTests: XCTestCase {
         
         // When
         do {
-            let makePayment = try judo.payment(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
+            let makePayment = try judo.payment(myJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
-                    expectation.fulfill()
                 }
+                expectation.fulfill()
             })
             // Then
             XCTAssertNotNil(makePayment)
-            XCTAssertEqual(makePayment.judoID, strippedJudoID)
+            XCTAssertEqual(makePayment.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }
@@ -99,8 +93,7 @@ class PaymentTests: XCTestCase {
     func testJudoMakeValidTokenPayment() {
         // Given
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
@@ -111,7 +104,7 @@ class PaymentTests: XCTestCase {
         
         // When
         do {
-            let makePayment = try judo.payment(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
+            let makePayment = try judo.payment(myJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let _ = error {
                     XCTFail()
                 } else {
@@ -121,12 +114,11 @@ class PaymentTests: XCTestCase {
                     }
                     let payToken = PaymentToken(consumerToken: uData.items.first!.consumer.consumerToken, cardToken: uData.items.first!.cardDetails.cardToken!)
                     do {
-                        try self.judo.payment(strippedJudoID, amount: amount, reference: references).paymentToken(payToken).completion({ (data, error) -> () in
+                        try self.judo.payment(myJudoID, amount: amount, reference: references).paymentToken(payToken).completion({ (data, error) -> () in
                             if let error = error {
                                 XCTFail("api call failed with error: \(error)")
-                            } else {
-                                expectation.fulfill()
                             }
+                            expectation.fulfill()
                         })
                     } catch {
                         XCTFail("exception thrown: \(error)")
@@ -135,7 +127,7 @@ class PaymentTests: XCTestCase {
             })
             // Then
             XCTAssertNotNil(makePayment)
-            XCTAssertEqual(makePayment.judoID, strippedJudoID)
+            XCTAssertEqual(makePayment.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }
@@ -161,7 +153,7 @@ class PaymentTests: XCTestCase {
         } catch let error as JudoError {
             // Then
             switch error.code {
-            case .JudoIDInvalidError:
+            case .JudoIDInvalidError, .LuhnValidationError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -175,7 +167,7 @@ class PaymentTests: XCTestCase {
             try judo.payment(tooLongJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             switch error.code {
-            case .JudoIDInvalidError:
+            case .JudoIDInvalidError, .LuhnValidationError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -189,7 +181,7 @@ class PaymentTests: XCTestCase {
             try judo.payment(luhnInvalidJudoID, amount: amount, reference: references) // this should fail
         } catch let error as JudoError {
             switch error.code {
-            case .JudoIDInvalidError:
+            case .JudoIDInvalidError, .LuhnValidationError:
                 parameterError = true
             default:
                 XCTFail("exception thrown: \(error)")
@@ -203,8 +195,7 @@ class PaymentTests: XCTestCase {
     func testJudoValidation() {
         // Given
         guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let address = Address(line1: "242 Acklam Road", line2: "Westbourne Park", line3: nil, town: "London", postCode: "W10 5JJ")
-        let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452", address: address)
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
         let amount = Amount(amountString: "30", currency: .GBP)
         let emailAddress = "hans@email.com"
         let mobileNumber = "07100000000"
@@ -215,7 +206,7 @@ class PaymentTests: XCTestCase {
         
         // When
         do {
-            let makePayment = try judo.payment(strippedJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).validate { dict, error in
+            let makePayment = try judo.payment(myJudoID, amount: amount, reference: references).card(card).location(location).contact(mobileNumber, emailAddress).validate { dict, error in
                 if let error = error {
                     XCTAssertEqual(error.code, JudoErrorCode.Validation_Passed)
                 } else {
@@ -225,7 +216,7 @@ class PaymentTests: XCTestCase {
             }
             // Then
             XCTAssertNotNil(makePayment)
-            XCTAssertEqual(makePayment.judoID, strippedJudoID)
+            XCTAssertEqual(makePayment.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }

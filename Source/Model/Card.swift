@@ -89,7 +89,7 @@ public class Card: NSObject {
      
      - returns: a Card object
      */
-    public init(number: String, expiryDate: String, cv2: String, address: Address?, startDate: String? = nil, issueNumber: String? = nil) {
+    public init(number: String, expiryDate: String, cv2: String, address: Address? = nil, startDate: String? = nil, issueNumber: String? = nil) {
         self.number = number
         self.expiryDate = expiryDate
         self.cv2 = cv2

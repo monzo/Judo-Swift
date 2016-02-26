@@ -38,33 +38,33 @@ When you want to process a payment transaction, you create a Payment object and 
 ### Card payment
 
 ```swift
-    Judo.payment(correctJudoID, amount: amount, reference: references)
-        .card(card)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
+    muJudoSession.payment(correctJudoID, amount: amount, reference: references)
+                 .card(card)
+                 .location(location)
+                 .contact(mobileNumber, emailAddress)
+                 .completion({ (data, error) -> () in
+                     if let _ = error {
+                         // failure
+                     } else {
+                         // success
+                     }
+    })
 ```
 
 ### Token payment
 
 ```swift token payment
-    Judo.payment(correctJudoID, amount: amount, reference: references)
-        .paymentToken(payToken)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
+    muJudoSession.payment(correctJudoID, amount: amount, reference: references)
+                 .paymentToken(payToken)
+                 .location(location)
+                 .contact(mobileNumber, emailAddress)
+                 .completion({ (data, error) -> () in
+                     if let _ = error {
+                         // failure
+                     } else {
+                         // success
+                     }
+    })
 ```
 
 Learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>)
@@ -90,11 +90,7 @@ public class Payment: Transaction, TransactionPath {
             throw JudoError(.CardOrTokenMissingError)
         }
         
-        guard let parameters = Session.transactionParameters(self.judoID, amount: self.amount, reference: self.reference, card: self.card, token: self.payToken, pkPayment: self.pkPayment, location: self.location, email: self.emailAddress, mobile: self.mobileNumber, deviceSignal: self.deviceSignal) as? JSONDictionary else {
-            throw JudoError(.ParameterError)
-        }
-        
-        Session.POST(self.dynamicType.path + "/validate", parameters: parameters) { (dict, error) -> Void in
+        Session.POST(self.dynamicType.path + "/validate", parameters: self.parameters) { (dict, error) -> Void in
             block(dict, error)
         }
 

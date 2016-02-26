@@ -27,54 +27,65 @@ import XCTest
 
 class VoidTransactionTests: XCTestCase {
     
-    let judo = try! Judo(token: token, secret: secret)
+    let judo = Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()
-        
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     override func tearDown() {
-        Session.isTesting = false
         judo.sandboxed = false
-        
         super.tearDown()
     }
 
     func testVoidTransaction() {
         // Given
-        let receiptID = "1497684"
-        let amount = Amount(decimalNumber: 30, currency: .GBP)
-        let payRef = "payment123asd"
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
+        let amount = Amount(amountString: "30", currency: .GBP)
+        let emailAddress = "hans@email.com"
+        let mobileNumber = "07100000000"
         
-        let expectation = self.expectationWithDescription("void expectation")
+        let expectation = self.expectationWithDescription("payment expectation")
         
         // When
         do {
-            let refund = try judo.voidTransaction(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+            let makePreAuth = try judo.preAuth(myJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
                     expectation.fulfill()
+                    return
+                }
+                
+                guard let receiptId = data?.first?.receiptID else {
+                    XCTFail("receipt ID was not available in response")
+                    expectation.fulfill()
+                    return
+                }
+                
+                do {
+                    let refund = try self.judo.voidTransaction(receiptId, amount: amount).completion({ (dict, error) -> () in
+                        if let error = error {
+                            XCTFail("api call failed with error: \(error)")
+                        }
+                        expectation.fulfill()
+                    })
+                    
+                    // Then
+                    XCTAssertNotNil(refund)
+                } catch {
+                    XCTFail("exception thrown: \(error)")
                 }
             })
-            
             // Then
-            XCTAssertNotNil(refund)
+            XCTAssertNotNil(makePreAuth)
+            XCTAssertEqual(makePreAuth.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }
         
         self.waitForExpectationsWithTimeout(30, handler: nil)
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }

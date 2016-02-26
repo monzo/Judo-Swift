@@ -27,19 +27,15 @@ import XCTest
 
 class ReceiptTests: XCTestCase {
     
-    let judo = try! Judo(token: token, secret: secret)
+    let judo = Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()
-
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
-        Session.isTesting = false
         judo.sandboxed = false
     }
 
@@ -53,9 +49,8 @@ class ReceiptTests: XCTestCase {
             try judo.receipt(receiptID).completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
-                    expectation.fulfill()
                 }
+                expectation.fulfill()
             })
         } catch {
             XCTFail("exception thrown: \(error)")
@@ -73,9 +68,8 @@ class ReceiptTests: XCTestCase {
             try judo.receipt().completion({ (dict, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
-                    expectation.fulfill()
                 }
+                expectation.fulfill()
             })
         } catch {
             XCTFail("exception thrown: \(error)")
@@ -96,8 +90,8 @@ class ReceiptTests: XCTestCase {
             } else {
                 XCTAssertEqual(dict!.items.count, 5)
                 XCTAssertEqual(dict!.pagination!.offset, 8)
-                expectation.fulfill()
             }
+            expectation.fulfill()
         }
         
         self.waitForExpectationsWithTimeout(30.0, handler: nil)

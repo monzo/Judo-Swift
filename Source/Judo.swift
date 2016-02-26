@@ -127,7 +127,7 @@ public class Judo {
             return try payment(judoID, amount: amount, reference: reference)
         case .PreAuth, .RegisterCard:
             return try preAuth(judoID, amount: amount, reference: reference)
-        case .Refund:
+        default:
             throw JudoError(.InvalidOperationError)
         }
     }
@@ -210,8 +210,8 @@ public class Judo {
      
      - Returns: a Collection object for reactive usage
      */
-    public func collection(receiptID: String, amount: Amount, paymentReference: String) throws -> Collection {
-        return try Collection(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
+    public func collection(receiptID: String, amount: Amount) throws -> Collection {
+        return try Collection(receiptID: receiptID, amount: amount)
     }
     
     
@@ -226,8 +226,8 @@ public class Judo {
      
      - Returns: a Refund object for reactive usage
      */
-    public func refund(receiptID: String, amount: Amount, paymentReference: String) throws -> Refund {
-        return try Refund(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
+    public func refund(receiptID: String, amount: Amount) throws -> Refund {
+        return try Refund(receiptID: receiptID, amount: amount)
     }
     
     
@@ -242,8 +242,8 @@ public class Judo {
      
      - Returns: a Void object for reactive usage
      */
-    public func voidTransaction(receiptID: String, amount: Amount, paymentReference: String) throws -> VoidTransaction {
-        return try VoidTransaction(receiptID: receiptID, amount: amount, paymentReference: paymentReference)
+    public func voidTransaction(receiptID: String, amount: Amount) throws -> VoidTransaction {
+        return try VoidTransaction(receiptID: receiptID, amount: amount)
     }
     
 }

@@ -36,17 +36,17 @@ When you want to register a card, you create a RegisterCard object and start add
 ### Card registration
 
 ```swift
-    Judo.registerCard(correctJudoID, amount: amount, reference: references)
-        .card(card)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
+    myJudoSession.registerCard(correctJudoID, amount: amount, reference: references)
+                 .card(card)
+                 .location(location)
+                 .contact(mobileNumber, emailAddress)
+                 .completion({ (data, error) -> () in
+                     if let _ = error {
+                         // failure
+                     } else {
+                         // success
+                     }
+    })
 ```
 
 Learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>)

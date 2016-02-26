@@ -105,7 +105,7 @@ public class Response: NSObject, GeneratorType, ArrayLiteralConvertible {
         case _ where !items.isEmpty:
             if indexInSequence < items.count {
                 let element = items[indexInSequence]
-                indexInSequence++
+                indexInSequence.advancedBy(1)
                 return element
             }
             indexInSequence = 0
@@ -374,6 +374,8 @@ public class TransactionData: NSObject {
  - PreAuth: A Pre-auth Transaction
  - Refund:  A Refund Transaction
  - RegisterCard: Register a Card
+ - Collection: A Pre-Auth Collection
+ - VOID: A Pre-Auth Void
 */
 public enum TransactionType: String {
     /// A Payment Transaction
@@ -384,6 +386,10 @@ public enum TransactionType: String {
     case Refund
     /// TransactionTypeRegisterCard for registering a card for a later transaction
     case RegisterCard
+    /// A Collection
+    case Collection
+    /// VOID
+    case VOID
 }
 
 

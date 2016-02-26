@@ -55,9 +55,6 @@ public class Session {
     /// Token and secret are saved in the authorizationHeader for authentication of REST API calls
     static var authorizationHeader: String?
     
-    /// Static variable that defines whether local json files should be used instead of the actual REST API
-    internal static var isTesting = false
-    
     
     /**
     POST Helper Method for accessing the judo REST API
@@ -179,9 +176,6 @@ public class Session {
     - Returns: a JSON HTTP request with authorization set
     */
     public static func judoRequest(url: String) -> NSMutableURLRequest {
-        if self.isTesting {
-            return self.test_judoRequest(url)
-        }
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         // json configuration header
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -208,43 +202,6 @@ public class Session {
         // Set auth header
         request.addValue(authHeader, forHTTPHeaderField: "Authorization")
         return request
-    }
-    
-    
-    /**
-    Helper Method to create a JSON HTTP request to a local file depending on the endpoint
-    
-    - Parameter url: the url for the request
-    
-    - Returns: a JSON HTTP request to a local file for testing purposes
-    */
-    private static func test_judoRequest(url: String) -> NSMutableURLRequest {
-        let path = url.stringByReplacingOccurrencesOfString(endpoint, withString: "")
-        
-        var fileName: String?
-        
-        switch path {
-        case "transactions/payments":
-            fileName = "200-payment"
-        case "transactions/payments/validate":
-            fileName = "200-payment-validation"
-        case "transactions/preauths":
-            fileName = "200-preauth-valid"
-        case "transactions/registercard":
-            fileName = "200-payment"
-        case "/transactions/collections":
-            fileName = "200-payment"
-        case "/transactions/refunds":
-            fileName = "200-payment"
-        case "/transactions":
-            fileName = "200-payment"
-        default: // most likely a certain receiptID for query or 3DS
-            fileName = "200-payment"
-        }
-        
-        let filePath = NSBundle(forClass: self).pathForResource(fileName, ofType: "json")!
-        
-        return NSMutableURLRequest(URL: NSURL(fileURLWithPath: filePath))
     }
     
     
@@ -345,111 +302,6 @@ public class Session {
             
         })
         
-    }
-    
-    
-    /**
-    Helper method to create all the parameters necessary for a Transaction
-    
-    - parameter judoID:       The number (e.g. "123-456" or "654321") identifying the Merchant you wish to pay - has to be between 6 and 10 characters and luhn-valid
-    - parameter amount:       The amount and currency to process
-    - parameter reference:    The reference object with payment ref, consumer ref and meta data
-    - parameter card:         The card object containing card info if available
-    - parameter token:        The token if available
-    - parameter pkPayment:    The pkPayment object for an Apple Pay Transaction if available
-    - parameter location:     The location if available
-    - parameter email:        The email address as a string if available
-    - parameter mobile:       The mobile phone number as a string if available
-    - parameter deviceSignal: The device signal for fraud prevention [more info](https://github.com/judopay/judoshield)
-    
-    - returns: a Dictionary Object for sending information necessary for a Transaction
-    */
-    static func transactionParameters(judoID: String?, amount: Amount?, reference: Reference?, card: Card?, token: PaymentToken?, pkPayment: PKPayment?, location: CLLocationCoordinate2D?, email: String?, mobile: String?, deviceSignal: JSONDictionary?, initialRecurringPayment: Bool = false) -> NSDictionary? {
-        let parametersDict = NSMutableDictionary()
-        if let ref = reference {
-            parametersDict["yourConsumerReference"] = ref.yourConsumerReference
-            parametersDict["yourPaymentReference"] = ref.yourPaymentReference
-            if let metaData = ref.yourPaymentMetaData {
-                parametersDict["yourPaymentMetaData"] = metaData
-            }
-        } else {
-            return nil
-        }
-        
-        if let jid = judoID {
-            parametersDict["judoId"] = jid
-        } else {
-            return nil
-        }
-        
-        if let amount = amount {
-            parametersDict["amount"] = amount.amount
-            parametersDict["currency"] = amount.currency.rawValue
-        } else {
-            return nil
-        }
-        
-        if let card = card {
-            parametersDict["cardNumber"] = card.number
-            parametersDict["expiryDate"] = card.expiryDate
-            parametersDict["cv2"] = card.cv2
-            if let cardAddressDict = card.address?.dictionaryRepresentation() {
-                parametersDict["cardAddress"] = cardAddressDict
-            }
-            if let startDate = card.startDate {
-                parametersDict["startDate"] = startDate
-            }
-            if let issueNumber = card.issueNumber {
-                parametersDict["issueNumber"] = issueNumber
-            }
-        } else if let token = token {
-            parametersDict["consumerToken"] = token.consumerToken
-            parametersDict["cardToken"] = token.cardToken
-            parametersDict["cv2"] = token.cv2
-        } else if let pkPayment = pkPayment {
-            var tokenDict = JSONDictionary()
-            if #available(iOS 9.0, *) {
-                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentMethod.displayName
-            } else {
-                tokenDict["paymentInstrumentName"] = pkPayment.token.paymentInstrumentName
-            }
-            if #available(iOS 9.0, *) {
-                tokenDict["paymentNetwork"] = pkPayment.token.paymentMethod.network
-            } else {
-                tokenDict["paymentNetwork"] = pkPayment.token.paymentNetwork
-            }
-            do {
-                tokenDict["paymentData"] = try NSJSONSerialization.JSONObjectWithData(pkPayment.token.paymentData, options: NSJSONReadingOptions.MutableLeaves) as? JSONDictionary
-            } catch {
-                return nil
-            }
-            
-            parametersDict["pkPayment"] = ["token":tokenDict]
-        } else {
-            return nil
-        }
-        
-        if let loc = location {
-            parametersDict["consumerLocation"] = ["latitude":NSNumber(double: loc.latitude), "longitude":NSNumber(double: loc.longitude)]
-        }
-        
-        if let mobile = mobile {
-            parametersDict["mobileNumber"] = mobile
-        }
-        
-        if let email = email {
-            parametersDict["emailAddress"] = email
-        }
-        
-        if let devSignal = deviceSignal {
-            parametersDict["clientDetails"] = devSignal
-        }
-        
-        if initialRecurringPayment {
-            parametersDict["InitialRecurringPayment"] = initialRecurringPayment
-        }
-        
-        return parametersDict
     }
     
     

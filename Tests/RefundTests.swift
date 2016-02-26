@@ -27,42 +27,60 @@ import XCTest
 
 class RefundTests: XCTestCase {
     
-    let judo = try! Judo(token: token, secret: secret)
+    let judo = Judo(token: token, secret: secret)
     
     override func setUp() {
         super.setUp()
-        
-        Session.isTesting = true
         judo.sandboxed = true
     }
     
     override func tearDown() {
-        Session.isTesting = false
         judo.sandboxed = false
-        
         super.tearDown()
     }
     
     func testRefund() {
         // Given
-        let receiptID = "1497684"
-        let amount = Amount(decimalNumber: 30, currency: .GBP)
-        let payRef = "payment123asd"
+        guard let references = Reference(consumerRef: "consumer0053252") else { return }
+        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
+        let amount = Amount(amountString: "30", currency: .GBP)
+        let emailAddress = "hans@email.com"
+        let mobileNumber = "07100000000"
         
-        let expectation = self.expectationWithDescription("refund expectation")
-
+        let expectation = self.expectationWithDescription("payment expectation")
+        
         // When
         do {
-            let refund = try judo.refund(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+            let makePayment = try judo.payment(myJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
-                } else {
                     expectation.fulfill()
+                    return
+                }
+                
+                guard let receiptId = data?.first?.receiptID else {
+                    XCTFail("receipt ID was not available in response")
+                    expectation.fulfill()
+                    return
+                }
+                
+                do {
+                    let refund = try self.judo.refund(receiptId, amount: amount).completion({ (dict, error) -> () in
+                        if let error = error {
+                            XCTFail("api call failed with error: \(error)")
+                        }
+                        expectation.fulfill()
+                    })
+                    
+                    // Then
+                    XCTAssertNotNil(refund)
+                } catch {
+                    XCTFail("exception thrown: \(error)")
                 }
             })
-
             // Then
-            XCTAssertNotNil(refund)
+            XCTAssertNotNil(makePayment)
+            XCTAssertEqual(makePayment.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
         }

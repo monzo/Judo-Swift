@@ -14,29 +14,30 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 ## [2.0.0](https://github.com/JudoPay/Judo-Swift/releases/tag/2.0.0)
-to be Released on 2016-02-18
+to be Released on 2016-02-29
 
 #### Added
-- Brazilien Real static accessor in `Currency`
+- Brazilian Real static accessor in `Currency`
 
 #### Changed
-- removed static accessors in favor of creating a session var in each project
-
-all functions and properties in `Judo` are not `static` anymore
-
+- Removed static accessors in favor of creating a session var in each project
+- Date fields now have an error message
+- Tests now run directly using the sandboxed API
+- Removed API mocks from package
+- All functions and properties in `Judo` are not `static` anymore
 - We moved the endpoint method from `Judo` and placed it into the `Session` class which makes more sense as an origin for this variable
+- A new init() method that initializes your judo session with a given token and secret
 
-- A new init() method that initializes your Judo session with a given token and secret
 ```swift
 let myJudoSession = Judo("your token", secret: "your secret")
 ```
-- in light of creating the Judo session the method which checks if a device is jailbroken has been moved into the initializer. It throws an exception in case the code is executed on a jailbroken device. If you need to restrict usage on Jailbroken devices, use the following method instead
+- In light of creating the judo session, the method which checks if a device is jailbroken has been moved into the initializer. It throws an exception in case the code is executed on a jailbroken device. If you need to restrict usage from jailbroken devices, use the following method instead:
 
 ```swift
 let myJudoSession = try Judo("your token", secret: "your secret", allowJailbrokenDevices: true)
 ```
 
-you can except that the only exception that is thrown is the `JailbrokenDeviceDisallowedError` so you could also do the following.
+You can expect that the only exception that is thrown is the `JailbrokenDeviceDisallowedError` so you could also do the following:
 
 ```swift
 let myJudoSession = try? Judo("your token", secret: "your secret", allowJailbrokenDevices: true)
