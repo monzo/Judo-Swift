@@ -120,7 +120,7 @@ $ git submodule update --init
 ### Examples
 
 #### Token and Secret
-The token and secret are accessible from your judo account [here](https://portal.judopay.com/Developer). After you have created an app you can either generated sandbox or live tokens. We recommend you to set this in your AppDelegate in the `didFinishLaunchingWithOptions` method.
+The token and secret are accessible from your judo account [here](https://portal.judopay.com/Developer). After you have created an app you can either generate sandbox or live tokens. We recommend you to set this in your AppDelegate in the `didFinishLaunchingWithOptions` method.
 
 ```swift
 let token = "a3xQdxP6iHdWg1zy"
@@ -149,7 +149,7 @@ let myJudoSession = Judo("your token", secret: "your secret")
 
 let judoID = "100111222"
 let references = Reference(yourConsumerReference: "consumer0053252")
-let card = Card(number: "4976000000003436", expiryDate: "12/15", cv2: "452")
+let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
 let amount = Amount(amountString: "30", currency: .GBP)
 let emailAddress = "hans@email.com"
 let mobileNumber = "07100000000"
@@ -168,17 +168,17 @@ let deviceSignal = judoShield.deviceSignal()
 
 do {
 	let makePayment = try myJudoSession.payment(correctJudoID, amount: amount, reference: references)
-								.card(card)
-								.location(location)
-								.deviceSignal(deviceSignal)
-								.contact(mobileNumber, emailAddress)
-								.completion({ (data, error) -> () in
-									if let _ = error {
-										// failure
-									} else {
-										// success
-									}
-								})
+									   .card(card)
+									   .location(location)
+									   .deviceSignal(deviceSignal)
+									   .contact(mobileNumber, emailAddress)
+									   .completion({ (data, error) -> () in
+										   if let _ = error {
+											   // failure
+										   } else {
+											   // success
+										   }
+									   })
 } catch {
 	// error creating a Transaction e.g. the judoID could be in a wrong format
 }
@@ -206,7 +206,7 @@ Notice that the only difference is calling `.paymentToken(payToken)` with a vali
 
 ##### Card pre-authorization
 
-```
+```swift
 let myJudoSession = Judo("your token", secret: "your secret")
 ...
 myJudoSession.preAuth(correctJudoID, amount: amount, reference: references)
@@ -225,7 +225,7 @@ myJudoSession.preAuth(correctJudoID, amount: amount, reference: references)
 
 ##### Token pre-authorization
 
-```
+```swift
 let myJudoSession = Judo("your token", secret: "your secret")
 ...
 myJudoSession.preAuth(correctJudoID, amount: amount, reference: references)
