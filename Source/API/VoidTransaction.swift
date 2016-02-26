@@ -24,6 +24,22 @@
 
 import Foundation
 
+
+/**
+ A Void transaction is next to a collection the second counterpart to a Pre-authorization transaction. While the Pre-auth transaction reserves funds on a Consumer's card, the Collection initiates the transfer of those reserved funds into your judo account and the Void transaction cancels the previously executed pre-Authorization.
+ 
+ ### void by ID and amount
+ ```swift
+    myJudoSession.void(receiptID, amount: amount).completion({ (dict, error) -> () in
+        if let error = error {
+            // error
+        } else {
+            // success
+        }
+    })
+ ```
+ 
+ */
 public class VoidTransaction: NSObject {
     
     /// The receipt ID for a refund
@@ -39,7 +55,6 @@ public class VoidTransaction: NSObject {
      
      - Parameter receiptID: the receiptID identifying the transaction you wish to void - has to be luhn-valid
      - Parameter amount: The amount to process
-     - Parameter reference: the unique payment reference of the original pre auth
      
      - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
      */

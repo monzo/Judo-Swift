@@ -374,6 +374,8 @@ public class TransactionData: NSObject {
  - PreAuth: A Pre-auth Transaction
  - Refund:  A Refund Transaction
  - RegisterCard: Register a Card
+ - Collection: A Pre-Auth Collection
+ - VOID: A Pre-Auth Void
 */
 public enum TransactionType: String {
     /// A Payment Transaction

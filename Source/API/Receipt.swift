@@ -31,7 +31,7 @@ Alternatively, you can receive a list of all the transactions. By default it wil
 
 ### Receipt by ID
 ```swift
-    Judo.receipt(receiptID).completion({ (dict, error) -> () in
+    myJudoSession.receipt(receiptID).completion({ (dict, error) -> () in
         if let _ = error {
             // error
         } else {
@@ -42,7 +42,7 @@ Alternatively, you can receive a list of all the transactions. By default it wil
 
 ### All receipts
 ```swift
-    Judo.receipt(nil).completion({ (dict, error) -> () in
+    myJudoSession.receipt(nil).completion({ (dict, error) -> () in
         if let _ = error {
             // error
         } else {

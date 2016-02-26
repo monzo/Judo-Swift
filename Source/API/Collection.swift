@@ -28,9 +28,9 @@ import Foundation
 /** 
 A Collection transaction is the counterpart to a Pre-authorization transaction. While the Pre-auth transaction reserves funds on a Consumer's card, the Collection initiates the transfer of those reserved funds into your judo account.
 
-### collection by ID, amount and reference
+### collection by ID and amount
 ```swift
-    Judo.collection(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+    muJudoSession.collection(receiptID, amount: amount).completion({ (dict, error) -> () in
         if let error = error {
             // error
         } else {
@@ -55,7 +55,6 @@ public class Collection: NSObject {
     
     - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
     - Parameter amount: The amount to process
-    - Parameter reference: the reference
     
     - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     */

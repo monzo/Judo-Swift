@@ -38,33 +38,33 @@ When you want to process a Pre-authorization, you create a Pre-auth object and s
 ### Card Pre-auth
 
 ```swift
-    Judo.preauth(correctJudoID, amount: amount, reference: references)
-        .card(card)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
+    myJudoSession.preauth(correctJudoID, amount: amount, reference: references)
+                 .card(card)
+                 .location(location)
+                 .contact(mobileNumber, emailAddress)
+                 .completion({ (data, error) -> () in
+                     if let _ = error {
+                         // failure
+                     } else {
+                         // success
+                     }
+    })
 ```
 
 ### Token Pre-auth
 
-```swift token payment
-    Judo.payment(correctJudoID, amount: amount, reference: references)
-        .paymentToken(payToken)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
+```swift token preAuth
+    myJudoSession.preauth(correctJudoID, amount: amount, reference: references)
+                 .paymentToken(payToken)
+                 .location(location)
+                 .contact(mobileNumber, emailAddress)
+                 .completion({ (data, error) -> () in
+                     if let _ = error {
+                         // failure
+                     } else {
+                         // success
+                     }
+    })
 ```
 
 Learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>)

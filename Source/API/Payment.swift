@@ -38,33 +38,33 @@ When you want to process a payment transaction, you create a Payment object and 
 ### Card payment
 
 ```swift
-    Judo.payment(correctJudoID, amount: amount, reference: references)
-        .card(card)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
+    muJudoSession.payment(correctJudoID, amount: amount, reference: references)
+                 .card(card)
+                 .location(location)
+                 .contact(mobileNumber, emailAddress)
+                 .completion({ (data, error) -> () in
+                     if let _ = error {
+                         // failure
+                     } else {
+                         // success
+                     }
+    })
 ```
 
 ### Token payment
 
 ```swift token payment
-    Judo.payment(correctJudoID, amount: amount, reference: references)
-        .paymentToken(payToken)
-        .location(location)
-        .contact(mobileNumber, emailAddress)
-        .completion({ (data, error) -> () in
-            if let _ = error {
-                // failure
-            } else {
-                // success
-            }
-        })
+    muJudoSession.payment(correctJudoID, amount: amount, reference: references)
+                 .paymentToken(payToken)
+                 .location(location)
+                 .contact(mobileNumber, emailAddress)
+                 .completion({ (data, error) -> () in
+                     if let _ = error {
+                         // failure
+                     } else {
+                         // success
+                     }
+    })
 ```
 
 Learn more [here](<https://www.judopay.com/docs/v4_1/restful-api/api-reference/>)

@@ -27,9 +27,9 @@ import Foundation
 /** 
 Refunding a successful payment is easy, simply identify the original receipt ID for the payment and the amount you wish to refund. When we've received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you can make a Refund with the SDK.
 
-### Refund by ID, amount and reference
+### Refund by ID and amount
 ```swift
-    Judo.refund(receiptID, amount: amount, paymentReference: payRef).completion({ (dict, error) -> () in
+    myJudoSession.refund(receiptID, amount: amount).completion({ (dict, error) -> () in
         if let error = error {
             // error
         } else {
@@ -54,7 +54,6 @@ public class Refund: NSObject {
     
     - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
     - Parameter amount: The amount to process
-    - Parameter reference: the reference
     
     - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
     */
