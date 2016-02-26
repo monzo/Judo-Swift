@@ -123,6 +123,7 @@ import Foundation
  - SerializationError:                                    SerializationError
  - RequestError:                                          RequestError
  - TokenSecretError:                                      TokenSecretError
+ - AmountMissingError:                                    AmountMissingError
  - CardAndTokenError:                                     CardAndTokenError
  - CardOrTokenMissingError:                               CardOrTokenMissingError
  - PKPaymentMissingError:                                 PKPaymentMissingError
@@ -136,6 +137,7 @@ import Foundation
  - InvalidCardNumber:                                     InvalidCardNumber
  - InvalidEntry:                                          InvalidEntry
  - InvalidCardNetwork:                                    InvalidCardNetwork
+ - InvalidPostCodeError:                                  InvalidPostCodeError
  - ThreeDSAuthRequest:                                    ThreeDSAuthRequest
  - Failed3DSError:                                        Failed3DSError
  - UnknownError:                                          UnknownError
@@ -336,6 +338,8 @@ import Foundation
     case TokenSecretError
     /// CardAndTokenError
     case CardAndTokenError
+    /// AmountMissingError
+    case AmountMissingError
     /// CardOrTokenMissingError
     case CardOrTokenMissingError
     /// PKPaymentMissingError
@@ -362,6 +366,8 @@ import Foundation
     case InvalidEntry
     /// InvalidCardNetwork
     case InvalidCardNetwork
+    /// InvalidPostCode
+    case InvalidPostCode
     
     // MARK: 3DS Error
     /// Not a real error but needed to identify when a 3DS routing has been requested by the judo API

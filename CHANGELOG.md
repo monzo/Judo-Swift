@@ -18,6 +18,8 @@ to be Released on 2016-02-29
 
 #### Added
 - Brazilian Real static accessor in `Currency`
+- AmountMissingError for an error that can occur in very rare cases when a Payment or PreAuth is created without providing an amount
+- InvalidPostCodeError for an error that can occur when an invalid post code has been entered
 
 #### Changed
 - Removed static accessors in favor of creating a session var in each project
@@ -44,6 +46,10 @@ let myJudoSession = try? Judo("your token", secret: "your secret", allowJailbrok
 ```
 
 In this case, if the code was executed on a jailbroken device, the myJudoSession optional will be nil.
+
+#### Removed
+- amount entry from register card
+
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---

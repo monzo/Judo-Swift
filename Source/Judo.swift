@@ -125,8 +125,10 @@ public class Judo {
         switch transactionType {
         case .Payment:
             return try payment(judoID, amount: amount, reference: reference)
-        case .PreAuth, .RegisterCard:
+        case .PreAuth:
             return try preAuth(judoID, amount: amount, reference: reference)
+        case .RegisterCard:
+            return try registerCard(judoID, reference: reference)
         default:
             throw JudoError(.InvalidOperationError)
         }
@@ -176,8 +178,8 @@ public class Judo {
      
      - Returns: a RegisterCard Object
      */
-    public func registerCard(judoID: String, amount: Amount, reference: Reference) throws -> RegisterCard {
-        return try RegisterCard(judoID: judoID, amount: amount, reference: reference)
+    public func registerCard(judoID: String, reference: Reference) throws -> RegisterCard {
+        return try RegisterCard(judoID: judoID, amount: nil, reference: reference)
     }
     
     

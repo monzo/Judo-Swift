@@ -58,8 +58,9 @@ public class Transaction {
         }
     }
     /// The amount and currency of the transaction
-    public private (set) var amount: Amount {
+    public private (set) var amount: Amount? {
         didSet {
+            guard let amount = amount else { return }
             self.parameters["amount"] = amount.amount
             self.parameters["currency"] = amount.currency.rawValue
         }
@@ -154,18 +155,21 @@ public class Transaction {
     
     - Throws: JudoIDInvalidError judoID does not match the given length or is not luhn valid
     */
-    public init(judoID: String, amount: Amount, reference: Reference) throws {
+    public init(judoID: String, amount: Amount?, reference: Reference) throws {
         self.judoID = judoID
         self.amount = amount
         self.reference = reference
         
         self.parameters["judoId"] = judoID
-        self.parameters["amount"] = amount.amount
-        self.parameters["currency"] = amount.currency.rawValue
         self.parameters["yourConsumerReference"] = reference.yourConsumerReference
         self.parameters["yourPaymentReference"] = reference.yourPaymentReference
         if let metaData = reference.yourPaymentMetaData {
             self.parameters["yourPaymentMetaData"] = metaData
+        }
+        
+        if let amount = amount {
+            self.parameters["amount"] = amount.amount
+            self.parameters["currency"] = amount.currency.rawValue
         }
         
         // judo ID validation
@@ -271,13 +275,21 @@ public class Transaction {
     - Returns: reactive self
     
     - Throws: ParameterError one or more of the given parameters were in the incorrect format or nil
+    - Throws: CardAndTokenError multiple methods of payment have been provided, please make sure to only provide one method
+    - Throws: CardOrTokenMissingError no method of transaction was provided, please provide either a card, paymentToken or PKPayment
+    - Throws: AmountMissingError no amount has been provided
+    - Throws: DuplicateTransactionError please provide a new Reference object if this transaction is not a duplicate
     */
     public func completion(block: JudoCompletionBlock) throws -> Self {
         
-        if (self.card != nil && self.payToken != nil) {
+        if self.card != nil && self.payToken != nil {
             throw JudoError(.CardAndTokenError)
         } else if self.card == nil && self.payToken == nil && self.pkPayment == nil {
             throw JudoError(.CardOrTokenMissingError)
+        }
+        
+        if !(self.dynamicType == RegisterCard.self) && self.amount == nil {
+            throw JudoError(.AmountMissingError)
         }
         
         if self.reference.yourPaymentReference == self.currentTransactionReference {
