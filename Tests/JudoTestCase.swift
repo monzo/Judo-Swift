@@ -1,5 +1,5 @@
 //
-//  SessionTests.swift
+//  JudoTestCase.swift
 //  JudoTests
 //
 //  Copyright (c) 2016 Alternative Payments Ltd
@@ -23,17 +23,36 @@
 //  SOFTWARE.
 
 import XCTest
-import CoreLocation
 @testable import Judo
 
-class SessionTests: JudoTestCase {
-    
-    func testLuhnCheck() {
-        let validLuhnNumber = "100963875"
-        XCTAssertTrue(validLuhnNumber.isLuhnValid())
-        let invalidLuhnNumber = "100963874"
-        XCTAssertFalse(invalidLuhnNumber.isLuhnValid())
+let token = "<#YOUR TOKEN#>"
+let secret = "<#YOUR SECRET#>"
 
+class JudoTestCase: XCTestCase {
+    
+    let myJudoID = "100000009"
+    
+    let judo = Judo(token: token, secret: secret)
+    
+    let validVisaTestCard = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
+    let declinedVisaTestCard = Card(number: "4221690000004963", expiryDate: "12/20", cv2: "125")
+    
+    let oneGBPAmount = Amount(amountString: "1.00", currency: .GBP)
+    let invalidAmount = Amount(amountString: "", currency: .GBP)
+    let invalidCurrencyAmount = Amount(amountString: "1.00", currency: Currency(""))
+    
+    let validReference = Reference(consumerRef: "consumer reference")!
+    
+    let invalidReference = Reference(consumerRef: "")!
+    
+    override func setUp() {
+        super.setUp()
+        judo.sandboxed = true
+    }
+    
+    override func tearDown() {
+        judo.sandboxed = false
+        super.tearDown()
     }
     
 }

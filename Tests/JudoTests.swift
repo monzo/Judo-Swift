@@ -25,34 +25,12 @@
 import XCTest
 @testable import Judo
 
-let token = "<#YOUR TOKEN#>"
-let secret = "<#YOUR SECRET#>"
-
-let myJudoID = "100000009"
-
-class JudoTests: XCTestCase {
-    
-    let judo = Judo(token: token, secret: secret)
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    
+class JudoTests: JudoTestCase {
     
     func testJudoErrorDomain() {
         let errorDomain = JudoErrorDomain
         XCTAssertNotNil(errorDomain)
     }
-    
     
     
     func testJudoSandboxMode() {
@@ -63,10 +41,8 @@ class JudoTests: XCTestCase {
     }
     
     
-    
     func testSetTokenAndSecret() {
         // Given
-//        XCTAssertFalse(Judo.didSetTokenAndSecret()) can not be checked since this test might be triggered after other tests have run
         
         // When
         judo.setToken(token, secret: secret)

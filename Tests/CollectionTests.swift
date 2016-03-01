@@ -1,6 +1,6 @@
 //
 //  CollectionTests.swift
-//  Judo
+//  JudoTests
 //
 //  Copyright (c) 2016 Alternative Payments Ltd
 //
@@ -25,65 +25,58 @@
 import XCTest
 @testable import Judo
 
-class CollectionTests: XCTestCase {
-    
-    let judo = Judo(token: token, secret: secret)
-    
-    override func setUp() {
-        super.setUp()
-        judo.sandboxed = true
-    }
-    
-    override func tearDown() {
-        judo.sandboxed = false
-        super.tearDown()
-    }
+class CollectionTests: JudoTestCase {
     
     func testCollection() {
-        // Given
-        guard let references = Reference(consumerRef: "consumer0053252") else { return }
-        let card = Card(number: "4976000000003436", expiryDate: "12/20", cv2: "452")
-        let amount = Amount(amountString: "30", currency: .GBP)
-        let emailAddress = "hans@email.com"
-        let mobileNumber = "07100000000"
         
         let expectation = self.expectationWithDescription("payment expectation")
         
-        // When
         do {
-            let makePreAuth = try judo.preAuth(myJudoID, amount: amount, reference: references).card(card).contact(mobileNumber, emailAddress).completion({ (data, error) -> () in
+            // Given I have made a pre-authorisation
+            let preAuth = try judo.preAuth(myJudoID, amount: oneGBPAmount, reference: validReference).card(validVisaTestCard)
+            
+            try preAuth.completion({ (response, error) -> () in
                 if let error = error {
                     XCTFail("api call failed with error: \(error)")
                     expectation.fulfill()
                     return
                 }
                 
-                guard let receiptId = data?.first?.receiptID else {
+                // And I have a receipt ID of a given transaction
+                // And I have the amount of that transaction
+                guard let receiptId = response?.first?.receiptID,
+                    let amount = response?.first?.amount else {
                     XCTFail("receipt ID was not available in response")
                     expectation.fulfill()
                     return
                 }
                 
-                // When
+                // When I perform a collection
                 do {
-                    let collection = try self.judo.collection(receiptId, amount: amount).completion({ (dict, error) -> () in
+                    let collection = try self.judo.collection(receiptId, amount: amount).completion({ (response, error) -> () in
+                        // Then I receive a successful response
                         if let error = error {
                             XCTFail("api call failed with error: \(error)")
                         }
+                        
+                        XCTAssertNotNil(response)
+                        XCTAssertNotNil(response?.first)
+                        
                         expectation.fulfill();
                     })
                     
-                    // Then
                     XCTAssertNotNil(collection)
                 } catch {
                     XCTFail("exception thrown: \(error)")
+                    expectation.fulfill();
                 }
             })
-            // Then
-            XCTAssertNotNil(makePreAuth)
-            XCTAssertEqual(makePreAuth.judoID, myJudoID)
+            
+            XCTAssertNotNil(preAuth)
+            XCTAssertEqual(preAuth.judoID, myJudoID)
         } catch {
             XCTFail("exception thrown: \(error)")
+            expectation.fulfill();
         }
         
         self.waitForExpectationsWithTimeout(30, handler: nil)

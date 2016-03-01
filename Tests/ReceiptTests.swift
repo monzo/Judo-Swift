@@ -1,6 +1,6 @@
 //
 //  ReceiptTests.swift
-//  Judo
+//  JudoTests
 //
 //  Copyright (c) 2016 Alternative Payments Ltd
 //
@@ -25,20 +25,8 @@
 import XCTest
 @testable import Judo
 
-class ReceiptTests: XCTestCase {
+class ReceiptTests: JudoTestCase {
     
-    let judo = Judo(token: token, secret: secret)
-    
-    override func setUp() {
-        super.setUp()
-        judo.sandboxed = true
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-        judo.sandboxed = false
-    }
-
     func testJudoTransactionReceipt() {
         // Given
         let receiptID = "1491273"
@@ -60,6 +48,7 @@ class ReceiptTests: XCTestCase {
         
     }
     
+    
     func testJudoTransactionAllReceipts() {
         // Given
         let expectation = self.expectationWithDescription("all receipts fetch expectation")
@@ -78,6 +67,7 @@ class ReceiptTests: XCTestCase {
         self.waitForExpectationsWithTimeout(30.0, handler: nil)
         
     }
+    
     
     func testJudoTransactionReceiptWithPagination() {
         // Given
