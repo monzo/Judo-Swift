@@ -1,6 +1,6 @@
 //
 //  ListTests.swift
-//  Judo
+//  JudoTests
 //
 //  Copyright (c) 2016 Alternative Payments Ltd
 //
@@ -25,19 +25,7 @@
 import XCTest
 @testable import Judo
 
-class ListTests: XCTestCase {
-    
-    let judo = Judo(token: token, secret: secret)
-    
-    override func setUp() {
-        super.setUp()
-        judo.sandboxed = true
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-        judo.sandboxed = false
-    }
+class ListTests: JudoTestCase {
     
     func testJudoListPayments() {
         let expectation = self.expectationWithDescription("list all payments expectation")
