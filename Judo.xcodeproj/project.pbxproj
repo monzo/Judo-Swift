@@ -13,6 +13,8 @@
 		3B0CDC821C847FE40052642C /* JudoTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0CDC811C847FE40052642C /* JudoTestCase.swift */; };
 		3B0CDC841C84877D0052642C /* TransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0CDC831C84877D0052642C /* TransactionTests.swift */; };
 		3B10A71E1C859BFE003D73B8 /* RegisterCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A71D1C859BFE003D73B8 /* RegisterCardTests.swift */; };
+		3B10A7241C86010A003D73B8 /* TokenPaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A7221C8600C9003D73B8 /* TokenPaymentTests.swift */; };
+		3B10A7261C86011F003D73B8 /* TokenPreAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A7251C86011F003D73B8 /* TokenPreAuthTests.swift */; };
 		DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0DC8931BA317C9002FBECC /* RegisterCard.swift */; };
 		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
 		DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */; };
@@ -62,6 +64,8 @@
 		3B0CDC811C847FE40052642C /* JudoTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JudoTestCase.swift; sourceTree = "<group>"; };
 		3B0CDC831C84877D0052642C /* TransactionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionTests.swift; sourceTree = "<group>"; };
 		3B10A71D1C859BFE003D73B8 /* RegisterCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCardTests.swift; sourceTree = "<group>"; };
+		3B10A7221C8600C9003D73B8 /* TokenPaymentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPaymentTests.swift; sourceTree = "<group>"; };
+		3B10A7251C86011F003D73B8 /* TokenPreAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPreAuthTests.swift; sourceTree = "<group>"; };
 		DA0DC8931BA317C9002FBECC /* RegisterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = RegisterCard.swift; path = Source/API/RegisterCard.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Model/Response.swift; sourceTree = "<group>"; };
 		DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Amount.swift; path = Source/Model/Amount.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -204,7 +208,9 @@
 				3B0CDC7F1C84587E0052642C /* AuthenticationTests.swift */,
 				3B0CDC831C84877D0052642C /* TransactionTests.swift */,
 				DAFA40121B5957E80094CFCA /* PaymentTests.swift */,
+				3B10A7221C8600C9003D73B8 /* TokenPaymentTests.swift */,
 				DAFA40141B5958340094CFCA /* PreAuthTests.swift */,
+				3B10A7251C86011F003D73B8 /* TokenPreAuthTests.swift */,
 				3B10A71D1C859BFE003D73B8 /* RegisterCardTests.swift */,
 				DAFA40161B5958480094CFCA /* CollectionTests.swift */,
 				DAFA40181B5958560094CFCA /* RefundTests.swift */,
@@ -358,6 +364,7 @@
 				DAFA40251B5E9A880094CFCA /* SessionTests.swift in Sources */,
 				DA1C6CB71B6F9E86009F2BE9 /* ListTests.swift in Sources */,
 				3B0CDC841C84877D0052642C /* TransactionTests.swift in Sources */,
+				3B10A7261C86011F003D73B8 /* TokenPreAuthTests.swift in Sources */,
 				DAAFCE841B69240600C9993D /* ReceiptTests.swift in Sources */,
 				3B0CDC801C84587E0052642C /* AuthenticationTests.swift in Sources */,
 				DAFA40191B5958560094CFCA /* RefundTests.swift in Sources */,
@@ -365,6 +372,7 @@
 				3B10A71E1C859BFE003D73B8 /* RegisterCardTests.swift in Sources */,
 				DAFA40131B5957E80094CFCA /* PaymentTests.swift in Sources */,
 				DAFA40021B5939E60094CFCA /* JudoTests.swift in Sources */,
+				3B10A7241C86010A003D73B8 /* TokenPaymentTests.swift in Sources */,
 				DAFA40151B5958340094CFCA /* PreAuthTests.swift in Sources */,
 				DAFA40171B5958480094CFCA /* CollectionTests.swift in Sources */,
 				3B0CDC821C847FE40052642C /* JudoTestCase.swift in Sources */,
