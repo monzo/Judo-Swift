@@ -30,13 +30,15 @@ class ListTests: JudoTestCase {
     func testJudoListPayments() {
         let expectation = self.expectationWithDescription("list all payments expectation")
         
-        Payment.list({ (dict, error) -> () in
+        let payment = judo.list(Payment)
+        
+        payment.list({ (dict, error) -> () in
             if let error = error {
                 XCTFail("api call failed with error: \(error)")
-            } else {
-                expectation.fulfill()
             }
+            expectation.fulfill()
         })
+        
         
         self.waitForExpectationsWithTimeout(30.0, handler: nil)
     }
@@ -47,17 +49,36 @@ class ListTests: JudoTestCase {
         
         let expectation = self.expectationWithDescription("list all payments for given pagination")
         
+        let payment = judo.list(Payment)
+        
         // When
-        Payment.list(pagination) { (response, error) -> () in
+        payment.list(pagination) { (response, error) -> () in
             // Then
             if let _ = error {
                 XCTFail()
             } else {
                 XCTAssertEqual(response!.items.count, 15)
                 XCTAssertEqual(response!.pagination!.offset, 44)
-                expectation.fulfill()
             }
+            expectation.fulfill()
         }
+        
+        self.waitForExpectationsWithTimeout(30.0, handler: nil)
+    }
+    
+    
+    func testJudoListPreAuths() {
+        
+        let expectation = self.expectationWithDescription("list all preauths expectation")
+        
+        let preAuth = judo.list(PreAuth)
+        
+        preAuth.list({ (dict, error) -> () in
+            if let error = error {
+                XCTFail("api call failed with error: \(error)")
+            }
+            expectation.fulfill()
+        })
         
         self.waitForExpectationsWithTimeout(30.0, handler: nil)
     }

@@ -29,16 +29,24 @@ import PassKit
 /// intended for subclassing paths
 public protocol TransactionPath {
     /// path variable made for subclassing
-    static var path: String {get}
+    static var path: String { get }
+}
+
+public protocol SessionProtocol {
+    var APISession: Session? { get set }
+    func apiSession(session: Session) -> Self
+    init()
 }
 
 /// Superclass Helper for Payments and Pre-auths
-public class Transaction {
+public class Transaction: SessionProtocol {
     
     /// The current transaction if there is one - for preventing multiple transactions running at the same time
     private var currentTransactionReference: String? = nil
     
     internal var parameters = [String:AnyObject]();
+    /// The current Session to access the Judo API
+    public var APISession: Session?
     
     /// The judo ID for the transaction
     public private (set) var judoID: String {
@@ -57,6 +65,7 @@ public class Transaction {
             }
         }
     }
+    
     /// The amount and currency of the transaction
     public private (set) var amount: Amount? {
         didSet {
@@ -77,6 +86,7 @@ public class Transaction {
             self.parameters["issueNumber"] = card?.issueNumber
         }
     }
+    
     /// The payment token of the transaction
     public private (set) var payToken: PaymentToken? {
         didSet {
@@ -93,6 +103,7 @@ public class Transaction {
             self.parameters["consumerLocation"] = ["latitude":NSNumber(double: location.latitude), "longitude":NSNumber(double: location.longitude)]
         }
     }
+    
     /// Device identification for this transaction
     public private (set) var deviceSignal: JSONDictionary? {
         didSet {
@@ -106,6 +117,7 @@ public class Transaction {
             self.parameters["mobileNumber"] = mobileNumber
         }
     }
+    
     /// Email address of the entity initiating the transaction
     public private (set) var emailAddress: String? {
         didSet {
@@ -184,6 +196,16 @@ public class Transaction {
         } else {
             throw JudoError(.JudoIDInvalidError)
         }
+    }
+    
+    
+    /**
+     Internal initializer for the purpose of creating an instance for listing payments or preAuths
+     */
+    public required init() {
+        self.judoID = ""
+        self.amount = nil
+        self.reference = Reference(consumerRef: "")!
     }
     
     
@@ -268,6 +290,19 @@ public class Transaction {
     
     
     /**
+     apiSession caller - this method sets the session variable and returns itself for further use
+     
+     - Parameter session: the API session which is used to call the Judo endpoints
+     
+     - Returns: reactive self
+     */
+    public func apiSession(session: Session) -> Self {
+        self.APISession = session
+        return self
+    }
+    
+    
+    /**
     Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods
     
     - Parameter block: a completion block that is called when the request finishes
@@ -297,7 +332,7 @@ public class Transaction {
         }
         self.currentTransactionReference = self.reference.yourPaymentReference
         
-        Session.POST(self.path(), parameters: self.parameters, completion: block)
+        self.APISession?.POST(self.path(), parameters: self.parameters, completion: block)
         
         return self
     }
@@ -326,7 +361,7 @@ public class Transaction {
         
         paymentDetails["receiptID"] = receiptID
         
-        Session.PUT("transactions/" + receiptID, parameters: paymentDetails, completion: block)
+        self.APISession?.PUT("transactions/" + receiptID, parameters: paymentDetails, completion: block)
 
         return self
     }
@@ -339,7 +374,7 @@ public class Transaction {
     
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(block: JudoCompletionBlock) {
+    public func list(block: JudoCompletionBlock) {
         self.list(nil, block: block)
     }
     
@@ -352,12 +387,12 @@ public class Transaction {
     - Parameter pagination: The offset, number of items and order in which to return the items
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(pagination: Pagination?, block: JudoCompletionBlock) {
-        var path = (self as! TransactionPath.Type).path
+    public func list(pagination: Pagination?, block: JudoCompletionBlock) {
+        var path = self.path()
         if let pag = pagination {
-            path += "?pageSize=\(pag.pageSize)&offset=\(pag.offset)&sort=\(pag.sort.rawValue)"
+            path = path + "?pageSize=\(pag.pageSize)&offset=\(pag.offset)&sort=\(pag.sort.rawValue)"
         }
-        Session.GET(path, parameters: nil, completion: block)
+        self.APISession?.GET(path, parameters: nil, completion: block)
     }
     
     

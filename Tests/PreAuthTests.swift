@@ -230,18 +230,4 @@ class PreAuthTests: JudoTestCase {
     }
     
     
-    func testJudoListPreAuths() {
-        let expectation = self.expectationWithDescription("list all preauths expectation")
-        
-        PreAuth.list({ (dict, error) -> () in
-            if let error = error {
-                XCTFail("api call failed with error: \(error)")
-            } else {
-                expectation.fulfill()
-            }
-        })
-        
-        self.waitForExpectationsWithTimeout(30.0, handler: nil)
-    }
-    
 }
