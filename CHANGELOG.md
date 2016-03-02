@@ -29,6 +29,7 @@ to be Released on 2016-02-29
 - All functions and properties in `Judo` are not `static` anymore.
 - We moved the endpoint method from `Judo` and placed it into the `Session` class which makes more sense as an origin for this variable.
 - A new init() method that initializes your judo session with a given token and secret.
+- Session is now no longer static and globally accessible - a single session instance will be created inside the Judo instance and then passed on for further use.
 
 ```swift
 let myJudoSession = Judo("your token", secret: "your secret")
