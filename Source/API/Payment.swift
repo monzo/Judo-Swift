@@ -90,7 +90,7 @@ public class Payment: Transaction, TransactionPath {
             throw JudoError(.CardOrTokenMissingError)
         }
         
-        Session.POST(self.dynamicType.path + "/validate", parameters: self.parameters) { (dict, error) -> Void in
+        self.APISession?.POST(self.dynamicType.path + "/validate", parameters: self.parameters) { (dict, error) -> Void in
             block(dict, error)
         }
 

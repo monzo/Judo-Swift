@@ -15,6 +15,7 @@
 		3B10A71E1C859BFE003D73B8 /* RegisterCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A71D1C859BFE003D73B8 /* RegisterCardTests.swift */; };
 		3B10A7241C86010A003D73B8 /* TokenPaymentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A7221C8600C9003D73B8 /* TokenPaymentTests.swift */; };
 		3B10A7261C86011F003D73B8 /* TokenPreAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A7251C86011F003D73B8 /* TokenPreAuthTests.swift */; };
+		3B10A72C1C872973003D73B8 /* TransactionProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B10A72B1C872973003D73B8 /* TransactionProcess.swift */; };
 		DA0DC8941BA317C9002FBECC /* RegisterCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0DC8931BA317C9002FBECC /* RegisterCard.swift */; };
 		DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */; };
 		DA1C6CAF1B6F9BE7009F2BE9 /* Amount.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */; };
@@ -66,6 +67,7 @@
 		3B10A71D1C859BFE003D73B8 /* RegisterCardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterCardTests.swift; sourceTree = "<group>"; };
 		3B10A7221C8600C9003D73B8 /* TokenPaymentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPaymentTests.swift; sourceTree = "<group>"; };
 		3B10A7251C86011F003D73B8 /* TokenPreAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenPreAuthTests.swift; sourceTree = "<group>"; };
+		3B10A72B1C872973003D73B8 /* TransactionProcess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionProcess.swift; path = Source/API/TransactionProcess.swift; sourceTree = "<group>"; };
 		DA0DC8931BA317C9002FBECC /* RegisterCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = RegisterCard.swift; path = Source/API/RegisterCard.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DA1C6CAA1B6F86A6009F2BE9 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Model/Response.swift; sourceTree = "<group>"; };
 		DA1C6CAE1B6F9BE7009F2BE9 /* Amount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Amount.swift; path = Source/Model/Amount.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -147,15 +149,16 @@
 		DA1C6CAD1B6F9B4F009F2BE9 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				DAFA401A1B5959420094CFCA /* Collection.swift */,
 				DAFA40101B5956570094CFCA /* Payment.swift */,
 				DAFA401C1B59596B0094CFCA /* PreAuth.swift */,
-				DAAFCE811B67ADE400C9993D /* Receipt.swift */,
-				DAFA401E1B595A510094CFCA /* Refund.swift */,
 				DA0DC8931BA317C9002FBECC /* RegisterCard.swift */,
+				DAFA401E1B595A510094CFCA /* Refund.swift */,
+				DAFA401A1B5959420094CFCA /* Collection.swift */,
+				DAFA40221B5E3D160094CFCA /* VoidTransaction.swift */,
+				DAAFCE811B67ADE400C9993D /* Receipt.swift */,
 				3B02ED0F1C6268640045C705 /* Session.swift */,
 				DA2620171B62520F005544B8 /* Transaction.swift */,
-				DAFA40221B5E3D160094CFCA /* VoidTransaction.swift */,
+				3B10A72B1C872973003D73B8 /* TransactionProcess.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				DAFA40111B5956570094CFCA /* Payment.swift in Sources */,
 				DA99F5231C15ABE7001EADC6 /* JudoErrorCode.swift in Sources */,
 				DAFA40231B5E3D160094CFCA /* VoidTransaction.swift in Sources */,
+				3B10A72C1C872973003D73B8 /* TransactionProcess.swift in Sources */,
 				DA1C6CB51B6F9C6F009F2BE9 /* Card.swift in Sources */,
 				DAFA401F1B595A510094CFCA /* Refund.swift in Sources */,
 				DA1C6CAB1B6F86A6009F2BE9 /* Response.swift in Sources */,

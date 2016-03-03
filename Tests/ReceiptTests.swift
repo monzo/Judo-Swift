@@ -74,7 +74,9 @@ class ReceiptTests: JudoTestCase {
         let page = Pagination(pageSize: 4, offset: 8, sort: Sort.Ascending)
         let expectation = self.expectationWithDescription("all receipts fetch expectation")
         
-        Receipt.list(page) { (dict, error) -> () in
+        let receipt = try! judo.receipt()
+        
+        receipt.list(page) { (dict, error) -> () in
             if let error = error {
                 XCTFail("api call failed with error: \(error)")
             } else {

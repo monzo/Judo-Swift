@@ -55,6 +55,8 @@ public class Receipt: NSObject {
     
     /// the receipt ID - nil for a list of all receipts
     private (set) var receiptID: String?
+    /// The current Session to access the Judo API
+    public var APISession: Session?
     
     /**
     Initialization for a Receipt Object
@@ -78,6 +80,19 @@ public class Receipt: NSObject {
         }
     }
     
+    
+    /**
+     apiSession caller - this method sets the session variable and returns itself for further use
+     
+     - Parameter session: the API session which is used to call the Judo endpoints
+     
+     - Returns: reactive self
+     */
+    public func apiSession(session: Session) -> Self {
+        self.APISession = session
+        return self
+    }
+    
 
     /**
     Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods.
@@ -93,12 +108,12 @@ public class Receipt: NSObject {
             path += "/\(rec)"
         }
         
-        Session.GET(path, parameters: nil) { (dictionary, error) -> () in
+        self.APISession?.GET(path, parameters: nil) { (dictionary, error) -> () in
             block(dictionary, error)
         }
         return self
     }
-
+    
     
     /**
     This method will return a list of receipts
@@ -108,9 +123,9 @@ public class Receipt: NSObject {
     - Parameter pagination: The offset, number of items and order in which to return the items
     - Parameter block: a completion block that is called when the request finishes
     */
-    public static func list(pagination: Pagination, block: JudoCompletionBlock) {
+    public func list(pagination: Pagination, block: JudoCompletionBlock) {
         let path = "transactions?pageSize=\(pagination.pageSize)&offset=\(pagination.offset)&sort=\(pagination.sort.rawValue)"
-        Session.GET(path, parameters: nil) { (dictionary, error) -> () in
+        self.APISession?.GET(path, parameters: nil) { (dictionary, error) -> () in
             block(dictionary, error)
         }
     }

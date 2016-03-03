@@ -38,11 +38,15 @@ public typealias JudoCompletionBlock = (Response?, JudoError?) -> ()
 public class Session {
     
     /// The endpoint for REST API calls to the judo API
-    static private (set) var endpoint = "https://gw1.judopay.com/"
+    private (set) var endpoint = "https://gw1.judopay.com/"
+    
+    
+    /// identifying whether developers are using their own UI or the Judo Out of the box UI
+    public var uiClientMode = false
     
     
     /// Set the app to sandboxed mode
-    static public var sandboxed: Bool = false {
+    public var sandboxed: Bool = false {
         didSet {
             if sandboxed {
                 endpoint = "https://gw1.judopay-sandbox.com/"
@@ -52,8 +56,9 @@ public class Session {
         }
     }
     
+    
     /// Token and secret are saved in the authorizationHeader for authentication of REST API calls
-    static var authorizationHeader: String?
+    var authorizationHeader: String?
     
     
     /**
@@ -63,7 +68,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    public static func POST(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
+    public func POST(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
         
         // Create request
         let request = self.judoRequest(endpoint + path)
@@ -101,7 +106,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func GET(path: String, parameters: JSONDictionary?, completion: JudoCompletionBlock) {
+    func GET(path: String, parameters: JSONDictionary?, completion: JudoCompletionBlock) {
         
         // Create request
         let request = self.judoRequest(endpoint + path)
@@ -136,7 +141,7 @@ public class Session {
     - Parameter parameters: information that is set in the HTTP Body
     - Parameter completion: completion callblack block with the results
     */
-    static func PUT(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
+    func PUT(path: String, parameters: JSONDictionary, completion: JudoCompletionBlock) {
         // Create request
         let request = self.judoRequest(endpoint + path)
         
@@ -175,22 +180,30 @@ public class Session {
     
     - Returns: a JSON HTTP request with authorization set
     */
-    public static func judoRequest(url: String) -> NSMutableURLRequest {
+    public func judoRequest(url: String) -> NSMutableURLRequest {
         let request = NSMutableURLRequest(URL: NSURL(string: url)!)
         // json configuration header
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("5.0.0", forHTTPHeaderField: "API-Version")
-
+        
         // Adds the version and lang of the SDK to the header
         var bundle = NSBundle(identifier: "com.judo.JudoKit")
         if bundle == nil {
-            bundle = NSBundle(forClass: self)
+            bundle = NSBundle(forClass: self.dynamicType)
         }
         let version = bundle!.infoDictionary?["CFBundleShortVersionString"] ?? "Unknown"
         request.addValue("iOS-Version/\(version) lang/(Swift)", forHTTPHeaderField: "User-Agent")
         
         request.addValue("iOSSwift-\(version)", forHTTPHeaderField: "Sdk-Version")
+        
+        var uiClientModeString = "Judo-SDK"
+        
+        if uiClientMode {
+            uiClientModeString = "Custom-UI"
+        }
+        
+        request.addValue(uiClientModeString, forHTTPHeaderField: "UI-Client-Mode")
         
         // Check if token and secret have been set
         guard let authHeader = self.authorizationHeader else {
@@ -213,7 +226,7 @@ public class Session {
     
     - Returns: a NSURLSessionDataTask that can be used to manipulate the call
     */
-    public static func task(request: NSURLRequest, completion: JudoCompletionBlock) -> NSURLSessionDataTask {
+    public func task(request: NSURLRequest, completion: JudoCompletionBlock) -> NSURLSessionDataTask {
         return NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, resp, err) -> Void in
             
             // Error handling
@@ -314,7 +327,7 @@ public class Session {
     
     - returns: a Dictionary containing all the information to submit for a refund or a collection
     */
-    static func progressionParameters(receiptId: String, amount: Amount, paymentReference: String) -> JSONDictionary {
+    func progressionParameters(receiptId: String, amount: Amount, paymentReference: String) -> JSONDictionary {
         return ["receiptId":receiptId, "amount": amount.amount, "yourPaymentReference": paymentReference]
     }
     

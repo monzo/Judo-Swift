@@ -44,9 +44,12 @@ public class Judo {
     /// Set the app to sandboxed mode
     public var sandboxed: Bool = false {
         didSet {
-            Session.sandboxed = sandboxed
+            self.APISession.sandboxed = sandboxed
         }
     }
+    
+    
+    public var APISession = Session()
     
     
      /**
@@ -94,7 +97,7 @@ public class Judo {
         let plainData = plainString.dataUsingEncoding(NSISOLatin1StringEncoding)
         let base64String = plainData!.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.init(rawValue: 0))
         
-        Session.authorizationHeader = "Basic " + base64String
+        self.APISession.authorizationHeader = "Basic " + base64String
     }
     
     
@@ -104,7 +107,7 @@ public class Judo {
      - Returns: a Boolean indicating whether the parameters have been set
      */
     public func didSetTokenAndSecret() -> Bool {
-        return Session.authorizationHeader != nil
+        return self.APISession.authorizationHeader != nil
     }
     
     
@@ -124,11 +127,11 @@ public class Judo {
     public func transaction(transactionType: TransactionType, judoID: String, amount: Amount, reference: Reference) throws -> Transaction {
         switch transactionType {
         case .Payment:
-            return try payment(judoID, amount: amount, reference: reference)
+            return try payment(judoID, amount: amount, reference: reference).apiSession(self.APISession)
         case .PreAuth:
-            return try preAuth(judoID, amount: amount, reference: reference)
+            return try preAuth(judoID, amount: amount, reference: reference).apiSession(self.APISession)
         case .RegisterCard:
-            return try registerCard(judoID, reference: reference)
+            return try registerCard(judoID, reference: reference).apiSession(self.APISession)
         default:
             throw JudoError(.InvalidOperationError)
         }
@@ -147,7 +150,7 @@ public class Judo {
      - Returns: a Payment Object
      */
     public func payment(judoID: String, amount: Amount, reference: Reference) throws -> Payment {
-        return try Payment(judoID: judoID, amount: amount, reference: reference)
+        return try Payment(judoID: judoID, amount: amount, reference: reference).apiSession(self.APISession)
     }
     
     
@@ -163,7 +166,7 @@ public class Judo {
      - Returns: pre-auth Object
      */
     public func preAuth(judoID: String, amount: Amount, reference: Reference) throws -> PreAuth {
-        return try PreAuth(judoID: judoID, amount: amount, reference: reference)
+        return try PreAuth(judoID: judoID, amount: amount, reference: reference).apiSession(self.APISession)
     }
     
     
@@ -179,7 +182,7 @@ public class Judo {
      - Returns: a RegisterCard Object
      */
     public func registerCard(judoID: String, reference: Reference) throws -> RegisterCard {
-        return try RegisterCard(judoID: judoID, amount: nil, reference: reference)
+        return try RegisterCard(judoID: judoID, amount: nil, reference: reference).apiSession(self.APISession)
     }
     
     
@@ -197,7 +200,7 @@ public class Judo {
      - Returns: a Receipt Object for reactive usage
      */
     public func receipt(receiptID: String? = nil) throws -> Receipt {
-        return try Receipt(receiptID: receiptID)
+        return try Receipt(receiptID: receiptID).apiSession(self.APISession)
     }
     
     
@@ -213,7 +216,7 @@ public class Judo {
      - Returns: a Collection object for reactive usage
      */
     public func collection(receiptID: String, amount: Amount) throws -> Collection {
-        return try Collection(receiptID: receiptID, amount: amount)
+        return try Collection(receiptID: receiptID, amount: amount).apiSession(self.APISession)
     }
     
     
@@ -229,7 +232,7 @@ public class Judo {
      - Returns: a Refund object for reactive usage
      */
     public func refund(receiptID: String, amount: Amount) throws -> Refund {
-        return try Refund(receiptID: receiptID, amount: amount)
+        return try Refund(receiptID: receiptID, amount: amount).apiSession(self.APISession)
     }
     
     
@@ -245,7 +248,13 @@ public class Judo {
      - Returns: a Void object for reactive usage
      */
     public func voidTransaction(receiptID: String, amount: Amount) throws -> VoidTransaction {
-        return try VoidTransaction(receiptID: receiptID, amount: amount)
+        return try VoidTransaction(receiptID: receiptID, amount: amount).apiSession(self.APISession)
+    }
+    
+    public func list<T:SessionProtocol>(type: T.Type) -> T {
+        var transaction = T()
+        transaction.APISession = self.APISession
+        return transaction
     }
     
 }

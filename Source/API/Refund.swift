@@ -24,6 +24,7 @@
 
 import Foundation
 
+
 /** 
 Refunding a successful payment is easy, simply identify the original receipt ID for the payment and the amount you wish to refund. When we've received this request, we check to ensure there is a sufficient balance to process the refund and then process the request accordingly. Here is an example to how you can make a Refund with the SDK.
 
@@ -39,59 +40,9 @@ Refunding a successful payment is easy, simply identify the original receipt ID 
 ```
 
 */
-public class Refund: NSObject {
+public class Refund: TransactionProcess, TransactionPath {
     
-    /// The receipt ID for a refund
-    public private (set) var receiptID: String
-    /// The amount of the refund
-    public private (set) var amount: Amount
-    /// The payment reference String for a refund
-    public private (set) var paymentReference: String = ""
-    
-    
-    /**
-    Starting point and a reactive method to create a Refund
-    
-    - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
-    - Parameter amount: The amount to process
-    
-    - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
-    */
-    init(receiptID: String, amount: Amount) throws {
-        // Initialize variables
-        self.receiptID = receiptID
-        self.amount = amount
-        super.init()
-        
-        guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
-            throw JudoError(.UnknownError)
-        }
-        let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
-        self.paymentReference = finalString.substringToIndex(finalString.endIndex.advancedBy(-4))
-        
-        // Luhn check the receipt ID
-        if !receiptID.isLuhnValid() {
-            throw JudoError(.LuhnValidationError)
-        }
-    }
-    
-    
-    /**
-    Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods
-    
-    - Parameter block: a completion block that is called when the request finishes
-    
-    - Returns: reactive self
-    */
-    public func completion(block: JudoCompletionBlock) -> Self {
-        
-        let parameters = Session.progressionParameters(self.receiptID, amount: self.amount, paymentReference: self.paymentReference)
-        
-        Session.POST("/transactions/refunds", parameters: parameters) { (dict, error) -> Void in
-            block(dict, error)
-        }
-        
-        return self
-    }
+    /// path variable for a refund of a payment
+    public static var path: String { get { return "/transactions/refunds" } }
     
 }

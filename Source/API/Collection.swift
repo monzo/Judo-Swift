@@ -40,59 +40,9 @@ A Collection transaction is the counterpart to a Pre-authorization transaction. 
 ```
 
 */
-public class Collection: NSObject {
+public class Collection: TransactionProcess, TransactionPath {
     
-    /// the receipt ID for a collection
-    private (set) var receiptID: String
-    /// the amount of the collection
-    private (set) var amount: Amount
-    /// the payment reference String for a collection
-    private (set) var paymentReference: String = ""
+    /// path variable for a collection of a pre-authorization
+    public static var path: String { get { return "/transactions/collections" } }
     
-    
-    /**
-    starting point and a reactive method to create a Collection
-    
-    - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
-    - Parameter amount: The amount to process
-    
-    - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
-    */
-    init(receiptID: String, amount: Amount) throws {
-        self.receiptID = receiptID
-        self.amount = amount
-        
-        super.init()
-        
-        guard let uuidString = UIDevice.currentDevice().identifierForVendor?.UUIDString else {
-            throw JudoError(.UnknownError)
-        }
-        let finalString = String((uuidString + String(NSDate())).characters.filter { ![":", "-", "+"].contains(String($0)) }).stringByReplacingOccurrencesOfString(" ", withString: "")
-        self.paymentReference = finalString.substringToIndex(finalString.endIndex.advancedBy(-4))
-        
-        // Luhn check the receipt ID
-        if !receiptID.isLuhnValid() {
-            throw JudoError(.LuhnValidationError)
-        }
-    }
-    
-    
-    /**
-    Completion caller - this method will automatically trigger a Session Call to the judo REST API and execute the request based on the information that were set in the previous methods
-    
-    - Parameter block: a completion block that is called when the request finishes
-    
-    - Returns: reactive self
-    */
-    public func completion(block: JudoCompletionBlock) -> Self {
-        
-        let parameters = Session.progressionParameters(self.receiptID, amount: self.amount, paymentReference: self.paymentReference)
-        
-        Session.POST("/transactions/collections", parameters: parameters) { (dict, error) -> Void in
-            block(dict, error)
-        }
-        
-        return self
-    }
-
 }

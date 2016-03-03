@@ -45,6 +45,9 @@
                <Test
                   Identifier = "PaymentTests/testJudoValidation()">
                </Test>
+               <Test
+                  Identifier = "PreAuthTests/testJudoMakePreAuthWithoutAmount()">
+               </Test>
             </SkippedTests>
          </TestableReference>
       </Testables>
