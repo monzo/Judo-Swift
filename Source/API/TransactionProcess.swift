@@ -24,6 +24,7 @@
 
 import Foundation
 
+/// Superclass Helper for Collection, Void and Refund
 public class TransactionProcess: NSObject {
     
     /// The receipt ID for a refund

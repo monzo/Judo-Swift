@@ -32,19 +32,37 @@ public protocol TransactionPath {
     static var path: String { get }
 }
 
+/// intended for classes that can be queried for lists
 public protocol SessionProtocol {
+    
+    /// the current API Session
     var APISession: Session? { get set }
+    
+    /**
+     a method to set the API session in a fluent way
+     
+     - parameter session: the session to set
+     
+     - returns: Self
+     */
     func apiSession(session: Session) -> Self
+    
+    /**
+     designated initializer
+     
+     - returns: an instance of the receiving type
+     */
     init()
 }
 
-/// Superclass Helper for Payments and Pre-auths
+/// Superclass Helper for Payment, Pre-auth and RegisterCard
 public class Transaction: SessionProtocol {
     
     /// The current transaction if there is one - for preventing multiple transactions running at the same time
     private var currentTransactionReference: String? = nil
     
     internal var parameters = [String:AnyObject]();
+    
     /// The current Session to access the Judo API
     public var APISession: Session?
     

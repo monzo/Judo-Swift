@@ -48,7 +48,7 @@ public class Judo {
         }
     }
     
-    
+    /// the current API Session
     public var APISession = Session()
     
     
@@ -251,6 +251,14 @@ public class Judo {
         return try VoidTransaction(receiptID: receiptID, amount: amount).apiSession(self.APISession)
     }
     
+    
+    /**
+     Creates an instance of a class that conforms to SessionProtocol. This means that anything related to Payments or PreAuths can be queried for a list
+     
+     - parameter type: the type
+     
+     - returns: a new instance that can be used to fetch information
+     */
     public func list<T:SessionProtocol>(type: T.Type) -> T {
         var transaction = T()
         transaction.APISession = self.APISession
