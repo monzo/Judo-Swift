@@ -14,7 +14,7 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 ## [2.0.0](https://github.com/JudoPay/Judo-Swift/releases/tag/2.0.0)
-to be Released on 2016-02-29
+Released on 2016-03-04
 
 #### Added
 - Brazilian Real static accessor in `Currency`.
@@ -55,7 +55,7 @@ In this case, if the code was executed on a jailbroken device, the myJudoSession
 
 ---
 ## [1.6.0](https://github.com/JudoPay/Judo-Swift/releases/tag/1.6.0)
-to be Released on 2016-02-09
+internally Released
 
 #### Added
 - Ability to Void a preAuth
