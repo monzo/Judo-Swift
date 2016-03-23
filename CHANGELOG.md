@@ -18,11 +18,11 @@ All notable changes to this project will be documented in this file.
 Released on 2016-03-30
 
 #### Changed
-- Updated documentation and fixed typos
+- Updated documentation and fixed typos.
 
 #### Fixed
-- Fixed the security code title for AMEX cards (CID instead of CIDV)
-- Fixed a wrong error being passed when a networking error occured
+- Fixed the security code label for Amex cards (CID instead of CIDV).
+- Fixed an error being passed when a networking error occurs.
 	- Updated by [Hamon Ben Riazy](https://github.com/ryce).
 
 ---
