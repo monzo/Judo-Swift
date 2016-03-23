@@ -478,7 +478,7 @@ The CardNetwork enum depicts the Card Network type of a given Card object
         case .MasterCard:
             return "CVC2"
         case .AMEX:
-            return "CIDV"
+            return "CID"
         case .ChinaUnionPay:
             return "CVN2"
         case .Discover:

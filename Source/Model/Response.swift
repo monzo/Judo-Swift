@@ -162,8 +162,7 @@ extension Response: SequenceType, CollectionType {
 /**
  **PaymentToken**
  
- a
- APaymentToken object which is one part to be used in any token transactions
+ A PaymentToken object which is one part to be used in any token transactions
 */
 public class PaymentToken: NSObject {
     /// Our unique reference for this Consumer. Used in conjunction with the card token in repeat transactions.
@@ -238,7 +237,7 @@ public class Consumer: NSObject {
 /**
  **TransactionData**
  
- TransactionResult is an object that references all information in correspondance with a Transaction with the judo API
+ TransactionData is an object that references all information in correspondance with a Transaction with the judo API
 */
 public class TransactionData: NSObject {
     /// Our reference for this transaction. Keep track of this as it's needed to process refunds or collections later
@@ -275,7 +274,7 @@ public class TransactionData: NSObject {
     public let rawData: [String : AnyObject]
     
     /**
-    Create a TransactionData Object from a dictionary
+    Create a TransactionData object from a dictionary
     
     - Parameter dict: the dictionary
     
