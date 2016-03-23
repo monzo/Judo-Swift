@@ -194,7 +194,7 @@ public class JudoError: NSObject, ErrorType {
         if let errorCode = error.userInfo["code"] as? Int, judoErrorCode = JudoErrorCode(rawValue: errorCode) {
             return JudoError(judoErrorCode, dict: error.userInfo as! JSONDictionary)
         } else {
-            return JudoError(.Unknown, bridgedError: error)
+            return JudoError(.UnknownError, bridgedError: error)
         }
     }
     

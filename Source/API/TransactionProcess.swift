@@ -27,20 +27,20 @@ import Foundation
 /// Superclass Helper for Collection, Void and Refund
 public class TransactionProcess: NSObject {
     
-    /// The receipt ID for a refund
+    /// The receipt ID for a collection, void or refund
     public private (set) var receiptID: String
-    /// The amount of the refund
+    /// The amount of the collection, void or refund
     public private (set) var amount: Amount
-    /// The payment reference String for a refund
+    /// The payment reference String for a collection, void or refund
     public private (set) var paymentReference: String = ""
     /// The current Session to access the Judo API
     public var APISession: Session?
     
     
     /**
-     Starting point and a reactive method to create a Refund
+     Starting point and a reactive method to create a collection, void or refund
      
-     - Parameter receiptID: the receiptID identifying the transaction you wish to collect - has to be luhn-valid
+     - Parameter receiptID: the receiptID identifying the transaction you wish to collect, void or refund - has to be luhn-valid
      - Parameter amount: The amount to process
      
      - Throws: LuhnValidationError judoID does not match the given length or is not luhn valid
@@ -99,7 +99,7 @@ public class TransactionProcess: NSObject {
     /**
      Helper method for extensions of this class to be able to access the dynamic path value
      
-     :returns: the rest api access path of the current class
+     - returns: the rest api access path of the current class
      */
     public func path() -> String {
         return (self.dynamicType as! TransactionPath.Type).path
