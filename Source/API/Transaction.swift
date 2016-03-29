@@ -163,7 +163,7 @@ public class Transaction: SessionProtocol {
             } catch {
                  // Allow empty paymentData on simulator for test cards
                  #if !(arch(i386) || arch(x86_64)) && (os(iOS) || os(watchOS) || os(tvOS))
-                     return nil
+                     return
                  #endif
             }
             
