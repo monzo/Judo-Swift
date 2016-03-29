@@ -2,7 +2,7 @@
 All notable changes to this project will be documented in this file.
 'Judo' adheres to [Semantic Versioning](http://semver.org/).
 
-- `2.0.x` Releases - [2.0.0](#200) | [2.0.1](#201)
+- `2.0.x` Releases - [2.0.0](#200) | [2.0.1](#201) | [2.0.2](#202)
 - `1.6.x` Releases - [1.6.0](#160)
 - `1.5.x` Releases - [1.5.0](#150) | [1.5.1](#151) | [1.5.2](#152)
 - `1.4.x` Releases - [1.4.0](#140)
@@ -14,6 +14,13 @@ All notable changes to this project will be documented in this file.
 - `0.1.x` Releases - [0.1.0](#010) | [0.1.3](#013) | [0.1.5](#015) | [0.1.6](#016)
 
 
+## [2.0.2](https://github.com/JudoPay/Judo-Swift/releases/tag/2.0.2)
+Released on 2016-03-30
+
+#### Changed
+- Updated podspec
+
+---
 ## [2.0.1](https://github.com/JudoPay/Judo-Swift/releases/tag/2.0.1)
 Released on 2016-03-30
 
